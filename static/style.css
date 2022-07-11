@@ -85,3 +85,8 @@ a {
     padding-top: 30px;
     padding-left: 30px;
 }
+
+.lecture-slides {
+    width: 800px;
+    height: 100%;
+}

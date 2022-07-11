@@ -1,3 +1,5 @@
+import os
+
 from http.client import responses
 from flask import Flask, render_template, redirect
 from flask_session import Session
@@ -16,7 +18,20 @@ Session(app)
 conn = sqlite3.connect("plus50.db")
 db = conn.cursor()
 
-video_url = [
+
+
+
+@app.route("/")
+#@login_required
+def index():
+    return render_template("index.html")
+
+
+@app.route("/video")
+#@login_required
+def video():
+    # Put it into database?
+    video_url = [
     "https://www.youtube.com/embed/4zy0z5W0-w4",
     "https://www.youtube.com/embed/Na2wiHOnzXU",
     "https://www.youtube.com/embed/xC3BZa1pcsY",
@@ -29,19 +44,30 @@ video_url = [
     "https://www.youtube.com/embed/mlRlDFAyPtE",
     "https://www.youtube.com/embed/oe-Iz0j1n6I"
 ]
-
-@app.route("/")
-#@login_required
-def index():
-    return render_template("index.html")
-
-@app.route("/video")
-#@login_required
-def video():
     return render_template("video.html", video=video_url[1])
 
+
 @app.route("/notes")
-#@login_required
 def notes():
     return render_template("notes.html")
-    
+
+
+@app.route("/slides")
+def slides():
+    return render_template("slides.html")
+
+
+@app.route("/source")
+def source():
+    # List to hold all source files per lecture
+    source = {}
+
+    # Which lecture
+    lecture = "src1"
+    path = (f"static/files/source/{lecture}")
+    # Open folder, add files to the list
+    for f in os.listdir(path):
+        with open(os.path.join(path, f)) as f:
+            source[os.path.basename(f.name)] = f.read()
+
+    return render_template("source.html", source=source)

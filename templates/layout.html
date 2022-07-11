@@ -12,7 +12,6 @@
     </head>
     <body>
         <section class="header">
-                <div id="welcome">Hello and welcome</div>
         </section>
         <section class="sidebar">
                 <div class="side-menu">
@@ -33,17 +32,44 @@
                 </div>
         </section>
         <section class="topbar">
-                <div class="top-menu">
-                    <ul>
-                        <li><a href="#">Video</a></li>
-                        <li><a href="#">Shorts</a></li>
-                        <li><a href="#">Notes</a></li>
-                        <li><a href="#">Lab</a></li>
-                    </ul>
+                <div class="top-menu container">
+                    <div class="top-menu-parent row">
+                        <div class="col-sm">
+                            <a href="#">Lecture</a>
+                        </div>
+                        <div class="col-sm">
+                            <a href="#">Shorts</a>
+                        </div>
+                        <div class="col-sm">
+                            <a href="#">Problem Set 1</a>
+                        </div>
+                    </div>
+                    <div class="top-menu-child row">
+                        <div class="col-sm">
+                            <a href="#">Video</a>
+                        </div>
+                        <div class="col-sm">
+                            <a href="#">Notes</a>
+                        </div>
+                        <div class="col-sm">
+                            <a href="#">Slides</a>
+                        </div>
+                        <div class="col-sm">
+                            <a href="#">Source Code</a>
+                        </div>
+                        <div class="col-sm">
+                            <a href="#">Transcript</a>
+                        </div>
+                    </div>
                 </div>
         </section>
-        <section id="main">
-            <div id="some-content">This is main content.</div>
+        <section class="main">
+            <div class="main-content">
+                <h3>Week 1 C</h3>
+                <div class="lecture-video">
+                    <iframe width="1042" height="586" src="https://www.youtube.com/embed/1tnj3UCkuxU" title="CS50 2021 in HDR - Lecture 0 - Scratch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
         </section>
     </body>
 </html>

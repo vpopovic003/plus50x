@@ -60,7 +60,7 @@ def slides():
 @app.route("/source")
 def source():
     # List to hold all source files per lecture
-    source = {}
+    source = []
 
     # Which lecture
     lecture = "src1"
@@ -68,6 +68,6 @@ def source():
     # Open folder, add files to the list
     for f in os.listdir(path):
         with open(os.path.join(path, f)) as f:
-            source[os.path.basename(f.name)] = f.read()
+            source.append(os.path.basename(f.name))
 
     return render_template("source.html", source=source)

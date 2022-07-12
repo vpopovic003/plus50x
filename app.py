@@ -71,3 +71,7 @@ def source():
             source.append(os.path.basename(f.name))
 
     return render_template("source.html", source=source)
+
+@app.route("/transcript")
+def transcript():
+    return render_template("transcript.html")

@@ -19,8 +19,6 @@ conn = sqlite3.connect("plus50.db")
 db = conn.cursor()
 
 
-
-
 @app.route("/")
 #@login_required
 def index():
@@ -71,6 +69,7 @@ def source():
             source.append(os.path.basename(f.name))
 
     return render_template("source.html", source=source)
+
 
 @app.route("/transcript")
 def transcript():

@@ -12,29 +12,30 @@
         <title>Plus50x: {% block title %}{% endblock %}</title>
     </head>
     <body>
-        <section class="header">
-        </section>
-        <section class="sidebar">
+        <div class="row nopadding">
+            <!--section class="header">
+            </section-->
+            <aside class="col-md nopadding">
                 <div class="side-menu">
                     <h1><a href="../..">PLUS50x</a></h1>
                     <ul>
-                       <li><a href="#">Week 0 Scratch</a></li>
-                       <li><a href="#">Week 1 C</a></li>
-                       <li><a href="#">Week 2 Arrays</a></li>
-                       <li><a href="#">Week 3 Algorithms</a></li>
-                       <li><a href="#">Week 4 Memory</a></li>
-                       <li><a href="#">Week 5 Data Structures</a></li>
-                       <li><a href="#">Week 6 Python</a></li>
-                       <li><a href="#">Week 7 SQL</a></li>
-                       <li><a href="#">Week 8 HTML, CSS, JavaScript</a></li>
-                       <li><a href="#">Week 9 Flask</a></li>
-                       <li><a href="#">Week 10 Emoji</a></li>
+                    <li><a href="#">Week 0 Scratch</a></li>
+                    <li><a href="#">Week 1 C</a></li>
+                    <li><a href="#">Week 2 Arrays</a></li>
+                    <li><a href="#">Week 3 Algorithms</a></li>
+                    <li><a href="#">Week 4 Memory</a></li>
+                    <li><a href="#">Week 5 Data Structures</a></li>
+                    <li><a href="#">Week 6 Python</a></li>
+                    <li><a href="#">Week 7 SQL</a></li>
+                    <li><a href="#">Week 8 HTML, CSS, JavaScript</a></li>
+                    <li><a href="#">Week 9 Flask</a></li>
+                    <li><a href="#">Week 10 Emoji</a></li>
                     </ul>
                 </div>
-        </section>
-        <section class="topbar">
-                <div class="top-menu container">
-                    <div class="top-menu-main row">
+            </aside>
+            <main class="col-md nopadding">
+                <div class="top-menu row">
+                    <div class="top-menu-upper row">
                         <div class="col-sm">
                             <a href="#">Lecture</a>
                         </div>
@@ -45,7 +46,7 @@
                             <a href="#">Problem Set 1</a>
                         </div>
                     </div>
-                    <div class="top-menu-sub row">
+                    <div class="top-menu-lower row">
                         <div class="col-sm">
                             <a href="video">Video</a>
                         </div>
@@ -62,14 +63,13 @@
                             <a href="transcript">Transcript</a>
                         </div>
                     </div>
-                </div>
-        </section>
-        <section class="main">
-            <div class="main-content">
-                {% block main %}
+                </div>     
+                <div class="main-content row">
+                    {% block main %}
 
-                {% endblock %}
-            </div>
-        </section>
+                    {% endblock %}
+                </div>
+            </main>
+        </div>
     </body>
 </html>

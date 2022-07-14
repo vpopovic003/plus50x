@@ -13,80 +13,68 @@ a {
     text-decoration: none;
 }
 
-.sidebar {
-    display: flex;
-    position: relative;
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }
+
+aside .col-md {
+    flex: 0 1 20rem;
 }
 
-.sidebar .side-menu {
-    position: fixed;
-    width: 220px;
-    height: 100%;
+.side-menu h1 {
     background: #000000;
-    padding: 30px 0;
-}
-
-.sidebar .side-menu h1 {
     color: #fff;
     text-align: center;
     margin-bottom: 30px;
 }
 
-.sidebar .side-menu ul li {
-    padding: 15px;
+.side-menu ul li {
+    padding: 10px;
     border-bottom: 1px solid rgba(0,0,0,0.05);
     border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-.sidebar .side-menu ul li a {
+.side-menu ul li a {
     color: #aaa;
     display: block
 }
 
-.sidebar .side-menu ul li:hover {
+.side-menu ul li:hover {
     background: #111;
 }
-.sidebar .side-menu ul li:hover a{
+
+.side-menu ul li:hover a{
     color: #fff;
 }
 
-.topbar {
-    display: flex;
-    position: relative;
-}
-
-.topbar .top-menu {
-    width: 100%;
-    margin-left: 220px;
+.top-menu {
     background: #ccc;
+    text-align: center;
 }
 
-.topbar .top-menu .top-menu-main {
+.top-menu .col-sm {
+    border: 1px solid;
+}
+/*
+.top-menu .top-menu-upper {
     padding: 10px;
 }
 
-.topbar .top-menu .top-menu-sub {
+.top-menu .top-menu-lower {
     padding: 10px;
 }
-
-.topbar .top-menu a {
+*/
+.top-menu a {
     color: #000;
-    display: block;
+    /*display: block;*/
 }
 
-.main {
-    display: flex;
-    position: relative;
-}
-
-.main .main-content {
-    width: 100%;
-    margin-left: 220px;
+.main-content {
+    /*width: 100%;*/
     padding-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
 }
-
+/*
 .lecture-slides {
     width: 800px;
     height: 100%;
@@ -96,3 +84,4 @@ a {
     width: 100%;
     height: 100%;
 }
+*/

@@ -37,7 +37,7 @@ aside .col-md {
 }
 
 .side-menu ul li a {
-    color: #aaa;
+    color: #ccc;
     display: block
 }
 
@@ -50,39 +50,37 @@ aside .col-md {
 }
 
 .top-menu {
-    background: #ccc;
     text-align: center;
 }
-
+/*
 .top-menu .col-sm {
     border: 1px solid;
 }
-/*
+*/
 .top-menu .top-menu-upper {
-    padding: 10px;
+    height: 40px;
+    line-height: 40px;
+    background: #eee;
+}
+
+.top-menu .top-menu-upper a{
+    color: #000;
 }
 
 .top-menu .top-menu-lower {
-    padding: 10px;
+    height: 45px;
+    line-height: 45px;
+    background-color: #000;
 }
-*/
-.top-menu a {
-    color: #000;
-    /*display: block;*/
+
+.top-menu .top-menu-lower a {
+    color: #fff;
 }
 
 .main-content {
-    /*width: 100%;*/
-    padding-top: 30px;
-}
-/*
-.lecture-slides {
-    width: 800px;
-    height: 100%;
+    padding-top: 10px;
 }
 
-.lecture-video {
-    width: 100%;
-    height: 100%;
+.shorts-video iframe {
+    padding: 10px;
 }
-*/

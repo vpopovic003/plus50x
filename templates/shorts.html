@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="top-menu-lower row">
+    <div class="col-sm">
+        <a href="#shorts0">Data Types</a>
+    </div>
+    <div class="col-sm">
+        <a href="#shorts1">Operators</a>
+    </div>
+    <div class="col-sm">
+        <a href="#shorts2">Conditionals</a>
+    </div>
+    <div class="col-sm">
+        <a href="#shorts3">Loops</a>
+    </div>
+    <div class="col-sm">
+        <a href="#shorts4">Command Line</a>
+    </div>
+</div>
+</div>
+<div class="main-content row">
+    <h1 class="no_toc" id="lecture-1">Lecture 1</h1>
+    <div class="shorts-video">
+        <iframe id="shorts0" src="{{ shorts[0] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div> 
+    <div class="shorts-video">
+        <iframe id="shorts1" src="{{ shorts[1] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div> 
+    <div class="shorts-video">
+        <iframe id="shorts2" src="{{ shorts[2] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div> 
+    <div class="shorts-video">
+        <iframe id="shorts3" src="{{ shorts[3] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div> 
+    <div class="shorts-video">
+        <iframe id="shorts4" src="{{ shorts[4] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div> 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('#shorts').style.color = "#fff";
+            document.querySelector('#shorts-column').style.backgroundColor = "#000";
+        });
+    </script>
+{% endblock %}

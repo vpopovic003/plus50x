@@ -74,3 +74,23 @@ def source():
 @app.route("/transcript")
 def transcript():
     return render_template("transcript.html")
+
+
+@app.route("/shorts")
+def shorts():
+    l1_shorts = [
+        "https://www.youtube.com/embed/Fc9htmvVZ9U",
+        "https://www.youtube.com/embed/f1xZf4iJDWE",
+        "https://www.youtube.com/embed/1wsaV5nVC7g",
+        "https://www.youtube.com/embed/WgX8e_O7eG8",
+        "https://www.youtube.com/embed/BnJ013X02b8"
+    ]
+    return render_template("shorts.html", shorts=l1_shorts)
+
+@app.route("/pset0")
+def pset0():
+    return render_template("pset0.html")
+
+@app.route("/pset1")
+def pset1():
+    return render_template("pset1.html")

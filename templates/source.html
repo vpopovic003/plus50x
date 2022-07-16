@@ -1,4 +1,4 @@
-{% extends "lecture.html" %}
+{% extends "layout.html" %}
 
 {% block main %}
 <div class="top-menu-lower row">
@@ -58,7 +58,7 @@ int main(void)
         });
 
         document.querySelector('#select').addEventListener('change', function() {
-            let path = "static/files/source/src1/" + this.value;
+            let path = "templates/files/source/src1/" + this.value;
             fetch(path)
                 .then(response => response.text())
                 .then(text => document.querySelector('#render-src').innerText = text);

@@ -11,11 +11,11 @@ app = Flask(__name__)
 def index():
     return render_template("video.html")
 
-
+"""
 @app.route(f"/lecture{lecture_index}")
 def lecture():
     return redirect("video.html", lecture_index=lecture_index)
-
+"""
 
 
 @app.route("/video")
@@ -39,7 +39,8 @@ def video():
 
 @app.route("/notes")
 def notes():
-    return render_template("notes.html")
+    notes = "files/notes/lecture1.html"
+    return render_template("notes.html", notes=notes)
 
 
 @app.route("/slides")

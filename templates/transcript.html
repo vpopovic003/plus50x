@@ -1,26 +1,38 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<div class="top-menu-lower row">
-    <div class="col-sm">
-        <a href="video">Video</a>
+<div class="top-menu row">
+    <div class="top-menu-upper row">
+        <div id="lecture-column" class="col-sm">
+            <a id="lecture" href="lecture{{ index }}">Lecture</a>
+        </div>
+        <div id="shorts-column" class="col-sm">
+            <a id="shorts" href="shorts{{ index }}">Shorts</a>
+        </div>
+        <div id="pset-column" class="col-sm">
+            <a id="pset" href="problems{{ index }}">Problem Sets</a>
+        </div>
     </div>
-    <div class="col-sm">
-        <a href="notes">Notes</a>
+    <div class="top-menu-lower row">
+        <div class="col-sm">
+            <a href="lecture{{ index }}">Video</a>
+        </div>
+        <div class="col-sm">
+            <a href="notes{{ index }}">Notes</a>
+        </div>
+        <div class="col-sm">
+            <a href="slides{{ index }}">Slides</a>
+        </div>
+        <div class="col-sm">
+            <a href="source{{ index }}">Source Code</a>
+        </div>
+        <div class="col-sm">
+            <a href="transcript{{ index }}">Transcript</a>
+        </div>
     </div>
-    <div class="col-sm">
-        <a href="slides">Slides</a>
-    </div>
-    <div class="col-sm">
-        <a href="source">Source Code</a>
-    </div>
-    <div class="col-sm">
-        <a href="transcript">Transcript</a>
-    </div>
-</div>
 </div>     
 <div class="main-content row">
-    <h1 class="no_toc" id="lecture-1">Lecture 1</h1>
+    <h1 class="no_toc" id="lecture-1">Lecture {{ index }}</h1>
 <div class="lecture-slides">
     <iframe src="/static/files/transcripts/lecture0.txt" width="100%" height="100%"></iframe>
 </div>

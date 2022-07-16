@@ -1,26 +1,38 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<div class="top-menu-lower row">
-    <div class="col-sm">
-        <a href="#shorts0">Data Types</a>
+<div class="top-menu row">
+    <div class="top-menu-upper row">
+        <div id="lecture-column" class="col-sm">
+            <a id="lecture" href="lecture{{ index }}">Lecture</a>
+        </div>
+        <div id="shorts-column" class="col-sm">
+            <a id="shorts" href="shorts{{ index }}">Shorts</a>
+        </div>
+        <div id="pset-column" class="col-sm">
+            <a id="pset" href="problems{{ index }}">Problem Sets</a>
+        </div>
     </div>
-    <div class="col-sm">
-        <a href="#shorts1">Operators</a>
+    <div class="top-menu-lower row">
+        <div class="col-sm">
+            <a href="#shorts0{{ index }}">Data Types</a>
+        </div>
+        <div class="col-sm">
+            <a href="#shorts1{{ index }}">Operators</a>
+        </div>
+        <div class="col-sm">
+            <a href="#shorts2{{ index }}">Conditionals</a>
+        </div>
+        <div class="col-sm">
+            <a href="#shorts3{{ index }}">Loops</a>
+        </div>
+        <div class="col-sm">
+            <a href="#shorts4{{ index }}">Command Line</a>
+        </div>
     </div>
-    <div class="col-sm">
-        <a href="#shorts2">Conditionals</a>
-    </div>
-    <div class="col-sm">
-        <a href="#shorts3">Loops</a>
-    </div>
-    <div class="col-sm">
-        <a href="#shorts4">Command Line</a>
-    </div>
-</div>
 </div>
 <div class="main-content row">
-    <h1 class="no_toc" id="lecture-1">Lecture 1</h1>
+    <h1 class="no_toc" id="lecture-1">Lecture {{ index }}</h1>
     <div class="shorts-video">
         <iframe id="shorts0" src="{{ shorts[0] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div> 

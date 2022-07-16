@@ -1,26 +1,38 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<div class="top-menu-lower row">
-    <div class="col-sm">
-        <a href="pset0">Explanation</a>
+<div class="top-menu row">
+    <div class="top-menu-upper row">
+        <div id="lecture-column" class="col-sm">
+            <a id="lecture" href="lecture{{ index }}">Lecture</a>
+        </div>
+        <div id="shorts-column" class="col-sm">
+            <a id="shorts" href="shorts{{ index }}">Shorts</a>
+        </div>
+        <div id="pset-column" class="col-sm">
+            <a id="pset" href="problems{{ index }}">Problem Sets</a>
+        </div>
     </div>
-    <div class="col-sm">
-        <a href="pset1">Hello</a>
+    <div class="top-menu-lower row">
+        <div class="col-sm">
+            <a href="pset0">Explanation</a>
+        </div>
+        <div class="col-sm">
+            <a href="pset1">Hello</a>
+        </div>
+        <div class="col-sm">
+            <a href="pset2">Mario-less</a>
+        </div>
+        <div class="col-sm">
+            <a href="pset3">Mario-more</a>
+        </div>
+        <div class="col-sm">
+            <a href="pset4">Cash</a>
+        </div>
+        <div class="col-sm">
+            <a href="pset5">Credit</a>
+        </div>
     </div>
-    <div class="col-sm">
-        <a href="pset2">Mario-less</a>
-    </div>
-    <div class="col-sm">
-        <a href="pset3">Mario-more</a>
-    </div>
-    <div class="col-sm">
-        <a href="pset4">Cash</a>
-    </div>
-    <div class="col-sm">
-        <a href="pset5">Credit</a>
-    </div>
-</div>
 </div> 
 
 <h1 id="hello">Hello</h1>

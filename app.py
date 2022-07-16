@@ -2,31 +2,23 @@ import os
 
 from http.client import responses
 from flask import Flask, render_template, redirect
-from flask_session import Session
-import sqlite3
 
-#from helpers import login_required
 
 app = Flask(__name__)
 
-app.config["TEMPLATES_AUTO_RELOAD"] = True
-
-app.config["SESSION_PERANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
-
-conn = sqlite3.connect("plus50.db")
-db = conn.cursor()
-
 
 @app.route("/")
-#@login_required
 def index():
     return render_template("video.html")
 
 
+@app.route(f"/lecture{lecture_index}")
+def lecture():
+    return redirect("video.html", lecture_index=lecture_index)
+
+
+
 @app.route("/video")
-#@login_required
 def video():
     # Put it into database?
     video_url = [
@@ -41,7 +33,7 @@ def video():
     "https://www.youtube.com/embed/lp-FwJwCqpE",
     "https://www.youtube.com/embed/mlRlDFAyPtE",
     "https://www.youtube.com/embed/oe-Iz0j1n6I"
-]
+    ]
     return render_template("video.html", video=video_url[1])
 
 

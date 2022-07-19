@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, redirect
+import helpers
 
 
 app = Flask(__name__)
@@ -12,21 +13,8 @@ def index():
 
 @app.route("/lecture<index>")
 def lecture(index):
-    videos = [
-        "https://www.youtube.com/embed/4zy0z5W0-w4",
-        "https://www.youtube.com/embed/Na2wiHOnzXU",
-        "https://www.youtube.com/embed/xC3BZa1pcsY",
-        "https://www.youtube.com/embed/EXnHX-6voug",
-        "https://www.youtube.com/embed/l-dHFS_Pnzc",
-        "https://www.youtube.com/embed/urRlbmW5Txw",
-        "https://www.youtube.com/embed/k9RO-eEF9xo",
-        "https://www.youtube.com/embed/1YVIBFODn58",
-        "https://www.youtube.com/embed/lp-FwJwCqpE",
-        "https://www.youtube.com/embed/mlRlDFAyPtE",
-        "https://www.youtube.com/embed/oe-Iz0j1n6I"
-    ] 
     # Put it into database?
-    return render_template("video.html", video=videos[int(index)], index=index)
+    return render_template("video.html", video=helpers.videos[int(index)], index=index)
 
 
 @app.route("/notes<index>")
@@ -62,14 +50,17 @@ def transcript(index):
 
 @app.route("/shorts<index>")
 def shorts(index):
-    l1_shorts = [
-        "https://www.youtube.com/embed/Fc9htmvVZ9U",
-        "https://www.youtube.com/embed/f1xZf4iJDWE",
-        "https://www.youtube.com/embed/1wsaV5nVC7g",
-        "https://www.youtube.com/embed/WgX8e_O7eG8",
-        "https://www.youtube.com/embed/BnJ013X02b8"
-    ]
-    return render_template("shorts.html", shorts=l1_shorts, index=index)
+    # Get the lesson corresponding "Shorts" dictionary
+    shorts = helpers.shorts[int(index)]
+    # Getting the first value of the corresponding dict
+    first = list(helpers.shorts[int(index)].keys())[0]
+    return render_template("shorts.html", shorts=shorts, index=index, short=first)
+
+@app.route("/shorts<index>-<short>")
+def short(index, short):
+    # Get the lesson corresponding "Shorts" dictionary
+    shorts = helpers.shorts[int(index)]
+    return render_template("shorts.html", shorts=shorts, index=index, short=short)
 
 
 @app.route("/problems<index>")

@@ -14,39 +14,17 @@
         </div>
     </div>
     <div class="top-menu-lower row">
+        {% for item in shorts %}
         <div class="col-sm">
-            <a href="#shorts0{{ index }}">Data Types</a>
+            <a href="shorts{{ index }}-{{ item }}">{{ item }}</a>
         </div>
-        <div class="col-sm">
-            <a href="#shorts1{{ index }}">Operators</a>
-        </div>
-        <div class="col-sm">
-            <a href="#shorts2{{ index }}">Conditionals</a>
-        </div>
-        <div class="col-sm">
-            <a href="#shorts3{{ index }}">Loops</a>
-        </div>
-        <div class="col-sm">
-            <a href="#shorts4{{ index }}">Command Line</a>
-        </div>
+        {% endfor %}
     </div>
 </div>
 <div class="main-content row">
     <h1 class="no_toc" id="lecture-1">Lecture {{ index }}</h1>
     <div class="shorts-video">
-        <iframe id="shorts0" src="{{ shorts[0] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div> 
-    <div class="shorts-video">
-        <iframe id="shorts1" src="{{ shorts[1] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div> 
-    <div class="shorts-video">
-        <iframe id="shorts2" src="{{ shorts[2] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div> 
-    <div class="shorts-video">
-        <iframe id="shorts3" src="{{ shorts[3] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div> 
-    <div class="shorts-video">
-        <iframe id="shorts4" src="{{ shorts[4] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="shorts0" src="https://www.youtube.com/embed/{{ shorts[short] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div> 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

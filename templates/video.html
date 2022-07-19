@@ -33,7 +33,11 @@
 </div>
 <div class="row">
     <div class="main-content col-md">
-        <h1 class="no_toc" id="lecture-1">Lecture {{ index }}</h1>
+        <h1 class="no_toc" id="lecture-1">Lecture {{ index }}: {{ lecture }}</h1>
+        {% if index == 0 %}
+            <h5>The video from this lecture is the only one that cannot be embeded, for some reson.</h5>
+            <a href="https://www.youtube.com/watch?v=1tnj3UCkux">Click here to watch it on YouTube</a>
+        {% endif %}
         <div class="lecture-video">
             <iframe src="https://www.youtube.com/embed/{{ video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>

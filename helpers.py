@@ -1,3 +1,17 @@
+lectures = [
+    "Scratch",
+    "C",
+    "Arrays",
+    "Algorithms",
+    "Memory",
+    "Data Structures",
+    "Python",
+    "SQL",
+    "HTML, CSS, JavaScript",
+    "Flask",
+    "Emoji"
+]
+
 videos = [
     "4zy0z5W0-w4",
     "Na2wiHOnzXU",

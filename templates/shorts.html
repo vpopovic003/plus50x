@@ -23,9 +23,13 @@
 </div>
 <div class="row">
     <div class="main-content col-md">
-        <h1 class="no_toc" id="lecture-1">Lecture {{ index }}</h1>
+        <h1 class="no_toc" id="lecture-1">Lecture {{ index }}: {{ lecture }}</h1>
         <div class="shorts-video">
-            <iframe id="shorts0" src="https://www.youtube.com/embed/{{ shorts[short] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% if index == 0 or index == 10 %}
+                <h3>No shorts for this lecture.</h3>
+            {% else %}
+                <iframe id="shorts0" src="https://www.youtube.com/embed/{{ shorts[short] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% endif %}    
         </div> 
         <script>
             document.addEventListener('DOMContentLoaded', function() {

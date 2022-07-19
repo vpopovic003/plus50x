@@ -1,0 +1,557 @@
+[MUSIC PLAYING] DAVID J. MALAN: All right. 
+
+AUDIENCE: All right. 
+
+DAVID J. MALAN: [CHUCKLES] This is CS50. And this is week 10, our very last together. And before we dive in today, I just wanted to acknowledge how much work we know this course is for everyone. We know there's still a tad bit of work remaining. But we do hope ultimately, that you're really proud of what you've pulled off over the past few months only. And indeed the final project, whatever it is you end up building, really is meant to be this capstone, where you're finally standing on your own. There's no distribution code, there's not really a specification, and really just an opportunity to take all this knowledge out now for a spin. And we do hope it serves you well longer term. 
+
+Before we dive in too, just wanted to offer a number of thanks for so much of the team that helps out behind the scenes, in particular, the Memorial Hall team, our hosts here, who make all of the space and the activities behind the scenes possible, the education support services team, who helps with audio and video and more, and then especially CS50 his own team all here in the darkness helping out in front of the camera, behind the camera. If we could, a huge round of applause for everyone that makes this possible. 
+
+[APPLAUSE AND CHEERS] 
+
+You might have noticed that these have been unusual times, and we've had some unusual guests in the front of the room here, since we weren't sure what to expect early on as to just what protocols would be on campus. And so we have, of course, all of these plush figures behind the scenes who have been helping out behind the camera, behind the monitors, and so forth. And what many of you'll see, if you've been watching right now or in the future of these videos online, you'll see a lot of backs of heads, so that there's a little bit of characteristic to some of the shots that we have here. 
+
+But this is actually borne of an inspiration that comes from who will be ultimately today's special guest, Jennifer 8. Lee, in fact, whom we'll meet in just a little bit was ultimately the good friend of the cost that inspired this tradition of using puppetry in some form in the class here. What I see down below is a shot like this here. And funny enough, it seems that with machine learning, what it is nowadays, artificial intelligence, so to speak, on social media and the like-- 
+
+Literally, no joke I pulled up Twitter earlier today and among my suggestions for whom I should follow now we're literally the suggestions here. This is perhaps not surprising though, because some weeks back I actually started following Count von Count, whom you might remember from Sesame Street. If you're not following him already, this is an amazing Count to follow, an actual count to follow. And it's actually an amazing use of programming. 
+
+So this account joined in April of 2012. It's got 198,000 followers as of today. And what it's been doing for like nine plus years is tweeting out a number, one per day. This morning's was 3,327. Yesterday's was 3,326. Ah, ah, ah. And so presumably someone's just written a program, Python or something else, that's just generating these tweets once a day. 
+
+Even more amusing though, is that every tweet for the past nine years has 20 or 30 comments on it, from people who are following it. So, perhaps consider following this same account and the same application of CS as well. Wanted to also thank CS50's team behind the cameras. You might recall the teaching fellows last year in particular, when everything was on Zoom, kindly put together this visualization of TCP/IP and the passing of messages among routers and in turn computers, for instance, from Phyllis at bottom right to Brian at top left. 
+
+Just wanted to thank the team but also reveal to you all that these takes were not perfect by any means. And in fact, here's just 60 seconds or so of outtakes of us trying to get data from point A to point B. Buffering. OK. Josh. Yes. Ellen, ooh [LAUGHS] [INAUDIBLE] No. Oh, wait. That was amazing, Josh. Uh, um, Sophie. [LAUGHS] Amazing. That was perfect. Tony. [LAUGHS] 
+
+AUDIENCE: I think I-- 
+
+AUDIENCE: Hey, [INAUDIBLE] 
+
+DAVID J. MALAN: [INAUDIBLE] 
+
+AUDIENCE: Oh, now you expect-- 
+
+DAVID J. MALAN: Guy? That was amazing. Thank you all. 
+
+AUDIENCE: --so good. 
+
+DAVID J. MALAN: All right. If we could too a round of applause for all the teaching fellows, teaching assistants, and course assistant who make the course possible as well. Before we now do a bit of review of the semester, I thought we'd take first a higher level view of where we've come from. Recall, of course, from the syllabus and literally week zero, we claimed this, that would ultimately matters in this course is not so much where you end up relative to classmates but where you end up relative to yourself when you began. And we really do mean that. 
+
+There are certainly classmates of yours who have been programming since they are 10 years old. But there are 2/3 of your classmates who were not in fact that case. And so behind you, in front of you, to the left, and to the right today are so many classmates who have had a very shared experience with you. But the only person that really matters at the end of the day, in terms of how you've progressed in this class truly, is where you in fact began. 
+
+And I realized that with CS, and especially this course, and with programming assignments especially, it can feel like week after week that you're not really making progress, because it might feel like you're struggling every darn week. But that's just really because we keep moving the bar higher and higher or pushing the finish line a little further and further ahead. Because think back to week one when this for instance-- whoops. When this alone was hard and you were just trying to get Mario to ascend a pyramid that might look a little something like this. Or the week after, when you started dabbling with readability, or two weeks after. 
+
+Mr. And Mrs. Dursty of number four privet drive, and so forth, trying to analyze just how complex a sentence like that was, and manipulating strings and characters for the first time. And then of course, we progress to deeper dives into algorithms and actually implementing something that's all too real world these days in implementing electoral algorithms in a few different forms. Dabbling thereafter in a bit of forensics, a bit of imagery, and taking images like this here and filtering it in a number of ways. Ultimately understanding, hopefully, how these things are implemented underneath the hood. 
+
+So that henceforth, when all you're doing is tapping an icon on your phone or clicking a command on your computer, you can infer, even if you didn't write that particular code, how the thing is likely working. And even if you had started to get your footing then around week four, then things escalated quickly further to data structures. But recall for your spell checker, you implemented a fairly sophisticated data structure known as a hash table. And even if you struggle to get that working, again, think back five weeks prior you were just trying to get for loops to work and variables to work. 
+
+And so each week realized there was significant progress. And then if you aggregate all these most recent weeks with Python, and SQL, HTML, JavaScript, and CSS. I mean, you built your very own web application. And many of you will go on and build something grander for your own final project, or focus again on C, or on Python alone, or the like. But ultimately aggregating all of these technologies and kind of stitching together something that you yourself created. We might have put some of the foundation there in place, but the end result ultimately is yours. 
+
+So at the end of the day, as we promised in week zero, this course is really about computational thinking, cleaning up your thought process, getting you to think a little more logically, more methodically, and to express yourself just as logically and methodically. But it's also about, in some form, critical thinking. And at the end of the day, what computer science is, is really just taking input producing output, ideally correct output. And all the hard stuff is in the middle there. 
+
+But what we do hope you have in your toolkit, so to speak, is all the more of a mental model, all the more of an understanding of first principles from which you can derive new outputs, new conclusions, based on those inputs. And certainly today there's so much misinformation or miseducation in the world. And just being able to take input and produce proper output in and of itself is a compelling skill. And indeed when you all find yourselves invariably in engineering positions, where you're asked to build something because you now can or perhaps you're in a managerial role where you decide you should build something because you know people who can. 
+
+I would also start to consider, even though the past 10 plus weeks have all been about build this because we ask you to, really start to consider whether it's for fun, for profession, for political purposes, or the like. Should you build something? And actually considering, now that you have this skill, how you can use it most responsibly. And not just make a website do something or make an app do something because it can be done, but really start to ask and ask of others, should we be doing this? It's just a skill that you can but don't necessarily have to use. 
+
+Now, when it comes to writing some actual code, keep in mind that you might continue to evaluate or your employer or your colleagues might continue to evaluate your code along these same axes. These are not CS50 specific. Correctness. Does it do what it's supposed to do? Design. How well qualitatively is it implemented? And then style. How readable is it? How pretty is it? And these three axes should really guide all of your thinking, whether it's for a test, or a project, or an open source project, or the like. All three of these things really matter. 
+
+And so, if you're in the mindset of wondering, oh, do I have to worry about style for this? Do I have to comment this? The answer is always yes. This is what it means to be a good programmer, a good engineer, to optimize these kinds of axes. Now what about those tools in the toolkit? Well, let's focus on just a couple of here. Full circle, at the end of the semester, abstraction recall was one of the tools in the toolkit that we proposed is all about taking complicated problems, complicated ideas, and simplifying them to really the essence. 
+
+So you can focus on really just what matters or what helps you get real work done. And then related to that was also this notion of precision. Even as you abstract things away, you still have to be super precise when you're writing code for a computer or just giving instructions to another human so that they are implementing your ideas, your algorithms correctly. And sometimes these two goals, abstraction and precision can rather be at odds at one another. And what we thought we'd do is give everyone a sheet of paper today, which you probably received on the way in, if not a pen as well. 
+
+If you didn't receive, hopefully you or a friend near you has a sheet of paper and a pen or pencil. Do go ahead and grab that. And we thought we'd come full circle too and see if we can't get a brave volunteer to come up on the stage here. And we just need someone to give some stage directions. All right. I like it when people start pointing and pointing. How about you being pointed at? Yes. Yes, you. Yes. Come on down. Well there'll be one more opportunity after this. Come on down. What's your name? 
+
+AUDIENCE: Claire. 
+
+DAVID J. MALAN: Claire. OK. A round of applause for Claire for being so enthusiastic. 
+
+[APPLAUSE] 
+
+Come on over here. Would you like to make a quick introduction to the group? 
+
+AUDIENCE: Yeah. Hey. [CHUCKLES] I'm Claire. Yeah. That's all you need to know about me. 
+
+DAVID J. MALAN: All right. 
+
+[CHUCKLES] 
+
+So what I'm about to hand Claire is a sheet of paper that has a drawing on it. And the goal at hand is for you all to ultimately follow Claire's hopefully very precise instructions, because she's going to give you step by step instructions, an algorithm if you will, for drawing something on that sheet of paper. All right. We're going to keep it in this manila envelope so that folks can't see through it. But this is what we would like you to give verbal instructions to the audience to draw. And you can say anything you want, but you may not make physical hand gestures or the like, and/or dip it down so everyone can see it. 
+
+AUDIENCE: Oh, that's so true. That's so true. 
+
+DAVID J. MALAN: All right. Go ahead. Step one. 
+
+AUDIENCE: Wait. I could say whatever I want? 
+
+DAVID J. MALAN: Related to this problem. Yes, idea. 
+
+[CHUCKLES] 
+
+AUDIENCE: Oh, my God. 
+
+DAVID J. MALAN: Give them instructions for recreating this picture on their paper. 
+
+AUDIENCE: OK. Start with like a square but, but it's-- 
+
+DAVID J. MALAN: No hand gestures. 
+
+AUDIENCE: OK. OK. Sorry, sorry. Start with the square, but it's like a diamond kind-- like there's a point on top. [LAUGHS] Wait. I should not be the one doing this. OK. So it's like a square but-- yeah, start with a square. 
+
+DAVID J. MALAN: OK. Step two? 
+
+AUDIENCE: Step two is that on one of the sides of the square there's another square. 
+
+[CHUCKLES] 
+
+DAVID J. MALAN: Doing really well on the abstraction. 
+
+AUDIENCE: I don't feel like I'm doing too hot. OK. Woo. Does this affect my grade in any way? 
+
+DAVID J. MALAN: No. No. 
+
+[LAUGHTER] 
+
+AUDIENCE: OK. 
+
+DAVID J. MALAN: Go on. Two squares. Step three. 
+
+AUDIENCE: Then there's another square. 
+
+[CHUCKLES] 
+
+But they're not square. They're kind of slanted. There's another square in between-- next to those squares, connecting those squares. 
+
+DAVID J. MALAN: Any step four? 
+
+AUDIENCE: Step four is that it should look like a cube. 
+
+[CHUCKLES] 
+
+DAVID J. MALAN: OK. So let's go ahead and pause here. Pause here. Let's thank Claire for coming on up bravely. 
+
+[APPLAUSE] 
+
+I'll take this. Let's go ahead and collect just a few of these. If maybe Carter and Valerie, you wouldn't mind helping me grab just a few sheets of paper. If you'd like to volunteer what it is you drew in those seconds, just hand it over if you would like. No need for a name or anything like that. OK. All right. Very eager. Thank you. OK. Thank you. All right. Thank you. Thank you. OK. [STRAINING] Sorry. OK. That's plenty. Let's come on up. If you want to-- want to hand me yours too. OK. Sorry to reach. All right. So Carter if you want to meet me up on stage for a second. So we have a whole bunch of submissions here that represent what it was Claire was describing. Let me go ahead and just project here in a moment. Use my camera. So here we have one. Let's see. Carter feel free to just bring those on up here. OK. So here we have one I'll hold up. All right. Some squares overlapping. Starts to look more like a cube. Thank you so much. Here maybe in more primitive form-- 
+
+[LAUGHTER] 
+
+--was another one. This one kind of started to have wheels, which was kind of-- 
+
+[LAUGHTER] 
+
+And then things started to take shape, perhaps at the very end, both big cube and small cube. What it was that Claire was showing us now, if we project it, was in fact this. And it's actually-- exactly what, Claire, you just went through is actually a perfect example of why abstraction can be hard and where the line is when you're just trying to communicate instructions. So in fairness, might have been nice to just start with, we're going to draw a cube and here's how, because that was kind of a spoiler at the end. But that too, a cube is an abstraction. But it's not very precise, right? Like, how big is the cube? At what angle is it rotated? How are you looking at it? And so when you were struggling to describe these squares, but no they're kind of like diamonds or whatnot, I mean, that's because of this tension between what it is you're trying to abstract but what it is you're trying to communicate. 
+
+You could have gone maybe the complete other direction and maybe have been super precise and not abstract this thing away as a cube. But say to everyone, all right, everyone, put your pen down on the paper. Now draw a diagonal line to say southwest at 45 degrees. Now, do another one that's south. You could really get into the weeds and tell people to go up, down, left, right. Of course, it could get a little tricky if they sort of follow the direction incorrectly. But it would be hard for us all to know what it is we're drawing if all we're hearing are these very low level instructions. 
+
+But that's what you're doing when you're writing code. You might implement a function called cube. How it works is via those low level instructions. But after that, you just don't care. You'd much rather think about it as a cube function, maybe with some arguments that speak to the size or the rotation of it or the like, and that's where, again, abstraction can come in. So as we've discussed for so many weeks now, these trade-off that were manifest even in week zero, even if we didn't necessarily put our finger on it just then. 
+
+Why don't we do things in a slightly different direction? If we could get one other volunteer. OK. Come on down. I saw your hand first. One other volunteer, who this time we're going to give the pen to. We're going to give the pen to. And what's your name? Jonathan, come on up. So I'm going to make this screen be drawable in just a moment. But what we need you to do first, on the honor system, is close your eyes. All right. Eyes are closed. 
+
+Everyone else in the audience is about to see the picture that we want you to draw. And you all the audience are going to give Jonathan the step by step instructions this time around. So eyes stay closed. This is what we're going to want Jonathan to draw. So kind of ingrain it in your mind. If you need a refresher we can have him close his eyes again. That's what we want him to draw. I'm going to go back to the blank screen. All right. Jonathan, you can open your eyes. We have a blank canvas. And now, step one, what would you like Jonathan to draw first? 
+
+AUDIENCE: Draw a circle. 
+
+DAVID J. MALAN: Draw a circle, I heard. OK, it's a little smaller I'm hearing now. OK. You can move it. Oh, no. Don't do that. All right. We'll give you one redo. Use three fingers to delete everything. Three fingers all together. Yep. They we-- Farther apart. There we go. No, it's back. OK. I'll do this part. 
+
+[CHUCKLES] 
+
+OK. All right. So I heard-- thank you. I heard draw a circle. Would anyone like to finish the sentence more precisely? A smaller circle-- 
+
+[INAUDIBLE] 
+
+--on top. 
+
+AUDIENCE: A medium sized circle. 
+
+DAVID J. MALAN: A medium sized circle at the top. All right. That's pretty good. Medium size circle at the top. And no more deleting after this. Good. 
+
+[APPLAUSE] 
+
+All right. Step two. 
+
+AUDIENCE: A line straight down. 
+
+DAVID J. MALAN: A line straight down. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Yeah. OK. Good. All right. That was step two. Nicely done. What's that? Step three. 
+
+AUDIENCE: Draw a line down from the bottom of the line to the left. 
+
+DAVID J. MALAN: Draw a line down from the bottom to the left. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: OK. Good. All right. Next. Let's go over here. Next one? Same thing, but on the right. 
+
+AUDIENCE: Yeah. 
+
+DAVID J. MALAN: Yes. All right. That's what? One, two, three, four. Step five? Yes, step five. 
+
+AUDIENCE: Do that again higher. Closer to the circle. 
+
+DAVID J. MALAN: Do that again but higher, closer to the circle on the right side. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Oh. We're going to have to go with it. Step six. Step six? 
+
+AUDIENCE: Starting from the neck, draw a line down and to the right. 
+
+DAVID J. MALAN: Starting from the neck, draw a line down and to the right. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: You don't like that. He's-- 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: What do you want him to do? Step six. 
+
+AUDIENCE: [INAUDIBLE] step four. 
+
+DAVID J. MALAN: [GUFFAWS] no one do. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Where the other line ends-- say again. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Where the other line-- 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Near the vertical line where the other line ends draw a line that goes down. 
+
+AUDIENCE: Yeah. 
+
+DAVID J. MALAN: OK. A couple more steps. Step seven. Seven. 
+
+AUDIENCE: Draw a horizontally slanting to the right line from the end of the line you just drew. 
+
+DAVID J. MALAN: Draw a horizontally slanting line from the end of the line you just drew. 
+
+AUDIENCE: Diagonally. 
+
+DAVID J. MALAN: Diagonally. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: OK. We're resorting to hand gestures now, but I think that's what you mean. Yes. OK. Good. Good. All right. One or two final steps. Let's get as close as we can. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Say hi. 
+
+AUDIENCE: Make him say hi. 
+
+DAVID J. MALAN: Make him say hi. 
+
+AUDIENCE: No. 
+
+DAVID J. MALAN: No. 
+
+AUDIENCE: [INAUDIBLE] High. 
+
+DAVID J. MALAN: OK. High. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: OK. And maybe one final step. We'll give them one more-- say again. Again. 
+
+AUDIENCE: Put one of the lines from high to the circle. 
+
+DAVID J. MALAN: Put one of those lines from high to the circle. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: A line between high and the circle. All right. Let's show Jonathan. That's pretty darn close. Let's show him what we had in mind was this. So a round of applause for Jonathan too, if we could. A bigger round of applause for Jonathan, if we could. 
+
+[APPLAUSE] 
+
+All right. There is this thing in computer science known as pair programming. Where you actually program with someone else. And that's actually not all that dissimilar trying to communicate your ideas to someone else. But notice just all of the ambiguities, and it certainly doesn't help that we're in a big space, but all of the ambiguities that arise when you're just trying to convey something precisely. 
+
+So this is not necessarily as constrained as a program would. But it's representative of the end of the day, even after all these weeks, this stuff is hard. And in fact, it's not necessarily ever going to be completely straightforward, because the problems you're going to try solving down the road presumably, if you continue to apply these skills, themselves are just going to get more and more sophisticated. But hopefully, the feeling you get from accomplishing something as a result is just going to rise with them as well. 
+
+Before we now do a bit of review, just wanted to offer a few suggestions and answer to an FAQ, which is, what do I do after a class like CS50. Typically about half of you will go on and take one or more other classes in CS, which is great building on this kind of foundation, and about half of you will not. This will be it. But very likely, certainly given how the world is trending, when you have opportunities in the arts, humanities, social sciences, or beyond to just apply programming to data sets, to problems, in those own domains. 
+
+And so, toward that end, we would encourage you to start thinking about how you can transition from what has been your code space in the cloud to something client side, like using your own Mac and PC here on out. So that you're not reliant on a course's infrastructure, a particular website. And even though we used a fairly industry standard tool, you can actually get almost all of that stuff running, with some effort perhaps, on your own Mac and PC. So terminal Windows actually comes built into Mac OS. 
+
+If you go to your applications folder, utilities, there is a program literally called terminal that has always been there, even if you've never used it, that will behave very similar to what VS codes does as well. In the world of Windows can you similarly install a version of the Terminal Windows software that we used in the cloud too to actually run similar commands like CD, and LS, and much more. 
+
+We would encourage you ultimately, to learn Git. You've been indirectly using Git this semester. When you run certain commands, we have been using Git underneath the hood of some of CS50's tools that essentially push your code, so to speak, to the cloud, to a place like GitHub.com. But, Git itself is an incredibly powerful and just useful tool for one, backing up your code somewhere else to the cloud, which is effectively what we've used it for, but two, collaboration, so that you can actually share your code more readily with other people. 
+
+And three, building much bigger pieces of software, where each of you work on different files, different folders, or even just different parts of the same file, and then somehow merge all of your handiwork together at the end of the day to build something much bigger than you as one person could alone. VS Code itself now too, we've been hosting it in the cloud, a real version of VS Code. But it's much more commonly used on people's own Macs and PCs. 
+
+And you can download it onto your own Mac and PC. You might have to jump through a few more hoops to get things like C working, though Python is much easier to get working as well. Some of the configuration won't be quite the same, like your prompt might look a little different and the like. But that's just going to be the case any time you sit down in the future at a different system, it's going to look and feel a little different to things you've used before. But hopefully there'll be enough familiarities that you can get yourself up and running pretty quickly, nonetheless. 
+
+Hosting a website. Not necessarily something you have to do or will do for your final project, depending on your proposal. But there's lots of ways to just host your own portfolio page, home page, website, whatever, on the internet itself using tools like these GitHub, or Netlify, or other tools too. Most of which have free student friendly plans. Some of these are indeed paid services. But they very often have entry level plans that are totally fine if it's just you on the internet and you don't expect having thousands, 10,000 of users. It's a drop in the bucket for these companies. And so they very often have free tiers of service. 
+
+If you want to host something more dynamic, something like CS50 Finance that takes user input and output, uses sessions, uses databases you might like something like Heroku. And for instance, we have some documentation on one of CS50s websites for actually moving your implementation of CS50 Finance over to this third party application called Heroku so that you can actually run it or something like it in the cloud as well, here too using a free tier of service. 
+
+All of these providers. These are big cloud providers these days. Amazon, Microsoft, Google, and others all have student-friendly accounts that you can sign up for during or shortly after you're in school that just give you free compute time and storage. GitHub itself has this whole student pack that by transitivity gives you access to a whole bunch of discounts on other things as well. So if you're liking this stuff and you just want to learn more perhaps over break, by playing on your own, these then would be some good starting points. 
+
+And as for just keeping abreast of trends in programming and technology or the like, there's so many different blogs and websites out there. But here are just a couple of different subreddits, so to speak, on Reddit that are very programming specific, Stack Overflow with which you've probably interacted, Server Fault, which is similar, TechCrunch, Y Cominator, and other sites too. And ultimately, we would encourage all of you to stay in touch, certainly beyond today. By the time you finish your final projects we'll have something waiting for you. And if you want to stay engaged, either on the teaching staff or just as a lifelong learner of course and programming, by all means, check out any of these URLs here. 
+
+But in just a few weeks' time will you have one of these to your name? Your very own I took CS50 t-shirt, which we will distribute before long-- 
+
+[APPLAUSE] 
+
+--as well. And now, if we may, we have an opportunity here to synthesize the past several weeks of material. If you would like to go ahead and open up the URL that we put on the screen earlier. I'll toss it up here again. You can use your phone or your laptop. You might recall for a previous problem set, we asked you to propose a whole bunch of review questions, multiple choice or the like that synthesized the past several weeks of material. We took some of our favorite submissions of those, ported it to this poll every war platform, so that we could interactively see where everyone's minds are at, understanding is that. 
+
+And I think you'll find all of these are written by you and your classmates. That we slipped a few fun ones there, also written by you along the way. If Carter, you want to come on up here to get us ready. If you haven't yet open the website, go to this URL here on your phone or your laptop. And let me go ahead and switch us over here before Carter takes control of this machine here. Here's that same 2D bar code again. Feel free to background that now. 
+
+And in just a moment, we've got a 20 question quiz show. It's all multiple choice. So long as you have internet access, whether you're here physically or online right now, you should be able to buzz in within 10 to 20 seconds of seeing a question. And I'll read each one aloud. I think Carter, were just about good to go. So, does everyone have the software up and running on their phone or their laptop? If not, no big deal, just look on with a friend. But otherwise, Carter, do you want to say hello too and tee us up? 
+
+CARTER: Absolutely, Hi, everyone. We're going to go ahead and get started here with our first question. Speed here matters. So our first question, David, go ahead. What is it? 
+
+DAVID J. MALAN: What does CSS stand for, is the first question written by you? Four possible options are, Cascading Style Sheet, coding style sheet, cascading style system, coded style sheet. Fifteen seconds, up to 300 responses already both here in person and online. Give folks a few more seconds. What does CSS stand for? These are the four options that were provided. Three, two, one, Carter. Cascading Style Sheets at 86% is indeed the right answer. 
+
+So congrats to those of you 86% who got that one. Here's the leaderboard. You all have fairly random user names. But if your username is on this board here or really any of the 86% of you that just got that right, all of you are currently in the lead. But we'll see if this shifts before long. Question two, which best describe the role of a compiler, is our next question? Debug one's code, run the written program, distinguish between functions and arguments, turn source code into machine code. 
+
+Three hundred responses in so far. Ten seconds to go. Which best describes the role of a compiler? Three seconds. Just crossed 400. And Carter, turning source code into machine code, at 92%. Some excellent progress there, is indeed the correct answer. And indeed more generally, a compiler just converts one language to another. The use cases we've seen for it have been only source code to machine code. But as you go out into the real world, you'll actually find there to be compilers from one source code language to another source code language that itself might be runnable or compiler thereafter. Good job to all of you guests. 
+
+And Carter number three. What is the type of argc asks a classmate? Int, stir, char, float. What is the type of argc? All right about 350 responses. Seven seconds to go. About to cross the 400 threshold in three, two, one. The type of argc is int is indeed correct. But we're now starting to distinguish folks. Only 55% there. 
+
+Char is not correct. You might be thinking of argv in C. But even that is not a char. It's a char star array or a char star star in fact. So it's not just a char. Stir is in Python. But even that too, if you were thinking of sys.argv, that would be a list of stirs, not a single stir. All right. Carter, the leaderboard. All right. There are our guests all in. Still tied. 
+
+And number four. What is the searching efficiency of a balanced binary search tree? Big O of n, big O of n squared, big O of log n, big O of n log n. What is the searching efficiency of a balanced binary search tree? The balance being key because, as folks continue buzzing in, recall that binary search trees can degrade, devolve into linked lists-- 
+
+Big O log n is correct for 54%. All right. Now, people are getting annoyed. But let's keep going. Number five. Leaderboard's not yet that interesting. More subtle, what was the CS50 duck's Halloween costume? He's here in winter dress today thanks to Valerie. A skeleton, a vampire, Frankenstein, or a ghost. What was its costume at Halloween a few weeks back? Answers are coming in a little slower this time. People online or perhaps clicking on the video. And vampire is correct at 69%. Nicely done. 
+
+All right. Guests are still shuffled in the top. Oh, and we're starting to see some leaders pull ahead. The time in which you buzz in is also taken into account now. In C how can we unify several variables of different types into a single new type? Trees, arrays, structs, tables. Oh, it got quiet. In C how can we unify several variables of different types into a single new type? Eight seconds. 
+
+Four hundred responses in. Four hundred fifty. And the answer is structs are indeed correct. Recall that we had a student struct. And we saw strokes later on four nodes that allowed us to cluster multiple variables or data types inside of our own brand new structure that we then typedef to a name. Carter, should we see the leaderboard now? 
+
+[GRUMBLING] 
+
+All right. Whoever guessed 4045 and 4383 have eked ahead ever so slightly. So buzzing and fast can now benefit your score too. Next question, Carter. In Python, which of the following statements is false, tuples are an ordered immutable set of data, dictionaries associate keywords with values, arrays in Python or fixed size, Python is an object oriented language? Which of those statements is false? 
+
+Three seconds. Answers coming in more slowly. But the most popular answer is correct. Arrays in Python are indeed not of a fixed size, which is why that's false. They're not even called arrays, they're called lists. And recall that they dynamically grow and shrink effectively implemented for you as a linked list. All right. All right. We have a leader. Whoever 4383 is, nicely done. 
+
+What does strcmp return in C, S-T-R-C-M-P. Does it return a boolean, an integer, a string, or a char? What does strcmp return in C? Used to compare two strings of course. Recall that it returns potentially not just true/false but-- ooh, an integer is indeed correct. Does anyone recall why? Why is it an int and not just a simple true/false? Why is three values helpful? 
+
+Exactly. It returns 0, if they're equal, or returns negative value or positive value based on whether one string comes before or after the other ASCII-betically, so to speak, based on its ASCII code. The results, Carter. All right, 4383 still doing quite well, but being caught up with here. What is David Maylon's phone number 949-468-2750 play when you call it? The Harvard Alma mater, a parody of Yale song, a recording of David Maylon singing "Never Going to Give You Up." 
+
+Feel free to call or text. I can't get it now, but we have nicely automated that process. Four seconds. Four hundred responses in, and the answer, of course, is "Never Going to Give You Up." Thanks to a little programming and a script that our friend Rong Shin wrote that essentially answers the phone automatically and replies with a URL or a song. Carter? Oh, dethroned. Dethroned. Two six eight eight, nicely done. Next question. 
+
+From which of the following places does malloc get free memory for a program to use, heap, stack, array, or pointer? From which of the following places does malloc get free memory for a program to use? Answers are a little slower this time. Five seconds. And the answer is in-- 
+
+[GRUMBLINGS] 
+
+[LAUGHTER] 
+
+OK. That's the answer we were given in the problem sets. But I think we would beg to differ. Pretty sure, Carter, would you go with-- 
+
+CARTER: I would go with the heap. 
+
+DAVID J. MALAN: I think it's indeed the heap. So this answer, not correct. 
+
+[BOOING] 
+
+I know. I know. We just transcribed what you gave us, though. Let's see how that affects the scores. 
+
+AUDIENCE: No. 
+
+DAVID J. MALAN: OK, 2688 is still doing OK. Next question. About 10 or so to go. Suppose I have an unsorted list of items, store receipts perhaps, should I sort the items before searching for an element? Yes, you should always sort before searching. No, you should never sought before searching. If you will be searching the list many times, then yes, you should sort first. If you will be searching the list many times, then no, you should not sort first. 
+
+Some nuanced replies. Five seconds. Fewer answers than usual at this point. And, if you will be searching the list many times, then yes, you should short first. An example that we discussed of trade offs. Because if you're just going to do a one off search and never again, why bother incurring n log n or n squared time to actually sort the thing. 
+
+All right. Some shuffling happening. But, 2688, nicely done. Next question. When you run the CREATE INDEX command and SQL, what type of data structure do you create, array, B-trees, linked lists, hash tables? When you run CREATE INDEX, recall we did this with the movie titles, the TV show titles, to speed things up, so that things wouldn't be super long and linear. We did a different data structure. All right. About 400 responses in. The answer is indeed B-trees. B-trees. 
+
+Not to be confused with binary tree. A B-tree typically has other children besides two that pulls the data even higher up from the leaves of the tree. Could use a hash table, could use a linked list, but indeed the technology in databases is generally these things called B-trees, certainly in SQLite. Carter. Oh, dethroned, but 4179 has now pulled ahead. Nicely done. Next question. What HTTP status code means I'm a teapot, 000, 418, 007, 128? 
+
+This, recall, was an April Fool's joke by technical people some years ago that has become part of computing lore. It's still there, though, in the document. In two seconds we'll know that it's 418, indeed. Let's see how that affected things. Four one seven nine is way down on the list, 7280 is number one now. Nicely done. 
+
+What is an example of a SQL injection attack, when someone submits malicious SQL commands via web form, physically destroying a computer hardware that stores a SQL database, overwhelming a server with thousands of requests to access a database, injection attacks are only in movies or TV? Five seconds. Some fun answers. Four hundred responses about in. 
+
+And indeed, when someone submits malicious SQL commands via web form because the programmer is not escaping the code using the question mark syntax that we've seen using CS50's library or other third party libraries like it. Carter. Seven two eight oh is still the guest to beat. Nearing the end. A few more questions. How are the elements of an array stored in memory, contiguously, in random locations that happen to be available, as a linked list, as a binary tree? How are the elements of an array stored in memory? 
+
+About five seconds to go. Almost have everyone in. Two, one, and contiguously is indeed the right answer. Back to back to back in random locations that happen to be available is probably describing your use of malloc in the heap, but you would then need a linked list or some other structure to stitch those locations together. And array, by definition is contiguous. Carter. Seven two eight oh is hanging on to that lead by about 499 points. 
+
+Next up is which SQL query would allow you to select the ID of a specific movie star Zendaya in a table of movie stars, select ID where name equals Zendaya, select Star ID for movie stars where name equals Zendaya, select ID from movie stars where name equals Zendaya, select ID for movie stars where name equals quote unquote Zendaya? And I'm spoiling it. 
+
+I should have read out some quotes earlier too. One second. The last one is correct. And indeed, this one's almost correct but lacks the single quotes. Zendaya is not a single-- it's not a SQL key word. It's of course a string. So it does need to be escaped there. But 63% of you realized that. Seventy-two eighty is still in the lead. I think we have a few more questions to go. Why is a hash table faster to search than a linked list, even though the runtime for both is big O of n? 
+
+The hash table actually has big O of n squared runtime, the hash table optimally has omega of O runtime, the hash table creates shorter length lists to search rather than one long linked list, the hash table takes less memory. And this was an example of practical versus theoretical differences. And indeed-- that was interesting. --with 83% of you buzzing in, the hash table creates shorter linked lists, ideally, if you have a good hash function rather than one long linked list. 
+
+Even though technically it's still in big O of n. Seventy-two eighty seemed to know that is pulling ahead of the crowd. Still a few questions. Game of Thrones is a dot, dot, dot, comedy, drama, historical fantasy, documentary, romance sci-fi, or all of the above? This is written by your classmates, recall, based on our sequel week. 
+
+In five seconds we'll be reminded that, according to our CSV file, they were all of the above. OK. All of the above. All right, 7280 did OK with that. Next question. Which of the following is a golden rule when allocating memory, every block of memory that you malloc must be freed, only memory that you malloc should be freed, do not free a block of memory more than once, all of the above? 
+
+More into the nuances of C, this golden rule when allocating memory-- didn't have to worry about this in Python. We did in C. In two seconds we'll know that all of the above are indeed things you must do. Not doing those would be in fact bugs. Carter, the leaderboard. Still doing well 7280, whoever you are. 
+
+Last few questions. Last question, in fact. Last question. What do the binary bulbs on stage spell today? The answers could be, faced with medical mask, faced with tears of joy, snowman without snow, or red heart? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: What do the binary bulbs on stage spell? Six, five, four, three-- 
+
+AUDIENCE: Two, one. 
+
+DAVID J. MALAN: The answer is the red heart. Taking a look at the leaderboard here, who's our winner? The winner is-- oh! Guest 3487. A big round of applause for our guest. Thank you to Carter. 
+
+[APPLAUSE] 
+
+So it's nice that were some opportunity here, because recall that in week zero, we did start talking about emoji, and really about data, and representation, and we talked not about just binary but ASCII and then Unicode. And then when we had Unicode, we had all of these additional bits that we could play with. And we could start to represent not just letters of the English alphabet as an ASCII but really letters of any human alphabet and even alphabets that are continuing to develop. 
+
+And indeed, this was faced with medical mask, which we claimed at the time was just how a Mac or PC or Android phone or iPhone nowadays would interpret and display a pattern of bits like this. This happening to be for the four bytes that represent that particular emoji. And over time, humans have been deciding to use different patterns for new emojis that might not have existed yesterday. And indeed, most any time you update your Mac, or your PC, or your phone these days, at least on a semi-annual basis, are you getting some new and improved emojis. 
+
+And they're not just these faces now. They're of course, representing different human emotions, different physical objects, and ultimately among the Unicode consortium's goals, is to be able to represent all human languages. But, we're not for certain groups of people and certain individuals, these things would all rather look fairly similar. And indeed today, we're so pleased to be joined by an old classmate of mine Jennifer 8. Lee, who was class of '99 here at the college, who's gone off to do many, many different things in life, prolifically so. 
+
+Not only has she been a writer, an author, a journalist for the New York Times, a producer of films like The Harvard Computers, The Search for General Tso, and The Emoji Story, which focuses on exactly today's topic. Jenny and her colleagues have been involved particularly with championing representation of different types of people, and cultures, and languages. And these are just a few of the emojis that our friend Jenny has indeed brought into creation on our phones and laptops. 
+
+Jenny too is the original inspiration for what has become it seems my Twitter recommendations and all of these puppets. I was visiting her in Manhattan one time some years ago, she had on herself a couple of puppets known as Muppet whatnots. At the time you could go to FAO Schwartz or the website Therefore, an old tort store, and you could actually configure your very own Muppets. 
+
+And I thought this was the coolest thing. And literally on the cab ride home from her place was I logging into the website configuring a couple of puppets. A couple of weeks later, they arrived. And then rather sat my shelf for a couple of years, as I wondered why I had just bought two Muppets in the back of a cab. 
+
+But brought them into the office at one point. A colleague saw them, drew inspiration from them, and now have they been roving really into the fabric of this course, in particular, and a lot of the course's pedagogy, at least incarnated here just for fun but also in video form as well. Which is only to say, so glad that our friend Jenny 8. Lee is here for us today to talk about these emoji. Jenny. 
+
+JENNIFER 8. LEE: Hi. 
+
+[APPLAUSE] 
+
+All right. This is very exciting. I took CS50 in 1994. To give you a sense, one of my blockmates was the first intern for Netscape, if you guys have ever heard of Netscape. And I graduated just as Google was-- we did not have Google when we were undergrads. So, it's an honor, obviously, to be at CS50. It's also very impressive to see how David has turned it from entry level computer science course into a lifestyle brand that is world renowned. So, it's an honor. 
+
+And I'm going to talk to you today about how an emoji becomes an emoji. So first I'm going to talk about my journey down the rabbit hole of how I got involved with emoji. So, this is my friend Iing Lu, she is a designer famous for designing a Twitter Fail Whale, which was this kind of image that popped up when Twitter went down, which back in the day was rather often. So, she's Chinese-Australian-American, which is a weird interesting combination. 
+
+So one day we were texting about dumplings, because that is what Chinese-ish women do. We text about food. And so I sent her this picture of dumplings. And then she said, yum, yum, yum, yum, yum knife and fork, knife and fork, knife and fork. And then she was like, oh, I'm surprised that Apple doesn't have a dumpling emoji. And I'm like, oh, yeah, that's kind of weird. And it's one of those things where the thought comes to your head and then it leaves. 
+
+Was just an observation, but then half an hour later onto my phone pops up this dumpling emoji with hearts. Actually, you can't see it here, but it actually had blinking eyes. So she called it bling bling dumpling. She's a designer. So she decided she was going to fix this lack of dumpling emoji problem. And I was actually really puzzled. How could there be no dumpling emoji, right? Because I knew that emoji are originally Japanese. 
+
+This by the way was back in 2015. So, Japanese food's super well represented on the emoji keyboard. You have ramen, you have tempura, you have curry, you have-- actually, wait, bento box, curry, then tempura. You even have slightly weird foods like-- let's see. You had these things on a stick, which are fish cakes, I discovered. Then you have this white and pink swirly thing, which is also a fish cake. You even have this triangle thing that looks like it's had a bikini wax. But, in essence, there were all these foods that were on the keyboard, but there was no dumpling, right? 
+
+And I was like, dumplings are this universal food. Every culture has some version of a dumpling, whether or not it's empanadas, or ravioli, or-- God, what else? --ravioli, pierogi, momos-- the whole idea is all cultures have basically found the idea-- this concept of yummy goodness within a carbohydrate shell, whether or not it's baked, or steamed, or fried. So dumplings are universal. Emoji, I didn't use them that much. 
+
+But I was like, they're all so kind of universal. So the fact there was no dumpling emoji told me whatever system was in place failed. And I actually had no idea. I was like, who controls emoji? I'm going to go fix this problem. There is something wrong with the universe if there's no dumpling emoji. And I took it upon myself to go fix that. So I Googled, and I basically discovered there was this thing called the Unicode Consortium, which is a non-profit based in Mountain View, California that when I looked had these like 12 full voting members. So this is late 2015. 
+
+Of those 12, 9 were multinational US tech companies. So there was Oracle, IBM, Microsoft, Adobe, Google, Apple, Facebook, and Yahoo. So these were eight, I think. And then you had the German software company SAP, the Chinese company called Huawei, and then the government of Oman. So these were basically the people who were in charge and had full voting power on Unicode. 
+
+So they paid $18,000 a year to have this full voting power, which is a lot of money. I was kind of very indignant on how this cabal of tech companies basically controlled this global curated image based language on your keyboard. So there was a little bit of a loophole, which is could pay $18,000 a year to have full voting power, or you could pay $75 a year as an individual. You had no voting power. 
+
+But, you had the ability to sign up for the email list and also show up at the meetings. So, I put putting my credit card, got on email list. And was checking my email one day, when there was an invite that said they were going to have a quarterly meeting. And I think this is going to be October of 2015. And I looked-- it was in Sunnyvale. I looked in my calendar. I looked at the point that I was actually going to be able to be in Silicon Valley at that time. 
+
+So I took a bus to Apple where they were having that meeting. And I don't know completely what I thought I was going to see. I think maybe it was going to be maybe like a Sanders Theater or a little mini Congress, people making emoji decisions. But that was not what it was. Basically, this is the room where it happens, in 2015, where the people who were deciding emoji. These were emoji decision makers, which were not the most demographically diverse group. They had a sense of humor about it. One guy had a shirt that said shadowy emoji overlord. 
+
+And so I decided, along with my friend Iing Lu, to create a group called Emoji Nation, whose motto is emoji by the people, for the people. And it brought the voice of the normal world into the decision making chain. So, we launched a little campaign about dumpling emojis. We made a Kickstarter video. Let's see. 
+
+SPEAKER 2: Dumplings are one of the most universal cross-cultural foods in the world. Georgia has kinkily, Japan has gyoza, Korea has mandu, Italy has ravioli, Poland has pierogi, Russia has pelmeni, Argentina has empanadas, Jewish people have kreplach, China has potstickers, Nepal and Tibet have momos. Yet somehow, despite their popularity, there is no dumpling emoji in the standard set. Why is that? Emoji exist for pizza, tempura, sushi, spaghetti, hot dog, and now tacos, which Taco Bell takes credit for. We need to right this disparity. Dumplings a global. Emoji are global. Isn't it time we brought them together? Oh, yeah, and while we're at it, how about an emoji for Chinese takeout? 
+
+JENNIFER 8. LEE: So this is Thanksgiving of 2015. I wrote a dumpling emoji proposal. This is it, different styles, like whether or not it's a head-on view or slightly diagonal view. That's Iing with then one of the co-chairs of the Emoji Subcommittee. And so along with dumpling, we also did takeout box, we got chopsticks, and then fortune cookie, which actually, I have to be honest, I don't think fortune cookie would have gotten in on its own merits were it not on the coattails of the other three. 
+
+So we got these four through. And that is how they look today. And I have to say that dumpling looks really photorealistic in the Apple world. Unlike the fortune cookie which has no slit. It looks like a dead Pac-Man. I don't know what is going on with that design. So very proud. I also did a lot of research on Chinese food in America, and wrote a book called The Fortune Cookie Chronicles, produced a documentary called The Search for General Tso. 
+
+So I have a lot of moral authority on the issues of Asian food in America. Not all things, but this one I felt like I had made a mark on a 2,500 year history of emoji. I'm sorry of dumplings, my moving them into emoji. So it kind of gets into this very complicated thing. How does an emoji become an emoji. And it's actually fairly complex. 
+
+So let's say you have an idea for an emoji. You write a proposal. And then you submit it to the Emoji Subcommittee that then debates and thinks about it. Sometimes they have feedback and they kick it back to you. And if so, then you have to revise it. And kind of goes around and around in a circle. And once they're happy with it, they kick it to the full Unicode technical committee, which is a governing body within Unicode on things technical and encoding. 
+
+So what are the kinds of things that impact whether an emoji can be an emoji? So one, is there popular demand? Is it frequently requested? And at this point one of the very crude ways that we measure is, if you search for it on Google, does it have more than 500 million results, which is what elephant gets in English. And that's a median-- elephant is kind of right in the middle of popular emoji and not popular emoji. So, we used that as a benchmark. 
+
+There's a plus if there's multiple usages and meanings. For example, sloth. That was an emoji that we did. It's both in it literally an emoji of an animal, but it also has lots of connotations. So if something has lots of multiple meanings, that gives it a bump. One thing is visually distinctive. Doesn't it work at little tiny emoji sizes. 
+
+And that's actually really hard, because there are some things that I think could have been emoji but don't completely work when you try to shrink it down. And I'll give some examples of that later. And then filling the gap or completeness is another factor. So, for a long time we had red heart, yellow heart, green heart, blue heart, purple heart. There was no orange heart. And so there was a gay designer from Adobe who was actually very heartbroken by that. So he had been substituting the pumpkin to get the orange to get the rainbow. And so he proposed an orange heart. And that was obviously at that point, you're like, yes, that will complete a set. 
+
+And another thing is, is it already something that one of the companies has and therefore everyone else is going to adopt it. And so a good example for that is the binary-- I think it was the non-gender binary emoji, the pink, blue, and white flag. So I have to say WhatsApp is by far one of the most rouge platforms. So they just randomly added it one day. And we just notice it. And we're like, oh, God. Given that they have to do it. Now we have the [INAUDIBLE]. 
+
+So factors of exclusion or against inclusion, to be more PC. Sometimes if it's too specific or narrow, that works against being included. So poutine, which the Canadians love, was kind of really specific. And I know it's really important to the Canadians. But it just didn't have enough global appeal if it's redundant. So an example for that is a couple of years ago Butterball proposed a roasted turkey emoji. But we already had an unroasted live emoji of a turkey. So it wasn't clear that we needed the cooked version to go with the live version, so that didn't pass. 
+
+Not visually discernible. So this one's actually really tricky and knocks out a lot of things. So, it knocked out kimchi, for example. Really hard to do kimchi on emoji sizes. How are you going-- is it in the jar or is it just in a little bowl? So kimchi kind of died on that. Another one that was really hard was a cave emoji, actually. Really hard at emoji sizes. And then, this is interesting, no logos, brands, deities, or celebrities. And this is a new policy we just introduced, which is no more flags. Flags were killing us, in terms of all kinds of complicated reasons. And there is much regret that we ever added flags. 
+
+And lots of politics, so at this point, no more flags. 
+
+So once it gets passed into the full Unicode technical committee, the proposal gets voted on once a year. And then they pass all the emoji for the next year. We just actually did that a couple of weeks ago. And it takes a while because it gets sent to all the companies like Apple, Google, Adobe, Facebook. And then they add it to all your devices. And then, ta-da. It takes about 18 to 24 months, from when you first have your proposal to when it lands onto your devices. 
+
+So Emojination has worked on a bunch of emoji. And so we've kind of shepherded this through. So one of the interesting question is, why is it that Unicode controls emoji? So a lot of it has to go-- has to do with the history of emoji. They were originally popularized in Japan. There was a very-- one of the initial sets is from 1999 from DoCoMo. These were actually recently collected by the Museum of Modern Art in New York City. And so all the Japanese vendors had these little glyphs that they added to their character set. And the main problem is if you were DoCoMo, you had one set. If you were in SoftBank, you had another set. 
+
+So no matter what you could only text the people who are on your platform, not across platforms. And that was a real big problem when Apple and Google started introducing smartphones into Japan. And there were this kind of understanding and expectation that if you did something in your smartphone you also want it to show up in email and be sent into the ether and someone else is supposed to get the same image that you sent. So that was not the case. 
+
+So in 2007, they went to Unicode and asked them to basically unify the emoji set. And Unicode is interesting, because its mission is to enable everyone speaking every language on Earth to be able to use the language on computers and smartphones. And they actually see this as a human right. Because at a certain point, if your language cannot be captured digitally, it's going to disappear. So they spent a lot of time doing Chinese, Arabic, Cyrillic in the very early days. 
+
+In 2001, they actually had a proposal for Klingon, which they did not actually accept at that point. So they have three major projects. They encode characters, including emoji. That's actually what they're most famous for. They also have a bunch of localization resources. So that's like, in this country they use this as a currency, and they use this kind of time format, and it's whether or not it's month month, date date, year year year year. In some countries it's date date, month month, year year year year, in other countries. 
+
+So they tell you what country cares about what. And then they also then have the libraries so that no one's basically programming things from scratch. So, what's really funny is you say CLDR really fast it sounds like seal deer. And this really confused one of the girlfriends of one of the engineers why he was always talking about seal deers. And so she basically surgically attached a bunch of antlers to this little guy and made a seal dear. And so it took three years between 2007 to 2010 to introduce the first Unicode emoji set. So, these were the ones that came out. 
+
+It took many, many years to figure out how to reconcile all the different images and which ones should we include, which ones we shouldn't include. And as you guys probably know from CS50, a Unicode code point is a unique number assigned to each Unicode character. So you can represent that emoji-- tears with Facebook, tears of joy, as this, or this, or the binary code. So, emojis were just hanging out on your phone after 2010, until 2011 when Apple suddenly made them much easier to access on your phone. 
+
+And one of the confusing things, of course, is emoji are very ambiguous. And it's not always clear what they mean. And that's one of the great joys, right? It can be more-- there's much more interpretation on-- in terms between the sender and the receiver. So if you actually look-- if you start doing that on Google, the autocompletes are like, what does it mean when a guy sends it to you? What does it mean when the girl sends to you? And clearly, many, many people have been confused by that emoji when it's been sent to them. 
+
+So who can propose emoji? And a short answer is basically anyone. There's a Google form that is open between April and August. So the hijab emoji actually was originally proposed by a 15-year-old girl who is Saudi Arabian but lived in Germany. Rayouf Alhumedhi, who actually got into Harvard and then chose Stanford, so I was giving her a hard time about that. I know. Whoa. [LAUGHS] I'm kind of on that. I was like hmm. So, she wrote the proposal, and it got through. And she's actually the subject of the documentary that we put together called The Emoji Story. 
+
+We also have a group of Argentinians who fought really hard for the mate emoji, their national drink. And then there was this nonprofit for girls advocacy that really wanted a menstruation emoji. And they sent in this bloody underpants proposal, which is really terrible, I'll be honest. So we kind of worked with them and got blood drop, which actually is one of-- actually it's done pretty statistically well. We were kind of surprised actually how popular it is. 
+
+The skin tone emoji were actually proposed not from within Unicode, clearly. It was done by a mom from Houston who's also an entrepreneur, because her daughter asked her-- came home one day and said, I'd really like an emoji that looks like me. And her mom, Katrina Parrot, was like, that's great, honey. What's an emoji? But she actually had worked in procurement with NASA, and so she understood forum for proposals, and she actually was the one we should thank for having five skin tones today. 
+
+Woman's flat shoe. And the one piece bathing suit, as opposed to just the yellow teeny weeny yellow polka bikini, is a mother of three now four who just wrote that, because she was very offended at that all of the shoe emoji had high heels for women. I actually really like this guy. Some random guy in Germany came up with this emoji. As we like to say, it's the Colbert emoji. He wrote a proposal, and it got accepted because it was a really good proposal. 
+
+Then you even have governments, the Finnish government-- literally the Finnish government, their equivalent of the Department of State proposed a sauna emoji, which these are the images. And I think they're really ugly. There's so many problems with this emoji. But we helped them as Emojination. First we got rid of the clubbed feet and then gave them examples. Do you want them to hold the ladle, do you want the steam around it, do you want it with clothing or not clothing? We actually did a little bit of a towel for the more modest in us. 
+
+So it got passed. And then the way it ended up is basically person in a steamy room. So this is how it evolved. So you can see that is what Finland submitted. That is what we submitted. And then that is how it's ended up on your phone. And that is basically supposed to mean sauna emoji. So one of the questions is like, why do I care so much about emoji and representation of emoji? And a lot of it has to do with the fact that I grew up speaking Chinese and going to Saturday Chinese school. 
+
+And as you can see there's some really interesting parallels between modern day emoji and Chinese radicals and characters from a long time ago. So this is fire. This is mouth. This is tree. This is moon. This is sun. And you can mix and match them in Chinese as well. So, one of the interesting ones is two trees together basically makes a forest. You have a sun and a moon together, and that means bright in Chinese. It's kind of fun. 
+
+Then, this one's fun, right? So it's basically a pig underneath a roof. So you're like, oh, maybe that means farm. Or I don't know, a barn or some kind of animal thing. But actually, that in Chinese means home or family. So home is where your pigs are, which I think says a lot about society and what people cared about way back in ancient China. This is one of my favorites. So, this is a character for woman or female knee. 
+
+And I guess, it kind of looks like this like she's curtsy or something. So super interesting character if you grow up writing your characters. So this is a woman underneath a roof. And you're like, oh, that might mean wife, or family, or something. But it actually doesn't, it means peace on. So the idea is like things are at peace when the woman is under a roof, which I always thought I felt kind of weird about that growing up. 
+
+Another one is-- OK there's the woman, and then you have a child or boy child, specifically. So you're like, oh, that might mean family, or mother, or something. But actually it means good. So the standard for good in ancient China was a woman with a boy child, which I thought was also, as a six-year-old, I found problematic as well. And all kinds of [CHUCKLES] interesting things in Chinese use the female radical. 
+
+So three women together means evil. This one means greedy. This one means slave. This one means jealous. This one means betrayal or adultery, which I think is interesting. So, in case you want to bring this to your favorite 10-year-old, we have a Chinese an emoji kid's book coming out from MIT Press in the fall called Hanmoji. So it's from MIT teen Press. It's super fun. 
+
+So it's a lot of these concepts, but a little bit more rigorous. And this idea of gender in emoji was really important to a bunch of us as we were working through the issues. So, for a long time, on the emoji keyboard there are all kinds of jobs you could have as a man. You could be a police officer, you could be a detective, you could be Buckingham Palace guard, you could even be Santa, you can be Black Santa, right? 
+
+As of 2015, if you're a woman, there are only four jobs you could have on the emoji keyboard. So you could be a princess, you could be a bride, you could be a dancer, or you could play a Playboy bunny. So there's were your four choices. And so we worked really hard on trying to diversify what women could be. And one of the ways we did it was through this idea of combining emoji. So in emojiland there's something called ZWJ, a zero-width joiner. And a lot of emoji that you see are actually glued together. 
+
+So the rainbow plus flag is how you get rainbow flag. And this is actually how we worked on introducing a bunch of the occupations in emojiland. So a lot of these are the chef is a woman plus the frying frying pan, or a teacher is a woman plus or man, actually, plus a school. 
+
+So one of the interesting things is you can actually have as the result of all the gender parity stuff, we actually had to make male and female versions of all the emoji, because some of them originally were passes, like man and tuxedo. And now, because we had gendered versions of everything, we now have women with tuxedo. I don't know if you noticed. There's also a man in a wedding dress to compliment the woman in a wedding dress. There's now actually also bearded woman. I don't know if you've noticed that. 
+
+So it gets interesting. Because originally, at a certain point we had passed a woman breastfeeding. And then there was all of this complaints coming into Unicode about what about man as caretakers? You can't actually tell she's breastfeeding. It's more just like she's holding it. So people are like, what about the man as a caretaker? Paternity leave and da, da, da, da, da, da. So, there is now man nursing the child. 
+
+And the other ways you can combine the emoji are through skin tones. So unfortunately, those are not through ZWJs. This is there an older technology where you have all the skin tones are basically the yellow character plus a little square box at the end. We call them skin tone modifiers. And in terms of what are the things that we worked on at Emojination, which was one of the hardest ones was to create the interracial couples. And we worked on that with Tinder, which really cared about it. 
+
+Because apparently, which I thought was interesting, when you introduce online dating into a community, the rates of interracial marriage go up. And there's a pretty interesting academic paper that systematically looks at the rollout from different countries and different communities. So it was really nice to see it introduced on the phone. One of my friends cried. In terms of Emojination emoji, we've worked on a lot. So these are just a sampling of the ones that we've done. 
+
+I really liked-- let's see. DNA, I feel really good about. Lobster, on behalf of people from Maine. Yarn and thread, for all the people who like knitting. There is bagel emoji, on behalf of all New Yorkers. This emoji actually, which we called microbe, was like very sleepy on the keyboard, until 2020. And it really had its moment. I'm really proud of that one. And there is yoga emoji, sponge, so these are just a sampling of the ones that we've worked on. 
+
+And this is a sampling of the people who have contributed. You too, if you feel really passionate about emoji, could impact billions of keyboards worldwide. So it's interesting to see in terms of frequency of use. It's very power law, right? These are actually order of magnitude. So one is half of this, two is half of one, all the way down. 
+
+And one of the most stunning things I was surprised to see is that face of tears of joy by itself is almost 10% of all emoji sent, 9.9% of emoji is just that one character. Number two is red heart, which I guess you guys can see in its binary form. And then it falls off pretty quickly. So I know I'm hearing that face of tears of joy is very Boomer or very Gen X, and that maybe among you guys it's a little bit blasÃ© or dÃ©classÃ© at this point. 
+
+So the future emoji-- we really don't-- Unicode does not want to be encoding emoji. And along the way I became a vise chair of the Unicode Emoji Subcommittee. So I went from shaking my fist at the institution to becoming part of the institution. So there's one idea, this coded hashups of arbitrary images. Can we create a system where instead of just using a binary code to represent all the different emoji, we actually can do specific images, we create hashes, and then you look and you can look up by the hash which image you're looking at. 
+
+So that was the idea. This is from a Stanford professor. Didn't really get take off. Then there was this idea using Wikipedia or Wikimedia, the wiki data QID numbers, which I didn't know this, until this proposal came along. But everything in Wikipedia has a number and that allows it to match things between different languages. So in Chinese the page for Obama is matched with the English page, with this Arabic page. And that went nowhere. 
+
+So, what I'm going to finish with is telling you what the new emoji are. You guys are among the first people to hear about this, because no one's really been paying attention. So, this is published a couple of weeks ago, but it made no news, because you have to be looking at the Unicode register. So first off, more hearts, because you guys all love hearts. So there's light blue heart, gray heart, and pink heart. There was kind of debate. Do we need more pink hearts? And the answer seems to be yes. 
+
+Light blue is really interesting. Because in some cultures, light blue and dark blue are different colors. In our culture, we just call them versions of blue. It's sort of like how in English pink and red are different colors, but in some cultures there isn't a difference between pink and red. And then there were a bunch of bird things. The wing emoji is coming, blackbird and goose. I don't really know why. Hyacinth as a flower. This has very popular in Iranian culture. 
+
+Jellyfish. I don't know. I'm very suspicious of a jellyfish, because they used man-of-war as one of their phrases that they searched for. And that had a billion-- I think-- it had a lot of entries. And I feel like those were not about the actual invertebrate. There was something else going on there. But kind of rode in on that. Moose on behalf of the Canadians. 
+
+Donkey on behalf of, I guess, the Democrats. So that was interesting because you had to have the donkey look different from a horse. And there was a whole debate like, do you want a donkey head? Or do you want a donkey body? Do you want donkey with fluffy ears? Do you want-- all kinds of donkey debate. And it was actually originally proposed in 2019 and just got into this year. 
+
+Ginger and peapod. These are kind of weird. The food things kind of got in, in a weird way. Ginger was good because it also represented root. And then wireless got in, which is interesting. Because we couldn't use a phrase Wi-Fi, because that's actually trademarked by the Wi-Fi people. And then on behalf of Sikhs, Khanda finally got in. It was the largest religion that wasn't already represented on the emoji keyboard. 
+
+And then on behalf of the faces-- 
+
+[LAUGHTER] 
+
+--shaking face. So, I'm glad you guys are really excited by that. It is unclear to me-- I was not a big proponent of this, but your excitement about it makes me change my mind. Then, folding hand fan. I actually find that one interesting, because I think it was just college students. Or fresh out of college students were like, we want to do your proposal that passes. And they were very opportunistic and just chose fan. 
+
+And then first they submitted electric fan. And then we told them, oh, the longevity for electric fan isn't great, even though it's been around for a couple years. Why don't we go with the folding hand fan, which is a much longer history. And then, this one is actually a big deal is afro hair pick. There was a lot of controversy about and debate about curly hair. And it supposed to be, represent, afros. And then Apple did not do that. So, everyone else has very Afro looking hair. Apple just makes it look wavy. And so there was like upsetness that Black hair wasn't represented in the emoji set. And so this was a proposal that someone worked on. 
+
+And then animals. Sorry. Not animals, instruments. Maracas and flute. And that's it. So in terms of, if you have any questions, you can look at emojination.org. You can email me for all things emoji. jenny@emojination.org. And remember, you guys can actually impact billions of keyboards around the world. I mean, it's a little bit of impact for humans but billions, so that adds up to a lot. And you have any more questions, I am here and can give lots of answers and questions. 
+
+And I'm really thrilled actually to bring the emoji flag waving to such a large crowd and especially a large, diverse and very motivated crowd. And one of the interesting things is, we've kind of-- I'm not a proponent of this, but they've slowly decreased the number of emoji per year. It was 70. Then it was 50. Then it was 30. And this year we only did 20. And I'm a little bit sad about that. But I hope that, if there's more excited proposals that can be submitted to Unicode, we might be able to dial that number back up. So, that is me. Am I good? Yeah. So-- 
+
+[APPLAUSE] 
+
+Thank you. 
+
+[LAUGHTER] 
+
+[APPLAUSE CONTINUES] 
+
+DAVID J. MALAN: This is about 20 years late, but thank you so much, Jenny. We have an I took CS50 t-shirt for you. On the way out too, we have some CS50 stress balls for you. Cannot wait to see your final projects. Coming up if you'd like to chat with Jenny. This was CS50. See you soon. 
+
+[CHEERS AND APPLAUSE] 
+
+[MUSIC PLAYING]

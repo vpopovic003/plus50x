@@ -32,10 +32,8 @@ def slides(index):
 def source(index):
     # List to hold all source files per lecture
     source = []
-
-    # Which lecture
-    lecture = "src1"
-    path = (f"static/files/source/{lecture}")
+    # Which lecture    
+    path = (f"static/files/source/src{index}")
     # Open folder, add files to the list
     for f in os.listdir(path):
         with open(os.path.join(path, f)) as f:
@@ -45,7 +43,7 @@ def source(index):
 
 @app.route("/transcript<index>")
 def transcript(index):
-    return render_template("transcript.html")
+    return render_template("transcript.html", index=index)
 
 
 @app.route("/shorts<index>")
@@ -55,6 +53,7 @@ def shorts(index):
     # Getting the first value of the corresponding dict
     first = list(helpers.shorts[int(index)].keys())[0]
     return render_template("shorts.html", shorts=shorts, index=index, short=first)
+
 
 @app.route("/shorts<index>-<short>")
 def short(index, short):

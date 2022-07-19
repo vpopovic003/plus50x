@@ -1,0 +1,1252 @@
+[MUSIC PLAYING] DAVID J. MALAN: This is CS50, and this is already week three. And even as we've gotten much more into the minutia of programming and some of the C stuff that we've been doing is all the more cryptic looking, recall that at the end of the day, like, everything we've been doing ultimately fits into to this model. So keep that in mind, particularly as things seem like they're getting more complicated and more sophisticated. 
+
+It's just a process of learning a new language that ultimately lets us express this process. And of course, last week we really went into the weeds of like how inputs and outputs are represented. And this thing here, a photograph thereof, is called what? This is what? 
+
+AUDIENCE: RAM. 
+
+DAVID J. MALAN: RAM, I heard-- Random Access Memory or just generally known as memory. And recall that we looked at one of these little black chips that contains all of the bytes-- all of the bits, ultimately. It's just kind of a grid, sort of an artist grid, that allows us to think about every one of these memory locations as just having a number or an address, so to speak. Like, this might be byte number 0 and then 1 and then 2 and then, maybe way down here again, something like 2 billion if you have 2 gigabytes of memory. 
+
+And so as we did that, we started to explore how we could use this canvas to create kind of our own information, our own inputs and outputs, not just the basics like ints and floats and so forth. But we also talked about strings. And what is a string as you now know it? How would you describe in layperson's terms a string? Yeah, over there. 
+
+AUDIENCE: I was gonna say-- [AUDIO OUT] 
+
+DAVID J. MALAN: An array of characters. And an array, meanwhile-- let's go there. How might someone else define an array in more familiar now terms? What would be an array? Yeah. 
+
+AUDIENCE: Kind of like an indexed set of things. 
+
+DAVID J. MALAN: An indexed set of things-- not bad. And I think a key characteristic to keep in mind with an array is that it does actually pertain to memory. And it's contiguous memory. Byte after byte after byte is what constitutes an array. 
+
+And we'll see in a couple of weeks time that there's actually more interesting ways to use this same primitive Canvas to stitch together things that are sort of two directional even that have some kind of shape to them. But for now, all we've talked about is arrays and just using these things from left to right, top to bottom, contiguously to represent information. So today, we'll consider still an array. But we won't focus so much on representation of strings or other data types. 
+
+We'll actually now focus on the other part of that process, of inputs becoming outputs, namely the thing in the middle-- algorithms. But we have to keep in mind, even though every time we've looked at an array thus far, certainly on the board like this, you as a human certainly have the luxury of just kind of eyeballing the whole thing with a bird's eye view and seeing where all of those numbers are. If I asked you where a particular number is, like zero, odds are your eyes would go right to where it is, and boom, problem solved in sort of one step. 
+
+But the catch is, with a computer that has this memory, even though you, the human, can [INAUDIBLE] see everything at once, a computer cannot. It's better to think of your computer's memory, your phone's memory, or more specifically an array of memory like this as really being a set of closed doors, not unlike lockers in a school. And only by opening each of those doors can the computer actually see what's in there, which is to say that the computer, unlike you, doesn't have this bird's eye view of all of the data in all these locations. 
+
+It has to much more methodically look here, maybe look here, maybe look here, and so forth in order to find something. Now fortunately, we already have some building blocks-- loops, conditions, Boolean expressions, and the like-- where you could imagine writing some code that very methodically goes from left to right or right to left or something more sophisticated that actually finds something you're looking for. And just remember that the conventions we've had since last week now is that these arrays are zero indexed, so to speak. 
+
+To be zero indexed just means that the data type starts counting from zero. So this is location 0, 1, 2, 3, 4, 5, 6. And notice even though there are seven total doors here, the right-most one, of course, is called 6 just because we've started counting at 0. So in the general case, if you had n doors or n bytes of memory, 0 would always be at the left, and n minus 1 would always be at the right. 
+
+That's sort of a generalization of just thinking about this kind of convention. All right, so let's revisit the problem that we started the whole term off with in week zero, which was this notion of searching. And what does it mean to search for something? 
+
+Well, to find information-- and this, of course, is omnipresent. Anytime you take out your phone, you're searching for a friend's contact. Any time you pull up a browser, you're googling for this or that. 
+
+So search is kind of one of the most omnipresent topics and features of any device these days. So let's consider how the Googles, the Apples, the Microsofts of the world are implementing something as seemingly familiar as this. So here might be the problem statement. 
+
+We want some input to become some output. What's that input going to be? Maybe it's a bunch of closed doors like this out of which we want to get back an answer, true or false. 
+
+Is something we're looking for there or not? You can imagine taking this one step further and trying to find where is the thing you're looking for. But for now, let's just take one bite out of the problem. 
+
+Can we tell ourselves, true or false, is some number behind one of these doors or lockers in memory? But before we go there and start talking about ways to do that-- that is, algorithms. Let's consider how we might lay the foundation of, like, comparing whether one algorithm is better than another. 
+
+We talked about correctness, and it sort of goes without saying that any code you write, any algorithm you implement, had better be correct. Otherwise, what's the point if it doesn't give you the right answers? But we also talked about design. 
+
+And in your own words, what do we mean when we say a program is better designed at this stage than another? How do you think about this notion of design now? Yeah, in the middle? 
+
+AUDIENCE: Easier to understand or easier to institute. 
+
+DAVID J. MALAN: OK, so easier to understand. I like that. Other thoughts? Yeah. 
+
+AUDIENCE: Efficiency. 
+
+DAVID J. MALAN: Efficiency, and what do you mean by efficiency precisely? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Nice. It doesn't use up too much memory, and it isn't redundant. So you can think about design along a few of these axes-- sort of the quality of the code but also the quality of the performance. And as our programs get bigger and more sophisticated and just longer, those kinds of things are really going to matter. 
+
+And in the real world, if you start writing code not just by yourself but with someone else, getting the design right is just going to make it easier to collaborate and ultimately produce, write code, with just higher probability. So let's consider how we might focus on exactly the second characteristic, the efficiency, of an algorithm. And the way we might talk about the efficiency of algorithms, just how fast or how slow they are, is in terms of their running time. That is to say, when they're running, how much time do they take? 
+
+And we might measure this in seconds or milliseconds or minutes or just some number of steps in the general case because presumably fewer steps, to your point, is better than more steps. So how might we think about running times? Well, there's one general notation we should define today. 
+
+So computer scientists tend to describe the running time of an algorithm or a piece of code, for that matter, in terms of what's called big O notation. This is literally a capitalized O, a big O. And this generally means that the running time of some algorithm is on the order of such and such, where such and such, we'll see, is just going to be a very simple mathematical formula. It's kind of a way of waving your hands mathematically to convey the idea of just how fast or how slow some algorithm or code is without getting into the weeds of like, it took this many milliseconds or this many specific number of steps. 
+
+So you might recall then from week zero, I even introduced this picture but without much context. At the time, we just use this to compare those phone book algorithms. Recall that this red straight line was the first algorithm, one page at a time. The yellow line that's still straight differed how if you recall? That line represented what alternative algorithm? 
+
+Looking out and back. What is that second algorithm? Yeah, over there. 
+
+AUDIENCE: Like, two pages at a time. 
+
+DAVID J. MALAN: Two pages at a time, which was almost correct so long as we potentially double back a page if maybe we go a little too far in the phone book. So it had a potential bug but arguably solvable. This last algorithm, though, was the so-called divide and conquer strategy where I sort of unnecessarily tore the phone book in half and then in half and then in half, which, as dramatic as that was unnecessarily, it actually took significantly bigger bites out of the problem-- like 500 pages the first time, another 250, another 125 versus just 1 or 2 bytes at a time. 
+
+And so we described its running time as this picture there, though I didn't use that expression at the time, running times. But indeed, time to solve might be measured just abstractly in some unit of measure-- seconds, milliseconds, minutes, pages-- via this y-axis here. So let's now slap some numbers on this. 
+
+If we had n pages in that phone book, n just representing a generic number, the first algorithm here we might describe as taking n steps. Second algorithm we might describe as taking n divided by 2 steps, maybe give or take one if we have to double back but generally n divided by 2. And then this thing, if you remember your logarithms, was sort of a fundamentally different formula-- log base 2 of n or just log of n for short. 
+
+So this is of a fundamentally different formula. But what's noteworthy is that these first two algorithms, even though, yes, the second algorithm was hands down faster-- I mean, literally twice as fast-- when you start to zoom out and if I increase my y-axis and x-axis, these first two start to look awfully similar to one another. And if we keep zooming out and zooming out and zooming out as n gets really large-- that is, the x-axis gets really long-- these first two algorithms start to become essentially the same. 
+
+And so this is where computer scientists use big O notation. Instead of saying specifically, this algorithm takes any steps. And this one n divided by 2, a computer scientist would say, eh, each of those algorithms takes on the order of n steps or on the order of n over 2. But you know what? On the order of n over 2 is pretty much the same when n gets really large as being equivalent to big O of n itself. 
+
+So yes, in practice, it's obviously fewer steps to move twice as fast. But in the big picture, when n becomes a million, a billion, the numbers are already so darn big at that point that these are as, the shapes of these curves imply, pretty much functionally equivalent. But this one still looks better and better as n gets large because it's rising so much less quickly. 
+
+And so here, a computer scientist would say that that third algorithm was on the order of-- that is, big O of-- log n. And they don't have to bother with the base because it's a smaller mathematical detail that is also just in some sense a constant, multiplicative factor. So in short, what are the takeaways here? 
+
+This is just a new vocabulary that we'll start to use when we just want to describe the running time of an algorithm. To make this more real, if any of you have implemented a for loop at this point in any of your code and that for loop iterated n times where maybe in was the height of your pyramid or maybe n was something else that you wanted to do n times, you wrote code or you implemented an algorithm that operated in big O of n time, if you will. 
+
+So this is just a way now to retroactively start describing with somewhat mathematical notation what we've been doing in practice for a while now. So here's a list of commonly seen running times in the real world. This is not a thorough list because you could come up with an infinite number of mathematical formulas, certainly. But the common ones we'll discuss and you will see in your own code probably reduce to this list here. 
+
+And if you were to study more computer science theory, this list would get longer and longer. But for now, these are sort of the most familiar ones that we'll soon see. All right, two other pieces of vocabulary, if you will, before we start to use this stuff-- so this, a big omega, capital omega symbol, is used now to describe a lower bound on the running time of an algorithm. 
+
+So to be clear, big O is on the order of-- that is, an upper bound-- on how many steps an algorithm might take, on the order of so many steps. If you want to talk, though, from the other perspective, well, how few steps my algorithm take? Maybe in the so-called best case, it'd be nice if we had a notation to just describe what a lower bound is because some algorithms might be super fast in these so-called best cases. 
+
+So the symbology is almost the same, but we replace the big O with the big omega. So to be clear, big O describes an upper bound and omega describes a lower bound. And we'll see examples of this before long. 
+
+And then lastly, last one here, big theta, is used by a computer scientist when you have a case where both the upper bound on an algorithm's running time is the same as the lower bound. You can then describe it in one breath as being in theta of such and such instead of saying it's in big O and in omega of something else. 
+
+All right, so out of context, sort of just seemingly cryptic symbols, but all they refer to is upper bounds, lower bounds, or when they happen to be one in the same. And we'll now introduce over time examples of how we might actually apply these to concrete problems. But first, let me pause to see if there's any questions. Any questions here? 
+
+Any questions? I see pointing somewhere. Where are you pointing to? Over here-- there we go. OK, sorry-- very bright. 
+
+AUDIENCE: So, um, smaller-- 
+
+DAVID J. MALAN: Smaller n functions move faster. So yes, if you have something like n, that takes only steps. If you have a formula like n squared, just by nature of the math, that take more steps and therefore be slower. So the larger the mathematical expression, the slower your algorithm is because the more time or more steps that it takes. 
+
+AUDIENCE: So you want your n function to be small? 
+
+DAVID J. MALAN: You want your n function, so to speak, to be small, yes. And in fact, the Holy Grail, so to speak, would be this last one here either in big O notation or even theta, when an algorithm is on the order of a single step. That means it literally takes constant time, one step, or maybe 10 steps, 100 steps, but a fixed, constant number of steps. 
+
+That's the best because even as the phone book gets bigger, even as the data set you're searching gets larger and larger, if something only takes a finite number of steps constantly, then it doesn't matter how big the data set actually gets. Questions as well on these notations-- yep, thank you for the pointing. This is actually very helpful. I'm seeing pointing this way? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: What is the input to each of these functions? It is an expression of how many steps an algorithm takes. So in fact, let me go ahead and make this more concrete with an actual example here if we could. 
+
+So on stage here, we have seven lockers which represent, if you will, an array of memory. And this array of memory is maybe storing seven integers, seven integers that we might actually want to search for. And if we want to search for these values, how might we go about doing this? 
+
+Well, for this, why don't we make things interesting? Would a volunteer like to come on up? Have to be masked and on the internet if you are comfortable. Both of-- oh, there's someone putting their friend's hand up and back? 
+
+Yes, OK. Come on down. And in just a moment, our brave volunteer is going to help me find a specific number in the data set that we have here on the screen. 
+
+So come on down, and I'll get things ready for you in advance here. Come on down nice to meet. And what is your name? 
+
+AUDIENCE: [? Nomira. ?] 
+
+DAVID J. MALAN: Minera? 
+
+AUDIENCE: [? Nomira. ?] 
+
+DAVID J. MALAN: [? Nomira. ?] Nice to meet. Come on over. So here we have for Nomira seven lockers or an array of memory. 
+
+And behind each of these doors is a number. And the goal, quite simply, is, given this array of memory as input, to return, true or false, is the number I care about actually there? So suppose I care about the number 0. 
+
+What would be the simplest, most correct algorithm you could apply in order to find us the number 0? OK, try opening the first one. All right, and maybe just step aside so the audience can see. 
+
+I think you have not found 0 yet. OK, so keep the door open. Let's move on to your next choice. Second door, sure. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Oh, go ahead, second door. Let's keep it simple. Let's just move from left to right, sort of searching our way. 
+
+And what do you see there? Oh, 6, not 0. How about the next door? 
+
+All right, also not working out so well yet, but that's OK. If you want to go on to the next, we're still looking for 0. All right, I see a 2. All right, it's not so good yet. 
+
+Let's keep going. Next door. 2, 7-- no. OK, next door. 
+
+No, that's a-- all right, very well done. Oh. All right, so I kind of set you up for a fairly slow algorithm, but let me just ask you to describe what is it you did by following the steps I gave you. 
+
+AUDIENCE: I just went one by one to each character. 
+
+DAVID J. MALAN: You went one by one to each character if you want to talk into here. So you went one by one by each character. And would you say that algorithm left or right is correct? 
+
+AUDIENCE: No. 
+
+DAVID J. MALAN: No? 
+
+AUDIENCE: Or, yes, in the scenario. 
+
+DAVID J. MALAN: OK, yes in this scenario. Why are you hesitating? What's going through your mind? 
+
+AUDIENCE: Because it's not the most efficient way to do it. 
+
+DAVID J. MALAN: OK, good. So we see a contrast here between correctness and design. I mean, I do think it was correct because even though it was slow, you eventually found zero. 
+
+But it took some number of steps. So in fact, this would be an algorithm. It has a name, called linear search. 
+
+And, [? Nomira, ?] as you did, you kind of walked along a line going from left to right. Now let me ask. If you had gone from right to left, would the algorithm have been fundamentally better? 
+
+AUDIENCE: Yes. 
+
+DAVID J. MALAN: OK, and why? 
+
+AUDIENCE: Because the zero is here in the first scenario. But if it was like, the zero is in the middle, it wouldn't have been. 
+
+DAVID J. MALAN: Yeah, and so here is where the right way to do things becomes a little less obvious. You would absolutely have given yourself a better result if you would just happened to start from the right or if I had pointed you to start over there. But the catch is if I asked her to find another number, like the number 8, well, that would have backfired. And this time, it would have taken longer to find that number because it's way over here instead. 
+
+And so in the general case, going left to right or, heck, right to left is probably as correct as you can get because if you know nothing about the order of these numbers-- and indeed, they seem to be fairly random. Some of them are smaller, some of them are bigger. 
+
+There doesn't seem to be rhyme or reason. Linear search is about as good as you can do when you don't know anything a priori about the numbers. So I have a little thank you gift here, a little CS stress ball. 
+
+Round of applause for our first volunteer. Thank you so much. Let's try to formalize what I just described as linear search because indeed, no matter which end [? Nomira ?] had started on, I could have kind of changed up the problem to make sure that it appears to be running slow. 
+
+But it is correct. If zero were among those doors, she absolutely would have found it and indeed did. So let's now try to translate what we did into what we might call again pseudo code as from week zero. 
+
+So with pseudo code, we just need a terse English like, or any language, syntax to describe what we did. So here might be one formulation of what [? Nomira ?] did. For each door, from left to right, if the number is behind the door, return true. Else, at the very end of the program, you would return false by default. 
+
+And now you got lucky. And by the seventh door, [? Nomira ?] had indeed returned true by saying, well, there is the zero. But let's consider if this pseudo code is now correct, an accurate translation. 
+
+First of all, normally, when we've seen ifs, we might see an if else. And yet down here, return false is aligned with the for. Why did I not indent the return false, or put another way, why did I not do if number is behind door, return true, else return false? Why would that version of this code have been problematic? Way in back. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: OK, I'm not sure it's because of redundancy. Let me go ahead and just make this explicit. If I had instead done else return false, I don't think it's so much redundancy that I'd be worried about. Let me bounce somewhere else. Yeah, in front? 
+
+AUDIENCE: Um, maybe [INAUDIBLE] for the entire list after just checking one number. 
+
+DAVID J. MALAN: Yeah, it would be returning falls for-- even though I'd only looked at-- [? Nomira ?] had only looked at one element. And it would have been as though if all of these doors were still closed, she opens this up and says, nope, this is not zero, return false. That would give me an incorrect result because obviously, at that stage in the algorithm, she wouldn't have even looked through any of the other doors. 
+
+So just the original indentation of this, if you will, without the [? else, ?] is correct because only if I get to the bottom of this algorithm or the pseudo code does it make sense to conclude at that point, once she's gone through all of the doors, that nope, there's in fact-- the number I'm looking for is, in fact, not actually there. So how might we consider now the running time of this algorithm? We have a few different types of vocabulary now. 
+
+And if we consider now how we might think about this, let's start to translate it from sort of higher level pseudo code to something a little lower level. We've been writing code using n and loops and the like. So let's take this higher level pseudo code and now just kind of get a middle ground between English and C. 
+
+Let me propose that we think about this version of the same algorithm as being a little more pedantic. For i from 0 to n minus 1, if number behind doors bracket i return true. Otherwise, at the end of the program, return false. Now I'm kind of mixing English and C here, but that's reasonable if the reader is familiar with C or some similar language. 
+
+And notice this pattern here. This is a way of just saying in pseudo code, give myself a variable called i. Start at 0 and then just count up to n minus 1. 
+
+And recall n minus 1 is not one shy of the end of the array. N minus 1 is the end of the array because again, we started counting at 0. So this is a very common way of expressing this kind of loop from the left all the way to the right of an array. 
+
+Doors I'm kind of implicitly treating as the name of this array, like it's a variable from last week that I defined as being an array of integers in this case. So doors bracket i means that when i is 0, it's this location. When i is 1, it's this. 
+
+When i is 7 or, more generally n minus-- sorry, 6 or, more generally, n minus 1, that's this location here. So same idea but a translation of it. So now let's consider what the running time of this algorithm is. 
+
+If we have this menu of possible answers to this question, how efficient or inefficient is this algorithm, let's take a look in the context of this pseudo code. We don't even have to bother going all the way to C. How do we go about analyzing each of these steps? 
+
+Well, let's consider this. This outermost loop here for i from 0 to n minus 1, that line of code is going to execute how many times? How many times will that loop execute? 
+
+Let me give folks this moment to think on it. How many times is that going to loop here? Yeah, over there. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: n times, right? Because it's from 0 to n minus 1. And if it's a little weird to think in from 0 to n minus 1, this is essentially the same mathematically as from 1 to n. 
+
+And that's perhaps a little more obviously more intuitively n total steps. So I might just make a note to myself this loop is going to operate n times. What about these inner steps? 
+
+Well, how many steps or seconds does it take to ask a question? If the number behind-- if the number you're looking for is behind doors bracket i, well, as [? Nomira ?] did, that's kind of like one step. So you open the door and boom. 
+
+All right, maybe it's two steps, but it's a constant number of steps. So this is some constant number of steps. Let's just call it one for simplicity. 
+
+How many steps or seconds does it take to return true? I don't know exactly in the computer's memory but that feels like a single step. Just return true. 
+
+So if this takes one step, this takes one step but only if the condition is true, it looks like you're doing a constant number of things n times. Or maybe you're doing one additional step. So in short, the only thing that really matters here in terms of the efficiency or inefficiency of the algorithm is what are you doing again and again and again because that's obviously the thing that's going to add up. 
+
+Doing one thing or two things a constant number of times? Not a big deal. But looping, that's going to add up over time because the more doors there are, the bigger n is going to be and the more steps that's going to take, which is all to say if you were to describe roughly how many steps does this algorithm take in big O notation, what might your instincts say? How many steps is this algorithm on the order of given n doors or n integers? Yeah? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Say again? 
+
+AUDIENCE: O n. 
+
+DAVID J. MALAN: Big O of n. And indeed, that's going to be the case here. Why? 
+
+Because you're essentially, at the end of the day, doing n things as an upper bound on running time. And that's, in fact, what exactly what happened with [? Nomira. ?] She had to look at all n lockers before finally getting to the right answer. 
+
+But what if she got lucky and the number we were looking for was not at the end of the array but was at the beginning of the array? How might we think about that? Well, have a nomenclature for this too, of course-- omega notation. Remember, omega notation is a lower bound. So given this menu of possible running times for lower bounds on an algorithm, what might the omega notation be for [? Nomira's ?] linear search? 
+
+AUDIENCE: Omega 1. 
+
+DAVID J. MALAN: Omega of 1, and why that? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Right, because if just by chance she gets lucky and the number she's looking for is right there where she begins the algorithm, that's it. It's one step. Maybe it's two steps if you have to unlock the door and open it, but it's a constant number of steps. And the way we describe constant number of steps is just with a single number like 1. 
+
+So the omega notation for linear search might be omega of 1 because in the best case, she might just get the number right from the get go. But in the worst case, we need to talk about the upper bound, which might indeed be big O of n. So again there's this way now of talking symbolically about best cases and worst cases or lower bounds and upper bounds. Theta notation, just as a little trivia now, is it applicable based on the definition I gave earlier? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: OK, no, because you only take out the theta notation when those two bounds, upper and lower, happen to be the same for shorthand notation, if you will. So it suffices here to talk about just big O and omega notation. Well, what if we are a little smarter about this? 
+
+Let me go ahead and sort of semi-secretly here rearrange these numbers. But first, how about one other volunteer? One other volunteer-- you have to be comfortable with your mask and your being on the internet. How about over here? 
+
+Yes, you want to come on down? All right, come on down. And don't look at what I'm doing because I'm going to-- take your time and don't look up this way because I need a moment to rearrange all of the numbers. And actually, if you could stay right there before coming up, just an awkward few seconds while I finish hiding the numbers behind these doors for you. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: I will be right with you. Actually, if-- do you want to warm up the crowd for a moment and I'll be right back? So you want to introduce yourself? 
+
+AUDIENCE: Yeah, hi, guys. I'm Rave. Yeah! 
+
+DAVID J. MALAN: All right, I think I am ready. Thank you for stalling there. 
+
+AUDIENCE: Of course. 
+
+DAVID J. MALAN: And I didn't catch your name. What was your name? 
+
+AUDIENCE: I'm Rave. 
+
+DAVID J. MALAN: I'm sorry? 
+
+AUDIENCE: Rave, like a party. 
+
+DAVID J. MALAN: Rave, OK. Nice to meet. Come on over. So Rave has kindly volunteered now. And I'm going to give you an additional advantage this time. 
+
+AUDIENCE: OK. 
+
+DAVID J. MALAN: Unbeknownst to you, I now took numbers behind the doors, but I sorted them for you. So they're not in the same random order like they were for [? Nomira. ?] You now have the advantage to know that the numbers are sorted from small to big. 
+
+AUDIENCE: OK. 
+
+DAVID J. MALAN: Given that, and given perhaps what we talked about in week zero with the phone book, where might you propose we begin the story this time? With which locker? 
+
+AUDIENCE: To find zero? 
+
+DAVID J. MALAN: Let's find number six this time. Let's make things interesting. 
+
+AUDIENCE: OK. I'll start in the middle. 
+
+DAVID J. MALAN: OK, so the middle. There's seven total. So-- 
+
+AUDIENCE: OK. 
+
+DAVID J. MALAN: --that would be right here. Go ahead. Open that up. 
+
+And you find, sadly, the number five. So what do you know now? 
+
+AUDIENCE: I know to go up. 
+
+DAVID J. MALAN: OK. 
+
+AUDIENCE: OK. 
+
+DAVID J. MALAN: All right, and just to keep it uniform, just like I did, I opened to the right half of the phone book. 
+
+AUDIENCE: Yes. 
+
+DAVID J. MALAN: Let's keep it similar. Yeah. 
+
+AUDIENCE: All right. 
+
+DAVID J. MALAN: All right, and, uh, a little too far even though I know you wanted to go one over. 
+
+AUDIENCE: All good, all good. 
+
+DAVID J. MALAN: And now we're going to go which direction? 
+
+AUDIENCE: Over here in the middle. 
+
+DAVID J. MALAN: Right, and voila, the number six. All right, so very nicely done. A little stressful for you as well. Thank you again. 
+
+So here we see by nature of the locker door still being open sort of an artifact of the greater efficiency, it would seem, of this algorithm because now that Rave was given the assumption that these numbers are sorted from small on the left to large on the right, she was able to apply that same divide and conquer algorithm from week zero which we're now going to give a name-- binary search. And simply by starting in the middle and realizing, OK, too small, then by going to the right half and realizing, oh, went a little too far, then by going to the left half, which, Rave able to find in just three steps instead of seven the number six in this case that we were actually searching for. So you can see that this would seem to be more efficient. 
+
+Let's consider for just a moment is it correct. If I had used different numbers but still sorted them from left to right, would it still have worked this algorithm? You're nodding your head. Can I call on you? Like, why would it still have worked, do you think? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Yeah, so so long as the numbers are always in the same order from left to right or, heck, they could even be in reverse order, so long as it's consistent, the decisions that Rave was making-- if greater than, else, if less than-- would guide us to the solution no matter what. And it would seem to take fewer steps. So if we consider now the pseudo code for this algorithm, let's take a look how we might describe binary search. 
+
+So binary search we might describe with something like this. If the number is behind the middle door, which is where Rave began, then we can just return true. Else if the number is less than the middle door, so if six is less than whatever is behind the middle door, then Rave would have searched the left half. 
+
+Else if the number is greater than the middle door, Rave would have searched the right half. Else, if there are no doors-- and we'll see in a moment why I put this up top just to keep things clean. If there's no doors, what should Rave have presumably returned immediately if I gave her no lockers to work with? Just returned false. 
+
+But this is an important case to consider because if in the process of searching by locker by locker, we might have whittled down the problem from seven doors to three doors to one door to zero doors-- and at that point, we might have had no doors left to search. So we have to naturally have a scenario for just considering if there were no doors. So it's not to say that maybe I don't give Rave any doors to begin with. 
+
+But as she divides and divides and divides, if she runs out of lockers to ask those questions of-- or a few weeks ago, if I ran out of phone book pages to tear in half, I too might have had to return false as in this case. So how can we now describe this a little more like C just to give ourselves a variable to start thinking and talking about? Well, I might talk about doors as being an array. 
+
+And so if I want to express the middle door, I could just, in pseudo code, say doors bracket middle. I'm assuming that someone has done the math to figure out what the middle door is, but that's easy enough to do. And then doors, if the number we're looking for is less than doors bracket middle, then search door zero through doors middle minus 1. 
+
+So again, this is a more pedantic way of taking what's a pretty intuitive idea-- search the left half, search the right half-- but start to now describe it in terms of actual indices or indexes like we did with our array notation. The last scenario, of course, is if the number is greater than the door's bracket middle, then Rave would have wanted to search the middle door plus 1-- so 1 over-- through doors n minus 1-- through n minus 1. 
+
+So again, just a way of sort of describing a little more syntactically what it is that's going on. So how might we translate this now into big O notation? Well, in the worst case, how many steps total might Rave's binary search algorithm have taken? 
+
+Given seven doors or given more generically n doors, how many times could she go left or go right before finding herself with one or no doors left? What's the way to think about that? Yeah, in the middle? 
+
+AUDIENCE: Log n. 
+
+DAVID J. MALAN: Log n. So there's log n again. And even if you're not feeling wholly comfortable with your logarithm still, pretty much in programming and in computer science more generally, any time we talk about some algorithm that's dividing and conquering in half, in half, in half, or any other multiple, it's probably involving logarithms in some sense. And log base n essentially refers to the number of times you can divide n by 2 until you bottom out at just a single door or equivalently zero doors left. 
+
+So log n. So we might say that indeed, binary search is in big O of log n because the door that Rave opened last, this one, happened to be three doors away. And actually, if you do the math here, that roughly works out to be exactly that case. If we add one, that's sort of out of seven doors or roughly eight, we were able to search it in just three total steps. 
+
+What about omega notation, though? Like, in the best case, Rave might have gotten lucky. She opened the door, and there it is. So how might we describe a lower bound on the running time of binary search. Yeah. 
+
+AUDIENCE: 1. 
+
+DAVID J. MALAN: Say again? 
+
+AUDIENCE: 1. 
+
+DAVID J. MALAN: Omega of 1. So here too, we see that in some cases binary search and linear search, eh, like, they're pretty equivalent. And so this is why sometimes compelling to consider both the best case in the worst case because honestly, in general, who really cares if you just get lucky once in a while and your algorithm is super fast? What you probably care about is what's the worst case. 
+
+How long are my users-- how long am I going to be sitting there watching some spinning hourglass or beach ball trying to give myself an answer to a pretty big problem? Well, odds are, you're going to generally care about big O notation. So indeed, moving forward, will generally talk about the running time of algorithms often in terms of big O, a little less so in terms of omega. But understanding the range can be important depending on the nature of the data that you're going to actually be given here. 
+
+All right let me pause and see if there is any questions. Any questions here? Yes, thank you. 
+
+AUDIENCE: So this method is clearly more efficient, but it requires that the information is all compiled in a certain order. How do you ensure that you can compile information in a particular order at scale? 
+
+DAVID J. MALAN: Yeah, it's a really good question. And if I can generalize it, how do you guarantee that you can do this at scale, which algorithm is better? I've sort of led us down this road of implying that Rave's second algorithm, binary search, is better because it's so much faster. It's log of n in the worst case instead of big O of n. 
+
+But Rave was given an advantage when she came up here in that the doors were already sorted. And so that sort of invites the question, well, given a whole bunch of random data, either a small data set or, heck, something Google sized with millions, billions of pieces of data, should you sort it first from smallest to largest and then search? Or should you just dive right in and search it linearly? 
+
+Like, how might you think about that? If you are Google, for instance, and you've got millions, billions of web pages, should they just go with linear search because it's always going to work even though it might be slow? Or should they invest the time in sorting all of that data-- we'll see how in a bit-- and then search it more efficiently? Like, how do you decide between those options? 
+
+AUDIENCE: If you're sorting the data, then wouldn't you have to go through all of the data? 
+
+DAVID J. MALAN: Yeah, if you had to sort the data first-- and we don't yet formally know how to do this. But obviously, as humans, we could probably figure it out. You do have to look at all of the data anyway. 
+
+And so you're sort of wasting your time if you're sorting it only then to go in search it. But maybe it depends a bit more. Like, that's absolutely right, and if you're just searching for one thing in life, then that's probably a waste of time to sort it and then search it because you're just adding to the process. But what's another scenario in which you might not worry about that whereby it might make sense to sort it and then search? Yeah. 
+
+AUDIENCE: [INAUDIBLE] you can go and use the other values as a way to find out what's happening. 
+
+DAVID J. MALAN: Yeah, exactly. So if your problem is a Google-like problem where you have more than just one user who's searching for more than just one website page, probably you should incur the cost up front and sort the whole thing because every subsequent request thereafter is going to be faster, faster, faster because it's going to [INAUDIBLE] algorithm of binary search, binary search, binary search that's going to add up to be way fewer steps than doing linear search multiple times. So again, kind of depends on the use case and kind of depends on how important it is. 
+
+And this happens even in real world contexts. I think back always to graduate school, when I was writing some code to analyze some large data set. And honestly, it was actually easier at the time for me to write pretty inefficient but hopefully correct code because you know what? 
+
+I could just go to sleep for eight hours and let it analyze this really big data set. I didn't have to bother writing more complex code to sort it just to run it more efficiently. Why? Because I was the only user, and I only needed to run these queries once. 
+
+And so this was kind of a reasonable approach, reasonable until I woke up eight hours later and my code was incorrect. And now I had to spend another eight hours rerunning it after fixing it. But even there, you see an example where, what is your most precious resource? 
+
+Is it time to run the code? Is it time to write the code? Is it the amount of memory the computer is using? 
+
+These are all resources we'll start to talk about because it really depends on what your goals are. Any questions, then, on upper bounds, lower bounds, or each of these two searches, linear or binary? Yeah. 
+
+AUDIENCE: So just, when you're calculating running time, does the sorting step count for that time? 
+
+DAVID J. MALAN: When analyzing running time, does the sorting step count? If you want it to if you actually do it. At the moment, it did not apply. 
+
+I just gave Rave the luxury of knowing that the data was sorted. But if I really wanted to charge her for the amount of time it took to find that number six, I should have added the time to sort plus the time to search. And in fact, that's a road we'll go down. 
+
+Why don't we go ahead and pace ourselves as before? Let's take a 10 minute break here. And when we come back, we'll write some actual code. So we've seen a couple of searches-- linear search and binary search, which, to be fair, we saw back in week zero. 
+
+But let's actually translate at least one of those now to some code using this building block from last week where we can actually define an array if we want, like an array of integers called numbers. So let me switch over to BS Code here. 
+
+Let me go ahead and start a program called numbers.c. And in numbers.c, let me go ahead here. And how about let's include our familiar header files? So css50.h. I'll include standardio.h that we can get input and print input if we want. 
+
+And now I'm going to go ahead and give myself int main void. No command line arguments today. So I'll leave that as void. 
+
+And I'm going to go ahead and give myself an array of how about seven numbers? So I'll call it int number 7. And then I can fill this array with numbers. 
+
+Like, numbers brackets 0 can be the number 4, and numbers bracket 1 could be the number 6, and numbers bracket 2 can be the number 8. And this is the same list that we saw with [? Nomira ?] a bit ago where it was 4, then 6, then 8. But you know what? There's actually another syntax I can show you here. 
+
+If you know in advance in a C program that you want an array of certain values and you know therefore how many of those values you want, you can actually do this little trick using curly braces. You can say, don't worry about how big this is. It's going to be implicit by way of these curly braces. 
+
+Here, I can do 4, 6, 8, 2, 7, 5, 0, close curly brace. So it's a somewhat new use of curly braces. But this has the effect of giving me an array called numbers inside of which are a whole bunch of integers. How many? 
+
+The compiler can infer it from what's ever inside these curly braces. And it seems to be of size 1, 2, 3, 4, 5, 6, 7. And all seven elements will be initialized with 4, 6, 8, 2, 7, 5, 0 respectively. So just a minor optimization code wise to tighten up what would have otherwise been like eight separate lines of code. 
+
+Now let's go ahead and implement linear search, as we called it. And you can do this in a bunch of ways, but I'm going to do it like this. For int i get 0, i is less than 7 i plus plus. 
+
+Then inside of my loop, I'm going to ask the question, well, if the numbers at location i equals equals, as we asked of [? Nomira, ?] the number 0, then I'm going to go ahead and do something like printf found backslash n. And then I'm going to return 0. 
+
+Just because of last week's discussion of returning a value for main when all is well, I'm going to return 0 by convention just to signal that indeed, I found what I'm looking for. Otherwise, on what line do I want to go and add a printf, like, not found and return something other than 0? Right, I don't think I want an else here per our pseudo code earlier. So on what line would you prefer I sort of insert a default scenario of not found and I'll return an error? Yeah, over here? 
+
+[INTERPOSING VOICES] 
+
+DAVID J. MALAN: Nice. So at the end of the for loop because you want to give the program or our volunteer earlier a chance to go through all of the doors, all of the numbers. But if you go through the whole thing, through the whole loop, at the very end, you probably just want to conclude not found backslash n and then return something like positive 1 just to signify that an error happened. And again, this was a minor detail last week. 
+
+Any time main is successful, the programming convention is to return 0. That means all as well. And if something goes wrong, like you didn't find what you're looking for, you might return something other than 0, like positive 1, maybe positive 2, or even negative numbers if you want. All right, well, let me go ahead and save this. 
+
+Let me do make numbers. Hopefully no syntax errors. All good so far. dot slash numbers, enter. 
+
+All right, and it's found, as I would hope it would be. And just as a little check, let's search for something that's definitely not there, like the number negative 1. Let me go ahead and recompile the code with make numbers. 
+
+Let me rerun the code with dot slash numbers and hopefully-- whew, OK, not found. So proof by example seems to be working correctly. But let's make things a little more interesting now. Right now, I'm using just an array of integers. 
+
+Let me go ahead and introduce maybe an array of strings instead. And maybe this time, I'll store a bunch of names and not just integers but actual strings of names. So how might I do this? Well, let me go back to my code here. I'm going to switch us over to maybe a file called names.c. 
+
+And in here, I'll go ahead and include cs50.h. I'll include standardio.h. And I'm going to go ahead and for now include a new friend from last week, string.h, which gives me some string-related functionality. Int main void because I'm not going to bother with any command line arguments for now. 
+
+And now if I want an array of strings, I could do something like this-- string names bracket 7. And then I could start doing like before. Names bracket 0 could be someone like Bill, and names bracket 1 could be someone like Charlie and so forth. 
+
+But there's this new improvement I can make. Let me just let the compiler figure out how many names there are. And using curly braces, I'll do Bill and then Charlie and then Fred and then George and then Ginny and then Percy and then Ron if there's the pattern there. All right, so now I have these seven names as strings. 
+
+Let's do something similar. So for int, i get 0. i is less than 7 as before, i plus plus as before. And inside of the, loop lets this time check for the string in question, and suppose we're searching for Ron arbitrarily. 
+
+He is there, so we should eventually find him. Let me go ahead and say if names bracket i equals quote unquote Ron, then inside of my if condition, I'm going to say printf found just like before. And I'm going to return 0 just because all is well. And I'm going to take your advice from the get go this time and, at the end of the loop, print out not found because if I get this far, I have not printed found, and I have not returned already. So I'm just going to go ahead and return 1 after printing not found. 
+
+All right, let me go ahead and cross my fingers as always. Make names this time. And it doesn't seem to like my code here. This is perhaps a new error that you might not have seen yet in names.c line 11. So that's this line here, my if condition. 
+
+Result of comparison against a string literal is unspecified. Use an explicit string comparison function instead. I mean, that's kind of a mouthful, and the first time you see it, you're probably not going to know how to make sense of that. 
+
+But it does kind of draw our attention to something being awry with the equality checking here, with equal equals and Ron. And here's where again we've been telling sort of a white lie for the past couple of weeks. Strings are a thing in C. Strings are a thing in programming. 
+
+But recall from last week, I did disclaim there's no such thing as a string data type technically because it's not a primitive in the way an int and a float and a bool are that are sort of built into the language. You can't just use equation equals to compare two strings. You actually have to use a special function that's in this header file we talked briefly about last week. 
+
+In that header file was string length or strlen. But there's other functions instead as well. Let me, in fact, go ahead and open up the manual pages. 
+
+And if we go to string.h-- let me scroll down a bit. In string.h you can perhaps infer what function will probably take the place of equals equals for today. What do we want to use? Yeah. 
+
+AUDIENCE: Strcmp? 
+
+DAVID J. MALAN: So strcmp, S-T-R-C-M-P, which apparently compares two strings. And if I click on that, we'll see more information. And indeed, if I click on strcmp, we'll see under the synopsis that, OK, I need to use the CS50 header file and string.h, as I already have. 
+
+Here is its prototype, which is telling me that strcmp takes two strings, S1 and S2, that are presumably going to be compared. And it returns an integer, which is interesting. So let's read on. The description of this function is that it compares two strings case sensitively. 
+
+So uppercase or lowercase matters, just FYI. And then let's look it the return value here. The return value of this function returns an int less than 0 if S1 comes before S2, 0 if S1 is the same as S2, or an int greater than 0 if S1 comes after S2. So the reason that this function returns an integer and not just a bool, true or false, is that it actually will allow us to sort these things eventually because if you can tell me if two strings come in this order or in this order or they're the same, you need three possible return values. 
+
+And a bool, of course, only gives you two, but an int gives you like 4 billion even though we just need the 3. So 0 or a positive number or a negative number is what this function returns. And the documentation goes on to explain what we mean by ASCIIbetical order. 
+
+Recall that capital A is 65, capital B is 66, and it's those underlying ASCII or Unicode numbers that a computer uses to figure out whether something comes before it or after it like in the dictionary. But for our purposes now, we only care about equality. So I'm going to go ahead and do this. 
+
+If I want to compare names bracket i against Ron, I use stir compare or strcmp, names bracket i comma, quote unquote, Ron. So it's a little more involved than actually using equals equals, which does work for integers, longs, and certain other values. But for strings, it turns out we need to use a more powerful function. 
+
+Why? Well, last week, recall what a string really is. It's an array of characters. And so whereas you can use equals equals for single characters, strcmp, as we'll eventually see, is going to compare multiple characters for us. There's more logic there. There's a loop needed, and that's why it comes with the string library. 
+
+But it doesn't just work out of the box with equals equals alone. That would literally be comparing two things, not two arrays of things. And we'll come back to this next week as to what's really going on under the hood. 
+
+So let me go ahead and fix one bug that I just realized I made. I want to check if the return value of str compare is equal to 0 because per the documentation, that meant they're the same. All right, let me go ahead and make names this time. 
+
+Now it compiles. Dot slash names, Enter, found. And just as a sanity check, let's check someone outside the family. 
+
+Searching now for Hermione after recompiling the code, after rerunning the code. And she's not, in fact, found. So here's just a similar implementation of linear search not for integers this time but instead for strings, the subtlety really being we need a helper function, str compare, to actually do the legwork for us of comparing two arrays of characters. All right, questions on either of these implementations-- yeah, in the middle? 
+
+AUDIENCE: So, if I do [INAUDIBLE] 
+
+DAVID J. MALAN: Ah, good question. If I had not fixed what I claimed was a mistake earlier and I did this-- and we saw an example of this last week, actually. If a function returns an integer, be it negative or positive or 0, when you get back 0, the expression, the Boolean expression, will be considered false. 
+
+So 0 equals false always. If a function returns any positive number, or any negative number, that's going to be interpreted as true even if it's positive or negative, whether it's 1, negative 1, 2, negative 2. And so if I did this, this would be saying the opposite. So if I were to say this, if str compare of names bracket i and Hermione, that's implicitly like saying this does not equal 0, or it means sort of is true, but you don't want to check for true because, again, we're comparing integers here. 
+
+So the reason I did 0 here in this case is that it explicitly checks for the return value that means they're the same. And yeah. Follow up? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Yes, you might not have seen this yet, but you can express the equivalent because if you want to check if this is false, you can actually use an exclamation point, known as a bang in programming, that inverts the meaning. So false becomes true, true becomes false. 
+
+So this would be another way of expressing it. This is arguably a worse design, though, because the documentation explicitly says you should be checking for 0 or a positive value or a negative value, and this little trick, while correct, and I think you can make a reasonable case for it, sort of hides that detail. And I would argue instead for the first way, checking for equals equals 0 instead. 
+
+And if that's a little subtle, not to worry. We'll come back to little syntactic tricks like that before long. Other questions on linear search in these two forms. 
+
+Is there another hand or hands? Two hands? No? 
+
+OK, just holler if I missed. So let's now actually take this one step further. Suppose that we want to write a program that maybe implements something a little more like a phone book that has both names and numbers and not just integers but actual phone numbers. 
+
+Well, we could escalate things like this. We could now have two arrays-- one called names, one called numbers. And I'm going to use strings for the numbers now, the phone numbers, because in most communities, phone numbers might have dashes, pluses, parentheses, so something that really looks more like a string even though we call it a phone number. Probably don't want to use an int lest we throw away those kinds of details. 
+
+So let me switch back to BS Code here, and let's do one more program, this one in a file called phonebook.c. And now let me go ahead and do the same. Let me include cs50.h. 
+
+Let me include standardio.h, and let me include string.h. I'm going to again do int main void. And then inside of my program, I'm going to give myself two arrays-- the efficient way this time. 
+
+String names will be just two of us this time. How about Carter and me? And then I'll give myself-- oops, typo already. If I want this to be an array, I don't have to specify the number. 
+
+The compiler can count for me. But I do need the square brackets. Then for numbers, I'm again going to use a string array specifying with the curly braces that how about Carter can be at 1-617-495-1000. And how about my own number here-- 1-949-468-- oh pattern appearing-- 2750 will be mine. 
+
+Why mine? Well, I'm just kind of lined things up. So Carter's number is apparently first in this array, and I'm claiming that he'll be first in this array, respectively. I, David, will be the first-- the second in the names array and second in the numbers array. 
+
+If you want to have a little fun with programming, feel free to text or call me some time at that number. So now let's actually use this data in some way. Let's go ahead and actually search for my own name and number here. So let me do. 
+
+For int i, get 0. There's two of us this time-- so i less than 2 and then i plus plus as before. And now I'm going to practice what I preached earlier, and I'm going to use str compare to find my name in this case. And I'm going to say if strcmp of names bracket i equals quote unquote David and that equals 0, meaning they're the same, then just as before, I'm going to go ahead and print something out. 
+
+But this time, I'm going to make the program more useful and not just say found or not found. Now I'm implementing a phone book, like the contacts app on iOS or Android. So I'm going to say something like, quote unquote, found percent s backslash n and then actually plug in numbers bracket i to correspond to the current name bracket i. And then I'll return 0 as before. 
+
+And then down here if we get all the way through the loop and David's not there for some reason, I'm going to print as before not found and then return 1. So let me go ahead and compile this with make phone dot slash phonebook, and it seems to have found the number. So this code I'm going to claim is correct. It's kind of stupid because I've just made a phone book or a contacts app that only supports two people. 
+
+They're only going to be me and Carter. This would be like downloading the contacts app on a phone and you can only call two people in the world. There's no ability to add names or edit things. 
+
+That, of course, could come later using get string or something else. But for now for the sake of discussion, I've just hardcoded two names and two numbers. But for what it does, I claim this is correct. It's going to find me and print out my number. 
+
+But is it well-designed? Let's start to now consider if we're not just using arrays, but are we using them, well? We started to use them last week, but are we using them well this week? 
+
+And what might I even mean by using an array well or designing this program well? Any critiques or concerns with why this might not be the best road for us to be going down when I want to implement something like a phone book with pieces of information? It seems all too vulnerable to just mistakes. 
+
+For instance, if I screw up the actual number of names in the names array such that it's now more or less than is in the numbers array or vise versa, it feels like there's not a tight relationship between those pieces of data, and it's just sort of is trusting on the honor system that any time I use names bracket i that it lines up with numbers bracket i. 
+
+And that's fine. If you're the one writing the code, you're probably not going to really screw this up. But if you start collaborating with someone else or the program is getting much, much longer, the odds that you or your colleagues remember that you're sort of just trusting that names and numbers line up like this is going to fail eventually. Someone's not going to realize that, and just, the code is going to break. 
+
+And you're going to start out putting the wrong numbers for names, which is to say it'd be much nicer if we could somehow couple these two pieces of data, names and numbers, a little more tightly together so that you're not just trusting that these two independent variables, names and numbers, have this kind of relationship with themselves. So let's consider how we might solve this. A new feature today that we'll introduce is generally known as a data structure. 
+
+In C, we have the ability to invent our own data types, if you will-- data types that the authors of C decades ago just didn't envision or just didn't think were necessary because we can implement them ourselves-- similar to Scratch just as you could create custom puzzle pieces, or in C, you can create custom functions. So in C, can you create your own types of data that go beyond the built in ints and floats and even strings? You can make, for instance, a person data type or a candidate data type in the context of elections or a person data type more generically that might have a name and a number. 
+
+So how might we do this? Well, let me go here and propose that if we want to define a person, wouldn't it be nice if we could have a person data type, and then we could have an array called people? And maybe that array is our only array with two things in it, two persons in it. 
+
+But somehow, those data types, these persons, would have both a name and a number associated with them. So we don't need two separate arrays. We need one array of persons, a brand new data type. So how might we do this? Well, if we want every person in the world or in this program to have a name and a number, we literally right out first those two data types. 
+
+Give me a string called name. Give me a string called number semicolon, after each. And then we wrap that, those two lines of code, with this syntax, which at first glance is a little cryptic. 
+
+It's a lot of words all of a sudden. But typedef is a new keyword today that defines a new data type. This is the C key word that lets you create your own data type for the very first time. 
+
+Struct is another related key word that tells the compiler that this isn't just a simple data type, like an int or a float renamed or something like that. It actually is a structure. It's got some dimensions to it, like two things in it or three things in it or even 50 things inside of it. The last word down here is the name that you want to give your data type, and it weirdly goes after the curly braces. 
+
+But this is how you invent a data type called person. And what this code is implying is that henceforth, the compiler clang will know that a person is composed of a name that's a string and a number that's a string. And you don't have to worry about having multiple arrays now. You can just have an array of people moving forward. 
+
+So how can we go about using this? Well, let me go back to my code from before where I was implementing a phone book. And why don't we enhance the phone book code a little bit by borrowing some of that new syntax? 
+
+Let me go to the top of my program above main and define a type that's a structure or a data structure that has a name inside of it and that has a number inside of it. And the name of this new structure again is going to be called person. Inside of my code now, let me go ahead and delete this old stuff temporarily. 
+
+Let me give myself an array called people of size 2. And I'm going to use the non-terse way to do this. I'm not going to use the curly braces. 
+
+I'm going to more pedantic spell out what I want in this array of size 2 at location 0, which is the first person in an array because you always start counting at 0. I'm going to give that person a name of quote unquote Carter. And the dot is admittedly one new piece of syntax today too. 
+
+The dot means go inside of that structure and access the variable called name and give it this value Carter. Similarly, if I'm going to give Carter a number, I can go into people bracket 0 dot number and give that the same thing as before plus 1-617-495-1000. And then I can do the same for myself here-- people bracket-- where should I go? 
+
+OK, one because again, two elements. But we started counting at zero. Bracket name equals quote unquote David. And then lastly, people bracket 1 dot number equals quote unquote plus 1-949-468-2750. 
+
+So now if I scroll down here to my logic, I don't think this part needs to change too much. I'm still, for the sake of discussion, going to iterate 2 times from i is 0 on up to but not through 2. But I think this line of code needs to change. 
+
+How should I now refer to the i-th person's name as I iterate? What should I compare quote unquote David to this time? Let me see. On the end here? 
+
+AUDIENCE: People bracket i dot name. 
+
+DAVID J. MALAN: Yeah, people bracket i dot name. Why? Because people is the name of the array. Bracket i is the i-th person that we're iterating over in the current loop-- first zero, then one, maybe higher if it had more people. 
+
+Then dot is our new syntax for going inside of a data structure and accessing a variable therein which in this case is name. And so I can compare David just as before. So it's a little more verbose, but now arguably this is a better program because now these people are full fledged data types unto themselves. There's no more honor system inside of my loop that this is going to line up because in just a moment, I'm going to fix this one last remnant of the previous version. And if I can call back on you again, what should I change numbers bracket i to this time? 
+
+AUDIENCE: [INAUDIBLE] dot number. 
+
+DAVID J. MALAN: Dot number, exactly. So gone is the honor system that just assumes that bracket i in this array lines up with bracket i in this other array. Now why? 
+
+There's only one array. It's an array called people. The things it stores are persons. A person has a name and a number. 
+
+And so even though it's kind of marginal admittedly given that this is a short program and given that this kind of made things look more complicated at first glance, we're now laying the foundation for just a better design because you really can't screw up now the association of names with numbers because every person's name and number is, so to speak, encapsulated inside of the same data type. And that's a term of art in CS. 
+
+Encapsulation means to encapsulate-- that is, contain-- related pieces of information. And thus, we have a person that encapsulates two other data types, name and number. And this just sets the foundation for all of the cool stuff we've talked about and you use every day. What is an image? 
+
+Well, recall that an image is a bunch of pixels or dots on the screen. Every one of those dots has RGB values associated with it-- red, green, and blue. You could imagine now creating a structure in C probably where maybe you have three values, three variables-- one called red, one called green, one called blue. And then you could name the thing not person but pixel. And now you could store in C three different colors-- some amount of red, some green, some blue-- and collectively treat it as the color of a pixel. 
+
+And you could imagine doing something similar perhaps for video or music. Music, you might have three variables-- one for the musical note, the duration, the loudness of it. And you can imagine coming up with your own data type for music as well. 
+
+So this is a little low level. We're just using like a familiar contacts application. But we now have the way in code to express most any type of data that we might want to implement or discuss ultimately. So any questions now on struct or defining our own types, the purposes for which are to use arrays but use them more responsibly now in a better design but also to lay the foundation for implementing cooler and cooler stuff per our week zero discussion? Yeah. 
+
+AUDIENCE: What's the [INAUDIBLE] 
+
+DAVID J. MALAN: What's the difference between this and an object in an object oriented language? So slight side note, C is not object-oriented. Languages like Java and C++ and others which you might have heard of, programmed yourself, had friends program in, are object oriented languages in those languages they have things called classes or objects which are interrelated. 
+
+And objects can store not just data, like variables. Objects can also store functions, and you can kind of sort of do this in C. But it's not sort of conventional. 
+
+In C, you have data structures that store data. In languages like Java and C+, you have objects that store data and functions together. Python is an object-oriented language as well. So we'll see this issue in a few weeks, but let me wave my hands at it for now. Yeah. 
+
+AUDIENCE: Could you use this [INAUDIBLE]? 
+
+DAVID J. MALAN: Yes. Could you use this struct to redefine how an int is defined? Short answer, yes. 
+
+We talked a couple of times now about integer overflow. And most recently, you might have seen me mention the bug in iOS and Mac OS that was literally related to an int overflow. That's the result of ints only storing 4 bytes or 32 bits or even as long as 64 bits or 8 bytes. But it's finite. But if you want to implement some financial software or some scientific or mathematical software that allows you to count way bigger than a typical int or a long, you could imagine John coming up with your own structure. 
+
+And in fact, in some languages there is a structure called big int, which allows you to express even bigger numbers. How? Well, maybe you store inside of a big ant an array of values. 
+
+And you somehow allow yourself to store more and more bits based on how high you want to be able to count. So in short, yes. We now have the ability now to do most anything we want in the language even if it's not built in for us. Other questions. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Could you define a name and a number in the same line? Sort of. It starts to get syntactically a little messy, so I did it a little more pedantic line by line. Good question. Over here. 
+
+AUDIENCE: [INAUDIBLE] function you use for the function at the bottom of the [INAUDIBLE]. Could you do something like that [INAUDIBLE]? 
+
+DAVID J. MALAN: Prototypes-- you have to do A and C. You have to define anything you're going to use or declare anything you're going to use before you actually use it. So it is deliberate that I put it at the top of my code in this file. 
+
+Otherwise, the compiler would not know what I mean by person when I first use it here on what's line 14. So it has to come first, or it has to be put into something like a header file so that you include it at the very top of your code. Other questions over here. Yeah. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Yeah, good question, and we'll come back to this later in the term when we talk about SQL, a database language, and storing things in actual databases. Generally speaking, even though we humans call things phone numbers, or in the US, we have social security numbers, those types of numbers often have other punctuation in it, like dashes, parentheses, pluses, and so forth. You could not store any of that syntax or that punctuation inside of an int. 
+
+You could only store numbers. So one motivation for using a string is just I can store whatever the human wanted me to store, including parentheses and so forth. Another reason for storing things as strings, even if they look like numbers, is in the context of zip codes in the United States. 
+
+Again, we'll come back to this. But long story short-- years ago, actually-- I was using Microsoft Outlook for my email client. And eventually I switched to Gmail. And this is like 10 plus years ago now. 
+
+And Outlook at the time lets you export all of your contacts as a CSV file-- Comma Separated Values. More on that in the weeks to come too. And that just means I could download a text file with all of my friends and family and their numbers inside of it. 
+
+Unfortunately, I open that same CSV file with Excel, I think, at the time just to kind of spot check it and see if what's in there was what it was expected. And I must have instinctively hit, like, Command or Control-S to save it. And Excel at least has this habit of sort of reformatting your data. 
+
+If things look like numbers, it treats them as numbers. And Apple Numbers does this too. Google Spreadsheets does this to nowadays. 
+
+But long story short, I then imported my mildly saved CSV file into Gmail. And now 10 plus years later, I'm still occasionally finding friends and family members whose zip codes are in Cambridge, Massachusetts 2138, which is missing the 0 because we here in Cambridge are 02138. And that's because I treated or I let Excel treat what looks like a number as an actual number or int, and now leading zeros become a problem because mathematically, they mean nothing, but in the mail system, they do-- sending envelopes and such. All right, other final questions here. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Yeah, so could I have used a 2D or two dimensional array to solve the problem earlier of having just one array? Yes, but one, I would argue it's less readable, especially as I get lots of names and numbers. And two, that too is also kind of relying on the honor system. 
+
+It would be all too easy to omit some of the square brackets in the two dimensional array. So I would argue it too is not as good as introducing a struct. More on that down the road. 
+
+Two dimensional arrays just means arrays of arrays, as you might infer. All right, so now that we have this ability to store different types of data like contacts in a phone book, having names and addresses, let's actually take a step back and consider how we might now solve one of the original problems by actually sorting the information we're given in advance and considering, per our discussion earlier, just how costly, how time consuming is that because that might tip the scales in favor of sorting, then searching, or maybe just not sorting and only searching. 
+
+It'll give us a sense of just how expensive, so to speak, sorting something actually is. Well, what's the formulation of this problem? It's the same thing as week zero. 
+
+We've got input to sort. We want it to be output as sorted. So for instance, if we're taking unsorted input as input, we want the sorted output as the result. More concretely, if we've got numbers like these-- 63852741, which are just randomly arranged numbers-- we want to get back out 12345678. 
+
+So we just want those things to be sorted. So again, inside of the black box here is going to be one or more algorithms that actually gets this job done. So how might we go about doing this? 
+
+Well, just to vary things a bit more, I think we have a chance here for a bit more audience participation. But this time, we need eight people if we may. All of you have to be comfortable appearing on the internet. 
+
+OK, so this is actually quite convenient that you're all quite close. How about 1, 2, 3, 4, 5, 6, 7-- oh, OK, and someone volunteering their friend-- number eight. Come on down. Come on down. 
+
+And if you could, I'm going to set things up. If you all could join Valerie, my colleague over there, to give you a prop to use here, we'll go ahead in just a moment and try to find some numbers at hand. In just a moment, each of our volunteers is going to be representing an integer. And that integer is initially going to be in unsorted order. 
+
+And I claim that using an algorithm, step by step instructions, we can probably sort these folks in at least a couple of different ways. So they're in wardrobe right now just getting their very own Harvard T-shirts with a Jersey number on it, which will then represent an element of our array. Give us just a moment to finish getting the attire ready. 
+
+They're being handed a shirt and a number. And let me ask the audience for just a moment. As we have these numbers up here on the screen, these numbers too are unsorted. 
+
+They're just in random order. And let me ask the audience. How would you go about sorting these eight numbers on the screen? How would you go about sorting these? Yeah, what are your thoughts? 
+
+AUDIENCE: [INAUDIBLE] the number at the end, the following number. 
+
+DAVID J. MALAN: OK. 
+
+AUDIENCE: The following number is bigger, then I keep it as it is. 
+
+DAVID J. MALAN: OK. 
+
+AUDIENCE: If not, then [INAUDIBLE]. 
+
+DAVID J. MALAN: OK, so just to recap, you would start with one of the numbers on the end. You would look to the number to the right or to the left of it, depending on which end you start at. And if it's out of order, you would just start to swap things. 
+
+And that seems reasonable. There's a whole bunch of mistakes to fix here because things are pretty out of order. But probably, if you start to solve small problems at a time, you can achieve the end result of getting the whole thing sorted. 
+
+Other instincts, if you were just handed these numbers, how you might go about sorting them? How might you? Yeah, in the back. 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: OK, I like that. So to recap there, find the smallest one first and put it at the beginning, if I heard you correctly. And then presumably, you could do that again and again and again. 
+
+And that would seem to give you a couple of different algorithms. And if you all are attired here-- do you want to come on up if you're ready? We had some [? felt ?] volunteers too. 
+
+Come on over. So if you all would like to line yourselves up facing the audience in exactly this order-- so whoever is number zero should be way over here, and whoever is number five should be way over there. Feel free to distance as much as you'd like and scooch a little with this way if you could. 
+
+OK, all right. And make a little more room. So seven-- let's see. 5, 2, 7, 4-- 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: 4, hopefully 1. Yeah, keep them to the side. OK, 1, 6, and there we go-- 3. 
+
+Come on over, three. I was looking for you. All right, so here, we have an array of eight numbers-- eight integers if you will. And do you want to each say a quick hello to the group? 
+
+AUDIENCE: Hello, I'm Quinn. Go [INAUDIBLE]. 
+
+AUDIENCE: Hi, everyone. I'm [INAUDIBLE]. 
+
+AUDIENCE: Hey, I'm Mitchell. 
+
+AUDIENCE: Hi, I'm Brett. And also, go [INAUDIBLE]. 
+
+AUDIENCE: I'm Hannah. Go [INAUDIBLE]. 
+
+AUDIENCE: Hi, I'm Matthew. Go [INAUDIBLE] 
+
+AUDIENCE: Hi, I'm Miriam. Go Winthrop. 
+
+AUDIENCE: Hi, I'm Celeste, and go Strauss. 
+
+DAVID J. MALAN: Wonderful. Well, welcome all to the stage, and let's just visualize, perhaps organically, how you eight would solve this problem. So we currently have the numbers 0 through 7 quite out of order. Could you go ahead and just yourselves from 0 through 7? 
+
+AUDIENCE: Thank you. 
+
+DAVID J. MALAN: OK, so what did they just do? OK, yes. First of all, yes, very well done. 
+
+How would you describe what they just did? Well, let's do this. Could you go back into that order on the screen-- 52741630? 
+
+And could you do exactly what you just did again? Sort yourselves. All right, what did-- OK, yes. 
+
+Well done again. All right, so admittedly, there's kind of a lot going on because each of you, except number four, are doing something in parallel all at the same time. And that's not really how a computer typically works. 
+
+Just like a computer can only look at one memory location, at one locker, at a time, so can a computer only move one number at a time-- sort of opening a locker, checking what's there, moving it as needed. So let's try this more methodically based on the two audience suggestions. If you all could randomize yourself again to 52741630, let's take the second of those approaches first. 
+
+I'm going to look at these numbers. And even though I as the human can obviously see all the numbers and I just kind of have the intuition for how to fix this, we got to be more methodical because eventually, we've got to translate this to pseudo code and then code. So let me see. 
+
+I'm going to search for, as you proposed, the smallest number. And I'm going to start from left to right. I could do it right to left, but left to right just tends to be convention. 
+
+All right, 5 at this moment is the smallest number I've seen. So I'm going to remember that in a variable, if you will. Now I'm going to take one more step-- 2. 
+
+OK, 2 I'm going to compare to the variable in mind, obviously smaller. I'm going to forget about 5 and only now remember 2 as the now smallest elements. 7, nope-- I'm going to ignore that because it's not smaller than the 2 I have in mind. 
+
+4, 1-- OK, I'm going to update the variable in mind because that's indeed smaller. Now obviously, we the humans know that's getting pretty small. Maybe it's the end. I have to check all values to see if there's something even smaller because 6 is not, 3 is not, but 0 is. And what's your name again? 
+
+AUDIENCE: Celeste. 
+
+DAVID J. MALAN: Celeste. Where should Celeste or number 0 go according to this proposed algorithm? All right, I'm seeing a lot of this. 
+
+So at the beginning of the array, so before doing this for real, let's have you pop out in front. And could you all shift and make room for Celeste? Is this a good idea to have all of them move or equivalently move everything in the array to make room for Celeste and number 0 over there? 
+
+No, probably not. That felt like a lot of work. And even though it happened pretty quickly, that's like seven steps to happen just to move her in place. So what would be marginally smarter perhaps-- a little more efficient, perhaps? What's that? 
+
+AUDIENCE: Swapping. 
+
+DAVID J. MALAN: Swapping. What do you mean by swap? 
+
+AUDIENCE: Replacing swaps. 
+
+DAVID J. MALAN: OK, replace two values. So if you want to go back to where you were, one step Over, number 5, he's not in the right place. He's got to move eventually. 
+
+So you know what? If that's where Celeste belongs, why don't we just swap 5 and 0? So if you want to go ahead and exchange places with each other. Notice what's just happened. 
+
+The problem I'm trying to solve has gotten smaller. Instead of being size 8, now it's size 7. Now granted, I moved 5 to another wrong location. But if these numbers started off randomly, it doesn't really matter where 5 goes until we get him into the right place. 
+
+So I think we've improved. And now if I go back, my loop is sort of coming back around. I can ignore Celeste and make this a seven step problem and not eight because I know she's in the right place. 
+
+2 seems to be the smallest. I'll remember that. Not 7, not 4-- 1 seems to be the smallest. Now I know as a human this should be my next smallest. But why, intuitively, should I keep going, do you think? 
+
+I can't sort of optimize as a human and just say, number 1, let's get you into the right place. I still want to check the whole array. Why? Yeah. 
+
+AUDIENCE: Perhaps there's another 1. 
+
+DAVID J. MALAN: Maybe there's another 1, and that could be another problem altogether. Other thoughts? Yeah. 
+
+AUDIENCE: Could be another 0 
+
+DAVID J. MALAN: There could be another 0 indeed, but I did go through the list once, right? And I kind of know there isn't. Your thoughts? 
+
+AUDIENCE: You don't know that every value is represented. So maybe there's a [INAUDIBLE] You just don't know what kind of data you're working with. 
+
+DAVID J. MALAN: Yeah, I don't necessarily know what is there. And honestly, I only stipulated earlier that I'm using one variable in my mind. I could use two and remember the two smallest elements I've seen. 
+
+I could use three variables, four. But then I'm going to start to use a lot of space in addition to time. So if I've stipulated that I only have one variable to solve this problem, I don't know anything more about these elements because the only thing I'm remembering at this moment is number 1 is the smallest element I've seen. 
+
+So I'm going to keep going. 6? Nope. 3? Nope. 
+
+5? Nope. OK, I know that number 1, and your name was-- 
+
+AUDIENCE: Hannah. 
+
+DAVID J. MALAN: --Hannah is the next smallest element. I could have everyone move over to make room, but nope. 2? You know, even though you're so close to where I want you, I'm just going to keep it simple and swap you two. 
+
+So granted, I've made the problem a little worse. But on average, I could get lucky too and just pop number 2 into the right place. Now let me just accelerate this. 
+
+I can now ignore Hannah and Celeste, making the problem size 6 instead of 8. So it's getting smaller. 7 is the smallest. 
+
+Nope, now 4 is-- 2 is the smallest. Still 2, still 2, still 2. So let's go ahead and swap 2 and 7. 
+
+And now I'll just kind of orchestrate it verbally. 4, you're about to have to do something. So we now have 4, 7, 6 3, 5. OK, 3-- could you swap with 4? 
+
+All right, now we have 7, 6, 4, 5. OK, 4, could you swap with 7? Now we have 6, 7, 5. 5, could you swap with 6? 
+
+And now we have 7, 6. 6, would you swap at 7? And now perhaps round of applause. They've sorted themselves. 
+
+OK, hang on there one minute. So we'll do this one other approach. And my God, that felt so much slower than the first approach, but that's, one, because I was kind of providing a long voiceover. 
+
+But two, we were doing one thing at a time whereas the first time, you guys had the luxury of moving like eight different CPUs-- brains, if you will-- were all operating at the same time. And computers like that exist. If you have a computer with multiple cores, so to speak, that's like having a computer that technically can do multiple things at once. 
+
+But software typically, at least as we've written it thus far, can only do one thing at a time. So in a bit, we'll add up all of these steps. But for now, let's take one other approach. If you all could reorder yourselves like that-- 52741630-- let's take the other approach that was recommended by just fixing small problems and see where this gets us. 
+
+So we're back in the original order. 5 and 2 are clearly out of order. So you know what? Let's just bite this problem off now. 5 and 2, could you swap? 
+
+Now let me take a next step. 5 and 7, I think you're OK. There's a gap, yes, but that might not be a big deal. 7 and 4-- problem. 
+
+Let's have you swap. OK, 7 and 1, let's have you swap. 7 and 6, let's have you swap. 
+
+7 and 3, you swap. 7 and 0, you swap. Now let me pause for just a moment. Still not sorted. 
+
+So I'm clearly not done. But have I improved the problem? Right, I can't see-- like before, I can't optimize like before because 0 is obviously not here. So unless they're still way back there, so it's not like I've gone from 8 steps to 7 to 6 just yet. But have I made any improvements? 
+
+AUDIENCE: Yes. 
+
+DAVID J. MALAN: Yes. In what sense is this improved? What's a concrete thing you could point to is better? Yeah. 
+
+AUDIENCE: Sorted the highest number. 
+
+DAVID J. MALAN: I've sorted the highest number, which is indeed 7. And conversely, if you prefer, Celeste is one step closer to the beginning. Now worst case, Celeste is going to have to move one step on each iteration. 
+
+So I might need to do this thing like n total times to move her all the way over. But that might work out OK. Let me see. 2 and 5, you're good. 
+
+5 and 4, swap you. 5 and 1, let's swap you. 5 and 6, you're good. 6 and 3, let's swap you. 
+
+6 and 0, let's swap you. 6 and 7, you're good. And I think now-- notice that the high values, as you noted, are sort of bubbling up, if you will, to the end of the list. 2 and 4, you're good. 
+
+4 and 1, let's swap. 4 and 5, good. 5 and 3, swap. 5 and 0, swap. 
+
+5, 6, 7, of course, are good. So now you can sort of see the problem resolving itself. And let's just do this part now faster. 
+
+2 and 1, 2 and 4. OK, 4 and 3, 4 and 0. All right, now 1 and 2, 2, and 3, and 0, and good. So we do have some optimization there. 
+
+We don't need to keep going because those all are sorted. 1 and 2, you're good. 2 and 0, all right, done. 1 and 0-- and big round of applause in closing. 
+
+OK, so thank you all. We need the puppets back, but you can keep the shirts. Thank you for volunteering here. 
+
+Feel free to make your way exits left or right. And let's see if, thanks to our volunteers here, we can't now formalize a little bit what we did on both passes here. I claim that the first algorithm our volunteers kindly acted out is what's called selection sort. And as the name implied, we selected the smallest elements again and again and again, working our way from left to right, putting Celeste into the right place, and then continuing with everyone else. 
+
+So selection sort, as it's formally called, can be described, for instance, with this pseudo code here-- 4i from 0 to n minus 1. And again, why this? This is just how talk about arrays. 
+
+The left end is 0, the right end is n minus 1 where in this case, n happened to be eight people. So that's 0 through 7. So for i from 0 to n minus 1, what did I do? 
+
+I found the smallest number between numbers bracket i and numbers bracket n minus 1. It's a little cryptic at first glance, but this is just a very pseudo code-like way of saying find the smallest element among all eight volunteers because if i starts at 0 and n minus 1 never changes because there's always 8, 8 people, so 8 minus 1 is 7, this first says find the smallest number between numbers bracket 0 and numbers bracket 7, if you will. Then what do I do? 
+
+Swap the smallest number with numbers bracket i. So that's how we got Celeste from over here all the way over there. We just swapped those two values. 
+
+What then happens next in this pseudo code? i, of course, goes from 0 to 1. And that's the technical way of saying now find the smallest element among the 7 remaining volunteers, ignoring Celeste this time because she was already in the correct location. So the problem went from size 8 to size 7. 
+
+And if we repeat, size 6, 5, 4, 3, 2, 1, until boom, it's all done at the very end. So this is just one way of expressing in pseudo code what we did a little more organically and a formalization of what someone volunteered out in the audience. So if we consider, then, the efficiency of this algorithm, maybe abstracting it away now as a bunch of doors where the left most again is always 0, the right most is always n minus 1, or equivalently, the second to last is n minus 2, the third to last is n minus 3 where n might be 8 or anything else, how do we think about or quantify the running time of selection sort? Big O of what? 
+
+I mean, that was a lot of steps to be adding up. It's probably more than n, right, because I went through the list again and again. It was like n plus n minus 1 plus n minus 2. Any instincts here? 
+
+We got like the whole team in the orchestra now. Let me propose we think about it this way with just a bit of formula, say. So the first time, I had to look at n different volunteers. 
+
+n was 8 in this case, but generically, I looked at all eight numbers in order to decide who was the smallest. And sure enough, Celeste was at the very end. She happened to be all the way to the right. 
+
+But I only knew that once I looked at all 8 or all n volunteers. So that took me n steps first. But once the list was swapped into the right place, then my problem with size n minus 1, and I had n minus 1 other people to look through. 
+
+So that's n minus 1 steps. Then after that, it's n minus 2 plus n minus 3 plus n minus 4 plus dot dot dot until I had one final step. And it's obvious that I only have one human left to consider. So we might wave our hands at this with a little ellipsis and just say dot dot dot plus 1 for the final step. 
+
+Now what does this actually equal? Well, this is where you might think back on, like, your high school math or physics textbook that has a little cheat sheet at the end that shows these kinds of recurrences. That happens to work out mathematically to be n times n plus 1 all divided by 2. That's just what that recurrence, that series, actually adds up to. 
+
+So if you take on faith that that math is correct, let's just now multiply this out mathematically. That's n squared plus n divided by 2 or n squared divided by 2 plus n over 2. And here's where we're starting to get annoyingly into the weeds. Like, honestly, as n gets really large, like a million doors or integers or a billion web pages in Google search engine, honestly, which of these terms is going to matter the most mathematically if n is a really big number? Is n squared divided by 2 the dominant factor, or is n divided by 2 the dominant factor? 
+
+AUDIENCE: n squared. 
+
+DAVID J. MALAN: Yeah, n squared. I mean, no matter what n is-- and the bigger it is, the bigger raising it to the power 2 is going to be. So you know what? Let's just wave our hands at this because at the end of the day, as n gets really large, the dominant factor is indeed that first one. 
+
+And you know what? Even the divided 2, as I claimed earlier with our two phone book examples, where the two straight lines if you keep zooming out essentially looked the same when n is large enough, let's just call this on the order of n squared. So that is to say a computer scientist would describe bubble sort as taking on the order of n squared steps. That's an oversimplification. 
+
+If we really added it up, it's actually this many steps-- n squared divided by 2 plus n over 2. But again, if we want to just be able to generally compare two algorithms' performance, I think it's going to suffice if we look at that highest order term to get a sense of what the algorithm feels like, if you will, or what it even looks like graphically. All right, so with that said, we might describe bubble sort as being in big O-- sorry, selection sort as being in big O of n squared. 
+
+But what if we consider now the best case scenario-- an opportunity to talk about a lower bound? In the best case, how many steps does selection sort take? Well, here, we need some context. 
+
+Like, what does it mean to be the best case or the worst case when it comes to sorting? Like, what could you imagine meaning the best possible scenario when you're trying to sort a bunch of numbers? I got the whole crew here again. Yeah. 
+
+AUDIENCE: They would already be sorted. 
+
+DAVID J. MALAN: All right, they're already sorted, right? I can't really imagine a better scenario than I have to sort some numbers, but they're already sorted for me. But does this algorithm leverage that fact in practice? 
+
+Even if all of our humans had lined up from 0 to 7, I'm pretty sure I would have pretty naively started here. And yes, Celeste happens to be here. But I only know she needs to be here once I've looked at all eight people. 
+
+And then I would have realized, well, that was a waste of time. I can leave Celeste be. But then what would I have done? 
+
+I would have ignored her position because we've solved one problem. I would have done the same thing now for seven people, then six people. So every time I walk through, I'm not doing much useful work. But I am doing those comparisons because I don't know until I do the work that the people were in the right order. So this would seem to imply that the omega notation, the best case scenario, even, a lower bound on the running time would be what, then? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: A little louder? 
+
+AUDIENCE: N squared. 
+
+DAVID J. MALAN: It's still going to be n squared, in fact, because the code I'm giving myself doesn't leverage or benefit from any of that scenario because it just mindlessly continues to do this again and again. So in this case, yes, I would claim that the omega notation for selection sort is also big O of n squared. So those are the kinds of numbers to beat. 
+
+It seems like the upper bound and lower bound of selection sort are indeed n squared. And so we can also describe selection sort, therefore, as being in theta of n squared. That's the first algorithm we've had the chance to describe that in, which is to say that it's kind of slow. 
+
+I mean, maybe other algorithms are slower, but this isn't the best starting point. Can we do better? Well, there's a reason that I guided us to doing the second algorithm second. Even though you verbally proposed them in a different order, this second algorithm we did is generally known as bubble sort. 
+
+And I deliberately used that word a bit ago, saying the big values are bubbling their way up to the right to kind of capture the fact that, indeed, this algorithm works differently. But let's consider if it's better or worse. So here, we have pseudo code for bubble sort. 
+
+You could write this too in different ways. But let's consider what we did on the stage. We repeated the following n minus 1 times. We initialized at least, even though I didn't verbalize it this way, a variable like i from 0 to n minus 2, n minus 2. 
+
+And then I asked this question. If numbers bracket i and numbers bracket i plus 1 are out of order, then swap them. So again, I just did it more intuitively by pointing, but this would be a way, with a bit of pseudo code, to describe what's going on. 
+
+But notice that I'm doing something a little differently here. I'm iterating from if equals 0 to n minus 2. Why? Well, if I'm comparing two things, left hand and right hand, I'd still want to start at 0. 
+
+But I don't want to go all the way to n minus 1 because then, I'd be going past the boundary of my array, which would be bad. I want to make sure that my left hand-- i, if you will-- stops at n minus 2 so that when I plus 1 in my pseudo code, I'm looking at the last two elements, not the last element and then pass the boundary. That's actually a common programming mistake that we'll undoubtedly soon make by going beyond the boundaries of your array. 
+
+So this pseudo code, then, allows me to say compare every one again and again and swap them if they're out of order. Why do I repeat the whole thing n minus 1 times? Like, why does it not suffice just to do this loop here? 
+
+Think what happened with Celeste. Why do I repeat this whole thing n minus 1 times? Yeah, in the back? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Indeed, and I think if I can recap accurately, think back to Celeste again. And I'm sorry to keep calling on you as our number 0. Each time through bubble sort, she only moved one step. 
+
+And so in total, if there's n locations, at the end of the day, she needs to move n minus 1 steps to get 0 all the way to where it needs to be. And so this inner loop, if you will, where we're iterating using i, that just fixes some of the problems. But it doesn't fix all of the problems until we do that same logic again and again and again. 
+
+And so how might we quantify the running time of this algorithm? Well, one way to see it is to just literally look at the pseudo code. The outer loop repeats n minus 1 times by definition. 
+
+It literally says that. The inner loop, the for loop, also iterates n minus 1 times. Why? Because it's going from 0 to n minus 2. 
+
+And if that's hard to think about, that's the same thing is 1 to n minus 1 if you just add 1 to both ends of the formula. So that means you're doing n minus 1 things n minus 1 times. So I literally multiply how many times the outer loop is running by how many times the inner loop is running, which gives me sort of FOIL method n minus 1 squared. 
+
+And I could multiply that whole thing out. Well, let's consider this just a little more methodically here. If I have n minus 1 on the outer, n minus 1 on the inner-- let's go ahead and FOIL this. 
+
+So n squared minus n minus n plus 1, combine like terms-- n squared minus 2n plus 1. And now which of these terms is clearly going to be dominant, so to speak? The-- 
+
+AUDIENCE: N squared. 
+
+DAVID J. MALAN: --the n squared. So yes, even though minus 2n is a good thing because it's subtracting off some of the time required, plus 1 is not that big a thing, there's such drops in the bucket when n gets really large, like in the millions or billions, certainly, that bubble sort 2 is on the order of n squared. It's not the same exactly as selection sort. 
+
+But as n gets big, honestly, we're barely going to be able to notice the difference most likely. And so it too might be said to be on the order of n squared. And if we consider now the lower bound on bubble sort's running time, here's where things get potentially interesting. What might you claim is the running time of bubble sort in the best case? And the best case, I claim, is when the numbers are already sorted. Is our pseudo code going to take that into account? 
+
+AUDIENCE: N 
+
+DAVID J. MALAN: OK, n. Why do you propose n? 
+
+AUDIENCE: [INAUDIBLE] 
+
+DAVID J. MALAN: Yes, and that's the key word. To summarize, in bubble sort, I do have to minimally make one pass because if I don't look at all n elements, that I'm theoretically just guessing if it's sorted or not. 
+
+Like, I obviously intuitively have to look at every element to decide yay or nay, it's in the right order. And my original pseudo code, though, is pretty naive. It's just going to blindly go back and forth n minus 1 times again and again, and that's going to add up. 
+
+But what if I add a bit of an optimization that you might have glimpsed on the slide a moment ago where if I compare two people and I don't swap them, compare two people, don't swap them, and I go all the way through the list comparing every pair of adjacent people, and I make no swaps, it would be kind of not just naive but stupid to do that same process again because if the humans have not moved, I'm not going to make any different decisions. I'm going to do nothing again, nothing again. 
+
+So at that point, it would be stupid, very inefficient, to go back and forth and back and forth. So if I modify our pseudo code with just an additional if condition, I bet we can speed this up. Inside of that same pseudo code, what if I say, hey, if no swaps, quit? 
+
+Like quit, prematurely before the loops are finished running. One of the loops has gone through per the indentation here. But if I do a loop from left to right and I have made no swaps, which you can think of as just being one other variable that's plus plusing as I go keeping, track of how many swaps-- if I've made no swaps from left to right, I'm not going to make any swaps the next time around either. So let's just quit at that point. 
+
+And that is to say in the best case, if you will, when the list is already sorted, the omega notation for bubble sort might indeed be omega of n if you add that optimization so as to short circuit all of that inefficient looping to do it only as many times as is necessary. Let me pause to see if there's any questions here. Yeah. 
+
+AUDIENCE: [INAUDIBLE] to optimize the running time for all cases possible? 
+
+DAVID J. MALAN: Good question. If the running time of selection sort and bubble sort are both in big O of n squared but selection sort is in omega of n squared while bubble sort is in omega of n, which sounds better-- I think if I may, should we just always use bubble sort? Yes if we think that we might benefit over time from a lot of good case scenarios or best case scenarios. However, the goal at hand in just a bit is going to be to do even better than both of these. So hold that question further for a moment. Yeah. 
+
+AUDIENCE: [INAUDIBLE] n minus 1? 
+
+DAVID J. MALAN: No. So yes, good question. So I say omega of n, but is it technically omega of n minus 1? Maybe, but again, we're throwing away lower order terms. 
+
+And that's an advantage because we're not comparing things ever so precisely. Just like I plotted with the green and yellow and red chart, I just want to get a sense of the shape of these algorithms so that when n gets really large, which of these choices is going to matter the most? At the end of the day, it's actually perfectly reasonable to use selection sort or bubble sort if you don't have that much data because they're going to be pretty fast. 
+
+My God, our computers nowadays are 1 gigahertz, 2 gigahertz, 1 billion things per second, 2 billion things per second. But if we have large data sets, as we will later in the term and as you might in the real world, that the Googles of the world, then you're going to want to be more thoughtful. And that's where we're going today. 
+
+All right, so let's actually see this visualized a little bit. In a moment, I'm going to change screens here to open up what is a little visualization tool that will give us a sense of how these things actually work and look at a faster rate than our humans are able to do here on stage. So here is another visualization of a bunch of numbers, an array of numbers. Short bars mean small numbers, tall bars mean big numbers. 
+
+So instead of having the numbers on their torsos here, we just have bars that are small or tall based on the magnitude of the number. Let me go ahead, and I preconfigured this in advance to operate somewhat quickly. Let's go ahead and do selections sort by clicking this button. 
+
+And you'll see some pink bars flying by. And that's like me walking left and right, left and right, to select the next smallest number. And so what you'll see happening on the left of this array of numbers is Celeste, if you will, and all of the other smaller numbers are appearing on the left while we continue to solve the remaining problems to the right. 
+
+So again, we no longer have to touch the smaller numbers here. So that's why the problem is getting smaller and smaller and smaller over time. But you can notice now visually, look at how many times we're retracing our steps. This is why things that are n squared tend to be frowned upon if avoidable because I'm touching the same elements again and again. 
+
+When I was walking through, I kept pointing at the same humans again and again. And that adds up. So let's see if bubble sort looks or feels a little different. 
+
+Let me re-randomize the thing, and let me now click Bubble Sort at the top. And as you might infer, there's other sorting algorithms out there, not all of which we'll look at. But here's bubble sort. 
+
+Same pink coloration, but it's doing something different. It's two pink bars going through again and again comparing the adjacent numbers. And you'll see that the largest numbers are indeed bubbling the way up to the right, but the smaller numbers, like our number 0 was, is only slowly making its way over. 
+
+Here's a comparable. Here's the number one. And it's going to take a while to get all the way to the left. And here too, notice how many times the same bars are becoming pink, how many times the algorithm is retracing and retracing its steps. Why? 
+
+Because it's only solving one problem at a time on each pass. And each time we do that, we're stepping through practically the whole array. And now granted, I could speed this up even further if I really wanted to, but my God, this is only, what, like 50 or 60 elements, something like that? 
+
+This is slow. Like, this is what n squared looks like and feels like. And now I'm just trying to come up with words to say until we get to the finish line here. 
+
+Like, this would be annoying if this is the speed of sorting, and this is why I sort of secretly sorted the numbers for Rave in advance because it would have taken us an annoying number of steps to get that in place for her. So those two algorithms are n squared. Can we do, in fact, better? 
+
+Well, to save the best algorithm for last, let's take a shorter five minute break here. And when we come back, we'll do even better than n squared. All right. 
+
+So the challenge at hand is to do better than selection sort and better than bubble sort and ideally not just marginally better but fundamentally better. Just like in week zero, that third and final divide and conquer algorithm was sort of fundamentally faster than the other two. So can we do better than something on the order of n squared? 
+
+Well, I bet we can if we start to approach the problem a little differently. The sorts we've done thus far, generally known as comparison sorts-- and that kind of captures the reality that we were doing a huge number of comparisons again and again. And you kind of saw that in the vertical bars that were going pink as everything was being compared again and again. 
+
+But there's this programming technique, and it's actually a mathematical technique known as recursion that we've actually seen before. And this is a building block or a mental model we can bring to bear on the problem to solve the sorting problem sort of fundamentally differently. But first, let's look at it in a more familiar context. 
+
+A little bit ago, I proposed this pseudo code for the binary search algorithm. And notice that what was interesting about this code, even though I didn't call it out at the time, it's kind of cyclically defined. Like, I claim this is an algorithm for search, and yet it seems a little unfair that I'm using the verb search inside of the algorithm for search. It's like an English sort of defining a word by using the word. Normally, you shouldn't really get away with that. 
+
+But there's something interesting about this technique here because even though this whole thing is a search algorithm and I'm using my own algorithm to search the left half or the right half, the key feature here that doesn't normally happen in English when you define a word in terms of a word is that when I search the left half or search the right half, yes, I'm doing the same thing. I'm using the same algorithm. But the problem is, by definition, half as large. 
+
+So this isn't going to be a cyclical argument in the same way. This approach, by using search within search is going to whittle the problem down and down and down until hopefully, one door or no doors remains. And so recursion is a programming technique whereby a function calls itself. 
+
+And we haven't seen this yet in C, and we haven't seen this really in Scratch. But in C, you can have a function call itself. And the form that takes is like literally using the function's name inside of the function's implementation itself. 
+
+We've actually seen an opportunity for this once before too. Think back to week zero. Here's that same pseudo code for searching for someone in an actual, physical phone book. And notice these yellow lines here. 
+
+We described those in week zero as inducing a loop, a cycle. And this is a very procedural approach, if you will, because lines 8 and 11 are very mechanically, if you will, telling me to go back to line three to do this kind of looping thing. But really, what that's doing in the binary search algorithm for the phone book is it's just telling me to search the left half or search the right half. 
+
+I'm doing it more mechanically again by sort of telling myself what line number to go back to. But that's equivalent to just telling myself go search the left half, search the right half, the key thing being the left have and the right half are smaller than the original problem. It would be a bug if I just said search the phone book, search the phone book, because obviously, you never get anywhere. But if you search the half, the half, the half, problem gets smaller and smaller. 
+
+So let's reformulate week zero's phone book code to be not procedural as here but recursive whereby in this search algorithm, AKA binary search, formerly called divide and conquer, I'm going to literally use also the keyword search here. Notice among the benefits of doing this is it kind of tightens the code up, makes it a little more succinct, even though that's kind of a fringe benefit here. But it's an elegant way too of describing a problem by just having a function use itself to solve a smaller puzzle at hand. 
+
+So let's now consider a familiar problem, a smaller version than the one you've dabbled with-- this sort of pyramid, this half pyramid from Mario. And let's throw away the parts that aren't that interesting and just consider how we might, up until now, implement this in C code, this left aligned pyramid, if you will. Let me go over here, and let me create a file called-- how about iteration.c? 
+
+And in this file, I'm going to go ahead and include cs50.h. And I'm going to include stdio.h. And the goal at hand is to implement in C a little program that just prints out this and exactly this pyramid. So no get string or any of that-- we're just going to keep it simple and print exactly this pyramid of height 4 here. 
+
+So how might I do this? Well, let me go ahead, and in main, let me first ask the user for-- well, we'll go ahead and generalize it. Let's go ahead and ask the user for heights. We're using getint as before. And I'll store that in a variable called height. 
+
+And then let me go ahead and simply call the function draw passing in that height. So for the moment, let me assume that someone somewhere has implemented a draw function. And this, then, is the entirety of my program. 
+
+All right, unfortunately, C does not come with a draw function. So let me go ahead and invent one. It doesn't need to return a value. It just needs to print something-- so-called side effect. 
+
+So I'm going to define a function called draw that takes as input an int. I'll call it n for number, but I could call it anything I want. And inside of this. I'm going to go ahead and print out a left aligned pyramid like this from top to bottom. The salient features here are that this is a pyramid, at least in this example, of height four. And now in height four, the first row has one brick. 
+
+The second row has two. The third has three. The fourth has four. That's a nice pattern that I can probably represent in code. So how might I do this? 
+
+Well, how about 4 int i gets-- let me do it the old school way-- 1. And then i is less than or equal to n. And then i plus plus-- so I'm going from 1 to 4 just to keep myself sane here. 
+
+And then inside of this loop, what do I want to do? Well, let me keep it conventional, in fact. Let me just change this to be the more conventional 0 to n even though it might not be as intuitive because now on row 0, I want one brick. 
+
+On row 1, I want two bricks, dot dot dot. On row 3, I want four. So it's kind of offset now. But I'm being more conventional. 
+
+So on each row, how many bricks do I want to print? Well, I think I want to do this. For int j, for instance, common to use j after if you have a nested loop, let's start j at 0 and do this so long as is less than i plus 1 and then do j plus plus. So why i plus 1? 
+
+Well, again, when I equals 0, that's the first row, and I want one brick. When i equals 1, that's the second row. I want two bricks. 
+
+And dot dot dot, when i is 3, I want four bricks. So again, I have to add 1 to i to get the total number of bricks that I want to print to the screen. So inside of this nested for loop, I'm going to do printf of a hash with no new line. I'm going to save the new line for about here instead. 
+
+All right, the last thing I'm going to do is copy and paste the prototype at the top of the file. So that I can call this. And again, this is of now week one, week two. Wouldn't necessarily come to your mind as quickly as it might to mine after all this practice, but this is something reminiscent of what you yourself did already for Mario-- printing out a pyramid that hopefully in a moment is going to look like this. 
+
+So let me go back to my code. Let me run make iteration, and let me do dot slash iteration. I'll type in 4, and voila. Seems to be correct, and let's assume it's going to work for other inputs as well. 
+
+Oh, thank you. So this is indeed an example of iteration-- doing something again and again. And it's very procedural. 
+
+Like, I literally have a function called draw that does this thing. But I can think about implementing draw in a somewhat different way that's kind of clever. And it's not strictly necessary for this problem because this problem honestly is not that complicated to solve once you have practice under your belt. Certainly the first time around, probably significantly challenging. 
+
+But now that you kind of associate, OK, row one with one brick, row two with two bricks, it kind of comes together with these for loops. But how else could we think about this problem? Well, this physical structure, these bricks, in some sense is a recursive structure, a structure that's defined in terms of itself. 
+
+Now what do I mean by that? Well, if I were to ask you the question, what does a pyramid of height 4 look like, you would point, of course, to this picture. But you could also kind of cleverly say to me, well, it's actually a pyramid of height 3 plus 1 additional row. 
+
+And here's that cyclical argument, right? Kind of obnoxious to do typically in English or in a spoken language because you're defining one thing in terms of itself. What's a pyramid of height 4? Well, it's a pyramid of height 3 plus 1 more row. 
+
+But we can kind of leverage this logic in code. Well, what's a pyramid of height 3? Well, it's a pyramid of height 2 plus 1 more row. Fine, what's a pyramid of height 2? 
+
+Well, it's a pyramid of height 1 plus 1 more row. And then hopefully, this process ends, and it does because notice, the pyramid is getting smaller and smaller. So you're not going to have this sort of silly back and forth with me infinitely many times because when we finally get to the base case, the end of the pyramid, fine. 
+
+What is a pyramid of height 1? Well, it's a pyramid of no height plus one more row. And at that point, things just get negative-- no pun intended. Things just would otherwise go negative. 
+
+And so you can just kind of stop. The base case is when there is no more pyramid. So there's a way to draw a line in the sand and say, stop, no more arguments. 
+
+But this idea of defining a physical structure in terms of itself or code in terms of itself actually lets us do some interesting new algorithms. Let me go back to my code here. Let me go ahead and create one final file here called recursion.c that leverages this idea of this built-in self-referential nature. 
+
+Let me include cs50.h. Let me go ahead and include standardio.h, int main void. And then inside of main, I'm going to do the exact same thing-- int height equals get int, asking the user for height. And then I'm going to go ahead and call draw passing in height. So that's going to stay the same. 
+
+I even am going to make my prototype the same-- void draw int n semicolon. And now I'm going to implement void down here with that same prototype, of course. But the code now is going to be a little different. 
+
+What am I going to do here? Well, first of all, if you ask me to draw a pyramid of height n, I'm going to be kind of a wise ass here and say, well, just draw a pyramid of n minus 1-- done. All right, but there's still a little more work to be done. What happens after I print or draw a pyramid of height n minus 1 according to our structural definition a moment ago? What remains after drawing a pyramid of height n minus 1 or 3, specifically? 
+
+AUDIENCE: [INAUDIBLE] 
+
+We need one more row of hashes. OK, so I can do that, right? I'm OK with the single loops. There's no nesting necessary here. I'm just going to do this-- for int i get 0, i is less than n, which is the height that's passed in, i plus plus. 
+
+And then inside of this loop, I'm very simply going to print out a single hash. And then down here, I'm going to print out a new line at the very end. So that's good, right? I might not be as comfortable with nested loops. This is nice and simple. What does this loop do here on line 17 through 20? It literally prints n hashes by counting from i equals 0 on up to but not through n. 
+
+So that's sort of week one style syntax. But this is kind of trippy now because I've somehow boiled down the implementation of draw into printing a row after just drawing the thing above it. But this is problematic as is because in this case, my drawer function, notice, is always going to call the draw function forever in some sense. 
+
+But ideally, when do I want this cyclical process to stop? When do I want to not call draw anymore? Yeah, when n is 1, right? 
+
+When I get to the top of the pyramid, when n is 1, or heck, when the pyramids all gone and n equals 0. I can pick any line in the sand, so long as it's sort of at the end of the process. Then I don't want to call draw anymore. 
+
+So maybe what I should do is this. If n equals equals 0, there's really nothing to draw. So I'm just going to go ahead and return like this. 
+
+Otherwise, I'm going to go ahead and draw n minus 1 rows and then one more row. And I could express this differently. I could do something like this, which would be equivalent. I could say something like if n is greater than or equal to 0, then go ahead and draw the row. 
+
+But I like it this way first. For now, I'm going to go with the original way just to ask a simple question and then just bail out of the function if n equals 0. And heck, just to be super safe, just in case the user types in a negative number, let me also just check if n is a negative number, also, just return immediately. Don't do anything. 
+
+I'm not returning a value because again, the function is void. It doesn't need or have a return value. So just saying return suffices. 
+
+But if n equals 1 or 2 or 3 or anything higher, it is reasonable to draw a pyramid of slightly shorter height like, instead of 4, 3, and then go ahead and print one more row. So this is an example now of code that calls itself within itself. Draw is calling draw. But this so-called base case ensures, this conditional ensures, that we're not going to do this forever. Otherwise, we literally would do this infinitely many times, and something bad is probably going to happen. 
+
+All right, let me go ahead and compile this code-- make recursion. OK, no syntax errors-- dot slash recursion, Enter, height of 4, and voila. If only because some of you have run into this issue accidentally already, let me get rid of the base case here, and let me recompile the code. 
+
+Make recursion. Oh, and actually, now it's actually catching it. So the compiler is smart enough here to realize that all paths through this function will call itself. AKA, It's going to loop forever. 
+
+So let me do the first thing. Suppose I only check for n equaling 0. Let me go ahead and recompile this code with make recursion. 
+
+And now let me just be kind of uncooperative. When I run this program, still works for 4, still works for 0. What if I do like negative 100? 
+
+Have any of you experienced a segmentation fault or core dump? OK, so no shame in this. Like, this means I have somehow touched memory that I shouldn't have. 
+
+And in short, I actually called this function thousands of times accidentally, it would seem now, until the program just bailed on me because I eventually touched memory in the computer that I shouldn't have. That'll make even more sense next week. But for now, it's simply a bug. And I can avoid that bug in this context, probably not your own pset context, by just making sure we don't even allow for negative numbers at all. 
+
+So with this building block in place, what can we now do in terms of those same numbers to sort? Well, it turns out there's a sorting algorithm called merge sort. And there's bunches of others too. 
+
+But merge sort is a nice one to discuss because it fundamentally, we hope, is going to do better than selection sort and bubble sort that is better than n squared. But the catch is it's a little harder to think about. In fact, I'll act it out myself with just these numbers on the shelf here rather than humans because recursion in general takes a little bit of effort to wrap your mind around, typically a bit of practice. But I'll see if we can't walk through it methodically enough such that this comes to light. 
+
+So here's the pseudo code I propose for this algorithm called merge sort. In the spirit of recursion, this sorting algorithm literally calls itself by using the verb sort in its pseudo code. So how does merge sort work? It sort of obnoxiously says, well, if you want to sort all of these things, go sort the left half, then go sort the right half, and then merge the two together. 
+
+Now obnoxious in what sense? Well, if I just asked you to sort something and you just tell me, well, go sort that thing and then go sort that thing, what was the point of asking you in the first place? But the key is that each of these lines is sorting a smaller piece of the problem. 
+
+So eventually, we'll be able to pare this down into something that doesn't go on forever because in fact, in merge sort, there's a base case too. There's a scenario where we just check, wait a minute, if there's only one number to sort, that's it. Quit then because you're all done. So there has to be this base case in any use of recursion to make sure that you don't mindlessly call yourself forever. You've got to stop at some point. 
+
+So let's focus on the third of these steps. What does it mean to merge two lists, two halves of a list, just because this is apparently going to be a key ingredient-- so here, for instance, are two halves of a list of size 8. We have the numbers 2-- and I'll call it out if you're at a bad angle-- 2457 and 0136. 
+
+Notice that the left half at the moment, 2457, is already sorted, and the right half, 0136, is also sorted as well. So that's a good thing because it means that theoretically, I've sorted the left half already. I've sorted the right half already before we began. I just need to merge these two halves. 
+
+What does it mean to sort two halves? Well, for the sake of discussion, I'm just going to turn over most of the numbers except for the first numbers in each of these halves. There's two halves here, left and right. 
+
+At the moment, I'm only going to consider the leftmost element of each half-- that is, the one on the left here and the one on the left here. How do I merge these two lists together? Well, if I look at 2 and I look at 0, which one should presumably come first? The smaller one. 
+
+So I'm going to grab the 0, and I'm going to put it into its own place on this new shelf here. And now I'm going to consider, as part of my iteration, the beginning of this list and the new beginning of this list. So I'm now comparing 2 and 1. Which one's smaller? 
+
+I'm going to go ahead and grab the 1. Now I'm going to compare the beginning of the left list and the new beginning of the right list, 2 and 3. Of course, it's 2. 
+
+Now I'm going to compare the beginning of the left list and the beginning of the right list, 4 and 3. It's of course 3. Now I'm going to compare the 4 against the beginning and end, it turns out, of the second list-- 4, of course. 
+
+Now I'm going to compare the beginning of the left list and the beginning of the right list-- 5, of course. I'm realizing this is not going to end well because I left too much distance between the numbers. But that has nothing to do with the algorithm. 
+
+7 is the beginning of the left list. 6 is the beginning of the right list. It's, of course, 6. 
+
+And at the risk of knocking all of these over, if I now make room for this element, we have hopefully sorted the whole thing by having merged together the two halves of the list. So in short-- thank you. I'm a little worried that's just getting sarcastic now, but we now have merged two half lists. 
+
+We haven't done the guts of the algorithm yet-- sort the left half and sort the right half. But I claim that that is how mechanically you merge two sorted halves. You keep looking at the beginning of each list, and you just kind of weave them together based on which one belongs first based on its size. 
+
+So if you agree that that was a reasonable way to merge two lists together, let's go ahead and focus lastly on what it means to actually sort the left half and sort the right half of a whole bunch of numbers. And for this, I'm going to go ahead and order them in this seemingly random order. And I just have a little cheat sheet above so that I don't mess up. 
+
+And I'm going to start at the very top this time. And hopefully, these will not fall down at any point. But I'm just deliberately putting them in this random order, 5274. And then we have 1630-- 1630. 
+
+Hopefully this won't fall over. Here is now an array of size 8 with eight integers. And I want to sort this. 
+
+I could use selection sort and just go back and forth and back and forth. I could use bubble sort and just compare pairs, pairs, pairs. But those are going to be on the order of big O of n squared. 
+
+My hope is to do fundamentally better here. So let's see if we can do better. All right, so let me look now at my code. I'll keep it on the screen. 
+
+How do I implement merge sort? Well, if there's only one number, I quit. There's obviously not. There's eight numbers, so that's not applicable. 
+
+I'm going to go ahead and sort the left half of numbers. All right, here's the left half-- 5274. Do I sort an array of size 4? Well, here's where the recursion kicks in. 
+
+How do you sort a list of size 4? Well, there's the pseudo code on the board. I sort the left half of the list of size 4. So here we go. 
+
+I have a list of size 4. How do I sort it? I sort the left half. All right, now I have a list of size 2. How do I sort this? 
+
+Well, sort the left half. So here we go. Here's a list of size 1. How do I sort this? 
+
+I think it's done, right? That's quit, right? If only one number, I'm done. 
+
+The 5 is sorted. All right, what was the next step? You have to now rewind in time. 
+
+I just sorted the left half of the left half of the left half. What do I now sort? The right half, which is 2. 
+
+This is one element. So I'm done. So now at this point in the story, I have sorted, sort of idiotically-- the 5 assorted, and the 2 is sorted. 
+
+But what's the third and final step of this phase of the algorithm? Merge the two together. So here's the left, here's the right list. How do I merge these together? I compare the lists, and I put the two there. 
+
+I only have the [? 5 ?] left, and I do that. So now we see some visible progress. But again, let's rewind. How did we get here? 
+
+We started to sort the left half of the left half of the left half, then the right half. And now where are we? We've just sorted the left half of the left half. 
+
+So what comes after sorting the left half of anything? Right half. All right, here's the sort of same nonsensical thing. 
+
+Here's a list of size 2. Let's sort the left half. Done. 
+
+Let's sort the right half. Done. What's the third step? Merge them together. 
+
+So that's the 4, and that's the 7. What have I now done? In total, I've now sorted the left half of the original thing. 
+
+So what happens next? Wait a minute, wait a minute. I have not done that. What have I done? 
+
+I have sorted the left half of the left half, and I've sorted the right half of the left half. What do I now need to do lastly? 
+
+Merge those two lists together. So again, I put my finger on the beginning of this list, the beginning of this list. And if you want, I'll do the same thing when I merged last time to be clear what I'm comparing. 2 and 4-- the 2 obviously comes first. 
+
+What comes next? Well, the 4 comes next. What comes next? The 5 comes next and then lastly, of course, the 7. 
+
+Notice that the 2457 are now sorted. So the original left half is sorted. And I'll do the rest a little faster because, my God, this feels like it takes forever. But I bet we're on to something here. 
+
+What step remains next? I've just sorted the left half of the original. Sort the right half of the original. 
+
+How do I sort this? I sort the left half of the right half. How do I sort this? I sort the left half of the left half. 
+
+Done. I sort the right half of the left half. Done. Now I merge the two together. 
+
+The 1 comes first, the 6 comes next. Now I sort the right half of the right half. What do I do? Sort the left half. 
+
+Done. Sort the right half. Done. 
+
+What do I do? Merge them together. So that's the third step of that phase. 
+
+Now where are we in the stor-- oh my God, where are we in the story? We have sorted the left half of the right half and the right half of the right half. What comes next? Merge. 
+
+So I'm going to compare, and I'm going to move those down just to make clear what I'm comparing, the beginning of both sublists. What comes first? Of course, the 0. 
+
+What comes next? What comes next? The 1. 
+
+What comes next? The 3. And then lastly comes the 6. 
+
+All right, where are we in the story? We've now sorted the left half of the original and the right half of the original. What step remains? Merge. 
+
+All right, so I'm going to make the same point. And this is actually literally what we did earlier because I deliberately demoed those original numbers in this order, 2 and a 0. This comes out first. 
+
+What comes next? 2 and 1. The 1 comes out next. 
+
+What comes next? The 2 comes next. What comes next? The 3 comes next. 
+
+What comes next? The 4. What comes after that? 
+
+The 5. What comes after that? The 6. 
+
+And lastly-- this is when we run out of memory-- the 7 over there is actually in place. OK. OK, so admittedly, a little harder to explain, and honestly, it gets a little trippy because it's so easy to forget about where you are in the story because we're constantly diving into the algorithm and then backing back out of it. 
+
+But in code, we could express this pretty correctly and, it turns out, pretty efficiently because what I was doing, even though it's longer when I do it verbally, I was touching these elements a minimal amount of times, right? I wasn't going back and forth, back and forth in front of the shelf again and again. I was deliberately only ever merging the smallest elements in each list. 
+
+So every time we merge, even though I was doing it quickly, my fingers were only touching each of the elements once. And how many times did we divide, divide, divide in half the list? Well, we started with all of the elements here, and there were eight of them. 
+
+And then we moved them 1, 2, 3 positions. So the height of this visualization, if you will, is actually log n, right? If I started with 8, turns out if you do the arithmetic, this is log n height because 2 to the 3 is 8. But for now, just trust that this is a log n height. 
+
+And how wide is the shelf? Well, it's of width n because there's n elements any time they were on the shelf. So technically, I was kind of cheating this algorithm because this is the first time I've needed shelves. 
+
+With the human examples, we just had the humans, and that's it, and only eight of them. Here, I was sort of using more and more memory. In fact, I was using like four times as much memory even though that was just for visualization's sake. 
+
+Merge sort actually requires that you have some spare space, an empty array to move the elements into when you're merging them together. But if I really wanted and if I didn't have this shelf or this shelf, honestly, I could have just gone back and forth between the two shelves. That would have been sufficient. 
+
+So merge sort uses more memory for this merging process, but the advantage of using more memory is that the total running time, if you can perhaps infer from that math, is what? The big O notation for merge sort, it turns out, is actually going to be n times log n. And even if you're a little rusty still on your logarithms, we saw in week zero and again today that log n is smaller than n. 
+
+That's a good thing. Binary search was log n. That's faster than linear search, which was n. 
+
+So n times log n is, of course, smaller than n times n or n squared. So it's sort of lower on this little cheat sheet that I've been drawing, which is to suggest that it's running time is indeed better or faster. And in fact, if we consider the best case running time, turns out it's not quite as good as bubble sort with omega of n, where you can just sort of abort if you realize, wait a minute, I've done no work. 
+
+Merge sort, you actually have to do that work to get to the finish line anyway. So it's actually in omega and ultimately theta of n log n as well. So again, a trade off there because if you happen to have a data set that is very often sorted, honestly, you might want to stick with bubble sort. 
+
+But in the general case, where the data is unsorted, n log n as sounding better than n squared. Well, what does it actually look or feel like? Give me a moment to just change over to our visualization here. 
+
+And we'll see with this example what merge sort looks like depicted with now these vertical bars. So same algorithm, but instead of my numbers on shelves, here is a random array of numbers being sorted. And you can see it being done half at a time. And you see sort of remnants of the previous bars. 
+
+Actually, that was unfair. Let me zoom out here. Let me zoom out so you can actually see the height here. Let me go ahead and randomize this again and run merge sort. 
+
+There we go. Now you can see the second array and where the values are going temporarily. And even though this one looks way more cryptic visualization-wise, it does seem to be moving faster. And it seems to be merging halves together, and boom, it's done. 
+
+So let's actually see, in conclusion, what these algorithms compare to and consider that moving forward as we write more and more code, the goal is, again, not just to be correct but to be well-designed. And one measure of design is going to indeed be efficiency. So here we have, in final, a visualization of three algorithms-- selection sort, bubble sort, and merge sort-- from top to bottom. And let's see what these algorithms might look or sound like here. Oh, if we can dim the lights for dramatic effect-- selection's on top, bubble on bottom, merge in the middle. 
+
+[MUSIC PLAYING] 
+

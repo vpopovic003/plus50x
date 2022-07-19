@@ -42,7 +42,7 @@ aside .col-md {
 }
 
 .side-menu ul li:hover {
-    background: #111;
+    background: #333;
 }
 
 .side-menu ul li:hover a{
@@ -78,9 +78,12 @@ aside .col-md {
 }
 
 .main-content {
-    padding-top: 10px;
-}
+    padding-left: 30px;
+    padding-right: 30px;
 
+}
+/*
 .shorts-video iframe {
     padding: 10px;
 }
+*/

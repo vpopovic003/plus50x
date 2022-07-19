@@ -19,7 +19,7 @@ def lecture(index):
 
 @app.route("/notes<index>")
 def notes(index):
-    notes = "files/notes/lecture1.html"
+    notes = f"files/notes/lecture{index}.html"
     return render_template("notes.html", notes=notes, index=index)
 
 
@@ -63,10 +63,22 @@ def short(index, short):
 
 
 @app.route("/problems<index>")
-def pset0(index):
-    return render_template("problems.html", index=index)
+def problems(index):
+    index = int(index)
+    problems = True
+    if index == 0:
+        path = f"files/problems/pset0.html"
+    elif index == 1:
+        path = "files/problems/pset1.html"
+    elif index > 0 and index < 10:
+        path = f"files/problems/lab{index}.html"
+        problems = False
+    else:
+        path = f"files/problems/seminars.html"
+    return render_template("problems.html", index=index, problem=path, problems=problems)
 
 
-@app.route("/pset1<index>")
-def pset1(index):
-    return render_template("pset1.html", index=index)
+@app.route("/problem<index>")
+def problem(index):
+    path = f"files/problems/pset{index}.html"
+    return render_template("problems.html", index=int(index), problem=path, problems=True)

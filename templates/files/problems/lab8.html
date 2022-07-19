@@ -1,0 +1,121 @@
+<div class="alert" data-alert="warning" role="alert"><p>You are welcome to collaborate with one or two classmates on this lab, though it is expected that every student in any such group contribute equally to the lab.</p></div>
+
+<p>Write a webpage that lets users answer trivia questions.</p>
+
+<p><img src="templates/images/questions.png" alt="screenshot of trivia questions"></p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<div class="alert" data-alert="primary" role="alert"><p>Started CS50x in 2021 or prior and need to migrate your work from CS50 IDE to the new VS Code codespace? Be sure to check out our instructions on how to <a href="../../new/">migrate</a> your files!</p></div>
+
+<p>Open <a href="https://code.cs50.io/">VS Code</a>.</p>
+
+<p>Start by clicking inside your terminal window, then execute <code class="language-plaintext highlighter-rouge">cd</code> by itself. You should find that its “prompt” resembles the below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$
+</code></pre></div></div>
+
+<p>Click inside of that terminal window and then execute</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://cdn.cs50.net/2021/fall/labs/8/trivia.zip
+</code></pre></div></div>
+
+<p>followed by Enter in order to download a ZIP called <code class="language-plaintext highlighter-rouge">trivia.zip</code> in your codespace. Take care not to overlook the space between <code class="language-plaintext highlighter-rouge">wget</code> and the following URL, or any other character for that matter!</p>
+
+<p>Now execute</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unzip trivia.zip
+</code></pre></div></div>
+
+<p>to create a folder called <code class="language-plaintext highlighter-rouge">trivia</code>. You no longer need the ZIP file, so you can execute</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm trivia.zip
+</code></pre></div></div>
+
+<p>and respond with “y” followed by Enter at the prompt to remove the ZIP file you downloaded.</p>
+
+<p>Now type</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd trivia
+</code></pre></div></div>
+
+<p>followed by Enter to move yourself into (i.e., open) that directory. Your prompt should now resemble the below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trivia/ $
+</code></pre></div></div>
+
+<p>If all was successful, you should execute</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls
+</code></pre></div></div>
+
+<p>and you should see an <code class="language-plaintext highlighter-rouge">index.html</code> file and a <code class="language-plaintext highlighter-rouge">styles.css</code> file.</p>
+
+<p>If you run into any trouble, follow these same steps again and see if you can determine where you went wrong!</p>
+
+<h2 id="implementation-details">Implementation Details</h2>
+
+<p>Design a webpage using HTML, CSS, and JavaScript to let users answer trivia questions.</p>
+
+<ul>
+  <li data-marker="*">In <code class="language-plaintext highlighter-rouge">index.html</code>, add beneath “Part 1” a multiple-choice trivia question of your choosing with HTML.
+    <ul>
+      <li data-marker="*">You should use an <code class="language-plaintext highlighter-rouge">h3</code> heading for the text of your question.</li>
+      <li data-marker="*">You should have one <code class="language-plaintext highlighter-rouge">button</code> for each of the possible answer choices. There should be at least three answer choices, of which exactly one should be correct.</li>
+    </ul>
+  </li>
+  <li data-marker="*">Using JavaScript, add logic so that the buttons change colors when a user clicks on them.
+    <ul>
+      <li data-marker="*">If a user clicks on a button with an incorrect answer, the button should turn red and text should appear beneath the question that says “Incorrect”.</li>
+      <li data-marker="*">If a user clicks on a button with the correct answer, the button should turn green and text should appear beneath the question that says “Correct!”.</li>
+    </ul>
+  </li>
+  <li data-marker="*">In <code class="language-plaintext highlighter-rouge">index.html</code>, add beneath “Part 2” a text-based free response question of your choosing with HTML.
+    <ul>
+      <li data-marker="*">You should use an <code class="language-plaintext highlighter-rouge">h3</code> heading for the text of your question.</li>
+      <li data-marker="*">You should use an <code class="language-plaintext highlighter-rouge">input</code> field to let the user type a response.</li>
+      <li data-marker="*">You should use a <code class="language-plaintext highlighter-rouge">button</code> to let the user confirm their answer.</li>
+    </ul>
+  </li>
+  <li data-marker="*">Using JavaScript, add logic so that the text field changes color when a user confirms their answer.
+    <ul>
+      <li data-marker="*">If the user types an incorrect answer and presses the confirmation button, the text field should turn red and text should appear beneath the question that says “Incorrect”.</li>
+      <li data-marker="*">If the user types the correct answer and presses the confirmation button, the input field should turn green and text should appear beneath the question that says “Correct!”.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Optionally, you may also:</p>
+
+<ul>
+  <li data-marker="*">Edit <code class="language-plaintext highlighter-rouge">styles.css</code> to change the CSS of your webpage!</li>
+  <li data-marker="*">Add additional trivia questions to your trivia quiz if you would like!</li>
+</ul>
+
+<h3 id="walkthrough">Walkthrough</h3>
+
+<div class="alert" data-alert="primary" role="alert"><p>This video was recorded when the course was still using CS50 IDE for writing code. Though the interface may look different from your codespace, the behavior of the two environments should be largely similar!</p></div>
+
+<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="border" data-video="" src="https://video.cs50.io/WGd0Jx7rxUo"></iframe>
+
+<h3 id="hints">Hints</h3>
+
+<ul>
+  <li data-marker="*">Use <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector"><code class="language-plaintext highlighter-rouge">document.querySelector</code></a> to query for a single HTML element.</li>
+  <li data-marker="*">Use <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll"><code class="language-plaintext highlighter-rouge">document.querySelectorAll</code></a> to query for multiple HTML elements that match a query. The function returns an array of all matching elements.</li>
+</ul>
+
+<details><summary>Not sure how to solve?</summary><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="border" data-video="" src="https://video.cs50.io/FLlI7rSSV_M"></iframe></details>
+
+<h3 id="testing">Testing</h3>
+
+<p>No <code class="language-plaintext highlighter-rouge">check50</code> for this lab, as implementations will vary based on your questions! But be sure to test both incorrect and correct responses for each of your questions to ensure that your webpage responds appropriately.</p>
+
+<p>Run <code class="language-plaintext highlighter-rouge">http-server</code> in your terminal while in your <code class="language-plaintext highlighter-rouge">lab8</code> directory to start a web server that serves your webpage.</p>
+
+<h2 id="how-to-submit">How to Submit</h2>
+
+<p>In your terminal, execute the below to submit your work.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>submit50 cs50/labs/2022/x/trivia
+</code></pre></div></div>

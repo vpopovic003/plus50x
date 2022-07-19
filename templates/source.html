@@ -31,51 +31,53 @@
         </div>
     </div>
 </div>     
-<div class="main-content row">
-    <h1 class="no_toc" id="lecture-1">Lecture {{ index }}</h1>
-<div class="source">
-    <select id="select">
-        {% for item in source %}
-            <option value="{{ item }}">{{ item }}</option>
-        {% endfor %}
-    </select>
+<div class="row">
+    <div class="main-content col-md">
+        <h1 class="no_toc" id="lecture-1">Lecture {{ index }}</h1>
+        <div class="source">
+            <select id="select">
+                {% for item in source %}
+                    <option value="{{ item }}">{{ item }}</option>
+                {% endfor %}
+            </select>
 
-    <pre id="render-src">
-// Logical operators
+            <pre id="render-src">
+        // Logical operators
 
-#include &lt;cs50.h&gt;
-#include &lt;stdio.h&gt;
+        #include &lt;cs50.h&gt;
+        #include &lt;stdio.h&gt;
 
-int main(void)
-{
-    // Prompt user to agree
-    char c = get_char("Do you agree? ");
+        int main(void)
+        {
+            // Prompt user to agree
+            char c = get_char("Do you agree? ");
 
-    // Check whether agreed
-    if (c == 'Y' || c == 'y')
-    {
-        printf("Agreed.\n");
-    }
-    else if (c == 'N' || c == 'n')
-    {
-        printf("Not agreed.\n");
-    }
-}
-    </pre>
-    
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('#lecture').style.color = "#fff";
-            document.querySelector('#lecture-column').style.backgroundColor = "#000";
-        });
+            // Check whether agreed
+            if (c == 'Y' || c == 'y')
+            {
+                printf("Agreed.\n");
+            }
+            else if (c == 'N' || c == 'n')
+            {
+                printf("Not agreed.\n");
+            }
+        }
+            </pre>
+        </div>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('#lecture').style.color = "#fff";
+                document.querySelector('#lecture-column').style.backgroundColor = "#000";
+            });
 
-        document.querySelector('#select').addEventListener('change', function() {
-            let index = '{{ index }}';
-            let path = "static/files/source/src" + index +"/" + this.value;
-            fetch(path)
-                .then(response => response.text())
-                .then(text => document.querySelector('#render-src').innerText = text);
-        });
-    </script>
+            document.querySelector('#select').addEventListener('change', function() {
+                let index = '{{ index }}';
+                let path = "static/files/source/src" + index +"/" + this.value;
+                fetch(path)
+                    .then(response => response.text())
+                    .then(text => document.querySelector('#render-src').innerText = text);
+            });
+        </script>
+    </div>
 </div>
 {% endblock %}

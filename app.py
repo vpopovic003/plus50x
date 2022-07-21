@@ -39,7 +39,7 @@ def source(index):
     # Which lecture    
     path = (f"static/files/source/src{index}")
     # Open folder, add files to the list
-    if index == 9 or (index > 3 and index < 8):
+    if index == 0 or index > 8 or (index > 3 and index < 8):
         source = None
     else:
         for f in os.listdir(path):

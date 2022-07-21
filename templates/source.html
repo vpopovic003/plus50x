@@ -35,15 +35,11 @@
     <div class="main-content col-md">
         <h1 class="no_toc" id="lecture-1">Lecture {{ index }}: {{ lecture }}</h1>
         <div class="source">
-        {% if index == 0 %}
-            {% for item in source %}
-                <div>
-                    <a href="https://cdn.cs50.net/2021/fall/lectures/0/src0/{{ item }}">{{ item}} </a>
-                </div>        
-            {% endfor %}
-        {% elif index == 9 or (index > 3 and index < 8) %}
-            <h3>Not implemented for this lecture yet.</h3>
+        {% if index == 9 or (index > 3 and index < 8) %}
+            <h4>Not implemented for this lecture yet.</h4>
             <!-- Required multilevel menu -->
+        {% elif index == 0 or index == 10 %}
+            <h4>No source available for this lecture.</h4>
         {% else %}
             <select id="select">
                 {% for item in source %}

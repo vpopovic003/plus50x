@@ -1,0 +1,148 @@
+.side-menu{
+    position: fixed !important;
+    height: 100vh;
+    width: 25vw;
+    min-width: 200px;
+}
+.background{
+    padding-left: 25vw !important;
+}
+
+.main{
+    color: black !important;
+    font-size: larger;
+    width: 100%;
+    margin-bottom: 30px !important;
+ }
+.mainitem a{
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.mainitem{
+    padding: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 70%;
+    max-width: 700px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+
+.sidemenu{
+    padding-left: 0 !important;
+    display: block;
+}
+
+.DropdownRow{
+    display: none;       
+}
+
+@media (max-width: 767px) {
+
+    .side-menu{
+        position: relative !important;
+        width: 100vw !important;
+    }
+    .weeks{
+        padding: 25px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 70%;
+        max-width: 700px;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    .weeks a{
+        color: white !important;
+        text-decoration: none !important;
+    }
+    .weekcontainer{
+        margin-bottom: 20px !important;
+    }
+
+    .mainitem{
+        font-size: 20px;
+    }
+    .mainitem div{
+        margin-bottom: 6px !important;
+    }
+
+    .background{
+        max-width: 100%;
+        overflow-x: hidden !important;
+        position: relative;
+        width: 100%;
+    }
+
+    .DropdownRow{
+        display: block;       
+    }
+    .sidemenu ul{
+        display: none;
+        background-color: black;
+        height: fit-content;
+        z-index: 20 !important;
+        position: absolute;
+        top: 65px;
+        width: 100vw;
+    }
+    .sidemenu{ 
+        height: 65px;
+        margin: 0;
+        padding: 0;
+    }
+    .sidemenu h1{
+        background-color: none !important;
+    }
+    label.Dropdown{
+        display: block;
+        background: none; width: 75px; height: 40px;
+        top: 9px;
+        left: 10px; 
+        position: absolute; 
+        border-radius: 4px;
+        z-index: 2;
+     }
+     input#Dropdown {display:none}
+     .DropLine { 
+        position: absolute; 
+        left:10px;
+        height: 4px; width: 45px; 
+        background: white; border-radius: 2px;
+        display: block; 
+        transition: 0.5s; 
+        transform-origin: center; 
+     }
+     
+     .DropLine:nth-child(1) { top: 8px; }
+     .DropLine:nth-child(2) { top: 20px; }
+     .DropLine:nth-child(3) { top: 32px; }
+     
+     #Dropdown:checked + .Dropdown .DropLine:nth-child(1){
+        transform: translateY(12px) rotate(-45deg);
+     }
+     
+     #Dropdown:checked + .Dropdown .DropLine:nth-child(2){
+        opacity:0;
+     }
+     
+     #Dropdown:checked + .Dropdown .DropLine:nth-child(3){
+        transform: translateY(-12px) rotate(45deg);
+     }
+
+     .shell{
+        height: 0 !important;
+     }
+     .video{
+        height: 200px !important;
+     }
+     .background{
+        padding-left: 0 !important;
+    }
+}

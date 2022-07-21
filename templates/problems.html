@@ -1,43 +1,10 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<div class="top-menu row">
-    <div class="top-menu-upper row">
-        <div id="lecture-column" class="col-sm">
-            <a id="lecture" href="lecture{{ index }}">Lecture</a>
-        </div>
-        <div id="shorts-column" class="col-sm">
-            <a id="shorts" href="shorts{{ index }}">Shorts</a>
-        </div>
-        <div id="problems-column" class="col-sm">
-            <a id="problems" href="problems{{ index }}">Problem Sets</a>
-        </div>
-    </div>
-    <div class="top-menu-lower row">
-        {% if ( index ) > 1 and ( index ) < 10 %}
-        <div class="col-sm">
-          <a href="problems{{ index }}">Lab {{ index }}</a>
-        </div>
-        {% endif %}
-        {% if ( index ) < 10 %}
-        <div class="col-sm">
-            <a href="problem{{ index }}">Problem Set {{ index }}</a>
-        </div>
-        {% else %}
-        <div class="col-sm">
-          <a href="problems{{ index }}">Seminars</a>
-        </div>
-        <div class="col-sm">
-          <a href="problem{{ index }}">Final Project</a>
-        </div>
-        {% endif %}
-    </div>
-</div>     
-
 <div class="row">
     <div class="main-content col-md">
         {% if problems == True %}
-        <h1 class="no_toc" id="lecture-1">Problem Set {{ index }}</h1>
+        <h1 class="no_toc text-center" id="lecture-1">Problem Set {{ index }}</h1>
         {% endif %}
         {% include problem %}
 

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block main %}
+<div class="row">
+    <div class="main-content col-md">
+        <h1 class="no_toc text-center" >CS50</h1>
+
+        <div class="weekcontainer text-center">
+            <div class="weeks">
+                <a href="lecture0"><strong>Week 0</strong><br>Scratch</a>
+            </div>
+            <div class="weeks">
+                <a href="lecture1"><strong>Week 1</strong><br>C</a>
+            </div>
+            <div class="weeks">
+                <a href="lecture2"><strong>Week 2</strong><br>Arrays</a>
+            </div>
+            <div class="weeks">
+                <a href="lecture3"><strong>Week 3</strong><br>Algorithms</a>
+            </div>
+            <div class="weeks">
+                <a href="lecture4"><strong>Week 4</strong><br>Memory</a>
+            </div>
+            <div class="weeks">
+                <a href="lecture5"><strong>Week 5</strong><br>Data Structures</a>
+            </div>
+            <div class="weeks">
+                <a href="lecture6"><strong>Week 6</strong><br>Python</a>
+            </div>
+            <div class="weeks">
+                <a href="lecture7"><strong>Week 7</strong><br>SQL</a>
+            </div>
+            <div class="weeks">
+                <a href="lecture8"><strong>Week 8</strong><br>HTML, CSS, JavaScript</a>
+            </div>
+            <div class="weeks">
+                <a href="lecture9"><strong>Week 9</strong><br>Flask</a>
+            </div>
+            <div class="weeks">
+                <a href="lecture10"><strong>Week 10</strong><br>Emoji</a>
+            </div>
+        </div>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('#problems').style.color = "#fff";
+                document.querySelector('#problems-column').style.backgroundColor = "#000";
+            });
+        </script>
+    </div>
+</div>
+{% endblock %}

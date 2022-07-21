@@ -5,6 +5,10 @@ import helpers
 
 app = Flask(__name__)
 
+# Configure port for Heroku
+port = int(os.getenv('PORT'))
+app.run(debug=True, port=port)
+
 
 @app.route("/")
 def index():

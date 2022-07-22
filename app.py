@@ -5,10 +5,6 @@ import helpers
 
 app = Flask(__name__)
 
-# Configure port for Heroku
-port = int(os.getenv('PORT'))
-app.run(debug=True, port=port)
-
 
 @app.route("/")
 def index():
@@ -105,3 +101,7 @@ def problem(index):
         path = f"files/problems/final.html"
         problems = False 
     return render_template("problems.html", index=int(index), problem=path, problems=problems)
+
+
+if __name__ == "__main__":
+    app.run()

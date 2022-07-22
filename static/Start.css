@@ -89,61 +89,24 @@
     display: inline-block;
     margin-bottom: 15px;
 }
+.shell{
+    height: 155px !important;
+}
 
 .weeks a {
     color: white !important;
     text-decoration: none !important;
 }
 
-.topmenu {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 8%;
-    margin-right: 8%;
-}
-
-.topmenumain {
-    background-color: black;
-    color: white;
-    padding-left: 25.2vw;
-    margin-bottom: 30px;
-    max-height: 135px;
-}
-
-.topmenu h2 {
-    margin-bottom: 10px !important;
-    padding: 10px;
-    cursor: pointer;
-    max-width: 200px;
-    min-width: 200px;
-    z-index: 2 !important;
-}
-
-.topmenu h2:hover {
-    background-color: rgba(0, 0, 0, 0.525);
-    border-radius: 15px;
-    z-index: 2 !important;
-    overflow: visible;
-    border: 0 !important;
-}
-
-.topmenudropdown {
-    display: none;
-}
-
-.topmenu h2:hover .topmenudropdown {
-    display: block;
-}
-.whitetopmenu{
-    color: white !important;
-}
-
 @media (max-width: 767px) {
+    .background{
+        margin-top: 140px !important;
+    }
 
     .side-menu {
         position: relative !important;
         width: 100vw !important;
+        z-index: 2 !important;
     }
 
     .weekcontainer {
@@ -259,6 +222,9 @@
     .videocontainer {
         display: none;
     }
+    .topmenu{
+        display: none !important;
+    }
 
 }
 
@@ -275,6 +241,58 @@
 
     .mainitem {
         max-width: 250px !important;
+    }
+    .topmenu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+    
+    .topmenumain {
+        background-color: black;
+        color: white;
+        padding-left: 25.2vw;
+        margin-bottom: 30px;
+        max-height: 135px;
+    }
+    
+    .topmenu h2 {
+        margin-bottom: 10px !important;
+        padding: 10px;
+        cursor: pointer;
+        max-width: 200px;
+        min-width: 200px;
+        z-index: 2 !important;
+        border-top: solid 2px black !important;
+        border-bottom: 0 !important;
+    }
+    
+    .topmenu h2:hover {
+        background-color: rgb(30, 30, 30);
+        border: solid white 2px !important;
+        border-radius: 15px;
+        z-index: 2 !important;
+        overflow: visible;
+        
+    }
+    .topmenu h3:hover{
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    .topmenu h3    {
+        padding: 10px !important;
+        border-radius: 20px;
+    }
+    .topmenudropdown {
+        display: none;
+    }
+    
+    .topmenu h2:hover .topmenudropdown {
+        display: block;
+    }
+    .whitetopmenu{
+        color: white !important;
     }
 }
 

@@ -51,76 +51,77 @@
                     <a>Lecture</a>
                     <br>
                     <div class="topmenudropdown">
-                        <div class="col-sm">
-                            <h3>
-                            <a class="whitetopmenu" href="lecture{{ index }}">Video</a>
-                            </h3>
-                        </div>
-                        <div>
-                            <div class="text-center">
+                            <div class="col-sm">
                                 <h3>
-                                <a class="whitetopmenu" href="notes{{ index }}">Notes</a>
+                                    <a class="whitetopmenu" href="video{{ index }}">Video</a>
                                 </h3>
                             </div>
-                            <div class="text-center">
+                            <div>
+                                <div class="text-center">
+                                    <h3>
+                                        <a class="whitetopmenu" href="notes{{ index }}">Notes</a>
+                                    </h3>
+                                </div>
+                                <div class="text-center">
+                                    <h3>
+                                        <a class="whitetopmenu" href="slides{{ index }}">Slides</a>
+                                    </h3>
+                                </div>
+                                <div class="text-center">
+                                    <h3>
+                                        <a class="whitetopmenu" href="source{{ index }}">Source Code</a>
+                                    </h3>
+                                </div>
+                                <div class="text-center">
+                                    <h3>
+                                        <a class="whitetopmenu" href="transcript{{ index }}">Transcript</a>
+                                    </h3>
+                                </div>
+                            </div>
+                    </h2>
+                    <h2 class="text-center">
+                        <a>Shorts</a>
+                        <br>
+                        <div class="topmenudropdown">
+                            {% for item in shorts %}
+                            <div class="col-sm text-center">
                                 <h3>
-                                <a class="whitetopmenu" href="slides{{ index }}">Slides</a>
+                                    <a class="whitetopmenu" href="shorts{{ index }}-{{ item }}">{{ item }}</a>
                                 </h3>
                             </div>
-                            <div class="text-center">
+                            {% endfor %}
+                        </div>
+                    </h2>
+                    <h2 class="text-center">
+                        <a>Problems</a>
+                        <br>
+                        <div class="topmenudropdown">
+                            {% if ( index ) > 1 and ( index ) < 10 %}
+                            <div class="col-sm text-center">
                                 <h3>
-                                <a class="whitetopmenu" href="source{{ index }}">Source Code</a>
+                                    <a class="whitetopmenu" href="problems{{ index }}">Lab {{ index }}</a>
                                 </h3>
                             </div>
-                            <div class="text-center">
+                            {% endif %}
+                            {% if ( index ) < 10 %}
+                            <div class="col-sm text-center">
                                 <h3>
-                                <a class="whitetopmenu" href="transcript{{ index }}">Transcript</a>
+                                    <a class="whitetopmenu" href="problem{{ index }}">Problem Set {{ index }}</a>
                                 </h3>
                             </div>
-                    </div>
-                </h2>
-                <h2 class="text-center">
-                    <a>Shorts</a>
-                    <br>
-                    <div class="topmenudropdown">
-                        {% for item in shorts %}
-                        <div class="col-sm text-center">
-                            <h3>
-                            <a class="whitetopmenu" href="shorts{{ index }}-{{ item }}">{{ item }}</a>
-                            </h3>
+                            {% else %}
+                            <div class="col-sm text-center">
+                                <h3>
+                                    <a class="whitetopmenu" href="problems{{ index }}">Seminars</a>
+                                </h3>
+                            </div>
+                            <div class="col-sm text-center">
+                                <h3>
+                                    <a class="whitetopmenu" href="problem{{ index }}">Final Project</a>
+                                </h3>
+                            </div>
+                            {% endif %}
                         </div>
-                        {% endfor %}
-                    </div>
-                </h2>
-                <h2 class="text-center">
-                    <a>Problems</a>
-                    <br>
-                    <div class="topmenudropdown">
-                        {% if ( index ) > 1 and ( index ) < 10 %}
-                        <div class="col-sm text-center">
-                            <h3>
-                                <a class="whitetopmenu" href="problems{{ index }}">Lab {{ index }}</a>
-                            </h3>
-                        </div>
-                        {% endif %}
-                        {% if ( index ) < 10 %}
-                        <div class="col-sm text-center">
-                            <h3>
-                                <a class="whitetopmenu" href="problem{{ index }}">Problem Set {{ index }}</a>
-                            </h3>
-                        </div>
-                        {% else %}
-                        <div class="col-sm text-center">
-                            <h3>
-                                <a class="whitetopmenu" href="problems{{ index }}">Seminars</a>
-                            </h3>
-                        </div>
-                        <div class="col-sm text-center">
-                            <h3>
-                                <a class="whitetopmenu" href="problem{{ index }}">Final Project</a>
-                            </h3>
-                        </div>
-                        {% endif %}
                     </div>
                 </h2>
             </div>

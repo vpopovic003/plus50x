@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return redirect("main0")
+    return redirect("main")
 
 @app.route("/video<index>")
 def video(index):
@@ -23,9 +23,8 @@ def lecture(index):
     # Put it into database?
     return render_template("lectures.html", shorts=shorts, notes=notes, video=helpers.videos[int(index)], index=index, lecture=helpers.lectures[index])
 
-@app.route("/main<index>")
-def main(index):
-    index = int(index)
+@app.route("/main")
+def main():
     return render_template("main.html")
 
 

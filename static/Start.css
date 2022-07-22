@@ -4,8 +4,16 @@
     width: 25vw;
     min-width: 200px;
 }
+.side-menu-clicked{
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    color: white !important;
+    padding: 10px;
+    border: 0;
+}
 .background{
     padding-left: 25vw !important;
+    max-width: 150rem !important;
 }
 
 .main{
@@ -28,7 +36,7 @@
     width: 70%;
     max-width: 700px;
     display: inline-block;
-    margin-bottom: 15px;
+    margin-bottom: 15px !important;
 }
 
 
@@ -41,26 +49,54 @@
     display: none;       
 }
 
+.videosmall{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+}
+.videocontainer div{
+    position: relative;
+    width: 85%;
+    height: 0;
+    padding-bottom: 56.25%;
+    display: inline-block;
+}
+.videocontainer{
+    margin-bottom: 0;
+    flex-direction: column;
+}
+
+.weeks{
+    padding: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 70%;
+    max-width: 200px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.weeks a{
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.topmenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
 @media (max-width: 767px) {
 
     .side-menu{
         position: relative !important;
         width: 100vw !important;
-    }
-    .weeks{
-        padding: 25px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        border-radius: 20px;
-        background-color: rgba(0, 0, 0, 0.7);
-        width: 70%;
-        max-width: 700px;
-        display: inline-block;
-        margin-bottom: 15px;
-    }
-    .weeks a{
-        color: white !important;
-        text-decoration: none !important;
     }
     .weekcontainer{
         margin-bottom: 20px !important;
@@ -144,5 +180,28 @@
      }
      .background{
         padding-left: 0 !important;
+    }
+    .videocontainer{
+        display: none;
+    }
+    
+}
+@media (min-width: 1200px){
+    
+    .mainitemcontainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 8%;
+        margin-right: 8%;
+        
+    }
+    .mainitem{
+        max-width: 250px !important;
+    }
+}
+@media (min-width: 1400px){
+    .mainitem{
+        max-width: 300px !important;
     }
 }

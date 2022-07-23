@@ -11,17 +11,17 @@ def index():
     return redirect("main")
 
 
+@app.route("/main")
+def main():
+    return render_template("main.html", index=-1)
+
+
 @app.route("/lecture<index>")
 def lecture(index):
     index = int(index)
     shorts = helpers.shorts[index]
     # Put it into database?
     return render_template("lectures.html",shorts=shorts, video=helpers.videos[int(index)], index=index, lecture=helpers.lectures[index])
-
-
-@app.route("/main")
-def main():
-    return render_template("main.html", index=0)
 
 
 @app.route("/notes<index>")

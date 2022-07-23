@@ -41,11 +41,6 @@
         {% endif %}
         </div>
         <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-                document.querySelector('#lecture').style.color = "#fff";
-                document.querySelector('#lecture-column').style.backgroundColor = "#000";
-            });
-
             document.querySelector('#select').addEventListener('change', function() {
                 let index = '{{ index }}';
                 let path = "static/files/source/src" + index +"/" + this.value;

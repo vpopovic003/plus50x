@@ -16,6 +16,14 @@ def main():
     return render_template("main.html", index=-1)
 
 
+@app.route("/video<index>")
+def video(index):
+    index = int(index)
+    shorts = helpers.shorts[index]
+    # Put it into database?
+    return render_template("video.html", shorts=shorts, video=helpers.videos[int(index)], index=index, lecture=helpers.lectures[index])
+
+
 @app.route("/lecture<index>")
 def lecture(index):
     index = int(index)

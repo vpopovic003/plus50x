@@ -8,32 +8,41 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return redirect("lecture0")
+    return redirect("main")
+
+
+@app.route("/main")
+def main():
+    return render_template("main.html", index=-1)
 
 
 @app.route("/lecture<index>")
 def lecture(index):
     index = int(index)
+    shorts = helpers.shorts[index]
     # Put it into database?
-    return render_template("video.html", video=helpers.videos[int(index)], index=index, lecture=helpers.lectures[index])
+    return render_template("lectures.html",shorts=shorts, video=helpers.videos[int(index)], index=index, lecture=helpers.lectures[index])
 
 
 @app.route("/notes<index>")
 def notes(index):
     index = int(index)
+    shorts = helpers.shorts[index]
     notes = f"files/notes/lecture{index}.html"
-    return render_template("notes.html", notes=notes, index=index, lecture=helpers.lectures[index])
+    return render_template("notes.html" ,shorts=shorts , notes=notes, index=index, lecture=helpers.lectures[index])
 
 
 @app.route("/slides<index>")
 def slides(index):
     index = int(index)
-    return render_template("slides.html", index=index, lecture=helpers.lectures[index])
+    shorts = helpers.shorts[index]
+    return render_template("slides.html", shorts=shorts, index=index, lecture=helpers.lectures[index])
 
 
 @app.route("/source<index>")
 def source(index):
     index = int(index)
+    shorts = helpers.shorts[index]
     # List to hold all source files per lecture
     source = []
     # Which lecture    
@@ -45,13 +54,14 @@ def source(index):
         for f in os.listdir(path):
             with open(os.path.join(path, f)) as f:
                 source.append(os.path.basename(f.name))
-    return render_template("source.html", source=source, index=index, lecture=helpers.lectures[index])
+    return render_template("source.html", shorts=shorts, source=source, index=index, lecture=helpers.lectures[index])
 
 
 @app.route("/transcript<index>")
 def transcript(index):
     index = int(index)
-    return render_template("transcript.html", index=index, lecture=helpers.lectures[index])
+    shorts = helpers.shorts[index]
+    return render_template("transcript.html", shorts=shorts, index=index, lecture=helpers.lectures[index])
 
 
 @app.route("/shorts<index>")
@@ -76,7 +86,7 @@ def short(index, short):
 def problems(index):
     index = int(index)
     problems = True
-    
+    shorts = helpers.shorts[index]
     if index == 0:
         path = f"files/problems/pset0.html"
     elif index == 1:
@@ -87,14 +97,14 @@ def problems(index):
     else:
         path = f"files/problems/seminars.html"
         problems = False
-    return render_template("problems.html", index=index, problem=path, problems=problems)
+    return render_template("problems.html", shorts=shorts, index=index, problem=path, problems=problems)
 
 
 @app.route("/problem<index>")
 def problem(index):
     index = int(index)
     problems = True
-    
+    shorts = helpers.shorts[index]
     if index < 10:
         path = f"files/problems/pset{index}.html"
     else:

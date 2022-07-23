@@ -1,48 +1,12 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<div class="top-menu row nopadding">
-    <div class="top-menu-upper row">
-        <div id="lecture-column" class="col-sm">
-            <a id="lecture" href="lecture{{ index }}">Lecture</a>
-        </div>
-        <div id="shorts-column" class="col-sm">
-            <a id="shorts" href="shorts{{ index }}">Shorts</a>
-        </div>
-        <div id="problems-column" class="col-sm">
-            <a id="problems" href="problems{{ index }}">Problem Sets</a>
-        </div>
-    </div>
-    <div class="top-menu-lower row">
-        <div class="col-sm">
-            <a href="lecture{{ index }}">Video</a>
-        </div>
-        <div class="col-sm">
-            <a href="notes{{ index }}">Notes</a>
-        </div>
-        <div class="col-sm">
-            <a href="slides{{ index }}">Slides</a>
-        </div>
-        <div class="col-sm">
-            <a href="source{{ index }}">Source Code</a>
-        </div>
-        <div class="col-sm">
-            <a href="transcript{{ index }}">Transcript</a>
-        </div>
-    </div>
-</div>
+
 <div class="row">
     <div class="main-content col-md">
-        <h1 class="no_toc" id="lecture-1">Lecture {{ index }}: {{ lecture }}</h1>
         <div class="lecture-video">
-            <iframe src="https://www.youtube.com/embed/{{ video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="video" src="https://www.youtube.com/embed/{{ video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.querySelector('#lecture').style.color = "#fff";
-                document.querySelector('#lecture-column').style.backgroundColor = "#000";
-            });
-        </script>
     </div>
 </div>
 {% endblock %}

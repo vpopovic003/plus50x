@@ -1,39 +1,8 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<div class="top-menu row">
-    <div class="top-menu-upper row">
-        <div id="lecture-column" class="col-sm">
-            <a id="lecture" href="lecture{{ index }}">Lecture</a>
-        </div>
-        <div id="shorts-column" class="col-sm">
-            <a id="shorts" href="shorts{{ index }}">Shorts</a>
-        </div>
-        <div id="pset-column" class="col-sm">
-            <a id="pset" href="problems{{ index }}">Problem Sets</a>
-        </div>
-    </div>
-    <div class="top-menu-lower row">
-        <div class="col-sm">
-            <a href="lecture{{ index }}">Video</a>
-        </div>
-        <div class="col-sm">
-            <a href="notes{{ index }}">Notes</a>
-        </div>
-        <div class="col-sm">
-            <a href="slides{{ index }}">Slides</a>
-        </div>
-        <div class="col-sm">
-            <a href="source{{ index }}">Source Code</a>
-        </div>
-        <div class="col-sm">
-            <a href="transcript{{ index }}">Transcript</a>
-        </div>
-    </div>
-</div>     
 <div class="row">
     <div class="main-content col-md">
-        <h1 class="no_toc" id="lecture-1">Lecture {{ index }}: {{ lecture }}</h1>
         <div class="source">
         {% if index == 9 or (index > 3 and index < 8) %}
             <h4>Not implemented for this lecture yet.</h4>
@@ -72,11 +41,6 @@
         {% endif %}
         </div>
         <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-                document.querySelector('#lecture').style.color = "#fff";
-                document.querySelector('#lecture-column').style.backgroundColor = "#000";
-            });
-
             document.querySelector('#select').addEventListener('change', function() {
                 let index = '{{ index }}';
                 let path = "static/files/source/src" + index +"/" + this.value;

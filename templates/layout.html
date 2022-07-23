@@ -1,53 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, width=device-width">
-        <!-- http://getbootstrap.com/docs/5.1/ -->
-        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
-        <!-- https://favicon.io/emoji-favicons/money-bag/ -->
-        <link href="../static/favicon.ico" rel="icon">
-        <link href="../static/page.css" rel="stylesheet">
-        <link href="../static/style.css" rel="stylesheet">
-        <title>Plus50x: {% block title %}{% endblock %}</title>
-    </head>
-    <body>
-        <div class="shell row nopadding">
-            <!--section class="header">
-            </section-->
-            <aside class="col-md nopadding">
-                <div class="side-menu">
-                    <h1><a href="../..">PLUS50x</a></h1>
-                    <ul>
-                    <li><a href="lecture0" class="side-button" id="lecture0">Week 0 Scratch</a></li>
-                    <li><a href="lecture1" class="side-button" id="lecture1">Week 1 C</a></li>
-                    <li><a href="lecture2" class="side-button" id="lecture2">Week 2 Arrays</a></li>
-                    <li><a href="lecture3" class="side-button" id="lecture3">Week 3 Algorithms</a></li>
-                    <li><a href="lecture4" class="side-button" id="lecture4">Week 4 Memory</a></li>
-                    <li><a href="lecture5" class="side-button" id="lecture5">Week 5 Data Structures</a></li>
-                    <li><a href="lecture6" class="side-button" id="lecture6">Week 6 Python</a></li>
-                    <li><a href="lecture7" class="side-button" id="lecture7">Week 7 SQL</a></li>
-                    <li><a href="lecture8" class="side-button" id="lecture8">Week 8 HTML, CSS, JavaScript</a></li>
-                    <li><a href="lecture9" class="side-button" id="lecture9">Week 9 Flask</a></li>
-                    <li><a href="lecture10" class="side-button" id="lecture10">Week 10 Emoji</a></li>
-                    </ul>
-                </div>
-            </aside>
-            <main class="col-md nopadding">
-                                
-                    {% block main %}
-            
-                    {% endblock %}
 
-            </main>
-            <script>
-                document.querySelector('.side-button').addEventListener('click', function () {
-                    let element = document.querySelector('.side-button');
-                    let clicked = element.id;
-                    console.log(clicked);
-                    clicked.style.backgroundColor = "#222";
-                });
-            </script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <!-- http://getbootstrap.com/docs/5.1/ -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
+    <!-- https://favicon.io/emoji-favicons/money-bag/ -->
+    <link href="../static/favicon.ico" rel="icon">
+    <link href="../static/page.css" rel="stylesheet">
+    <link href="../static/style.css" rel="stylesheet">
+    <link href="../static/Start.css" rel="stylesheet">
+    <title>Plus50x: {% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+    <div class="shell nopadding">
+        <!--section class="header">
+            </section-->
+        <aside class="col-md nopadding sidemenu side-menu">
+            <div class="DropdownRow">
+                <input type="checkbox" id="Dropdown" onclick="Dropdown()">
+                <label for="Dropdown" class="Dropdown">
+                    <span class="DropLine"></span>
+                    <span class="DropLine"></span>
+                    <span class="DropLine"></span>
+                </label>
+            </div>
+            <h1><a href="main">PLUS50x</a></h1>
+            <ul class="sidemenu menuitems">
+                <li><a href="lecture0" class="side-button" id="lecture0">Week 0 Scratch</a></li>
+                <li><a href="lecture1" class="side-button" id="lecture1">Week 1 C</a></li>
+                <li><a href="lecture2" class="side-button" id="lecture2">Week 2 Arrays</a></li>
+                <li><a href="lecture3" class="side-button" id="lecture3">Week 3 Algorithms</a></li>
+                <li><a href="lecture4" class="side-button" id="lecture4">Week 4 Memory</a></li>
+                <li><a href="lecture5" class="side-button" id="lecture5">Week 5 Data Structures</a></li>
+                <li><a href="lecture6" class="side-button" id="lecture6">Week 6 Python</a></li>
+                <li><a href="lecture7" class="side-button" id="lecture7">Week 7 SQL</a></li>
+                <li><a href="lecture8" class="side-button" id="lecture8">Week 8 HTML, CSS, JavaScript</a></li>
+                <li><a href="lecture9" class="side-button" id="lecture9">Week 9 Flask</a></li>
+                <li><a href="lecture10" class="side-button" id="lecture10">Week 10 Emoji</a></li>
+            </ul>
+        </aside>
+        <div class="topmenumain">
+            {% if (index) == -1 %}
+            <h1 class="text-center" id="">Welcome</h1>
+            {% else %}
+            <h1 class="text-center" id="">Week {{ index }}: {{ lecture }}</h1>
+            <div class="topmenu">
+                <h2 class="text-center">
+                    <a>Lecture</a>
+                    <br>
+                    <div class="topmenudropdown">
+                            <div class="col-sm">
+                                <h3>
+                                    <a class="whitetopmenu" href="lecture{{ index }}">Video</a>
+                                </h3>
+                            </div>
+                            <div>
+                                <div class="text-center">
+                                    <h3>
+                                        <a class="whitetopmenu" href="notes{{ index }}">Notes</a>
+                                    </h3>
+                                </div>
+                                <div class="text-center">
+                                    <h3>
+                                        <a class="whitetopmenu" href="slides{{ index }}">Slides</a>
+                                    </h3>
+                                </div>
+                                <div class="text-center">
+                                    <h3>
+                                        <a class="whitetopmenu" href="source{{ index }}">Source Code</a>
+                                    </h3>
+                                </div>
+                                <div class="text-center">
+                                    <h3>
+                                        <a class="whitetopmenu" href="transcript{{ index }}">Transcript</a>
+                                    </h3>
+                                </div>
+                            </div>
+                    </h2>
+                    <h2 class="text-center">
+                        <a>Shorts</a>
+                        <br>
+                        <div class="topmenudropdown">
+                            {% for item in shorts %}
+                            <div class="col-sm text-center">
+                                <h3>
+                                    <a class="whitetopmenu" href="shorts{{ index }}-{{ item }}">{{ item }}</a>
+                                </h3>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </h2>
+                    <h2 class="text-center">
+                        <a>Problems</a>
+                        <br>
+                        <div class="topmenudropdown">
+                            {% if ( index ) > 1 and ( index ) < 10 %}
+                            <div class="col-sm text-center">
+                                <h3>
+                                    <a class="whitetopmenu" href="problems{{ index }}">Lab {{ index }}</a>
+                                </h3>
+                            </div>
+                            {% endif %}
+                            {% if ( index ) < 10 %}
+                            <div class="col-sm text-center">
+                                <h3>
+                                    <a class="whitetopmenu" href="problem{{ index }}">Problem Set {{ index }}</a>
+                                </h3>
+                            </div>
+                            {% else %}
+                            <div class="col-sm text-center">
+                                <h3>
+                                    <a class="whitetopmenu" href="problems{{ index }}">Seminars</a>
+                                </h3>
+                            </div>
+                            <div class="col-sm text-center">
+                                <h3>
+                                    <a class="whitetopmenu" href="problem{{ index }}">Final Project</a>
+                                </h3>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </h2>
+            </div>
         </div>
-    </body>
+        <main class="col-md nopadding background">
+
+            {% block main %}
+
+            {% endblock %}
+
+        </main>
+        <script>
+            document.querySelector('.side-button').addEventListener('click', function () {
+                let element = document.querySelector('.side-button');
+                let clicked = element.id;
+                console.log(clicked);
+                clicked.style.backgroundColor = "#222";
+            });
+
+            var Bool = new Boolean();
+            var Sidenav = document.getElementsByClassName("menuitems");
+
+            function Dropdown() {
+                if (Bool == false) {
+                    Bool = true;
+                    Sidenav[0].style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    Bool = false;
+                    Sidenav[0].style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        </script>
+    </div>
+</body>
+
 </html>

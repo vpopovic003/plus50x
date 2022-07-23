@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block main %}
+<div class="main text-center">
+    <div class="">
+        <div class="videocontainer">
+            <div class="lecture-video">
+                <iframe class="videosmall" src="https://www.youtube.com/embed/{{ video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="mainitemcontainer">
+            <div  class="mainitem">
+                <h2><a id="lecture">Lecture</a></h2>
+                    <div class="col-sm">
+                        <a href="lecture{{ index }}">Video</a>
+                    </div>
+                    <div>
+                        <div class="">
+                            <a href="notes{{ index }}">Notes</a>
+                        </div>
+                        <div class="">
+                            <a href="slides{{ index }}">Slides</a>
+                        </div>
+                        <div class="">
+                            <a href="source{{ index }}">Source Code</a>
+                        </div>
+                        <div class="">
+                            <a href="transcript{{ index }}">Transcript</a>
+                        </div>
+                    </div>
+            </div>
+            <div class="mainitem">
+                <h2><a id="shorts">Shorts</a></h2>
+                {% for item in shorts %}
+                <div class="col-sm">
+                    <a href="shorts{{ index }}-{{ item }}">{{ item }}</a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="mainitem">
+                <h2><a id="pset">Problem Sets</a></h2>
+                {% if ( index ) > 1 and ( index ) < 10 %}
+                <div class="col-sm">
+                <a href="problems{{ index }}">Lab {{ index }}</a>
+                </div>
+                {% endif %}
+                {% if ( index ) < 10 %}
+                <div class="col-sm">
+                    <a href="problem{{ index }}">Problem Set {{ index }}</a>
+                </div>
+                {% else %}
+                <div class="col-sm">
+                <a href="problems{{ index }}">Seminars</a>
+                </div>
+                <div class="col-sm">
+                <a href="problem{{ index }}">Final Project</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+       
+    </div>
+</div>     
+
+{% endblock %}

@@ -20,16 +20,16 @@
 <ul>
   <li data-marker="*">Last week, we took a look at memory and how we could use arrays to store data.</li>
   <li data-marker="*">We might zoom in further and further in an image, but very soon we’ll see individual pixels, like the ones in this puppet’s eye:<br>
-<img src="eyes.png" alt="individual pixels forming an eye" width="400">
+<img src="./static/imagesnotes/eyes.webp" alt="individual pixels forming an eye" width="400">
     <ul>
       <li data-marker="*">Since this image is stored with a finite number of bytes, each perhaps representing a red, green, or blue value for each pixel, there is in turn a finite number of pixels we can see.</li>
     </ul>
   </li>
   <li data-marker="*">A simpler image of a smiley face might be represented with a single bit per pixel:<br>
-<img src="smiley.png" alt="1s and 0s in a grid next to a pixelated smiley face" width="600"></li>
+<img src="./static/imagesnotes/smiley.webp" alt="1s and 0s in a grid next to a pixelated smiley face" width="600"></li>
   <li data-marker="*">We can visit <a href="https://cs50.ly/art">cs50.ly/art</a> with a Google Account to make a copy of a spreadsheet, which we can then fill with colors to create our own <a href="https://en.wikipedia.org/wiki/Pixel_art">pixel art</a>.</li>
   <li data-marker="*"><a href="https://en.wikipedia.org/wiki/Adobe_Photoshop">Adobe Photoshop</a>, a popular image editing software, includes a color picker that looks like this:<br>
-<img src="color_picker.png" alt="a gradient of colors with black selected, 0 for R, G, B values, a hexadecimal value of #000000, and other values" width="400">
+<img src="./static/imagesnotes/color_picker.webp" alt="a gradient of colors with black selected, 0 for R, G, B values, a hexadecimal value of #000000, and other values" width="400">
     <ul>
       <li data-marker="*">Here, the color black is selected, and we see that the values for R, G, and B, or red, green, and blue respectively, are all 0. Furthermore, we see another value, #000000 that seems to represent all three values for the color black.</li>
     </ul>
@@ -83,7 +83,7 @@
 
 <ul>
   <li data-marker="*">For our computer’s memory, too, we’ll see hexadecimal used to describe each address or location:<br>
-<img src="addresses.png" alt="grid representing bytes in memory with 0x0, 0x1, ..., 0x1F under each" width="600">
+<img src="./static/imagesnotes/addresses.webp" alt="grid representing bytes in memory with 0x0, 0x1, ..., 0x1F under each" width="600">
     <ul>
       <li data-marker="*">By writing <code class="language-plaintext highlighter-rouge">0x</code> in front of a hexadecimal value, we can distinguish them from decimal values.</li>
     </ul>
@@ -99,7 +99,7 @@
 </code></pre></div>    </div>
   </li>
   <li data-marker="*">In our computer’s memory, there are now 4 bytes somewhere that have the binary value of 50, with some value for its address, like <code class="language-plaintext highlighter-rouge">0x123</code>:<br>
-<img src="50.png" alt="grid representing bytes, with four boxes together containing 50 with small 0x123 underneath" width="600"></li>
+<img src="./static/imagesnotes/50.webp" alt="grid representing bytes, with four boxes together containing 50 with small 0x123 underneath" width="600"></li>
   <li data-marker="*">A <strong>pointer</strong> is a variable that stores an address in memory, where some other variable might be stored.</li>
   <li data-marker="*">The <strong><code class="language-plaintext highlighter-rouge">&amp;</code></strong> operator can be used to get the address of some variable, as with <code class="language-plaintext highlighter-rouge">&amp;n</code>. And the <code class="language-plaintext highlighter-rouge">*</code> operator declares a variable as a pointer, as with <code class="language-plaintext highlighter-rouge">int *p</code>, indicating that we have a variable called <code class="language-plaintext highlighter-rouge">p</code> that <em>points to</em> an <code class="language-plaintext highlighter-rouge">int</code>. So, to store the address of a variable <code class="language-plaintext highlighter-rouge">n</code> into a pointer <code class="language-plaintext highlighter-rouge">p</code>, we would write:
     <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">;</span>
@@ -147,13 +147,13 @@ $ ./address
     </ul>
   </li>
   <li data-marker="*">In memory, we might have one variable, <code class="language-plaintext highlighter-rouge">p</code>, with the value of some address, like <code class="language-plaintext highlighter-rouge">0x123</code>, stored, and another variable, an integer with the value <code class="language-plaintext highlighter-rouge">50</code>, at that addresss:<br>
-<img src="p.png" alt="one box containing 0x123 labeled p pointing at smaller box containing 50 labeled 0x123" width="600">
+<img src="./static/imagesnotes/p.webp" alt="one box containing 0x123 labeled p pointing at smaller box containing 50 labeled 0x123" width="600">
     <ul>
       <li data-marker="*">Notice that <code class="language-plaintext highlighter-rouge">p</code> takes up 8 bytes, since in modern computer systems, 64 bits are used in order to address the billions of bytes of memory available. With 32 bits, we can only count up to about 4 billion bytes, or about 4GB of memory.</li>
     </ul>
   </li>
   <li data-marker="*">We can abstract away the actual value of the addresses, since they’ll be different as we declare variables in our programs. We can simply think of <code class="language-plaintext highlighter-rouge">p</code> as pointing at some value in memory:<br>
-<img src="pointing.png" alt="one box containing p pointing at smaller box containing 50" width="600"></li>
+<img src="./static/imagesnotes/pointing.webp" alt="one box containing p pointing at smaller box containing 50" width="600"></li>
   <li data-marker="*">In the real world, we might have a mailbox labeled “p”, among many mailboxes with addresses. Inside our mailbox, we can put a value like <code class="language-plaintext highlighter-rouge">0x123</code>, which is the address of some other mailbox that’s labeled “n”.</li>
 </ul>
 
@@ -161,9 +161,9 @@ $ ./address
 
 <ul>
   <li data-marker="*">We can declare a string with <code class="language-plaintext highlighter-rouge">string s = "HI!";</code>, which will be stored one character at a time in memory. And we can access each character with <code class="language-plaintext highlighter-rouge">s[0]</code>, <code class="language-plaintext highlighter-rouge">s[1]</code>, <code class="language-plaintext highlighter-rouge">s[2]</code>, and <code class="language-plaintext highlighter-rouge">s[3]</code>:<br>
-<img src="s_array.png" alt="boxes side by side, containing: H labeled s[0], I labeled s[1], ! labeled s[2], \0 labeled s[3]" width="200"></li>
+<img src="./static/imagesnotes/s_array.webp" alt="boxes side by side, containing: H labeled s[0], I labeled s[1], ! labeled s[2], \0 labeled s[3]" width="200"></li>
   <li data-marker="*">But it turns out that each character, since it’s stored in memory, <em>also</em> has some unique address, and <code class="language-plaintext highlighter-rouge">s</code> is actually just a pointer with the address of the first character:<br>
-<img src="s_pointer.png" alt="box containing 0x123 labeled s, boxes side by side containing H labeled 0x123, I labeled 0x124, ! labeled 0x125, \0 labeled 0x126" width="400">
+<img src="./static/imagesnotes/s_pointer.webp" alt="box containing 0x123 labeled s, boxes side by side containing H labeled 0x123, I labeled 0x124, ! labeled 0x125, \0 labeled 0x126" width="400">
     <ul>
       <li data-marker="*"><code class="language-plaintext highlighter-rouge">s</code> is a variable of type <code class="language-plaintext highlighter-rouge">string</code>, which is a pointer to a character.</li>
       <li data-marker="*">Recall that we can read the entire string by starting at the address in <code class="language-plaintext highlighter-rouge">s</code>, and continue reading one character at a time from memory until we reach <code class="language-plaintext highlighter-rouge">\0</code>.</li>
@@ -489,7 +489,7 @@ t: HI!
     </ul>
   </li>
   <li data-marker="*">Let’s visualize how this might look in our computer’s memory. Our first string might be at address 0x123, our second might be at 0x456, and <code class="language-plaintext highlighter-rouge">s</code> will have the value of <code class="language-plaintext highlighter-rouge">0x123</code>, pointing at that location, and <code class="language-plaintext highlighter-rouge">t</code> will have the value of <code class="language-plaintext highlighter-rouge">0x456</code>, pointing at another location:<br>
-<img src="s_t.png" alt="box containing 0x123 labeled s, boxes side by side containing H labeled 0x123, I labeled 0x124, ! labeled 0x125, \0 labeled 0x126, box containing 0x456 labeled t, boxes side by side containing H labeled 0x456, I labeled 0x457, ! labeled 0x458, \0 labeled 0x459" width="600">
+<img src="./static/imagesnotes/s_t.webp" alt="box containing 0x123 labeled s, boxes side by side containing H labeled 0x123, I labeled 0x124, ! labeled 0x125, \0 labeled 0x126, box containing 0x456 labeled t, boxes side by side containing H labeled 0x456, I labeled 0x457, ! labeled 0x458, \0 labeled 0x459" width="600">
     <ul>
       <li data-marker="*">Since our computer puts each string at some location in memory for us, we need <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">t</code> to point to each of them. And now we see why comparing <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">t</code> directly will always print “Different”. <code class="language-plaintext highlighter-rouge">strcmp</code>, in contrast, will go to each string and compare them character by character.</li>
     </ul>
@@ -525,8 +525,8 @@ t: Hi!
     </ul>
   </li>
   <li data-marker="*">Since we set <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">t</code> to the same value, or the same address, they’re both pointing to the same character, and so we capitalized the same character in memory:<br>
-<img src="s_t_copy.png" alt="box containing 0x123 labeled s, box containing 0x123 labeled t, boxes side by side containing h labeled 0x123, i labeled 0x124, ! labeled 0x125, \0 labeled 0x126" width="600">
-<img src="s_t_pointing.png" alt="box labeled s pointing to H, box labeled t pointing to H, boxes side by side containing h labeled 0x123, i labeled 0x124, ! labeled 0x125, \0 labeled 0x126" width="600"></li>
+<img src="./static/imagesnotes/s_t_copy.webp" alt="box containing 0x123 labeled s, box containing 0x123 labeled t, boxes side by side containing h labeled 0x123, i labeled 0x124, ! labeled 0x125, \0 labeled 0x126" width="600">
+<img src="./static/imagesnotes/s_t_pointing.webp" alt="box labeled s pointing to H, box labeled t pointing to H, boxes side by side containing h labeled 0x123, i labeled 0x124, ! labeled 0x125, \0 labeled 0x126" width="600"></li>
 </ul>
 
 <h2 id="memory-allocation">Memory allocation</h2>
@@ -637,7 +637,7 @@ t: Hi!
     </ul>
   </li>
   <li data-marker="*">We can visualize how this looks in our computer’s memory:<br>
-<img src="s_t_malloc.png" alt="box labeled s pointing to h at 0x123, box labeled t pointing to h at 0x456, boxes side by side containing h labeled 0x123, i labeled 0x124, ! labeled 0x125, \0 labeled 0x126, boxes side by side containing h labeled 0x456, i labeled 0x457, ! labeled 0x458, \0 labeled 0x459" width="600">
+<img src="./static/imagesnotes/s_t_malloc.webp" alt="box labeled s pointing to h at 0x123, box labeled t pointing to h at 0x456, boxes side by side containing h labeled 0x123, i labeled 0x124, ! labeled 0x125, \0 labeled 0x126, boxes side by side containing h labeled 0x456, i labeled 0x457, ! labeled 0x458, \0 labeled 0x459" width="600">
     <ul>
       <li data-marker="*">We’ve allocated memory at <code class="language-plaintext highlighter-rouge">0x456</code> and set <code class="language-plaintext highlighter-rouge">t</code> to point to it. Then, we used <code class="language-plaintext highlighter-rouge">strcpy</code> to copy each character’s value, starting from the address <code class="language-plaintext highlighter-rouge">s</code> is pointing to, to the address <code class="language-plaintext highlighter-rouge">t</code> is pointing to.</li>
     </ul>
@@ -912,7 +912,7 @@ x is 1, y is 2
 
 <ul>
   <li data-marker="*">Within our computer’s memory, different types of data that need to be stored for our program are organized into different sections:<br>
-<img src="memory_layout.png" alt="Grid with sections, from top to bottom: machine code, globals, heap (with arrow pointing downward), stack (with arrow pointing upward)" width="250">
+<img src="./static/imagesnotes/memory_layout.webp" alt="Grid with sections, from top to bottom: machine code, globals, heap (with arrow pointing downward), stack (with arrow pointing upward)" width="250">
     <ul>
       <li data-marker="*">The <strong>machine code</strong> section is our compiled program’s binary code. When we run our program, that code is loaded into memory.</li>
       <li data-marker="*">Just below, or in the next part of memory, are <strong>global variables</strong> we declared in our program.</li>

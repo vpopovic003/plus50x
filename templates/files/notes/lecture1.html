@@ -60,43 +60,43 @@
 <li data-marker="*">In order to turn this code into a program that our computer can actually run, we need to first translate it to binary, or zeroes and ones.</li>
 <li data-marker="*">Tools called IDEs, <a href="https://en.wikipedia.org/wiki/Integrated_development_environment"><strong>integrated development environments</strong></a>, will include features for us to write, translate, and run our code.</li>
 <li data-marker="*">One popular IDE, <a href="https://en.wikipedia.org/wiki/Visual_Studio_Code">Visual Studio Code</a>, contains a text editor, or area where we can write our code in plain text and save it to a file:<br>
-<img src="text_editor.png" alt="panel labeled 'hello.c' with hello, world program as contents" width="291" class="border"></li>
+<img src="./static/imagesnotes/text_editor.webp" alt="panel labeled 'hello.c' with hello, world program as contents" width="291" class="border"></li>
 <li data-marker="*">Now our <strong>source code</strong>, or code that we can read and write, is saved to a file called <code class="language-plaintext highlighter-rouge">hello.c</code>. Next, we need to convert it to <strong>machine code</strong>, or zeroes and ones that represent instructions that tell our computer to perform low-level operations.</li>
 <li data-marker="*">A <a href="https://en.wikipedia.org/wiki/Compiler"><strong>compiler</strong></a> is a program that can convert one language to another, such as source code to machine code:<br>
-<img src="compiler.png" alt="source code as input to box labeled compiler with machine code as output" width="300"></li>
+<img src="./static/imagesnotes/compiler.webp" alt="source code as input to box labeled compiler with machine code as output" width="300"></li>
 <li data-marker="*">Visual Studio Code, also referred to as VS Code, is typically a program that we can download to our own Mac or PC. But since we all have different systems, it’s easier to get started with a cloud-based version of VS Code that we can access with just a browser.
 <ul>
 <li data-marker="*">In <a href="../../psets/1/">Problem Set 1</a>, we’ll learn how to access our own instance of VS Code.</li>
 </ul>
 </li>
 <li data-marker="*">In the bottom half of the VS Code interface, we see a <a href="https://en.wikipedia.org/wiki/Terminal_emulator"><strong>terminal</strong></a>, a window into which we can type and run text commands:<br>
-<img src="terminal.png" alt="panel labeled terminal with $ as prompt and cursor for input" width="1000" class="border">
+<img src="./static/imagesnotes/terminal.webp" alt="panel labeled terminal with $ as prompt and cursor for input" width="1000" class="border">
 <ul>
 <li data-marker="*">This terminal will be connected to our own virtual server, with its own operating system, set of files, and other installed programs that we access through the browser.</li>
 </ul>
 </li>
 <li data-marker="*">The terminal provides a <strong>command-line interface</strong>, or CLI, and it allows us to access the virtual server’s operating system, <a href="https://en.wikipedia.org/wiki/Linux">Linux</a>.</li>
 <li data-marker="*">We’ll run a command to compile our program, <code class="language-plaintext highlighter-rouge">make hello</code>. Nothing appears to happen, but we’ll now have another file that’s just called <code class="language-plaintext highlighter-rouge">hello</code>, which we can run with <code class="language-plaintext highlighter-rouge">./hello</code>:<br>
-<img src="hello_world.png" alt="panel labeled terminal with command make hello, command ./hello, and hello, world as output" width="506" class="border">
+<img src="./static/imagesnotes/hello_world.webp" alt="panel labeled terminal with command make hello, command ./hello, and hello, world as output" width="506" class="border">
 <ul>
 <li data-marker="*"><code class="language-plaintext highlighter-rouge">./hello</code> tells our computer to find a file in our current folder (<code class="language-plaintext highlighter-rouge">.</code>), called <code class="language-plaintext highlighter-rouge">hello</code>, and run it. And we indeed see the output that we expected.</li>
 </ul>
 </li>
 <li data-marker="*">We’ll open the sidebar and see that there are two files in our virtual server, one called <code class="language-plaintext highlighter-rouge">hello.c</code> (which we have open in our editor), and one called <code class="language-plaintext highlighter-rouge">hello</code>:<br>
-<img src="sidebar.png" alt="panel labeled explorer with file hello and file hello.c" width="328">
+<img src="./static/imagesnotes/sidebar.webp" alt="panel labeled explorer with file hello and file hello.c" width="328">
 <ul>
 <li data-marker="*">The <code class="language-plaintext highlighter-rouge">make hello</code> command created the <code class="language-plaintext highlighter-rouge">hello</code> file containing machine code.</li>
 <li data-marker="*">The sidebar is a graphical user interface, or GUI, with which we can interact visually as we typically do.</li>
 </ul>
 </li>
 <li data-marker="*">To delete a file, for example, we can right-click it in the sidebar and select the “Delete Permanently” option, but we can also use the terminal with the <code class="language-plaintext highlighter-rouge">rm</code> command:<br>
-<img src="rm.png" alt="panel labeled terminal with command rm hello" width="358" class="border">
+<img src="./static/imagesnotes/rm.webp" alt="panel labeled terminal with command rm hello" width="358" class="border">
 <ul>
 <li data-marker="*">We run <code class="language-plaintext highlighter-rouge">rm hello</code> to remove the file called <code class="language-plaintext highlighter-rouge">hello</code>, and respond <code class="language-plaintext highlighter-rouge">y</code> for “yes” to confirm when prompted.</li>
 </ul>
 </li>
 <li data-marker="*">We can also run the <code class="language-plaintext highlighter-rouge">ls</code> command to <em>list</em> files in our current folder. We’ll compile our file again and run <code class="language-plaintext highlighter-rouge">ls</code> to see that a file called <code class="language-plaintext highlighter-rouge">hello</code> was created:<br>
-<img src="make_hello.png" alt="panel labeled terminal with command make hello and ls" width="140" class="border">
+<img src="./static/imagesnotes/make_hello.webp" alt="panel labeled terminal with command make hello and ls" width="140" class="border">
 <ul>
 <li data-marker="*"><code class="language-plaintext highlighter-rouge">hello</code> is in green with an asterisk, <code class="language-plaintext highlighter-rouge">*</code>, to indicate that it’s executable, or that we can run it.</li>
 </ul>
@@ -124,9 +124,9 @@
 </ul>
 </li>
 <li data-marker="*">One type of output for a function is a <strong>side effect</strong>, or change that we can observe (like printing to the screen or playing a sound):<br>
-<img src="side_effects.png" alt="arguments as input to functions with side effects as output" width="300"></li>
+<img src="./static/imagesnotes/side_effects.webp" alt="arguments as input to functions with side effects as output" width="300"></li>
 <li data-marker="*">In Scratch, the “say” block had a side effect:<br>
-<img src="scratch_side_effects.png" alt="hello, world as input to say block with cat and speech bubble as output" width="600"></li>
+<img src="./static/imagesnotes/scratch_side_effects.webp" alt="hello, world as input to say block with cat and speech bubble as output" width="600"></li>
 <li data-marker="*">In contrast to side effects, we also saw blocks, or functions, with <strong>return values</strong> that we can use in our program. That return value might then be saved into a <strong>variable</strong>.</li>
 <li data-marker="*">In Scratch, the “ask” block, for example, stored an answer into the “answer” block:<br>
 <pre><code class="language-scratch">ask [What's your name?] and wait
@@ -249,7 +249,7 @@ $
 </ul>
 </li>
 <li data-marker="*">Text editors for programming languages will helpfully highlight, or color-code, different types of ideas in our code:<br>
-<img src="highlighting.png" alt="panel labeled 'hello.c' with earlier code as contents, with expressions color-coded" width="486">
+<img src="./static/imagesnotes/highlighting.webp" alt="panel labeled 'hello.c' with earlier code as contents, with expressions color-coded" width="486">
 <ul>
 <li data-marker="*">Now, it’s easier for us to see the different components of our code and notice when we make a mistake.</li>
 <li data-marker="*">Notice that on line 6, too, when our cursor is next to a parenthesis, the matching one is highlighted as well.</li>
@@ -270,7 +270,7 @@ $
 </ul>
 </li>
 <li data-marker="*">Both <code class="language-plaintext highlighter-rouge">get_string</code> in C and the “ask” block in Scratch are functions that have a return value as output:<br>
-<img src="return_value.png" alt="arguments as input to functions with return value as output" width="300"></li>
+<img src="./static/imagesnotes/return_value.webp" alt="arguments as input to functions with return value as output" width="300"></li>
 <li data-marker="*"><code class="language-plaintext highlighter-rouge">printf("hello, %s\n", answer);</code> is also similar to these Scratch blocks:
 <pre><code class="language-scratch">say (join [hello,] (answer))
 </code></pre>
@@ -309,7 +309,7 @@ $
 </ul>
 </li>
 <li data-marker="*">In our cloud-based IDE, we’re able to create new files and folders with the GUI in the sidebar:<br>
-<img src="sidebar.png" alt="panel labeled explorer with file hello and file hello.c" width="328"></li>
+<img src="./static/imagesnotes/sidebar.webp" alt="panel labeled explorer with file hello and file hello.c" width="328"></li>
 <li data-marker="*">We can also use the terminal with:
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir pset1
 $ mkdir pset2
@@ -339,7 +339,7 @@ pset1/mario/ $
 </code></pre></div>    </div>
 </li>
 <li data-marker="*">We’ll run a command specific to VS Code, <code class="language-plaintext highlighter-rouge">code mario.c</code>, to create a new file called <code class="language-plaintext highlighter-rouge">mario.c</code>. We see that it opens in the editor, and we can see our new folders and file in the sidebar as well:<br>
-<img src="sidebar_mario.png" alt="panel labeled explorer with folder pset1/mario and file mario.c, folder pset2, file hello, and file hello.c" width="298"></li>
+<img src="./static/imagesnotes/sidebar_mario.webp" alt="panel labeled explorer with folder pset1/mario and file mario.c, folder pset2, file hello, and file hello.c" width="298"></li>
 <li data-marker="*">To change our current directory to the parent directory, we can run <code class="language-plaintext highlighter-rouge">cd ..</code>. We can go up two levels at once with <code class="language-plaintext highlighter-rouge">cd ../..</code> as well:
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pset1/mario/ $ cd ..
 pset1/ $ cd mario/

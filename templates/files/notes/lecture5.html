@@ -14,7 +14,7 @@
     <li data-marker="*">Next week, we’ll be introduced to another programming language, Python, where we’ll be able to build even more sophisticated programs, with less syntax.</li>
     <li data-marker="*">Last week, we learned about memory. Before that, we learned about arrays, like lists of values back-to-back in memory.</li>
     <li data-marker="*">Let’s say we have an array of three numbers, that we want to add another number to. But in our computer’s memory, there might already be another value right after, like a string:<br>
-  <img src="array_in_memory.png" alt="boxes of garbage values, with boxes for values 1, 2, 3, and a string after in gray" width="556">
+  <img src="./static/imagesnotes/array_in_memory.webp" alt="boxes of garbage values, with boxes for values 1, 2, 3, and a string after in gray" width="556">
       <ul>
         <li data-marker="*">The free memory, containing garbage values, is represented by a cartoon <a href="https://en.wikipedia.org/wiki/Oscar_the_Grouch">Oscar</a>.</li>
       </ul>
@@ -36,19 +36,19 @@
   
   <ul>
     <li data-marker="*">With a <strong>linked list</strong>, we can store a list of values in different parts of memory:<br>
-  <img src="linked_list.png" alt="grid representing memory, with three of the boxes labeled with empty boxes between them, labeled 1 0x123, 2 0x456, and 3 0x789" width="740">
+  <img src="./static/imagesnotes/linked_list.webp" alt="grid representing memory, with three of the boxes labeled with empty boxes between them, labeled 1 0x123, 2 0x456, and 3 0x789" width="740">
       <ul>
         <li data-marker="*">We have the values <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">2</code>, and <code class="language-plaintext highlighter-rouge">3</code>, each stored in some address in memory, like <code class="language-plaintext highlighter-rouge">0x123</code>, <code class="language-plaintext highlighter-rouge">0x456</code>, and <code class="language-plaintext highlighter-rouge">0x789</code>.</li>
         <li data-marker="*">This is different than an array since our values are no longer next to one another in memory. We can use whatever locations in memory that are free.</li>
       </ul>
     </li>
     <li data-marker="*">When we want to insert a new value, we allocate enough memory for both the value we want to store, and the address of the next value:<br>
-  <img src="linked_list_with_addresses.png" alt="three boxes, each divided in two and labeled (1 0x123 and 0x456), (2 0x456 and 0x789), and (3 0x789 and 0x0)" width="738">
+  <img src="./static/imagesnotes/linked_list_with_addresses.webp" alt="three boxes, each divided in two and labeled (1 0x123 and 0x456), (2 0x456 and 0x789), and (3 0x789 and 0x0)" width="738">
       <ul>
         <li data-marker="*">Next to our value of <code class="language-plaintext highlighter-rouge">1</code>, for example, we also store a pointer, <code class="language-plaintext highlighter-rouge">0x456</code>, to the next value and pointer. (We’ll draw them vertically for visualization, but in memory the value and pointer will be adjacent.)</li>
         <li data-marker="*">For our last group of boxes with value <code class="language-plaintext highlighter-rouge">3</code>, we have the null pointer, <code class="language-plaintext highlighter-rouge">0x0</code>, since there’s no next group.</li>
         <li data-marker="*">We can also visualize these addresses as just pointers, since we don’t need to know what the addresses actually are:<br>
-  <img src="linked_list_with_pointers.png" alt="three boxes, each divided in two and labeled (1, with arrow pointing to 2), (2, with arrow pointing to 3), and (3, with no arrow)" width="465"></li>
+  <img src="./static/imagesnotes/linked_list_with_pointers.webp" alt="three boxes, each divided in two and labeled (1, with arrow pointing to 2), (2, with arrow pointing to 3), and (3, with no arrow)" width="465"></li>
       </ul>
     </li>
     <li data-marker="*">With a linked list, we have the tradeoff of needing to allocate more memory for each value and pointer, in order to spend less time adding values. (When we copy an array, we do need to allocate more memory, but we free the old array once we finish copying it.)</li>
@@ -94,7 +94,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">Finally, our list needs to point to the node: <code class="language-plaintext highlighter-rouge">list = n;</code>:<br>
-  <img src="list_with_one_node_n.png" alt="a box labeled list with arrow outwards pointing to two connected boxes, one with 1 and one empty, with a box labeled n pointing to the two connected boxes as well" width="332">
+  <img src="./static/imagesnotes/list_with_one_node_n.webp" alt="a box labeled list with arrow outwards pointing to two connected boxes, one with 1 and one empty, with a box labeled n pointing to the two connected boxes as well" width="332">
       <ul>
         <li data-marker="*">We want our <code class="language-plaintext highlighter-rouge">list</code> pointer to have the same address as <code class="language-plaintext highlighter-rouge">n</code>, since <code class="language-plaintext highlighter-rouge">n</code> is a temporary variable and we want our <code class="language-plaintext highlighter-rouge">list</code> variable to refer to it as the first node in our list.</li>
       </ul>
@@ -274,7 +274,7 @@
     <li data-marker="*">When we have a large enough array, there might not be enough free memory contiguously, in a row, to store all of our values.</li>
     <li data-marker="*">With a linked list, we can use smaller chunks of free memory for each node, stitching them together with pointers.</li>
     <li data-marker="*">Let’s start with the list we saw earlier, with one node:<br>
-  <img src="list_with_one_node.png" alt="a box labeled list with arrow outwards pointing to two connected boxes, one with 1 and one empty" width="250"></li>
+  <img src="./static/imagesnotes/list_with_one_node.webp" alt="a box labeled list with arrow outwards pointing to two connected boxes, one with 1 and one empty" width="250"></li>
     <li data-marker="*">To add to the list, we’ll create a new node the same way by allocating more memory:
       <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node</span><span class="p">));</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
@@ -285,7 +285,7 @@
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*"><code class="language-plaintext highlighter-rouge">n</code> is a temporary variable we use to point to this new node:<br>
-  <img src="list_with_one_node_n_2.png" alt="a box labeled list with arrow outwards pointing to two connected boxes, one with 1 and one empty, a box labeled n pointing to two connected boxes, one with 2 and one empty" width="455"></li>
+  <img src="./static/imagesnotes/list_with_one_node_n_2.webp" alt="a box labeled list with arrow outwards pointing to two connected boxes, one with 1 and one empty, a box labeled n pointing to two connected boxes, one with 2 and one empty" width="455"></li>
       </ul>
     </li>
     <li data-marker="*">And now we need to update the pointer in our first node to point to our new <code class="language-plaintext highlighter-rouge">n</code>, since we want to maintain a sorted list:
@@ -293,7 +293,7 @@
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">This follows the pointer <code class="language-plaintext highlighter-rouge">list</code>, and sets the <code class="language-plaintext highlighter-rouge">next</code> field to point to the same node as <code class="language-plaintext highlighter-rouge">n</code>, since <code class="language-plaintext highlighter-rouge">n</code> is also a pointer:<br>
-  <img src="list_with_two_nodes_n.png" alt="a box labeled list with arrow outwards pointing to two connected boxes, one with 1 and one pointing to 2, a box labeled n pointing to two connected boxes, one with 2 and one empty" width="454"></li>
+  <img src="./static/imagesnotes/list_with_two_nodes_n.webp" alt="a box labeled list with arrow outwards pointing to two connected boxes, one with 1 and one pointing to 2, a box labeled n pointing to two connected boxes, one with 2 and one empty" width="454"></li>
       </ul>
     </li>
     <li data-marker="*">To add a third node, we’ll allocate more memory again:
@@ -306,7 +306,7 @@
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">Now, <code class="language-plaintext highlighter-rouge">n</code> points to a new node in memory:<br>
-  <img src="list_with_two_nodes_n_3.png" alt="a box labeled list with arrow outwards pointing to two connected boxes, one with 1 and one pointing to 2, a box labeled n pointing to two connected boxes, one with 3 and one empty" width="551"></li>
+  <img src="./static/imagesnotes/list_with_two_nodes_n_3.webp" alt="a box labeled list with arrow outwards pointing to two connected boxes, one with 1 and one pointing to 2, a box labeled n pointing to two connected boxes, one with 3 and one empty" width="551"></li>
       </ul>
     </li>
     <li data-marker="*">To insert this node in our list, we’ll want to follow the <code class="language-plaintext highlighter-rouge">next</code> pointer in the first node that <code class="language-plaintext highlighter-rouge">list</code> points to (the node with value <code class="language-plaintext highlighter-rouge">1</code>), then setting the <code class="language-plaintext highlighter-rouge">next</code> pointer in <em>that node</em> (with value <code class="language-plaintext highlighter-rouge">2</code>) to point to the new node:
@@ -314,7 +314,7 @@
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">In general, we’ll use a loop to move through our list, but this will manually connect our nodes to look like:<br>
-  <img src="list_with_three_nodes.png" alt="a box labeled list with arrow pointing to node with 1 and arrow pointing to another node with 2 and arrow pointing to third node with 3 and no pointer, and box labeled n pointing to third node" width="551"></li>
+  <img src="./static/imagesnotes/list_with_three_nodes.webp" alt="a box labeled list with arrow pointing to node with 1 and arrow pointing to another node with 2 and arrow pointing to third node with 3 and no pointer, and box labeled n pointing to third node" width="551"></li>
       </ul>
     </li>
     <li data-marker="*">Even though we’re using more memory, and taking multiple steps to insert new nodes in this case (since we’re adding to the end of the list), we’re able to use small amounts of free space in memory, instead of having to look for a large chunk of contiguous memory.</li>
@@ -421,9 +421,9 @@
     <li data-marker="*">In Problem Set 5, we’ll further explore the implementation of linked lists, and when we learn about Python, we’ll see how the programming language will manage our memory for us.</li>
     <li data-marker="*">With a few volunteers on stage, we demonstrate linked lists. Each volunteer points at another with foam fingers, with some volunteers changing who they point to as new “nodes” as added.</li>
     <li data-marker="*">For example, we’ll add a new node, <code class="language-plaintext highlighter-rouge">1</code>, that needs to be in the middle of our list:<br>
-  <img src="list_with_three_nodes_1.png" alt="a box labeled list with arrow pointing to node with 2 and arrow pointing to another node with 4 and arrow pointing to third node with 5 and no pointer, and box labeled 1" width="551"></li>
+  <img src="./static/imagesnotes/list_with_three_nodes_1.webp" alt="a box labeled list with arrow pointing to node with 2 and arrow pointing to another node with 4 and arrow pointing to third node with 5 and no pointer, and box labeled 1" width="551"></li>
     <li data-marker="*">We’ll have to first update the <code class="language-plaintext highlighter-rouge">next</code> pointer in the node with <code class="language-plaintext highlighter-rouge">1</code> to point to the next node, <em>before</em> updating <code class="language-plaintext highlighter-rouge">list</code>:<br>
-  <img src="list_with_four_nodes.png" alt="a box labeled list with arrow pointing to node with 1 and arrow pointing to node with 2 and arrow pointing to another node with 4 and arrow pointing to third node with 5 and no pointer" width="551">
+  <img src="./static/imagesnotes/list_with_four_nodes.webp" alt="a box labeled list with arrow pointing to node with 1 and arrow pointing to node with 2 and arrow pointing to another node with 4 and arrow pointing to third node with 5 and no pointer" width="551">
       <ul>
         <li data-marker="*">Our code to do this might look like:
           <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">list</span><span class="p">;</span>
@@ -442,13 +442,13 @@
   
   <ul>
     <li data-marker="*">Recall that with a sorted array, we can use binary search to find an element, starting at the middle (yellow), then the middle of either half (red), and finally left or right (green) as needed:<br>
-  <img src="sorted_array.png" alt="boxes labeled 1, green; 2, red; 3, green; 4, yellow; 5, green; 6, red; 7, green" width="500">
+  <img src="./static/imagesnotes/sorted_array.webp" alt="boxes labeled 1, green; 2, red; 3, green; 4, yellow; 5, green; 6, red; 7, green" width="500">
       <ul>
         <li data-marker="*">With an array, we can randomly access elements in \(O(1)\) time, since we can use arithmetic to go to an element at any index.</li>
       </ul>
     </li>
     <li data-marker="*">A <strong>tree</strong> is another data structure where each node points to other nodes. We might have a tree where each node points to one to the left (with a smaller value) and one to the right (with a larger value):<br>
-  <img src="tree.png" alt="tree with node 4 at top center, left arrow to 3 below, right arrow to 6 below; 2 has left arrow to 1 below, right arrow to 3 below; 6 has left arrow to 5 below, right arrow to 7 below" width="500">
+  <img src="./static/imagesnotes/tree.webp" alt="tree with node 4 at top center, left arrow to 3 below, right arrow to 6 below; 2 has left arrow to 1 below, right arrow to 3 below; 6 has left arrow to 5 below, right arrow to 7 below" width="500">
       <ul>
         <li data-marker="*">Notice that we now visualize this data structure in two dimensions (even though the nodes in memory can be at any location).</li>
         <li data-marker="*">Each node has not one but two pointers to other nodes. All the values to the left of a node are smaller, and all the values of nodes to the right are greater, which allows this to be used as a <strong>binary search tree</strong>.</li>
@@ -611,7 +611,7 @@
       </ul>
     </li>
     <li data-marker="*">If we add nodes in inefficient ways, though, our binary search tree might start to look like a linked list:<br>
-  <img src="imbalanced_tree.png" alt="node with 1 pointing at node with 2 pointing at node with 3" width="295">
+  <img src="./static/imagesnotes/imbalanced_tree.webp" alt="node with 1 pointing at node with 2 pointing at node with 3" width="295">
       <ul>
         <li data-marker="*">We started our tree with a node with value of <code class="language-plaintext highlighter-rouge">1</code>, then added the node with value <code class="language-plaintext highlighter-rouge">2</code>, and finally added the node with value <code class="language-plaintext highlighter-rouge">3</code>. Even though this tree follows the constraints of a binary search tree, it’s not as efficient as it could be.</li>
         <li data-marker="*">We can make the tree balanced, or more optimal, by making the node with value <code class="language-plaintext highlighter-rouge">2</code> the new root node.</li>
@@ -624,11 +624,11 @@
   
   <ul>
     <li data-marker="*">A <strong>hash table</strong> is a data structure that allows us to associate keys with values. It looks like an array, where we can jump to each location by its index:<br>
-  <img src="hash_table_indexed.png" alt="vertical column of boxes, labeled 0 through 25" width="79"></li>
+  <img src="./static/imagesnotes/hash_table_indexed.webp" alt="vertical column of boxes, labeled 0 through 25" width="79"></li>
     <li data-marker="*">We can think of each location as labeled with a letter from A through Z, and insert names into each location:<br>
-  <img src="hash_table_names.png" alt="vertical column of boxes, each with arrow pointing to a name" width="205"></li>
+  <img src="./static/imagesnotes/hash_table_names.webp" alt="vertical column of boxes, each with arrow pointing to a name" width="205"></li>
     <li data-marker="*">If we have multiple names with the same first letter, we can add them with a linked list:<br>
-  <img src="hash_table_multiple_names.png" alt="vertical column of boxes, each with arrow pointing to a name, with the eighth box with an arrow pointing to a box labeled Hermione with an arrow from that box pointing to a box labeled Harry with an arrow to a box labeled Hagrid" width="512">
+  <img src="./static/imagesnotes/hash_table_multiple_names.webp" alt="vertical column of boxes, each with arrow pointing to a name, with the eighth box with an arrow pointing to a box labeled Hermione with an arrow from that box pointing to a box labeled Harry with an arrow to a box labeled Hagrid" width="512">
       <ul>
         <li data-marker="*">The array has 26 pointers, some of which are null, but some pointing to a name in a node, each of which may also point to another name in another node.</li>
       </ul>
@@ -658,7 +658,7 @@
       </ul>
     </li>
     <li data-marker="*">We can try to have smaller chains in our hash table by using two letters, instead of just one:<br>
-  <img src="hash_table_two_letters.png" alt="vertical array with boxes labeled Ha, pointing to Harry and Hagrid, Hb, Hc, Hd, He pointing to Hermione, Hf" width="385">
+  <img src="./static/imagesnotes/hash_table_two_letters.webp" alt="vertical array with boxes labeled Ha, pointing to Harry and Hagrid, Hb, Hc, Hd, He pointing to Hermione, Hf" width="385">
       <ul>
         <li data-marker="*">Now, we’ll have 676 buckets total, for all the combinations of the first two letters.</li>
       </ul>
@@ -666,15 +666,15 @@
     <li data-marker="*">We can consider the first three letters with even more buckets, but we’ll be using more space in memory. Some of those buckets will be empty, but we’re more likely to only need one step to look for a value, reducing our running time for searching.</li>
     <li data-marker="*">It turns out that the worst case running time for searching a hash table is \(O(n)\), since all of our values might be in the same bucket, devolving into a linked list as well. In practice, though, the running time will likely be much faster.</li>
     <li data-marker="*">We can use another data structure called a <strong>trie</strong> (pronounced like “try”, and is short for “retrieval”). A trie is a tree with arrays as nodes:<br>
-  <img src="trie_empty.png" alt="array with letters from A-Z in 26 locations" width="357">
+  <img src="./static/imagesnotes/trie_empty.webp" alt="array with letters from A-Z in 26 locations" width="357">
       <ul>
         <li data-marker="*">Each array will have locations that represent each letter, A-Z.</li>
       </ul>
     </li>
     <li data-marker="*">For each word, the first letter will point to an array, where the next valid letter will point to another array, and so on, until we reach a boolean value indicating the end of a valid word, marked in green:<br>
-  <img src="trie_with_hagrid.png" alt="array with H pointing to another array, with A pointing to another array, with G pointing to another array, with R pointing to another array, with I pointing to another array, with D marked in green" width="400"></li>
+  <img src="./static/imagesnotes/trie_with_hagrid.webp" alt="array with H pointing to another array, with A pointing to another array, with G pointing to another array, with R pointing to another array, with I pointing to another array, with D marked in green" width="400"></li>
     <li data-marker="*">With multiple names, we start seeing some of the space being reused for the first letters that are shared:<br>
-  <img src="trie_with_multiple_names.png" alt="array with H pointing to another array, with A pointing to another array, with G pointing to another array, with R pointing to another array, with I pointing to another array, with D marked in green; the second array from H also has E pointing to R, M, I, O, N, and E; the third array from H, to A, has R pointing to R and Y" width="544"></li>
+  <img src="./static/imagesnotes/trie_with_multiple_names.webp" alt="array with H pointing to another array, with A pointing to another array, with G pointing to another array, with R pointing to another array, with I pointing to another array, with D marked in green; the second array from H also has E pointing to R, M, I, O, N, and E; the third array from H, to A, has R pointing to R and Y" width="544"></li>
     <li data-marker="*">We might define a trie in code with:
       <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span> <span class="n">node</span>
   <span class="p">{</span>

@@ -20,16 +20,16 @@
     <li data-marker="*">Last week, we collected a survey of <a href="https://harrypotter.fandom.com/wiki/Hogwarts_Houses">Hogwarts house</a> preferences, and tallied the data from a CSV file with Python.</li>
     <li data-marker="*">This week, we’ll collect some more data about your favorite TV shows and their genres.</li>
     <li data-marker="*">We get hundreds of responses from the audience, and start looking at them on Google Sheets, a web-based spreadsheet application, showing our data in rows and columns:<br>
-  <img src="favorites.png" alt="Google Sheets spreadsheet titled favorites with row 1 having cells &quot;Timestamp&quot;, &quot;title&quot;, and &quot;genres&quot;, with row 43 having cells &quot;10/25/2021 13:37:02&quot;, &quot;La Casa de Papel&quot;, &quot;Action&quot;, and so on" width="600" class="border"></li>
+  <img src="./static/imagesnotes/favorites.webp" alt="Google Sheets spreadsheet titled favorites with row 1 having cells &quot;Timestamp&quot;, &quot;title&quot;, and &quot;genres&quot;, with row 43 having cells &quot;10/25/2021 13:37:02&quot;, &quot;La Casa de Papel&quot;, &quot;Action&quot;, and so on" width="600" class="border"></li>
     <li data-marker="*">Like we did last week, we can download our data as a CSV file, which is an example of a <strong>flat-file database</strong>, where the data for each column is separated by commas, and each row is on a new line, saved simply as a text file in ASCII or Unicode.
       <ul>
         <li data-marker="*">A flat-file database is completely portable, which means that we can open it on nearly any operating system without special software like Microsoft Excel or Apple Numbers.</li>
       </ul>
     </li>
     <li data-marker="*">We’ll upload the CSV file to our instance of VS Code by dragging and dropping it:<br>
-    <img src="uploading.png" alt="file favorites.csv dragged from Finder window into VS Code explorer" width="600" class="border"></li>
+    <img src="./static/imagesnotes/uploading.webp" alt="file favorites.csv dragged from Finder window into VS Code explorer" width="600" class="border"></li>
     <li data-marker="*">Then, we’ll see the file opened in an editor:<br>
-    <img src="csv.png" alt="rows of data from spreadsheet" width="400" class="border">
+    <img src="./static/imagesnotes/csv.webp" alt="rows of data from spreadsheet" width="400" class="border">
       <ul>
         <li data-marker="*">Notice that some rows have multiple genres, and those are surrounded by quotes, like <code class="language-plaintext highlighter-rouge">"Crime, Drama"</code>, so that the commas <em>within</em> our data aren’t misinterpreted.</li>
       </ul>
@@ -1065,7 +1065,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">It turns out that these data structures are generally <strong>B-trees</strong>, like binary trees we’ve seen in C but with more children, with nodes organized such that we can search faster than linearly:<br>
-  <img src="b_tree.png" alt="tree with root node and four child nodes, each with two or three child nodes" width="400">
+  <img src="./static/imagesnotes/b_tree.webp" alt="tree with root node and four child nodes, each with two or three child nodes" width="400">
       <ul>
         <li data-marker="*">Creating an index takes some time up front, perhaps by sorting the data, but afterwards we can search much more quickly.</li>
       </ul>

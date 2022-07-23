@@ -22,7 +22,7 @@
   
   <ul>
     <li data-marker="*">Recall that our purpose for learning a new programming language and other tools is to solve problems. And we solve those problems by creating some output from input:<br>
-  <img src="input_output.png" alt="word &quot;input&quot;, arrow into box, arrow out of box, word &quot;output&quot;" width="400"></li>
+  <img src="./static/imagesnotes/input_output.webp" alt="word &quot;input&quot;, arrow into box, arrow out of box, word &quot;output&quot;" width="400"></li>
     <li data-marker="*">We learned about memory, which allows us to store data as bytes, and strings, which are arrays of characters.</li>
   </ul>
   
@@ -31,7 +31,7 @@
   <ul>
     <li data-marker="*">Today we’ll focus on algorithms that solve problems with arrays.</li>
     <li data-marker="*">It turns out that, with arrays, a computer can’t look at all of the elements at once. Instead, a computer can only to look at them one at a time, though we can look in any order, like only being able to open one locker at a time:<br>
-  <img src="lockers.png" alt="closed doors in a row, each labeled from 0 through 6" width="400">
+  <img src="./static/imagesnotes/lockers.webp" alt="closed doors in a row, each labeled from 0 through 6" width="400">
       <ul>
         <li data-marker="*">Recall that arrays are zero-indexed, meaning that the first item has an index of 0. And with \(n\) items, the highest index would be \(n - 1\).</li>
       </ul>
@@ -45,13 +45,13 @@
     <li data-marker="*">Today we’ll look at algorithms for searching. To compare their efficiency, we’ll consider <strong>running time</strong>, or how long an algorithm takes to run given some size of input.</li>
     <li data-marker="*">Computer scientists tend to describe running time with <strong>big \(O\) notation</strong>, which we can think of as “on the order of” something, as though we want to convey an idea of running time and not an exact number of milliseconds or steps.</li>
     <li data-marker="*">In week 0, we saw a chart with different types of algorithms and the times they might take to solve a problem:<br>
-  <img src="time_to_solve.png" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph labeled &quot;n&quot;; yellow, less steep straight line from origin to top of graph labeled &quot;n/2&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;log_2  n&quot;" width="800">
+  <img src="./static/imagesnotes/time_to_solve.webp" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph labeled &quot;n&quot;; yellow, less steep straight line from origin to top of graph labeled &quot;n/2&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;log_2  n&quot;" width="800">
       <ul>
         <li data-marker="*">Recall that the red line is searching linearly, one page at a time; the yellow line is searching two pages at a time; and the green line is dividing and conquering, starting in the middle and dividing the problem in half each time.</li>
       </ul>
     </li>
     <li data-marker="*">In the chart above, if we zoomed out and changed the units on our axes, we would see the red and yellow lines end up very close together:<br>
-  <img src="time_to_solve_zoomed_out.png" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph close to yellow, less steep straight line from origin to top of graph both labeled &quot;O(n)&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;O(log n)&quot;" width="800">
+  <img src="./static/imagesnotes/time_to_solve_zoomed_out.webp" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph close to yellow, less steep straight line from origin to top of graph both labeled &quot;O(n)&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;O(log n)&quot;" width="800">
       <ul>
         <li data-marker="*">So we use big \(O\) notation to describe both the red and yellow lines, since they end up being very similar as \(n\) becomes larger and larger. We would describe them both as having “big \(O\) of \(n\)” or “on the order of \(n\)” running time.</li>
         <li data-marker="*">The green line, though, is fundamentally different in its shape, even as \(n\) becomes very large, so it takes “big \(O\) of \(\log n\)” steps. (The base of the logarithm, 2, is also removed since it’s a constant factor.)</li>
@@ -330,7 +330,7 @@
   
   <ul>
     <li data-marker="*"><strong>Sorting</strong> is solving the problem which takes in an unsorted list of numbers as input, and producing an output of a sorted list of numbers:<br>
-  <img src="sorting.png" alt="unsorted as input to box with sorted as output" width="300">
+  <img src="./static/imagesnotes/sorting.webp" alt="unsorted as input to box with sorted as output" width="300">
       <ul>
         <li data-marker="*">For example, <code class="language-plaintext highlighter-rouge">6 3 8 5 2 7 4 1</code> might be input, and output would be <code class="language-plaintext highlighter-rouge">1 2 3 4 5 6 7 8</code>.</li>
       </ul>

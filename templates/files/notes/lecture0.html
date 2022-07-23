@@ -18,7 +18,7 @@
     <li data-marker="*">This year, we’re back in Sanders Theatre, and David took CS50 himself as a sophomore years ago, but only because the professor at the time allowed him to take the course pass/fail.</li>
     <li data-marker="*">It turns out that computer science was less about programming than about problem solving. And though there may be frustration from feeling stuck or making mistakes, there will also be a great sense of gratification and pride from getting something to work or completing some task.</li>
     <li data-marker="*">In fact, David lost two points on his first assignment for not following all of the instructions correctly:<br>
-  <img src="assignment.png" alt="assignment showing code with -2 points" width="400">
+  <img src="./static/imagesnotes/assignment.webp" alt="assignment showing code with -2 points" width="400">
       <ul>
         <li data-marker="*">And while this code (written in a programming language as opposed to a language like English) looks cryptic at first, it may only take weeks or months before we can understand main programming concepts and even teach ourselves new languages.</li>
       </ul>
@@ -36,7 +36,7 @@
   <ul>
     <li data-marker="*">Computer science is fundamentally problem solving, but we’ll need to be precise and methodical.</li>
     <li data-marker="*">We can think of <strong>problem solving</strong> as the process of taking some input (a problem we want to solve) and generate some output (the solution to our problem).<br>
-  <img src="input_output.png" alt="word &quot;input&quot;, arrow into box, arrow out of box, word &quot;output&quot;" width="400"></li>
+  <img src="./static/imagesnotes/input_output.webp" alt="word &quot;input&quot;, arrow into box, arrow out of box, word &quot;output&quot;" width="400"></li>
     <li data-marker="*">To begin doing that, we’ll need a way to represent inputs and outputs, so we can store and work with information in a standardized way.</li>
   </ul>
   
@@ -136,7 +136,7 @@
     <li data-marker="*">When we receive an <a href="https://en.wikipedia.org/wiki/Emoji">emoji</a>, our computer is actually just receiving a number in binary that it then maps to the image of the emoji based on the Unicode standard.
       <ul>
         <li data-marker="*">For example, the “face with medical mask” emoji is just the four bytes <code class="language-plaintext highlighter-rouge">11110000 10011111 10011000 10110111</code>:<br>
-  <img src="medical_mask.png" alt="emoji with face with medical mask" width="400"></li>
+  <img src="./static/imagesnotes//medical_mask.webp" alt="emoji with face with medical mask" width="400"></li>
         <li data-marker="*">And it turns out that different companies that create software for their devices will have slightly different images that represent each emoji, since only the descriptions have been standardized.</li>
       </ul>
     </li>
@@ -149,11 +149,11 @@
     <li data-marker="*">For example, our pattern of bits earlier, <code class="language-plaintext highlighter-rouge">72</code>, <code class="language-plaintext highlighter-rouge">73</code>, and <code class="language-plaintext highlighter-rouge">33</code> might indicate the amount of red, green, and blue in a color. (And our programs would know those bits map to a color if we opened an image file, as opposed to receiving them in a text message.)
       <ul>
         <li data-marker="*">Each number might be 8 bits, with 256 possible values, so with three bytes, or 24 bits, we can represent millions of colors. Our three bytes from above would represent a dark shade of yellow:<br>
-  <img src="72_73_33.png" alt="dark yellow" width="50"></li>
+  <img src="./static/imagesnotes/72_73_33.webp" alt="dark yellow" width="50"></li>
       </ul>
     </li>
     <li data-marker="*">The dots, or squares, on our screens are called <strong>pixels</strong>, and images are made up of many thousands or millions of those pixels as well. So by using three bytes to represent the color for each pixel, we can create images. We can see pixels in an emoji if we zoom in, for example:<br>
-  <img src="emoji_zoomed.png" alt="zoomed-in emoji of face with medical mask with squares of pixels distinguishable" width="800"></li>
+  <img src="./static/imagesnotes/emoji_zoomed.webp" alt="zoomed-in emoji of face with medical mask with squares of pixels distinguishable" width="800"></li>
     <li data-marker="*">Videos are sequences of many images, changing multiple times a second to give us the appearance of motion, as a <a href="https://www.youtube.com/watch?v=sz78_07Xg-U">flipbook</a> might.</li>
     <li data-marker="*">Music can be represented with bits, too. <a href="https://en.wikipedia.org/wiki/MIDI">MIDI</a> is one such format which represents music with numbers for each of the notes and their duration and volume.</li>
     <li data-marker="*">So all of these ideas are just zeroes and ones, interpreted and used by software we’ve written to interpret them in the ways that we want.
@@ -168,13 +168,13 @@
   
   <ul>
     <li data-marker="*">Now that we can represent inputs and outputs, we can work on problem solving. The black box that transforms inputs to outputs contains <strong>algorithms</strong>, step-by-step instructions for solving problems:<br>
-  <img src="algorithms.png" alt="box with word &quot;algorithms&quot;" width="200"></li>
+  <img src="./static/imagesnotes/algorithms.webp" alt="box with word &quot;algorithms&quot;" width="200"></li>
     <li data-marker="*">We might have an application on our phones that store our contacts, with their names and phone numbers sorted alphabetically. The old-school equivalent might be a phone book, a printed copy of names and phone numbers.</li>
     <li data-marker="*">We might open the book and start from the first page, looking for a name one page at a time. This algorithm would be correct, since we will eventually find the name if it’s in the book.</li>
     <li data-marker="*">We might flip through the book two pages at a time, but this algorithm will not be correct since we might skip the page with our name on it.</li>
     <li data-marker="*">Another algorithm would be opening the phone book to the middle, decide whether our name will be in the left half or right half of the book (because the book is alphabetized), and reduce the size of our problem by half. We can repeat this until we find our name, dividing the problem in half each time.</li>
     <li data-marker="*">We can visualize the efficiency of each of those algorithms with a chart:<br>
-  <img src="time_to_solve.png" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph labeled &quot;n&quot;; yellow, less steep straight line from origin to top of graph labeled &quot;n/2&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;log_2  n&quot;" width="800">
+  <img src="./static/imagesnotes/time_to_solve.webp" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph labeled &quot;n&quot;; yellow, less steep straight line from origin to top of graph labeled &quot;n/2&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;log_2  n&quot;" width="800">
       <ul>
         <li data-marker="*">Our first algorithm, searching one page at a time, can be represented by the red line: our time to solve increases linearly as the size of the problem increases. <em>n</em> is a number representing the size of the problem, so with <em>n</em> pages in our phone books, we have to take up to <em>n</em> steps to find a name.</li>
         <li data-marker="*">The second algorithm, searching two pages at a time, can be represented by the yellow line: our slope is less steep, but still linear. Now, we only need (roughly) <em>n</em> / 2 steps, since we flip two pages at a time.</li>
@@ -302,7 +302,7 @@
   <ul>
     <li data-marker="*">We’ll start programming with a graphical programming language called <a href="https://scratch.mit.edu/">Scratch</a>, where we’ll drag and drop blocks that contain instructions.</li>
     <li data-marker="*">The programming environment for Scratch is a little more friendly:<br>
-  <img src="scratch.png" alt="screenshot of Scratch's interface" width="800">
+  <img src="./static/imagesnotes/scratch.webp" alt="screenshot of Scratch's interface" width="800">
       <ul>
         <li data-marker="*">On the left, we have puzzle pieces that represent functions or variables, or other concepts, that we can drag and drop into the big area in the center.</li>
         <li data-marker="*">On the bottom right, we can add more characters, or sprites, for our program to use.</li>
@@ -310,7 +310,7 @@
       </ul>
     </li>
     <li data-marker="*">The world in Scratch has a coordinate-based system for positioning things on the screen:<br>
-  <img src="coordinates.png" alt="cat in center of screen with x and y axes labeled with negative and positive coordinates" width="600">
+  <img src="./static/imagesnotes/coordinates.webp" alt="cat in center of screen with x and y axes labeled with negative and positive coordinates" width="600">
       <ul>
         <li data-marker="*">The center of the screen is a coordinate of 0 for x and 0 for y, and the top of screen would be 0 for x and 180 for y. The bottom of the screen would still be 0 for x, and -180 for y. The left of the screen would be -240 for x and 0 for y, and the right of the screen would be 240 for x and 0 for y.</li>
       </ul>
@@ -367,7 +367,7 @@
   </code></pre>
       <ul>
         <li data-marker="*">Note that the “join” block takes not just one, but two arguments, or inputs, and its <em>output</em>, or the combined phrase, is used immediately as the <em>input</em> to another function, the “say” block:<br>
-  <img src="join_say.png" alt="hello, answer blocks as inputs to join block, then output of hello, David as input to say block, then output of cat with speech bubble" width="900"></li>
+  <img src="./static/imagesnotes/join_say.webp" alt="hello, answer blocks as inputs to join block, then output of hello, David as input to say block, then output of cat with speech bubble" width="900"></li>
       </ul>
     </li>
     <li data-marker="*">At the bottom left of the screen, we see an icon for extensions, and one of them is called Text to Speech. After we add it, we can use the “speak” block to hear our cat speak:
@@ -471,7 +471,7 @@
     <li data-marker="*">With a volunteer from the audience, we demonstrate a <a href="https://scratch.mit.edu/projects/565362715">whack-a-mole</a> game.</li>
     <li data-marker="*">We also take a look at <a href="https://scratch.mit.edu/projects/277537196">Oscartime</a>, another game where the player drags trash into a trashcan for points.</li>
     <li data-marker="*">We’ll take a look at how we might have built this program. First, we can add an image of the <a href="https://scratch.mit.edu/projects/565133620">lamp post</a> as a backdrop:<br>
-  <img src="lamppost.png" alt="image of lamppost in Scratch's editor interface" width="400"></li>
+  <img src="./static/imagesnotes/lamppost.webp" alt="image of lamppost in Scratch's editor interface" width="400"></li>
     <li data-marker="*">Then, we’ll add images of <a href="https://scratch.mit.edu/projects/565100517">trash cans</a>, with one open and one closed:
       <pre><code class="language-scratch">when green flag clicked
   switch costume to (oscar1 v)

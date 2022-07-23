@@ -82,11 +82,11 @@
     <li data-marker="*">The keys and values, like <code class="language-plaintext highlighter-rouge">Host: www.example.com</code> and <code class="language-plaintext highlighter-rouge">Content-Type: text/html</code>, are known as <strong>HTTP headers</strong>.</li>
     <li data-marker="*">We’ll type in <code class="language-plaintext highlighter-rouge">http://harvard.edu</code> in our browser, and see that the address bar has changed to <code class="language-plaintext highlighter-rouge">https://www.harvard.edu</code> after the page has loaded. Browsers include developer tools, which allow us to see what’s happening. In Chrome’s menu, for example, we can go to View &gt; Developer &gt; Developer Tools, which will open a panel on the screen. We’ll also use an Incognito window, so Chrome doesn’t remember our previous requests.</li>
     <li data-marker="*">In the Network tab, we can see that there were over a hundred requests, for text, images, and other pieces of data that were downloaded separately for a single web page. It turns out that our browser made a single request, and the response from the server indicated that we needed to make all those other requests to download the other data on the page:<br>
-  <img src="requests.png" alt="113 requests, 27.5MB transferred at bottom of Network panel" width="340" class="border"></li>
+  <img src="./static/imagesnotes/requests.webp" alt="113 requests, 27.5MB transferred at bottom of Network panel" width="340" class="border"></li>
     <li data-marker="*">If we scroll up in the lists of requests, we can see the request headers for the first request by clicking on the one for <code class="language-plaintext highlighter-rouge">harvard.edu</code>:<br>
-  <img src="request_headers.png" alt="Request Headers including GET and Host" width="737" class="border"></li>
+  <img src="./static/imagesnotes/request_headers.webp" alt="Request Headers including GET and Host" width="737" class="border"></li>
     <li data-marker="*">And we can scroll to see that the server’s response actually returned a status code of <code class="language-plaintext highlighter-rouge">301 Moved Permanently</code>, redirecting our browser from <code class="language-plaintext highlighter-rouge">http://...</code> to <code class="language-plaintext highlighter-rouge">https://...</code>:<br>
-  <img src="response_headers.png" alt="Response for www.harvard.edu with 301 Moved Permanently" width="254" class="border">
+  <img src="./static/imagesnotes/response_headers.webp" alt="Response for www.harvard.edu with 301 Moved Permanently" width="254" class="border">
       <ul>
         <li data-marker="*">Note that the response includes a <code class="language-plaintext highlighter-rouge">Location:</code> header for the browser to redirect us to.</li>
       </ul>
@@ -186,7 +186,7 @@
       </ul>
     </li>
     <li data-marker="*">The page will be loaded into the browser’s memory as a data structure, like this tree:<br>
-  <img src="html_structure.png" alt="HTML nodes mapped to a tree, with &quot;document&quot; as a root node, containing &quot;html&quot;, containing &quot;head&quot;, &quot;title&quot;, &quot;hello, title,&quot; as well as &quot;body&quot;, &quot;hello, body&quot;" width="435">
+  <img src="./static/imagesnotes/html_structure.webp" alt="HTML nodes mapped to a tree, with &quot;document&quot; as a root node, containing &quot;html&quot;, containing &quot;head&quot;, &quot;title&quot;, &quot;hello, title,&quot; as well as &quot;body&quot;, &quot;hello, body&quot;" width="435">
       <ul>
         <li data-marker="*">Note that there is a hierarchy mapping each tag and its children. Rectangular nodes are tags, while oval ones are text.</li>
       </ul>
@@ -380,7 +380,7 @@
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">We’ll open Chrome’s Developer Tools again, and in the top left of the panel, use the icon that looks like mobile devices to simulate a phone:<br>
-  <img src="responsive.png" alt="Paragraph of text in simulated device view" width="900" class="border"></li>
+  <img src="./static/imagesnotes/responsive.webp" alt="Paragraph of text in simulated device view" width="900" class="border"></li>
       </ul>
     </li>
     <li data-marker="*">It turns out that we can also provide inputs in a request as part of a URL like <code class="language-plaintext highlighter-rouge">https://wwww.example.com/path?key=value</code>. Here, the <code class="language-plaintext highlighter-rouge">?</code> indicates that we’re adding inputs, which will include one or more key-value pairs.</li>
@@ -654,7 +654,7 @@
       </ul>
     </li>
     <li data-marker="*">CSS also has <strong>ID selectors</strong>, like in <a href="https://cdn.cs50.net/2021/fall/lectures/8/src8/paragraphs1.html"><code class="language-plaintext highlighter-rouge">paragraphs1.html</code></a>. It turns out that we can use Chrome’s Developer Tools here as well. We’ll use the Elements tab to see that the <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> of this page includes properties for <code class="language-plaintext highlighter-rouge">#first</code>, an ID in CSS that we can use only once, as well as a HTML tag <code class="language-plaintext highlighter-rouge">&lt;p id="first"&gt;</code> that has the styles applied:<br>
-  <img src="id_selector.png" alt="Page with Elements tab showing source code of paragraphs1.html" width="640" class="border">
+  <img src="./static/imagesnotes/id_selector.webp" alt="Page with Elements tab showing source code of paragraphs1.html" width="640" class="border">
       <ul>
         <li data-marker="*">We can click on an element in the HTML in this panel, and change the style of our page within our browser. We can hover over CSS properties on the right side, and uncheck or change them. This won’t change our original source code, but this will change our browser’s copy so we can experiment.</li>
         <li data-marker="*">We can also right-click on anything displayed on the page, and click “Inspect Element” to see it highlighted in the panel for us, where we can make more changes quickly or learn how other pages implement features.</li>

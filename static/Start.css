@@ -1,3 +1,12 @@
+.Videosmallerdevices{
+    display: none;
+}
+.bigdevicevid{
+    display: block;
+}
+.smalldevicevid{
+    display: none;
+}
 .code{
   font-style: monospace;   
 }
@@ -239,6 +248,15 @@
     }
     .topmenu{
         display: none !important;
+    }
+    .Videosmallerdevices{
+        display: block;
+    }
+    .bigdevicevid{
+        display: none;
+    }
+    .smalldevicevid{
+        display: block;
     }
 
 }

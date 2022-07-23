@@ -48,33 +48,33 @@
 
 <ul>
   <li data-marker="*">We might notice a pattern for the new notation, where it appears that each value for red, green, and blue are represented with two character. It turns out that there’s another base system, <strong>hexadecimal</strong>, or base-16, where there are 16 digits:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 2 3 4 5 6 7 8 9 A B C D E F
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">0 1 2 3 4 5 6 7 8 9 A B C D E F
 </code></pre></div>    </div>
     <ul>
       <li data-marker="*">The digits start with 0 through 9, and continue with A through F as equivalents to the decimal values of 10 through 15.</li>
     </ul>
   </li>
   <li data-marker="*">Let’s consider a two-digit hexadecimal number:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16^1 16^0
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">16^1 16^0
    0    0
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">Here, the <code class="language-plaintext highlighter-rouge">0</code> in the ones place (since \(16^0 = 1\)) has a decimal value of 0. We’ll count up, and after <code class="language-plaintext highlighter-rouge">09</code> we’ll use <code class="language-plaintext highlighter-rouge">0A</code> to represent 10 in decimal.</li>
-      <li data-marker="*">We can keep counting until <code class="language-plaintext highlighter-rouge">0F</code>, which is equivalent to 15 in decimal.</li>
+      <li data-marker="*">Here, the <code class="code" class="code" class="language-plaintext highlighter-rouge">0</code> in the ones place (since \(16^0 = 1\)) has a decimal value of 0. We’ll count up, and after <code class="code" class="code" class="language-plaintext highlighter-rouge">09</code> we’ll use <code class="code" class="code" class="language-plaintext highlighter-rouge">0A</code> to represent 10 in decimal.</li>
+      <li data-marker="*">We can keep counting until <code class="code" class="code" class="language-plaintext highlighter-rouge">0F</code>, which is equivalent to 15 in decimal.</li>
     </ul>
   </li>
-  <li data-marker="*">After <code class="language-plaintext highlighter-rouge">0F</code>, we need to carry the one, as we would go from 9 to 10 in decimal:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16^1 16^0
+  <li data-marker="*">After <code class="code" class="code" class="language-plaintext highlighter-rouge">0F</code>, we need to carry the one, as we would go from 9 to 10 in decimal:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">16^1 16^0
    1    0
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">Here, the <code class="language-plaintext highlighter-rouge">1</code> has a value of \(16^1 \times 1 = 16\), so <code class="language-plaintext highlighter-rouge">10</code> in hexadecimal is 16 in decimal.</li>
+      <li data-marker="*">Here, the <code class="code" class="code" class="language-plaintext highlighter-rouge">1</code> has a value of \(16^1 \times 1 = 16\), so <code class="code" class="code" class="language-plaintext highlighter-rouge">10</code> in hexadecimal is 16 in decimal.</li>
     </ul>
   </li>
-  <li data-marker="*">With two digits, we can have a maximum value of <code class="language-plaintext highlighter-rouge">FF</code>, or \(16^1 \times 15 + 16^0 \times 15 = 16 \times 15 + 1 \times 15 = 240 + 15 = 255\).
+  <li data-marker="*">With two digits, we can have a maximum value of <code class="code" class="code" class="language-plaintext highlighter-rouge">FF</code>, or \(16^1 \times 15 + 16^0 \times 15 = 16 \times 15 + 1 \times 15 = 240 + 15 = 255\).
     <ul>
       <li data-marker="*">The values in a computer’s memory are still stored as binary, but this way of representation helps us humans represent larger numeric values with fewer digits needed.</li>
-      <li data-marker="*">With 8 bits in binary, the highest value we can count to is also 255, with <code class="language-plaintext highlighter-rouge">11111111</code>. So two digits in hexadecimal can conveniently represent the value of a byte in binary. (Each digit in hexadecimal, with 16 values, maps to four bits in binary.)</li>
+      <li data-marker="*">With 8 bits in binary, the highest value we can count to is also 255, with <code class="code" class="code" class="language-plaintext highlighter-rouge">11111111</code>. So two digits in hexadecimal can conveniently represent the value of a byte in binary. (Each digit in hexadecimal, with 16 values, maps to four bits in binary.)</li>
     </ul>
   </li>
 </ul>
@@ -85,11 +85,11 @@
   <li data-marker="*">For our computer’s memory, too, we’ll see hexadecimal used to describe each address or location:<br>
 <img src="./static/imagesnotes/addresses.webp" alt="grid representing bytes in memory with 0x0, 0x1, ..., 0x1F under each" width="600">
     <ul>
-      <li data-marker="*">By writing <code class="language-plaintext highlighter-rouge">0x</code> in front of a hexadecimal value, we can distinguish them from decimal values.</li>
+      <li data-marker="*">By writing <code class="code" class="code" class="language-plaintext highlighter-rouge">0x</code> in front of a hexadecimal value, we can distinguish them from decimal values.</li>
     </ul>
   </li>
-  <li data-marker="*">We might create a value <code class="language-plaintext highlighter-rouge">n</code>, and print it out:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+  <li data-marker="*">We might create a value <code class="code" class="code" class="language-plaintext highlighter-rouge">n</code>, and print it out:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -98,15 +98,15 @@
 <span class="p">}</span>
 </code></pre></div>    </div>
   </li>
-  <li data-marker="*">In our computer’s memory, there are now 4 bytes somewhere that have the binary value of 50, with some value for its address, like <code class="language-plaintext highlighter-rouge">0x123</code>:<br>
+  <li data-marker="*">In our computer’s memory, there are now 4 bytes somewhere that have the binary value of 50, with some value for its address, like <code class="code" class="code" class="language-plaintext highlighter-rouge">0x123</code>:<br>
 <img src="./static/imagesnotes/50.webp" alt="grid representing bytes, with four boxes together containing 50 with small 0x123 underneath" width="600"></li>
   <li data-marker="*">A <strong>pointer</strong> is a variable that stores an address in memory, where some other variable might be stored.</li>
-  <li data-marker="*">The <strong><code class="language-plaintext highlighter-rouge">&amp;</code></strong> operator can be used to get the address of some variable, as with <code class="language-plaintext highlighter-rouge">&amp;n</code>. And the <code class="language-plaintext highlighter-rouge">*</code> operator declares a variable as a pointer, as with <code class="language-plaintext highlighter-rouge">int *p</code>, indicating that we have a variable called <code class="language-plaintext highlighter-rouge">p</code> that <em>points to</em> an <code class="language-plaintext highlighter-rouge">int</code>. So, to store the address of a variable <code class="language-plaintext highlighter-rouge">n</code> into a pointer <code class="language-plaintext highlighter-rouge">p</code>, we would write:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">;</span>
+  <li data-marker="*">The <strong><code class="code" class="code" class="language-plaintext highlighter-rouge">&amp;</code></strong> operator can be used to get the address of some variable, as with <code class="code" class="code" class="language-plaintext highlighter-rouge">&amp;n</code>. And the <code class="code" class="code" class="language-plaintext highlighter-rouge">*</code> operator declares a variable as a pointer, as with <code class="code" class="code" class="language-plaintext highlighter-rouge">int *p</code>, indicating that we have a variable called <code class="code" class="code" class="language-plaintext highlighter-rouge">p</code> that <em>points to</em> an <code class="code" class="code" class="language-plaintext highlighter-rouge">int</code>. So, to store the address of a variable <code class="code" class="code" class="language-plaintext highlighter-rouge">n</code> into a pointer <code class="code" class="code" class="language-plaintext highlighter-rouge">p</code>, we would write:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="kt">int</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">;</span>
 </code></pre></div>    </div>
   </li>
-  <li data-marker="*">In C, we can actually see the address with the <code class="language-plaintext highlighter-rouge">&amp;</code> operator, which means “get the address of this variable”:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+  <li data-marker="*">In C, we can actually see the address with the <code class="code" class="code" class="language-plaintext highlighter-rouge">&amp;</code> operator, which means “get the address of this variable”:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -115,19 +115,19 @@
     <span class="n">printf</span><span class="p">(</span><span class="s">"%p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make address
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make address
 $ ./address
 0x7ffcb4578e5c
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*"><code class="language-plaintext highlighter-rouge">%p</code> is the format code to print an address with <code class="language-plaintext highlighter-rouge">printf</code>. And we only need to use the name of the variable, <code class="language-plaintext highlighter-rouge">p</code>, after we’ve declared it.</li>
-      <li data-marker="*">In our instance of VS Code, we see an address with a large value like <code class="language-plaintext highlighter-rouge">0x7ffcb4578e5c</code>. The value of the address in itself is not significant, since it’s just some location in memory that the variable is stored in; instead, the important idea is that we can <em>use</em> this address later.</li>
-      <li data-marker="*">We can run this program a few times, and see that the address of <code class="language-plaintext highlighter-rouge">n</code> in memory changes, since different addresses in memory will be available at different times.</li>
+      <li data-marker="*"><code class="code" class="code" class="language-plaintext highlighter-rouge">%p</code> is the format code to print an address with <code class="code" class="code" class="language-plaintext highlighter-rouge">printf</code>. And we only need to use the name of the variable, <code class="code" class="code" class="language-plaintext highlighter-rouge">p</code>, after we’ve declared it.</li>
+      <li data-marker="*">In our instance of VS Code, we see an address with a large value like <code class="code" class="code" class="language-plaintext highlighter-rouge">0x7ffcb4578e5c</code>. The value of the address in itself is not significant, since it’s just some location in memory that the variable is stored in; instead, the important idea is that we can <em>use</em> this address later.</li>
+      <li data-marker="*">We can run this program a few times, and see that the address of <code class="code" class="code" class="language-plaintext highlighter-rouge">n</code> in memory changes, since different addresses in memory will be available at different times.</li>
     </ul>
   </li>
   <li data-marker="*">With C, we can also go to specific addresses in memory, which might cause <strong>segmentation faults</strong>, where we’ve tried to read or write to memory we don’t have permission to.</li>
-  <li data-marker="*">The <code class="language-plaintext highlighter-rouge">*</code> operator is also the <strong>dereference operator</strong>, which goes to an address to get the value stored there. For example, we can say:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+  <li data-marker="*">The <code class="code" class="code" class="language-plaintext highlighter-rouge">*</code> operator is also the <strong>dereference operator</strong>, which goes to an address to get the value stored there. For example, we can say:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -137,41 +137,41 @@ $ ./address
     <span class="n">printf</span><span class="p">(</span><span class="s">"%i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./address
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ ./address
 0x7ffda0a4767c
 50
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">Now, we see the value of the pointer itself (an address), and then the value at the address with <code class="language-plaintext highlighter-rouge">*p</code>, which is <code class="language-plaintext highlighter-rouge">50</code>.</li>
-      <li data-marker="*">Since we declared <code class="language-plaintext highlighter-rouge">p</code> to be an <code class="language-plaintext highlighter-rouge">int *</code>, the compiler knows that <code class="language-plaintext highlighter-rouge">*p</code> is an <code class="language-plaintext highlighter-rouge">int</code>, so the right number of bytes are read.</li>
+      <li data-marker="*">Now, we see the value of the pointer itself (an address), and then the value at the address with <code class="code" class="code" class="language-plaintext highlighter-rouge">*p</code>, which is <code class="code" class="code" class="language-plaintext highlighter-rouge">50</code>.</li>
+      <li data-marker="*">Since we declared <code class="code" class="code" class="language-plaintext highlighter-rouge">p</code> to be an <code class="code" class="code" class="language-plaintext highlighter-rouge">int *</code>, the compiler knows that <code class="code" class="code" class="language-plaintext highlighter-rouge">*p</code> is an <code class="code" class="code" class="language-plaintext highlighter-rouge">int</code>, so the right number of bytes are read.</li>
     </ul>
   </li>
-  <li data-marker="*">In memory, we might have one variable, <code class="language-plaintext highlighter-rouge">p</code>, with the value of some address, like <code class="language-plaintext highlighter-rouge">0x123</code>, stored, and another variable, an integer with the value <code class="language-plaintext highlighter-rouge">50</code>, at that addresss:<br>
+  <li data-marker="*">In memory, we might have one variable, <code class="code" class="code" class="language-plaintext highlighter-rouge">p</code>, with the value of some address, like <code class="code" class="code" class="language-plaintext highlighter-rouge">0x123</code>, stored, and another variable, an integer with the value <code class="code" class="code" class="language-plaintext highlighter-rouge">50</code>, at that addresss:<br>
 <img src="./static/imagesnotes/p.webp" alt="one box containing 0x123 labeled p pointing at smaller box containing 50 labeled 0x123" width="600">
     <ul>
-      <li data-marker="*">Notice that <code class="language-plaintext highlighter-rouge">p</code> takes up 8 bytes, since in modern computer systems, 64 bits are used in order to address the billions of bytes of memory available. With 32 bits, we can only count up to about 4 billion bytes, or about 4GB of memory.</li>
+      <li data-marker="*">Notice that <code class="code" class="code" class="language-plaintext highlighter-rouge">p</code> takes up 8 bytes, since in modern computer systems, 64 bits are used in order to address the billions of bytes of memory available. With 32 bits, we can only count up to about 4 billion bytes, or about 4GB of memory.</li>
     </ul>
   </li>
-  <li data-marker="*">We can abstract away the actual value of the addresses, since they’ll be different as we declare variables in our programs. We can simply think of <code class="language-plaintext highlighter-rouge">p</code> as pointing at some value in memory:<br>
+  <li data-marker="*">We can abstract away the actual value of the addresses, since they’ll be different as we declare variables in our programs. We can simply think of <code class="code" class="code" class="language-plaintext highlighter-rouge">p</code> as pointing at some value in memory:<br>
 <img src="./static/imagesnotes/pointing.webp" alt="one box containing p pointing at smaller box containing 50" width="600"></li>
-  <li data-marker="*">In the real world, we might have a mailbox labeled “p”, among many mailboxes with addresses. Inside our mailbox, we can put a value like <code class="language-plaintext highlighter-rouge">0x123</code>, which is the address of some other mailbox that’s labeled “n”.</li>
+  <li data-marker="*">In the real world, we might have a mailbox labeled “p”, among many mailboxes with addresses. Inside our mailbox, we can put a value like <code class="code" class="code" class="language-plaintext highlighter-rouge">0x123</code>, which is the address of some other mailbox that’s labeled “n”.</li>
 </ul>
 
 <h2 id="strings">Strings</h2>
 
 <ul>
-  <li data-marker="*">We can declare a string with <code class="language-plaintext highlighter-rouge">string s = "HI!";</code>, which will be stored one character at a time in memory. And we can access each character with <code class="language-plaintext highlighter-rouge">s[0]</code>, <code class="language-plaintext highlighter-rouge">s[1]</code>, <code class="language-plaintext highlighter-rouge">s[2]</code>, and <code class="language-plaintext highlighter-rouge">s[3]</code>:<br>
+  <li data-marker="*">We can declare a string with <code class="code" class="code" class="language-plaintext highlighter-rouge">string s = "HI!";</code>, which will be stored one character at a time in memory. And we can access each character with <code class="code" class="code" class="language-plaintext highlighter-rouge">s[0]</code>, <code class="code" class="code" class="language-plaintext highlighter-rouge">s[1]</code>, <code class="code" class="code" class="language-plaintext highlighter-rouge">s[2]</code>, and <code class="code" class="code" class="language-plaintext highlighter-rouge">s[3]</code>:<br>
 <img src="./static/imagesnotes/s_array.webp" alt="boxes side by side, containing: H labeled s[0], I labeled s[1], ! labeled s[2], \0 labeled s[3]" width="200"></li>
-  <li data-marker="*">But it turns out that each character, since it’s stored in memory, <em>also</em> has some unique address, and <code class="language-plaintext highlighter-rouge">s</code> is actually just a pointer with the address of the first character:<br>
+  <li data-marker="*">But it turns out that each character, since it’s stored in memory, <em>also</em> has some unique address, and <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> is actually just a pointer with the address of the first character:<br>
 <img src="./static/imagesnotes/s_pointer.webp" alt="box containing 0x123 labeled s, boxes side by side containing H labeled 0x123, I labeled 0x124, ! labeled 0x125, \0 labeled 0x126" width="400">
     <ul>
-      <li data-marker="*"><code class="language-plaintext highlighter-rouge">s</code> is a variable of type <code class="language-plaintext highlighter-rouge">string</code>, which is a pointer to a character.</li>
-      <li data-marker="*">Recall that we can read the entire string by starting at the address in <code class="language-plaintext highlighter-rouge">s</code>, and continue reading one character at a time from memory until we reach <code class="language-plaintext highlighter-rouge">\0</code>.</li>
+      <li data-marker="*"><code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> is a variable of type <code class="code" class="code" class="language-plaintext highlighter-rouge">string</code>, which is a pointer to a character.</li>
+      <li data-marker="*">Recall that we can read the entire string by starting at the address in <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code>, and continue reading one character at a time from memory until we reach <code class="code" class="code" class="language-plaintext highlighter-rouge">\0</code>.</li>
     </ul>
   </li>
-  <li data-marker="*">It turns out that <code class="language-plaintext highlighter-rouge">string s = "HI!"</code> is the same as <code class="language-plaintext highlighter-rouge">char *s = "HI!";</code>. And we can use strings in C in the exact same way without the CS50 Library, by using <code class="language-plaintext highlighter-rouge">char *</code>.</li>
+  <li data-marker="*">It turns out that <code class="code" class="code" class="language-plaintext highlighter-rouge">string s = "HI!"</code> is the same as <code class="code" class="code" class="language-plaintext highlighter-rouge">char *s = "HI!";</code>. And we can use strings in C in the exact same way without the CS50 Library, by using <code class="code" class="code" class="language-plaintext highlighter-rouge">char *</code>.</li>
   <li data-marker="*">Let’s print out a string:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -180,13 +180,13 @@ $ ./address
     <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make address
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make address
 $ ./address
 HI!
 </code></pre></div>    </div>
   </li>
   <li data-marker="*">Now, we can remove the CS50 Library, and say:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -194,13 +194,13 @@ HI!
     <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make address
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make address
 $ ./address
 HI!
 </code></pre></div>    </div>
   </li>
   <li data-marker="*">We can experiment and see the address of characters:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -212,17 +212,17 @@ HI!
     <span class="n">printf</span><span class="p">(</span><span class="s">"%p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make address
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make address
 $ ./address
 0x402004
 0x7ffd4227fdd7
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">We store the first character of <code class="language-plaintext highlighter-rouge">s</code> into <code class="language-plaintext highlighter-rouge">c</code>, and print out its address with <code class="language-plaintext highlighter-rouge">p</code>. We also print out <code class="language-plaintext highlighter-rouge">s</code> as an address with <code class="language-plaintext highlighter-rouge">%p</code>, and we see that the values are difference since we made a copy of the first character with <code class="language-plaintext highlighter-rouge">char c = s[0];</code>.</li>
+      <li data-marker="*">We store the first character of <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> into <code class="code" class="code" class="language-plaintext highlighter-rouge">c</code>, and print out its address with <code class="code" class="code" class="language-plaintext highlighter-rouge">p</code>. We also print out <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> as an address with <code class="code" class="code" class="language-plaintext highlighter-rouge">%p</code>, and we see that the values are difference since we made a copy of the first character with <code class="code" class="code" class="language-plaintext highlighter-rouge">char c = s[0];</code>.</li>
     </ul>
   </li>
-  <li data-marker="*">Now, we’ll print the address of the first character in <code class="language-plaintext highlighter-rouge">s</code>:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+  <li data-marker="*">Now, we’ll print the address of the first character in <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -233,17 +233,17 @@ $ ./address
     <span class="n">printf</span><span class="p">(</span><span class="s">"%p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make address
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make address
 $ ./address
 0x402004
 0x402004
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">With <code class="language-plaintext highlighter-rouge">char *p = &amp;s[0];</code>, we store the address of the first character in <code class="language-plaintext highlighter-rouge">s</code> into a pointer called <code class="language-plaintext highlighter-rouge">p</code>. And now, when we print <code class="language-plaintext highlighter-rouge">p</code> and <code class="language-plaintext highlighter-rouge">s</code> as addresses, we see the same value.</li>
+      <li data-marker="*">With <code class="code" class="code" class="language-plaintext highlighter-rouge">char *p = &amp;s[0];</code>, we store the address of the first character in <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> into a pointer called <code class="code" class="code" class="language-plaintext highlighter-rouge">p</code>. And now, when we print <code class="code" class="code" class="language-plaintext highlighter-rouge">p</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> as addresses, we see the same value.</li>
     </ul>
   </li>
-  <li data-marker="*">We can see the address of each character in <code class="language-plaintext highlighter-rouge">s</code>:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+  <li data-marker="*">We can see the address of each character in <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -255,7 +255,7 @@ $ ./address
     <span class="n">printf</span><span class="p">(</span><span class="s">"%p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make address
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make address
 $ ./address
 0x402004
 0x402004
@@ -264,17 +264,17 @@ $ ./address
 0x402007
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">Again, the address of the first character, <code class="language-plaintext highlighter-rouge">&amp;s[0]</code>, is the same as the value of <code class="language-plaintext highlighter-rouge">s</code>. And each following character has an address that is one byte higher.</li>
+      <li data-marker="*">Again, the address of the first character, <code class="code" class="code" class="language-plaintext highlighter-rouge">&amp;s[0]</code>, is the same as the value of <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code>. And each following character has an address that is one byte higher.</li>
     </ul>
   </li>
-  <li data-marker="*">In the CS50 Library, a string is defined with just <code class="language-plaintext highlighter-rouge">typedef char *string;</code>. With <code class="language-plaintext highlighter-rouge">typedef</code>, we’re creating a custom data type for the word <code class="language-plaintext highlighter-rouge">string</code>, making it equivalent to <code class="language-plaintext highlighter-rouge">char *</code>.</li>
+  <li data-marker="*">In the CS50 Library, a string is defined with just <code class="code" class="code" class="language-plaintext highlighter-rouge">typedef char *string;</code>. With <code class="code" class="code" class="language-plaintext highlighter-rouge">typedef</code>, we’re creating a custom data type for the word <code class="code" class="code" class="language-plaintext highlighter-rouge">string</code>, making it equivalent to <code class="code" class="code" class="language-plaintext highlighter-rouge">char *</code>.</li>
 </ul>
 
 <h2 id="pointer-arithmetic">Pointer arithmetic</h2>
 
 <ul>
   <li data-marker="*">We can print out each character in a string:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -286,7 +286,7 @@ $ ./address
     <span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make address
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make address
 $ ./address
 H
 I
@@ -295,11 +295,11 @@ I
 $
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">When we declare a <code class="language-plaintext highlighter-rouge">string</code> with double quotes, <code class="language-plaintext highlighter-rouge">"</code>, the compiler figures out where to put those characters in memory as an array.</li>
+      <li data-marker="*">When we declare a <code class="code" class="code" class="language-plaintext highlighter-rouge">string</code> with double quotes, <code class="code" class="code" class="language-plaintext highlighter-rouge">"</code>, the compiler figures out where to put those characters in memory as an array.</li>
     </ul>
   </li>
-  <li data-marker="*">Let’s simplify our code to use <code class="language-plaintext highlighter-rouge">char *</code> and show just the printable characters:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+  <li data-marker="*">Let’s simplify our code to use <code class="code" class="code" class="language-plaintext highlighter-rouge">char *</code> and show just the printable characters:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -309,7 +309,7 @@ $
     <span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make address
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make address
 $ ./address
 H
 I
@@ -317,7 +317,7 @@ I
 </code></pre></div>    </div>
   </li>
   <li data-marker="*">But we can go to addresses directly:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -328,13 +328,13 @@ I
 <span class="p">}</span>
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*"><code class="language-plaintext highlighter-rouge">*s</code> goes to the address stored in <code class="language-plaintext highlighter-rouge">s</code>, and <code class="language-plaintext highlighter-rouge">*(s + 1)</code> goes to the location in memory with the next character, an address that is one byte higher.</li>
-      <li data-marker="*"><code class="language-plaintext highlighter-rouge">s[1]</code> is <strong>syntactic sugar</strong>, like an abstraction for <code class="language-plaintext highlighter-rouge">*(s + 1)</code>, equivalent in function but more human-friendly to read and write.</li>
+      <li data-marker="*"><code class="code" class="code" class="language-plaintext highlighter-rouge">*s</code> goes to the address stored in <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code>, and <code class="code" class="code" class="language-plaintext highlighter-rouge">*(s + 1)</code> goes to the location in memory with the next character, an address that is one byte higher.</li>
+      <li data-marker="*"><code class="code" class="code" class="language-plaintext highlighter-rouge">s[1]</code> is <strong>syntactic sugar</strong>, like an abstraction for <code class="code" class="code" class="language-plaintext highlighter-rouge">*(s + 1)</code>, equivalent in function but more human-friendly to read and write.</li>
     </ul>
   </li>
   <li data-marker="*"><strong>Pointer arithmetic</strong> is the process of applying mathematical operations to pointers, using them just like numbers (which they are).</li>
   <li data-marker="*">We can declare an array of numbers, and access them with pointer arithmetic:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -349,7 +349,7 @@ I
     <span class="n">printf</span><span class="p">(</span><span class="s">"%i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">numbers</span> <span class="o">+</span> <span class="mi">6</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make address
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make address
 $ ./address
 4
 6
@@ -360,8 +360,8 @@ $ ./address
 0
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">It turns out that we only need to add <code class="language-plaintext highlighter-rouge">1</code> to the address of <code class="language-plaintext highlighter-rouge">numbers</code>, instead of <code class="language-plaintext highlighter-rouge">4</code> (even though <code class="language-plaintext highlighter-rouge">int</code>s are 4 bytes in size), since the compiler already knows that the type of each value in <code class="language-plaintext highlighter-rouge">numbers</code> is 4 bytes. With <code class="language-plaintext highlighter-rouge">+ 1</code>, we’re telling the compiler to move the next value in the array, not the next byte.</li>
-      <li data-marker="*">And notice that <code class="language-plaintext highlighter-rouge">numbers</code> is an array, but we can use it as a pointer with <code class="language-plaintext highlighter-rouge">*numbers</code>.</li>
+      <li data-marker="*">It turns out that we only need to add <code class="code" class="code" class="language-plaintext highlighter-rouge">1</code> to the address of <code class="code" class="code" class="language-plaintext highlighter-rouge">numbers</code>, instead of <code class="code" class="code" class="language-plaintext highlighter-rouge">4</code> (even though <code class="code" class="code" class="language-plaintext highlighter-rouge">int</code>s are 4 bytes in size), since the compiler already knows that the type of each value in <code class="code" class="code" class="language-plaintext highlighter-rouge">numbers</code> is 4 bytes. With <code class="code" class="code" class="language-plaintext highlighter-rouge">+ 1</code>, we’re telling the compiler to move the next value in the array, not the next byte.</li>
+      <li data-marker="*">And notice that <code class="code" class="code" class="language-plaintext highlighter-rouge">numbers</code> is an array, but we can use it as a pointer with <code class="code" class="code" class="language-plaintext highlighter-rouge">*numbers</code>.</li>
     </ul>
   </li>
 </ul>
@@ -370,7 +370,7 @@ $ ./address
 
 <ul>
   <li data-marker="*">Let’s try to compare two integers from the user:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -388,7 +388,7 @@ $ ./address
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make compare
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make compare
 $ ./compare
 i: 50
 j: 50
@@ -403,7 +403,7 @@ Different
     </ul>
   </li>
   <li data-marker="*">When we try to compare two strings, we see that the same inputs are causing our program to print “Different”:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -421,7 +421,7 @@ Different
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make compare
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make compare
 $ ./compare
 s: HI!
 t: BYE!
@@ -433,12 +433,12 @@ Different
 </code></pre></div>    </div>
     <ul>
       <li data-marker="*">Even when our inputs are the same, we see “Different” printed.</li>
-      <li data-marker="*">Each “string” is a pointer, <code class="language-plaintext highlighter-rouge">char *</code>, to a different location in memory, where the first character of each string is stored. So even if the characters in the string are the same, this will always print “Different”.</li>
+      <li data-marker="*">Each “string” is a pointer, <code class="code" class="code" class="language-plaintext highlighter-rouge">char *</code>, to a different location in memory, where the first character of each string is stored. So even if the characters in the string are the same, this will always print “Different”.</li>
     </ul>
   </li>
-  <li data-marker="*">And <code class="language-plaintext highlighter-rouge">get_string</code>, this whole time, has been returning just a <code class="language-plaintext highlighter-rouge">char *</code>, or a pointer to the first character of a string from the user. Since we called <code class="language-plaintext highlighter-rouge">get_string</code> twice, we got two different pointers back.</li>
+  <li data-marker="*">And <code class="code" class="code" class="language-plaintext highlighter-rouge">get_string</code>, this whole time, has been returning just a <code class="code" class="code" class="language-plaintext highlighter-rouge">char *</code>, or a pointer to the first character of a string from the user. Since we called <code class="code" class="code" class="language-plaintext highlighter-rouge">get_string</code> twice, we got two different pointers back.</li>
   <li data-marker="*">We can fix our program with:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
 </span>
@@ -457,15 +457,15 @@ Different
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make compare
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make compare
 $ ./compare
 s: HI!
 t: HI!
 Same
 </code></pre></div>    </div>
   </li>
-  <li data-marker="*">We’ll take a look at the values of <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">t</code> as pointers:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+  <li data-marker="*">We’ll take a look at the values of <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code> as pointers:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -477,7 +477,7 @@ Same
     <span class="n">printf</span><span class="p">(</span><span class="s">"%p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make compare
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make compare
 $ ./compare
 s: HI!
 t: HI!
@@ -488,15 +488,15 @@ t: HI!
       <li data-marker="*">We see that the addresses of our two strings are indeed different.</li>
     </ul>
   </li>
-  <li data-marker="*">Let’s visualize how this might look in our computer’s memory. Our first string might be at address 0x123, our second might be at 0x456, and <code class="language-plaintext highlighter-rouge">s</code> will have the value of <code class="language-plaintext highlighter-rouge">0x123</code>, pointing at that location, and <code class="language-plaintext highlighter-rouge">t</code> will have the value of <code class="language-plaintext highlighter-rouge">0x456</code>, pointing at another location:<br>
+  <li data-marker="*">Let’s visualize how this might look in our computer’s memory. Our first string might be at address 0x123, our second might be at 0x456, and <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> will have the value of <code class="code" class="code" class="language-plaintext highlighter-rouge">0x123</code>, pointing at that location, and <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code> will have the value of <code class="code" class="code" class="language-plaintext highlighter-rouge">0x456</code>, pointing at another location:<br>
 <img src="./static/imagesnotes/s_t.webp" alt="box containing 0x123 labeled s, boxes side by side containing H labeled 0x123, I labeled 0x124, ! labeled 0x125, \0 labeled 0x126, box containing 0x456 labeled t, boxes side by side containing H labeled 0x456, I labeled 0x457, ! labeled 0x458, \0 labeled 0x459" width="600">
     <ul>
-      <li data-marker="*">Since our computer puts each string at some location in memory for us, we need <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">t</code> to point to each of them. And now we see why comparing <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">t</code> directly will always print “Different”. <code class="language-plaintext highlighter-rouge">strcmp</code>, in contrast, will go to each string and compare them character by character.</li>
+      <li data-marker="*">Since our computer puts each string at some location in memory for us, we need <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code> to point to each of them. And now we see why comparing <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code> directly will always print “Different”. <code class="code" class="code" class="language-plaintext highlighter-rouge">strcmp</code>, in contrast, will go to each string and compare them character by character.</li>
     </ul>
   </li>
-  <li data-marker="*">In C, we can also get the address of <code class="language-plaintext highlighter-rouge">s</code> or <code class="language-plaintext highlighter-rouge">t</code>, and store them in a variable of the type <code class="language-plaintext highlighter-rouge">char **</code>, a pointer to a pointer.</li>
+  <li data-marker="*">In C, we can also get the address of <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> or <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code>, and store them in a variable of the type <code class="code" class="code" class="language-plaintext highlighter-rouge">char **</code>, a pointer to a pointer.</li>
   <li data-marker="*">Let’s try to copy a string:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;ctype.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
@@ -513,18 +513,18 @@ t: HI!
     <span class="n">printf</span><span class="p">(</span><span class="s">"t: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make copy
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make copy
 $ ./copy
 s: hi!
 s: Hi!
 t: Hi!
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">We get a string <code class="language-plaintext highlighter-rouge">s</code>, and copy the value of <code class="language-plaintext highlighter-rouge">s</code> into <code class="language-plaintext highlighter-rouge">t</code>. Then, we capitalize the first letter in <code class="language-plaintext highlighter-rouge">t</code>.</li>
-      <li data-marker="*">But when we run our program, we see that both <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">t</code> are now capitalized.</li>
+      <li data-marker="*">We get a string <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code>, and copy the value of <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> into <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code>. Then, we capitalize the first letter in <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code>.</li>
+      <li data-marker="*">But when we run our program, we see that both <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code> are now capitalized.</li>
     </ul>
   </li>
-  <li data-marker="*">Since we set <code class="language-plaintext highlighter-rouge">s</code> and <code class="language-plaintext highlighter-rouge">t</code> to the same value, or the same address, they’re both pointing to the same character, and so we capitalized the same character in memory:<br>
+  <li data-marker="*">Since we set <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code> to the same value, or the same address, they’re both pointing to the same character, and so we capitalized the same character in memory:<br>
 <img src="./static/imagesnotes/s_t_copy.webp" alt="box containing 0x123 labeled s, box containing 0x123 labeled t, boxes side by side containing h labeled 0x123, i labeled 0x124, ! labeled 0x125, \0 labeled 0x126" width="600">
 <img src="./static/imagesnotes/s_t_pointing.webp" alt="box labeled s pointing to H, box labeled t pointing to H, boxes side by side containing h labeled 0x123, i labeled 0x124, ! labeled 0x125, \0 labeled 0x126" width="600"></li>
 </ul>
@@ -532,14 +532,14 @@ t: Hi!
 <h2 id="memory-allocation">Memory allocation</h2>
 
 <ul>
-  <li data-marker="*">To actually make a copy of a string, we have to do a little more work, and copy each character in <code class="language-plaintext highlighter-rouge">s</code> to somewhere else in memory.</li>
-  <li data-marker="*">We’ll need to use a new function, <strong><code class="language-plaintext highlighter-rouge">malloc</code></strong>, to <em>allocate</em> some number of bytes in memory. And we’ll use <strong><code class="language-plaintext highlighter-rouge">free</code></strong> to mark memory as usable when we’re done with it, so the operating system can do something else with it.
+  <li data-marker="*">To actually make a copy of a string, we have to do a little more work, and copy each character in <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> to somewhere else in memory.</li>
+  <li data-marker="*">We’ll need to use a new function, <strong><code class="code" class="code" class="language-plaintext highlighter-rouge">malloc</code></strong>, to <em>allocate</em> some number of bytes in memory. And we’ll use <strong><code class="code" class="code" class="language-plaintext highlighter-rouge">free</code></strong> to mark memory as usable when we’re done with it, so the operating system can do something else with it.
     <ul>
       <li data-marker="*">Our computers might slow down if a program we’re running has a bug where it allocates more and more memory but never frees it. The operating system will take longer and longer to find enough available memory for our program.</li>
     </ul>
   </li>
   <li data-marker="*">Let’s copy a string now:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;ctype.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
@@ -563,12 +563,12 @@ t: Hi!
 <span class="p">}</span>
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">We create a new variable to point to a new string with <code class="language-plaintext highlighter-rouge">char *t</code>. The argument to <code class="language-plaintext highlighter-rouge">malloc</code> is the number of bytes we’d like to use. We already know the length of <code class="language-plaintext highlighter-rouge">s</code>, but we need to add 1 for the terminating null character.</li>
-      <li data-marker="*">Then, we copy each character, one at a time, with a <code class="language-plaintext highlighter-rouge">for</code> loop. We use <code class="language-plaintext highlighter-rouge">strlen(s) + 1</code> since we want to copy the null character too to end the string. In the loop, we set <code class="language-plaintext highlighter-rouge">t[i] = s[i]</code>, copying the characters.</li>
+      <li data-marker="*">We create a new variable to point to a new string with <code class="code" class="code" class="language-plaintext highlighter-rouge">char *t</code>. The argument to <code class="code" class="code" class="language-plaintext highlighter-rouge">malloc</code> is the number of bytes we’d like to use. We already know the length of <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code>, but we need to add 1 for the terminating null character.</li>
+      <li data-marker="*">Then, we copy each character, one at a time, with a <code class="code" class="code" class="language-plaintext highlighter-rouge">for</code> loop. We use <code class="code" class="code" class="language-plaintext highlighter-rouge">strlen(s) + 1</code> since we want to copy the null character too to end the string. In the loop, we set <code class="code" class="code" class="language-plaintext highlighter-rouge">t[i] = s[i]</code>, copying the characters.</li>
     </ul>
   </li>
-  <li data-marker="*">We could also use a library function, <code class="language-plaintext highlighter-rouge">strcpy</code>:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+  <li data-marker="*">We could also use a library function, <code class="code" class="code" class="language-plaintext highlighter-rouge">strcpy</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;ctype.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
@@ -590,19 +590,19 @@ t: Hi!
     <span class="n">free</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make copy
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make copy
 $ ./copy
 s: hi!
 s: hi!
 t: Hi!
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">Now, we can capitalize the first letter of <code class="language-plaintext highlighter-rouge">t</code>.</li>
-      <li data-marker="*">We’ll remember to call <code class="language-plaintext highlighter-rouge">free</code> on <code class="language-plaintext highlighter-rouge">t</code>, since we allocated it ourselves.</li>
+      <li data-marker="*">Now, we can capitalize the first letter of <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code>.</li>
+      <li data-marker="*">We’ll remember to call <code class="code" class="code" class="language-plaintext highlighter-rouge">free</code> on <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code>, since we allocated it ourselves.</li>
     </ul>
   </li>
   <li data-marker="*">We can add some error-checking to our program:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;ctype.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
@@ -632,14 +632,14 @@ t: Hi!
 <span class="p">}</span>
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">If our computer is out of memory, <code class="language-plaintext highlighter-rouge">malloc</code> will return <code class="language-plaintext highlighter-rouge">NULL</code>, the null pointer, or a special value of all <code class="language-plaintext highlighter-rouge">0</code> bits that indicates there isn’t an address to point to. So we should check for that case, and exit if <code class="language-plaintext highlighter-rouge">t</code> is <code class="language-plaintext highlighter-rouge">NULL</code>.</li>
-      <li data-marker="*">We should also check that <code class="language-plaintext highlighter-rouge">t</code> has a length, before trying to capitalize the first character.</li>
+      <li data-marker="*">If our computer is out of memory, <code class="code" class="code" class="language-plaintext highlighter-rouge">malloc</code> will return <code class="code" class="code" class="language-plaintext highlighter-rouge">NULL</code>, the null pointer, or a special value of all <code class="code" class="code" class="language-plaintext highlighter-rouge">0</code> bits that indicates there isn’t an address to point to. So we should check for that case, and exit if <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code> is <code class="code" class="code" class="language-plaintext highlighter-rouge">NULL</code>.</li>
+      <li data-marker="*">We should also check that <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code> has a length, before trying to capitalize the first character.</li>
     </ul>
   </li>
   <li data-marker="*">We can visualize how this looks in our computer’s memory:<br>
 <img src="./static/imagesnotes/s_t_malloc.webp" alt="box labeled s pointing to h at 0x123, box labeled t pointing to h at 0x456, boxes side by side containing h labeled 0x123, i labeled 0x124, ! labeled 0x125, \0 labeled 0x126, boxes side by side containing h labeled 0x456, i labeled 0x457, ! labeled 0x458, \0 labeled 0x459" width="600">
     <ul>
-      <li data-marker="*">We’ve allocated memory at <code class="language-plaintext highlighter-rouge">0x456</code> and set <code class="language-plaintext highlighter-rouge">t</code> to point to it. Then, we used <code class="language-plaintext highlighter-rouge">strcpy</code> to copy each character’s value, starting from the address <code class="language-plaintext highlighter-rouge">s</code> is pointing to, to the address <code class="language-plaintext highlighter-rouge">t</code> is pointing to.</li>
+      <li data-marker="*">We’ve allocated memory at <code class="code" class="code" class="language-plaintext highlighter-rouge">0x456</code> and set <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code> to point to it. Then, we used <code class="code" class="code" class="language-plaintext highlighter-rouge">strcpy</code> to copy each character’s value, starting from the address <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code> is pointing to, to the address <code class="code" class="code" class="language-plaintext highlighter-rouge">t</code> is pointing to.</li>
     </ul>
   </li>
 </ul>
@@ -648,7 +648,7 @@ t: Hi!
 
 <ul>
   <li data-marker="*">Let’s allocate memory for some integers:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -659,20 +659,20 @@ t: Hi!
     <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make memory
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make memory
 $ ./memory
 $
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">We’ll use <code class="language-plaintext highlighter-rouge">malloc</code> to get enough memory for 3 times the size of an <code class="language-plaintext highlighter-rouge">int</code>, which we can find out with <code class="language-plaintext highlighter-rouge">sizeof</code>.</li>
-      <li data-marker="*">We’ve deliberately made a mistake where we forgot arrays are 0-indexed, and started at <code class="language-plaintext highlighter-rouge">x[1]</code> instead. Then, with <code class="language-plaintext highlighter-rouge">x[3]</code>, we’re trying to access memory beyond the bounds of what we have access to.</li>
+      <li data-marker="*">We’ll use <code class="code" class="code" class="language-plaintext highlighter-rouge">malloc</code> to get enough memory for 3 times the size of an <code class="code" class="code" class="language-plaintext highlighter-rouge">int</code>, which we can find out with <code class="code" class="code" class="language-plaintext highlighter-rouge">sizeof</code>.</li>
+      <li data-marker="*">We’ve deliberately made a mistake where we forgot arrays are 0-indexed, and started at <code class="code" class="code" class="language-plaintext highlighter-rouge">x[1]</code> instead. Then, with <code class="code" class="code" class="language-plaintext highlighter-rouge">x[3]</code>, we’re trying to access memory beyond the bounds of what we have access to.</li>
       <li data-marker="*">We also don’t free the memory we’ve allocated.</li>
       <li data-marker="*">When we compile and run our program, though, nothing seems to happen. It turns out that our mistake wasn’t bad enough to cause a segmentation fault this time, though it might next time.</li>
     </ul>
   </li>
-  <li data-marker="*"><strong><code class="language-plaintext highlighter-rouge">valgrind</code></strong> is a command-line tool that we can use to run our program and see if it has any memory-related issues.</li>
-  <li data-marker="*">We’ll run <code class="language-plaintext highlighter-rouge">valgrind ./memory</code> after compiling, and we’ll see a lot of output:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ valgrind ./memory
+  <li data-marker="*"><strong><code class="code" class="code" class="language-plaintext highlighter-rouge">valgrind</code></strong> is a command-line tool that we can use to run our program and see if it has any memory-related issues.</li>
+  <li data-marker="*">We’ll run <code class="code" class="code" class="language-plaintext highlighter-rouge">valgrind ./memory</code> after compiling, and we’ll see a lot of output:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ valgrind ./memory
 ==5902== Memcheck, a memory error detector
 ==5902== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
 ==5902== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
@@ -704,11 +704,11 @@ $
 ==5902== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">We’ll see some snippets like <code class="language-plaintext highlighter-rouge">Invalid write of size 4 at ... memory.c:9</code>, which gives us a hint to look at line 9, where we’re using <code class="language-plaintext highlighter-rouge">x[3]</code>.</li>
+      <li data-marker="*">We’ll see some snippets like <code class="code" class="code" class="language-plaintext highlighter-rouge">Invalid write of size 4 at ... memory.c:9</code>, which gives us a hint to look at line 9, where we’re using <code class="code" class="code" class="language-plaintext highlighter-rouge">x[3]</code>.</li>
     </ul>
   </li>
   <li data-marker="*">We’ll fix that mistake:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -719,7 +719,7 @@ $
     <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make memory
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make memory
 $ ./memory
 $ valgrind ./memory
 ==6435== Memcheck, a memory error detector
@@ -747,11 +747,11 @@ $ valgrind ./memory
 ==6435== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">Now, we see less output, with only one error telling us <code class="language-plaintext highlighter-rouge">12 bytes ... are definitely lost</code>, in that we’ve allocated them, but not freed them.</li>
+      <li data-marker="*">Now, we see less output, with only one error telling us <code class="code" class="code" class="language-plaintext highlighter-rouge">12 bytes ... are definitely lost</code>, in that we’ve allocated them, but not freed them.</li>
     </ul>
   </li>
   <li data-marker="*">Once we free our memory, we’ll see no errors:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -763,7 +763,7 @@ $ valgrind ./memory
     <span class="n">free</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make memory
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make memory
 $ ./memory
 $ valgrind ./memory
 ==6812== Memcheck, a memory error detector
@@ -788,7 +788,7 @@ $ valgrind ./memory
 
 <ul>
   <li data-marker="*">Let’s take a look at this program:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span>  
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -800,20 +800,20 @@ $ valgrind ./memory
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make garbage
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make garbage
 $ ./garbage
 68476128
 32765
 0
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">We declare an array, <code class="language-plaintext highlighter-rouge">scores</code>, but we didn’t initialize it with any values.</li>
+      <li data-marker="*">We declare an array, <code class="code" class="code" class="language-plaintext highlighter-rouge">scores</code>, but we didn’t initialize it with any values.</li>
       <li data-marker="*">The values in the array are <strong>garbage values</strong>, or whatever unknown values that were in memory, from whatever program was running in our computer before.</li>
     </ul>
   </li>
   <li data-marker="*">If we aren’t careful with how our programs access memory, users might end up seeing data from previous programs, like passwords. And if we try to go to an address that’s a garbage value, our program is likely to crash from a segmentation fault.</li>
-  <li data-marker="*">We watch <a href="https://www.youtube.com/watch?v=3uLKjb973HU">Pointer Fun with Binky</a>, an animated video demonstrating pointers, <code class="language-plaintext highlighter-rouge">malloc</code>, and dereferencing. The code from the video might look like this in one program:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+  <li data-marker="*">We watch <a href="https://www.youtube.com/watch?v=3uLKjb973HU">Pointer Fun with Binky</a>, an animated video demonstrating pointers, <code class="code" class="code" class="language-plaintext highlighter-rouge">malloc</code>, and dereferencing. The code from the video might look like this in one program:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>   
     <span class="kt">int</span> <span class="o">*</span><span class="n">x</span><span class="p">;</span>  
     <span class="kt">int</span> <span class="o">*</span><span class="n">y</span><span class="p">;</span> 
@@ -829,8 +829,8 @@ $ ./garbage
 <span class="p">}</span>
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">In the first two lines, we declare two pointers. Then, we allocate memory for <code class="language-plaintext highlighter-rouge">x</code>, but not <code class="language-plaintext highlighter-rouge">y</code>, so we can assign a value to the memory <code class="language-plaintext highlighter-rouge">x</code> is pointing to with <code class="language-plaintext highlighter-rouge">*x = 42;</code>. But <code class="language-plaintext highlighter-rouge">*y = 13;</code> is problematic, since we haven’t allocated any memory for <code class="language-plaintext highlighter-rouge">y</code>, and the garbage value there points to some area in memory we likely don’t have access to.</li>
-      <li data-marker="*">We can write <code class="language-plaintext highlighter-rouge">y = x;</code> so that <code class="language-plaintext highlighter-rouge">y</code> points to the same allocated memory as <code class="language-plaintext highlighter-rouge">x</code>, and use <code class="language-plaintext highlighter-rouge">*y = 13;</code> to set the value there.</li>
+      <li data-marker="*">In the first two lines, we declare two pointers. Then, we allocate memory for <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code>, but not <code class="code" class="code" class="language-plaintext highlighter-rouge">y</code>, so we can assign a value to the memory <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code> is pointing to with <code class="code" class="code" class="language-plaintext highlighter-rouge">*x = 42;</code>. But <code class="code" class="code" class="language-plaintext highlighter-rouge">*y = 13;</code> is problematic, since we haven’t allocated any memory for <code class="code" class="code" class="language-plaintext highlighter-rouge">y</code>, and the garbage value there points to some area in memory we likely don’t have access to.</li>
+      <li data-marker="*">We can write <code class="code" class="code" class="language-plaintext highlighter-rouge">y = x;</code> so that <code class="code" class="code" class="language-plaintext highlighter-rouge">y</code> points to the same allocated memory as <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code>, and use <code class="code" class="code" class="language-plaintext highlighter-rouge">*y = 13;</code> to set the value there.</li>
     </ul>
   </li>
 </ul>
@@ -840,7 +840,7 @@ $ ./garbage
 <ul>
   <li data-marker="*">We’ll have a volunteer on stage try to swap two liquids, one orange liquid in one glass, and one purple liquid in another. But we need a third glass to temporarily pour one liquid into, such as the orange liquid in the first glass. Then, we can pour the purple liquid into the first glass, and finally the orange liquid from the third glass into the second.</li>
   <li data-marker="*">Let’s try to swap the values of two integers:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>
 
@@ -861,18 +861,18 @@ $ ./garbage
     <span class="n">b</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make swap
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make swap
 $ ./swap
 x is 1, y is 2
 x is 1, y is 2
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">In our <code class="language-plaintext highlighter-rouge">swap</code> function, we have a third variable to use as temporary storage space as well. We put <code class="language-plaintext highlighter-rouge">a</code> into <code class="language-plaintext highlighter-rouge">tmp</code>, and then set <code class="language-plaintext highlighter-rouge">a</code> to the value of <code class="language-plaintext highlighter-rouge">b</code>, and finally <code class="language-plaintext highlighter-rouge">b</code> can be changed to the original value of <code class="language-plaintext highlighter-rouge">a</code>, now in <code class="language-plaintext highlighter-rouge">tmp</code>.</li>
+      <li data-marker="*">In our <code class="code" class="code" class="language-plaintext highlighter-rouge">swap</code> function, we have a third variable to use as temporary storage space as well. We put <code class="code" class="code" class="language-plaintext highlighter-rouge">a</code> into <code class="code" class="code" class="language-plaintext highlighter-rouge">tmp</code>, and then set <code class="code" class="code" class="language-plaintext highlighter-rouge">a</code> to the value of <code class="code" class="code" class="language-plaintext highlighter-rouge">b</code>, and finally <code class="code" class="code" class="language-plaintext highlighter-rouge">b</code> can be changed to the original value of <code class="code" class="code" class="language-plaintext highlighter-rouge">a</code>, now in <code class="code" class="code" class="language-plaintext highlighter-rouge">tmp</code>.</li>
       <li data-marker="*">But, if we tried to use that function in a program, we don’t see any changes.</li>
     </ul>
   </li>
-  <li data-marker="*">It turns out that the <code class="language-plaintext highlighter-rouge">swap</code> function gets passed in copies of variables, <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code>, which are <strong>local variables</strong> that only the surrounding function can access. Changing those values won’t change <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> in the <code class="language-plaintext highlighter-rouge">main</code> function:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+  <li data-marker="*">It turns out that the <code class="code" class="code" class="language-plaintext highlighter-rouge">swap</code> function gets passed in copies of variables, <code class="code" class="code" class="language-plaintext highlighter-rouge">a</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">b</code>, which are <strong>local variables</strong> that only the surrounding function can access. Changing those values won’t change <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">y</code> in the <code class="code" class="code" class="language-plaintext highlighter-rouge">main</code> function:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>
 
@@ -895,7 +895,7 @@ x is 1, y is 2
     <span class="n">printf</span><span class="p">(</span><span class="s">"a is %i, b is %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make swap
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make swap
 $ ./swap
 x is 1, y is 2
 a is 1, b is 2
@@ -903,7 +903,7 @@ a is 2, b is 1
 x is 1, y is 2
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">Our <code class="language-plaintext highlighter-rouge">swap</code> function works while we’re inside it.</li>
+      <li data-marker="*">Our <code class="code" class="code" class="language-plaintext highlighter-rouge">swap</code> function works while we’re inside it.</li>
     </ul>
   </li>
 </ul>
@@ -916,13 +916,13 @@ x is 1, y is 2
     <ul>
       <li data-marker="*">The <strong>machine code</strong> section is our compiled program’s binary code. When we run our program, that code is loaded into memory.</li>
       <li data-marker="*">Just below, or in the next part of memory, are <strong>global variables</strong> we declared in our program.</li>
-      <li data-marker="*">The <strong>heap</strong> section is an empty area from where <code class="language-plaintext highlighter-rouge">malloc</code> can get free memory for our program to use. As we call <code class="language-plaintext highlighter-rouge">malloc</code>, we start allocating memory from the top down.</li>
+      <li data-marker="*">The <strong>heap</strong> section is an empty area from where <code class="code" class="code" class="language-plaintext highlighter-rouge">malloc</code> can get free memory for our program to use. As we call <code class="code" class="code" class="language-plaintext highlighter-rouge">malloc</code>, we start allocating memory from the top down.</li>
       <li data-marker="*">The <strong>stack</strong> section is used by functions and local variables in our program as they are called, and grows upwards.</li>
     </ul>
   </li>
-  <li data-marker="*">If we call <code class="language-plaintext highlighter-rouge">malloc</code> for too much memory, we will have a <strong>heap overflow</strong>, since we end up going past our heap. Or, if we call too many functions without returning from them, we will have a <strong>stack overflow</strong>, where our stack has too much memory allocated as well.</li>
+  <li data-marker="*">If we call <code class="code" class="code" class="language-plaintext highlighter-rouge">malloc</code> for too much memory, we will have a <strong>heap overflow</strong>, since we end up going past our heap. Or, if we call too many functions without returning from them, we will have a <strong>stack overflow</strong>, where our stack has too much memory allocated as well.</li>
   <li data-marker="*">Our program for swapping integers might have a stack that looks like this:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     -------------------------
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">     -------------------------
      |  |  |  |  |  |  |  |  |
      -------------------------
      |  |  |  |  |  |  |  |  |
@@ -939,12 +939,12 @@ main | x    1    | y    2    |
      -------------------------
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">Our <code class="language-plaintext highlighter-rouge">main</code> function has two local variables, <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code>. Our <code class="language-plaintext highlighter-rouge">swap</code> function is created on top of <code class="language-plaintext highlighter-rouge">main</code> when it’s called, and has three local variables, <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code>, and <code class="language-plaintext highlighter-rouge">tmp</code>.</li>
-      <li data-marker="*">Once <code class="language-plaintext highlighter-rouge">swap</code> returns, its memory is freed and its values are now garbage values, and the variables in <code class="language-plaintext highlighter-rouge">main</code> haven’t been changed.</li>
+      <li data-marker="*">Our <code class="code" class="code" class="language-plaintext highlighter-rouge">main</code> function has two local variables, <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">y</code>. Our <code class="code" class="code" class="language-plaintext highlighter-rouge">swap</code> function is created on top of <code class="code" class="code" class="language-plaintext highlighter-rouge">main</code> when it’s called, and has three local variables, <code class="code" class="code" class="language-plaintext highlighter-rouge">a</code>, <code class="code" class="code" class="language-plaintext highlighter-rouge">b</code>, and <code class="code" class="code" class="language-plaintext highlighter-rouge">tmp</code>.</li>
+      <li data-marker="*">Once <code class="code" class="code" class="language-plaintext highlighter-rouge">swap</code> returns, its memory is freed and its values are now garbage values, and the variables in <code class="code" class="code" class="language-plaintext highlighter-rouge">main</code> haven’t been changed.</li>
     </ul>
   </li>
-  <li data-marker="*">By passing in the address of <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code>, our <code class="language-plaintext highlighter-rouge">swap</code> function will be able to change the original values:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span>
+  <li data-marker="*">By passing in the address of <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">y</code>, our <code class="code" class="code" class="language-plaintext highlighter-rouge">swap</code> function will be able to change the original values:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
     <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
@@ -952,13 +952,13 @@ main | x    1    | y    2    |
 <span class="p">}</span>
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">The addresses of <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> are passed in from <code class="language-plaintext highlighter-rouge">main</code> to <code class="language-plaintext highlighter-rouge">swap</code> with <code class="language-plaintext highlighter-rouge">&amp;x</code> and <code class="language-plaintext highlighter-rouge">&amp;y</code>, and we use the <code class="language-plaintext highlighter-rouge">int *a</code> syntax to declare that our <code class="language-plaintext highlighter-rouge">swap</code> function takes in pointers.</li>
-      <li data-marker="*">We save the first value to <code class="language-plaintext highlighter-rouge">tmp</code> by following the pointer <code class="language-plaintext highlighter-rouge">a</code>, and then set the second value to location pointed to by <code class="language-plaintext highlighter-rouge">a</code> by following the second pointer <code class="language-plaintext highlighter-rouge">b</code>.</li>
-      <li data-marker="*">Finally, we store the value of <code class="language-plaintext highlighter-rouge">tmp</code> to the location pointed to by <code class="language-plaintext highlighter-rouge">b</code>.</li>
+      <li data-marker="*">The addresses of <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">y</code> are passed in from <code class="code" class="code" class="language-plaintext highlighter-rouge">main</code> to <code class="code" class="code" class="language-plaintext highlighter-rouge">swap</code> with <code class="code" class="code" class="language-plaintext highlighter-rouge">&amp;x</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">&amp;y</code>, and we use the <code class="code" class="code" class="language-plaintext highlighter-rouge">int *a</code> syntax to declare that our <code class="code" class="code" class="language-plaintext highlighter-rouge">swap</code> function takes in pointers.</li>
+      <li data-marker="*">We save the first value to <code class="code" class="code" class="language-plaintext highlighter-rouge">tmp</code> by following the pointer <code class="code" class="code" class="language-plaintext highlighter-rouge">a</code>, and then set the second value to location pointed to by <code class="code" class="code" class="language-plaintext highlighter-rouge">a</code> by following the second pointer <code class="code" class="code" class="language-plaintext highlighter-rouge">b</code>.</li>
+      <li data-marker="*">Finally, we store the value of <code class="code" class="code" class="language-plaintext highlighter-rouge">tmp</code> to the location pointed to by <code class="code" class="code" class="language-plaintext highlighter-rouge">b</code>.</li>
     </ul>
   </li>
   <li data-marker="*">Our stack might look like this:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     -------------------------
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">     -------------------------
      |  |  |  |  |  |  |  |  |
      -------------------------
      |  |  |  |  |  |  |  |  |
@@ -975,11 +975,11 @@ main | x    1    | y    2    |
      -------------------------
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">If <code class="language-plaintext highlighter-rouge">x</code> is at <code class="language-plaintext highlighter-rouge">0x123</code>, <code class="language-plaintext highlighter-rouge">a</code> will contain that value. <code class="language-plaintext highlighter-rouge">b</code> will have the address of <code class="language-plaintext highlighter-rouge">y</code>, <code class="language-plaintext highlighter-rouge">0x127</code>.</li>
+      <li data-marker="*">If <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code> is at <code class="code" class="code" class="language-plaintext highlighter-rouge">0x123</code>, <code class="code" class="code" class="language-plaintext highlighter-rouge">a</code> will contain that value. <code class="code" class="code" class="language-plaintext highlighter-rouge">b</code> will have the address of <code class="code" class="code" class="language-plaintext highlighter-rouge">y</code>, <code class="code" class="code" class="language-plaintext highlighter-rouge">0x127</code>.</li>
     </ul>
   </li>
-  <li data-marker="*">Our first step will be putting the value of <code class="language-plaintext highlighter-rouge">x</code> into <code class="language-plaintext highlighter-rouge">tmp</code> by following the pointer <code class="language-plaintext highlighter-rouge">a</code>:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     -------------------------
+  <li data-marker="*">Our first step will be putting the value of <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code> into <code class="code" class="code" class="language-plaintext highlighter-rouge">tmp</code> by following the pointer <code class="code" class="code" class="language-plaintext highlighter-rouge">a</code>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">     -------------------------
      |  |  |  |  |  |  |  |  |
      -------------------------
      |  |  |  |  |  |  |  |  |
@@ -996,8 +996,8 @@ main | x    1    | y    2    |
      -------------------------
 </code></pre></div>    </div>
   </li>
-  <li data-marker="*">Then, we’ll follow the pointer <code class="language-plaintext highlighter-rouge">b</code>, and store the value there into the location pointed to by <code class="language-plaintext highlighter-rouge">a</code>:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     -------------------------
+  <li data-marker="*">Then, we’ll follow the pointer <code class="code" class="code" class="language-plaintext highlighter-rouge">b</code>, and store the value there into the location pointed to by <code class="code" class="code" class="language-plaintext highlighter-rouge">a</code>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">     -------------------------
      |  |  |  |  |  |  |  |  |
      -------------------------
      |  |  |  |  |  |  |  |  |
@@ -1014,8 +1014,8 @@ main | x    2    | y    2    |
      -------------------------
 </code></pre></div>    </div>
   </li>
-  <li data-marker="*">Finally, we’ll go to the location pointed to by <code class="language-plaintext highlighter-rouge">b</code>, and put the value of <code class="language-plaintext highlighter-rouge">tmp</code> into it:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     -------------------------
+  <li data-marker="*">Finally, we’ll go to the location pointed to by <code class="code" class="code" class="language-plaintext highlighter-rouge">b</code>, and put the value of <code class="code" class="code" class="language-plaintext highlighter-rouge">tmp</code> into it:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">     -------------------------
      |  |  |  |  |  |  |  |  |
      -------------------------
      |  |  |  |  |  |  |  |  |
@@ -1032,9 +1032,9 @@ main | x    2    | y    1    |
      -------------------------
 </code></pre></div>    </div>
   </li>
-  <li data-marker="*">Now, <code class="language-plaintext highlighter-rouge">swap</code> can return, and the variables in <code class="language-plaintext highlighter-rouge">main</code> will still be changed.</li>
-  <li data-marker="*">In our program, we’ll need to pass in the addresses of <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> to our <code class="language-plaintext highlighter-rouge">swap</code> function:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+  <li data-marker="*">Now, <code class="code" class="code" class="language-plaintext highlighter-rouge">swap</code> can return, and the variables in <code class="code" class="code" class="language-plaintext highlighter-rouge">main</code> will still be changed.</li>
+  <li data-marker="*">In our program, we’ll need to pass in the addresses of <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code> and <code class="code" class="code" class="language-plaintext highlighter-rouge">y</code> to our <code class="code" class="code" class="language-plaintext highlighter-rouge">swap</code> function:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">b</span><span class="p">);</span>
 
@@ -1055,13 +1055,13 @@ main | x    2    | y    1    |
     <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make swap
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make swap
 $ ./swap
 x is 1, y is 2
 x is 2, y is 1
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">With <code class="language-plaintext highlighter-rouge">&amp;x</code>, we can get the address of <code class="language-plaintext highlighter-rouge">x</code> to pass in.</li>
+      <li data-marker="*">With <code class="code" class="code" class="language-plaintext highlighter-rouge">&amp;x</code>, we can get the address of <code class="code" class="code" class="language-plaintext highlighter-rouge">x</code> to pass in.</li>
     </ul>
   </li>
 </ul>
@@ -1069,8 +1069,8 @@ x is 2, y is 1
 <h2 id="scanf">scanf</h2>
 
 <ul>
-  <li data-marker="*">We can get an integer from the user with a C library function, <code class="language-plaintext highlighter-rouge">scanf</code>:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+  <li data-marker="*">We can get an integer from the user with a C library function, <code class="code" class="code" class="language-plaintext highlighter-rouge">scanf</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1080,17 +1080,17 @@ x is 2, y is 1
     <span class="n">printf</span><span class="p">(</span><span class="s">"x: %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make scanf 
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make scanf 
 $ ./scanf
 x: 50
 x: 50
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*"><code class="language-plaintext highlighter-rouge">scanf</code> takes a format, <code class="language-plaintext highlighter-rouge">%i</code>, so the input is “scanned” for that format. We also pass in the address in memory where we want that input to go with <code class="language-plaintext highlighter-rouge">&amp;x</code>.</li>
+      <li data-marker="*"><code class="code" class="code" class="language-plaintext highlighter-rouge">scanf</code> takes a format, <code class="code" class="code" class="language-plaintext highlighter-rouge">%i</code>, so the input is “scanned” for that format. We also pass in the address in memory where we want that input to go with <code class="code" class="code" class="language-plaintext highlighter-rouge">&amp;x</code>.</li>
     </ul>
   </li>
   <li data-marker="*">We can try to get a string the same way:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1100,18 +1100,18 @@ x: 50
     <span class="n">printf</span><span class="p">(</span><span class="s">"s: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ clang -o scanf scanf.c
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ clang -o scanf scanf.c
 $ ./scanf
 s: HI!
 s: (null)
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*"><code class="language-plaintext highlighter-rouge">make</code> prevents us from making this mistake, so we’ll use <code class="language-plaintext highlighter-rouge">clang</code> to demonstrate.</li>
-      <li data-marker="*">We haven’t actually allocated any memory for <code class="language-plaintext highlighter-rouge">s</code>, so <code class="language-plaintext highlighter-rouge">scanf</code> is writing our string to an unknown address in memory.</li>
+      <li data-marker="*"><code class="code" class="code" class="language-plaintext highlighter-rouge">make</code> prevents us from making this mistake, so we’ll use <code class="code" class="code" class="language-plaintext highlighter-rouge">clang</code> to demonstrate.</li>
+      <li data-marker="*">We haven’t actually allocated any memory for <code class="code" class="code" class="language-plaintext highlighter-rouge">s</code>, so <code class="code" class="code" class="language-plaintext highlighter-rouge">scanf</code> is writing our string to an unknown address in memory.</li>
     </ul>
   </li>
-  <li data-marker="*">We can call <code class="language-plaintext highlighter-rouge">malloc</code> to allocate memory:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+  <li data-marker="*">We can call <code class="code" class="code" class="language-plaintext highlighter-rouge">malloc</code> to allocate memory:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1121,14 +1121,14 @@ s: (null)
     <span class="n">printf</span><span class="p">(</span><span class="s">"s: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ clang -o scanf scanf.c
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ clang -o scanf scanf.c
 $ ./scanf
 s: HI!
 s: HI!
 </code></pre></div>    </div>
   </li>
   <li data-marker="*">And we can declare an array of 4 characters:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1138,24 +1138,24 @@ s: HI!
     <span class="n">printf</span><span class="p">(</span><span class="s">"s: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ clang -o scanf scanf.c
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ clang -o scanf scanf.c
 $ ./scanf
 s: helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 s: helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 Segmentation fault (core dumped)
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">Now, if the user types in a string of length 3 or less, our program will work safely. But if the user types in a longer string, <code class="language-plaintext highlighter-rouge">scanf</code> might be trying to write past the end of our array into unknown memory, causing our program to crash.</li>
+      <li data-marker="*">Now, if the user types in a string of length 3 or less, our program will work safely. But if the user types in a longer string, <code class="code" class="code" class="language-plaintext highlighter-rouge">scanf</code> might be trying to write past the end of our array into unknown memory, causing our program to crash.</li>
     </ul>
   </li>
-  <li data-marker="*"><code class="language-plaintext highlighter-rouge">get_string</code> from the CS50 library continuously allocates more memory as <code class="language-plaintext highlighter-rouge">scanf</code> reads in more characters, so it doesn’t have this issue.</li>
+  <li data-marker="*"><code class="code" class="code" class="language-plaintext highlighter-rouge">get_string</code> from the CS50 library continuously allocates more memory as <code class="code" class="code" class="language-plaintext highlighter-rouge">scanf</code> reads in more characters, so it doesn’t have this issue.</li>
 </ul>
 
 <h2 id="files">Files</h2>
 
 <ul>
-  <li data-marker="*">With the ability to use pointers, we can also open files, like a digital phone book in <a href="https://cdn.cs50.net/2021/fall/lectures/4/src4/phonebook.c?highlight"><code class="language-plaintext highlighter-rouge">phonebook.c</code></a>:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Saves names and numbers to a CSV file</span>
+  <li data-marker="*">With the ability to use pointers, we can also open files, like a digital phone book in <a href="https://cdn.cs50.net/2021/fall/lectures/4/src4/phonebook.c?highlight"><code class="code" class="code" class="language-plaintext highlighter-rouge">phonebook.c</code></a>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="c1">// Saves names and numbers to a CSV file</span>
   
 <span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
@@ -1182,8 +1182,8 @@ Segmentation fault (core dumped)
 <span class="p">}</span>
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*"><code class="language-plaintext highlighter-rouge">fopen</code> is a new function we can use to open a file with a new type, <code class="language-plaintext highlighter-rouge">FILE</code>.</li>
-      <li data-marker="*">We can use <code class="language-plaintext highlighter-rouge">fprintf</code> to write to a file.</li>
+      <li data-marker="*"><code class="code" class="code" class="language-plaintext highlighter-rouge">fopen</code> is a new function we can use to open a file with a new type, <code class="code" class="code" class="language-plaintext highlighter-rouge">FILE</code>.</li>
+      <li data-marker="*">We can use <code class="code" class="code" class="language-plaintext highlighter-rouge">fprintf</code> to write to a file.</li>
       <li data-marker="*">We’ll see more details about working with files in this week’s problem set.</li>
     </ul>
   </li>
@@ -1192,8 +1192,8 @@ Segmentation fault (core dumped)
 <h1 id="jpeg">JPEG</h1>
 
 <ul>
-  <li data-marker="*">Let’s look at a program that opens a file and tells us if it’s a JPEG file, a particular format for image files, with <a href="https://cdn.cs50.net/2021/fall/lectures/4/src4/jpeg.c?highlight"><code class="language-plaintext highlighter-rouge">jpeg.c</code></a>:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Detects if a file is a JPEG</span>
+  <li data-marker="*">Let’s look at a program that opens a file and tells us if it’s a JPEG file, a particular format for image files, with <a href="https://cdn.cs50.net/2021/fall/lectures/4/src4/jpeg.c?highlight"><code class="code" class="code" class="language-plaintext highlighter-rouge">jpeg.c</code></a>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="c1">// Detects if a file is a JPEG</span>
   
 <span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
@@ -1233,19 +1233,19 @@ Segmentation fault (core dumped)
     <span class="n">fclose</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make jpeg
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code">$ make jpeg
 $ ./jpeg .src4/lecture.jpg
 Yes, possibly
 </code></pre></div>    </div>
     <ul>
-      <li data-marker="*">First, we define a <code class="language-plaintext highlighter-rouge">BYTE</code> as 8 bits, so we can refer to a byte as a type more easily in C.</li>
-      <li data-marker="*">Then, we’ll read from a file with a function called <code class="language-plaintext highlighter-rouge">fread</code>.</li>
+      <li data-marker="*">First, we define a <code class="code" class="code" class="language-plaintext highlighter-rouge">BYTE</code> as 8 bits, so we can refer to a byte as a type more easily in C.</li>
+      <li data-marker="*">Then, we’ll read from a file with a function called <code class="code" class="code" class="language-plaintext highlighter-rouge">fread</code>.</li>
       <li data-marker="*">We can compare the first three bytes (in hexadecimal) to the three bytes required to begin a JPEG file. If they’re the same, then our file is likely to be a JPEG file (though, other types of files may still begin with those bytes). But if they’re not the same, we know it’s definitely not a JPEG file.</li>
     </ul>
   </li>
   <li data-marker="*">It turns out that BMP files, another format for images, have even more bytes in its header, or beginning of the file.</li>
   <li data-marker="*">We’ll learn more about these in this week’s problem set as well, and even implement our own version of image filters, like one that only shows the color red:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"helpers.h"</span><span class="cp">
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code" class="code"><span class="cp">#include</span> <span class="cpf">"helpers.h"</span><span class="cp">
 </span>  
 <span class="c1">// Only let red through</span>
 <span class="kt">void</span> <span class="nf">filter</span><span class="p">(</span><span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="n">RGBTRIPLE</span> <span class="n">image</span><span class="p">[</span><span class="n">height</span><span class="p">][</span><span class="n">width</span><span class="p">])</span>

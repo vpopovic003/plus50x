@@ -124,6 +124,8 @@
 }
 
 @media (max-width: 767px) {
+
+
     .background{
         margin-top: 140px !important;
     }
@@ -244,7 +246,7 @@
         padding-left: 0 !important;
     }
 
-    .videocontainer {
+    .mainvideocontainer {
         display: none;
     }
     .topmenu{
@@ -258,6 +260,12 @@
     }
     .smalldevicevid{
         display: block;
+    }
+    .lecture-slides iframe{
+        min-height: 700px !important;
+    }
+    .lecture-video{
+        min-height: 700px !important;
     }
 
 }

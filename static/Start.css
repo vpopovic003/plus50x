@@ -27,8 +27,8 @@
 }
 
 .background {
-    padding-left: 25vw !important;
-    max-width: 150rem !important;
+    padding-left: 30vw !important;
+    max-width: 250rem !important;
     overflow: hidden !important;
 }
 
@@ -80,6 +80,7 @@
 
 .videocontainer div {
     position: relative;
+    max-width: 110rem !important;
     width: 85%;
     height: 0;
     padding-bottom: 56.25%;
@@ -123,6 +124,8 @@
 }
 
 @media (max-width: 767px) {
+
+
     .background{
         margin-top: 140px !important;
     }
@@ -243,7 +246,7 @@
         padding-left: 0 !important;
     }
 
-    .videocontainer {
+    .mainvideocontainer {
         display: none;
     }
     .topmenu{
@@ -257,6 +260,12 @@
     }
     .smalldevicevid{
         display: block;
+    }
+    .lecture-slides iframe{
+        min-height: 700px !important;
+    }
+    .lecture-video{
+        min-height: 700px !important;
     }
 
 }
@@ -278,6 +287,10 @@
 }
 
 @media (min-width: 1200px) {
+
+    .lecture-slides iframe{
+        min-height: 1000px !important;
+    }
 
     .mainitemcontainer {
         display: flex;

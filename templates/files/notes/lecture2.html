@@ -13,7 +13,7 @@
   
   <ul>
     <li data-marker="*">Last time, we learned to write our first program in C, printing “hello, world” to the screen:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
   <span class="p">{</span>
@@ -21,21 +21,21 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">We compiled it with <code class="language-plaintext highlighter-rouge">make hello</code> first, turning our source code into machine code before we could run the compiled program with <code class="language-plaintext highlighter-rouge">./hello</code>.</li>
-    <li data-marker="*"><code class="language-plaintext highlighter-rouge">make</code> is actually just a program that calls <code class="language-plaintext highlighter-rouge">clang</code>, a compiler named for the “C language”.</li>
-    <li data-marker="*">We can compile our source code, <code class="language-plaintext highlighter-rouge">hello.c</code>, directly by running the command <code class="language-plaintext highlighter-rouge">clang hello.c</code> in the terminal:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ clang hello.c
+    <li data-marker="*">We compiled it with <code class="code" class="language-plaintext highlighter-rouge">make hello</code> first, turning our source code into machine code before we could run the compiled program with <code class="code" class="language-plaintext highlighter-rouge">./hello</code>.</li>
+    <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">make</code> is actually just a program that calls <code class="code" class="language-plaintext highlighter-rouge">clang</code>, a compiler named for the “C language”.</li>
+    <li data-marker="*">We can compile our source code, <code class="code" class="language-plaintext highlighter-rouge">hello.c</code>, directly by running the command <code class="code" class="language-plaintext highlighter-rouge">clang hello.c</code> in the terminal:
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ clang hello.c
   $ 
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">Nothing seems to happen, which means there were no errors. And if we run list, with <code class="language-plaintext highlighter-rouge">ls</code>, we see an <code class="language-plaintext highlighter-rouge">a.out</code> file in our directory. The filename is just the default for <code class="language-plaintext highlighter-rouge">clang</code>’s output, and we can run it:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./a.out
+    <li data-marker="*">Nothing seems to happen, which means there were no errors. And if we run list, with <code class="code" class="language-plaintext highlighter-rouge">ls</code>, we see an <code class="code" class="language-plaintext highlighter-rouge">a.out</code> file in our directory. The filename is just the default for <code class="code" class="language-plaintext highlighter-rouge">clang</code>’s output, and we can run it:
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ ./a.out
   hello, world
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">We can add a <strong>command-line argument</strong>, or an input to a program on the command-line as extra words after the program’s name. We can run <code class="language-plaintext highlighter-rouge">clang -o hello hello.c</code>, where <code class="language-plaintext highlighter-rouge">clang</code> is the name of the program, and <code class="language-plaintext highlighter-rouge">-o hello</code> and <code class="language-plaintext highlighter-rouge">hello.c</code> are additional arguments. We’re telling <code class="language-plaintext highlighter-rouge">clang</code> to use <code class="language-plaintext highlighter-rouge">hello</code> as the output filename, and use <code class="language-plaintext highlighter-rouge">hello.c</code> as the source code. Now, we can see <code class="language-plaintext highlighter-rouge">hello</code> being created as output.</li>
+    <li data-marker="*">We can add a <strong>command-line argument</strong>, or an input to a program on the command-line as extra words after the program’s name. We can run <code class="code" class="language-plaintext highlighter-rouge">clang -o hello hello.c</code>, where <code class="code" class="language-plaintext highlighter-rouge">clang</code> is the name of the program, and <code class="code" class="language-plaintext highlighter-rouge">-o hello</code> and <code class="code" class="language-plaintext highlighter-rouge">hello.c</code> are additional arguments. We’re telling <code class="code" class="language-plaintext highlighter-rouge">clang</code> to use <code class="code" class="language-plaintext highlighter-rouge">hello</code> as the output filename, and use <code class="code" class="language-plaintext highlighter-rouge">hello.c</code> as the source code. Now, we can see <code class="code" class="language-plaintext highlighter-rouge">hello</code> being created as output.</li>
     <li data-marker="*">Let’s try to compile the second version of last week’s program, where we ask for a name:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -44,17 +44,17 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ clang hello.c
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ clang hello.c
   /usr/bin/ld: /tmp/hello-733e0f.o: in function `main':
   hello.c:(.text+0x19): undefined reference to `get_string'
   clang: error: linker command failed with exit code 1 (use -v to see invocation)
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">It looks like <code class="language-plaintext highlighter-rouge">clang</code> can’t find <code class="language-plaintext highlighter-rouge">get_string</code>, but we did include <code class="language-plaintext highlighter-rouge">cs50.h</code>. It turns out that we also tell our compiler to actually link in the <code class="language-plaintext highlighter-rouge">cs50</code> machine code with the functions described by <code class="language-plaintext highlighter-rouge">cs50.h</code>. We’ll have to add another argument with:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $ clang -o hello hello.c -lcs50
+    <li data-marker="*">It looks like <code class="code" class="language-plaintext highlighter-rouge">clang</code> can’t find <code class="code" class="language-plaintext highlighter-rouge">get_string</code>, but we did include <code class="code" class="language-plaintext highlighter-rouge">cs50.h</code>. It turns out that we also tell our compiler to actually link in the <code class="code" class="language-plaintext highlighter-rouge">cs50</code> machine code with the functions described by <code class="code" class="language-plaintext highlighter-rouge">cs50.h</code>. We’ll have to add another argument with:
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">  $ clang -o hello hello.c -lcs50
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">With <code class="language-plaintext highlighter-rouge">make</code>, these commands are automatically generated for us.</li>
+    <li data-marker="*">With <code class="code" class="language-plaintext highlighter-rouge">make</code>, these commands are automatically generated for us.</li>
     <li data-marker="*">Compiling source code into machine code is actually made up of four smaller steps:
       <ul>
         <li data-marker="*">preprocessing</li>
@@ -63,9 +63,9 @@
         <li data-marker="*">linking</li>
       </ul>
     </li>
-    <li data-marker="*"><strong>Preprocessing</strong> involves replacing lines that start with a <code class="language-plaintext highlighter-rouge">#</code>, like <code class="language-plaintext highlighter-rouge">#include</code>. For example, <code class="language-plaintext highlighter-rouge">#include &lt;cs50.h&gt;</code> will tell <code class="language-plaintext highlighter-rouge">clang</code> to look for that header file, since it contains content, like prototypes of functions, that we want to include in our program. Then, <code class="language-plaintext highlighter-rouge">clang</code> will essentially copy and paste the contents of those header files into our program.</li>
+    <li data-marker="*"><strong>Preprocessing</strong> involves replacing lines that start with a <code class="code" class="language-plaintext highlighter-rouge">#</code>, like <code class="code" class="language-plaintext highlighter-rouge">#include</code>. For example, <code class="code" class="language-plaintext highlighter-rouge">#include &lt;cs50.h&gt;</code> will tell <code class="code" class="language-plaintext highlighter-rouge">clang</code> to look for that header file, since it contains content, like prototypes of functions, that we want to include in our program. Then, <code class="code" class="language-plaintext highlighter-rouge">clang</code> will essentially copy and paste the contents of those header files into our program.</li>
     <li data-marker="*">For example …
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -76,7 +76,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">… will be preprocessed into:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="p">...</span>
   <span class="n">string</span> <span class="nf">get_string</span><span class="p">(</span><span class="n">string</span> <span class="n">prompt</span><span class="p">);</span>
   <span class="p">...</span>
   <span class="kt">int</span> <span class="nf">printf</span><span class="p">(</span><span class="n">string</span> <span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
@@ -89,12 +89,12 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">string get_string(string prompt);</code> is a prototype of a function from <code class="language-plaintext highlighter-rouge">cs50.h</code> that we want to use. The function is called <code class="language-plaintext highlighter-rouge">get_string</code>, and it takes in a <code class="language-plaintext highlighter-rouge">string</code> as an argument, called <code class="language-plaintext highlighter-rouge">prompt</code>, and returns a value of the type <code class="language-plaintext highlighter-rouge">string</code>.</li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">int printf(string format, ...);</code> is a prototype from <code class="language-plaintext highlighter-rouge">stdio.h</code>, taking in a number of arguments, including a <code class="language-plaintext highlighter-rouge">string</code> for <code class="language-plaintext highlighter-rouge">format</code>.</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">string get_string(string prompt);</code> is a prototype of a function from <code class="code" class="language-plaintext highlighter-rouge">cs50.h</code> that we want to use. The function is called <code class="code" class="language-plaintext highlighter-rouge">get_string</code>, and it takes in a <code class="code" class="language-plaintext highlighter-rouge">string</code> as an argument, called <code class="code" class="language-plaintext highlighter-rouge">prompt</code>, and returns a value of the type <code class="code" class="language-plaintext highlighter-rouge">string</code>.</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">int printf(string format, ...);</code> is a prototype from <code class="code" class="language-plaintext highlighter-rouge">stdio.h</code>, taking in a number of arguments, including a <code class="code" class="language-plaintext highlighter-rouge">string</code> for <code class="code" class="language-plaintext highlighter-rouge">format</code>.</li>
       </ul>
     </li>
     <li data-marker="*"><strong>Compiling</strong> takes our source code, in C, and converts it to another language called <strong>assembly language</strong>, which looks like this:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">...
   main:                         # @main
       .cfi_startproc
   # BB#0:
@@ -120,12 +120,12 @@
       ...
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Notice that we see some recognizable strings, like <code class="language-plaintext highlighter-rouge">main</code>, <code class="language-plaintext highlighter-rouge">get_string</code>, and <code class="language-plaintext highlighter-rouge">printf</code>. But the other lines are instructions for basic operations on memory and values, closer to the binary instructions that a computer’s processor can directly understand.</li>
+        <li data-marker="*">Notice that we see some recognizable strings, like <code class="code" class="language-plaintext highlighter-rouge">main</code>, <code class="code" class="language-plaintext highlighter-rouge">get_string</code>, and <code class="code" class="language-plaintext highlighter-rouge">printf</code>. But the other lines are instructions for basic operations on memory and values, closer to the binary instructions that a computer’s processor can directly understand.</li>
       </ul>
     </li>
     <li data-marker="*">The next step is to take the code in assembly and translate it to binary by <strong>assembling</strong> it. The instructions in binary are machine code, which a computer’s CPU can run directly.</li>
-    <li data-marker="*">The last step is <strong>linking</strong>, where previously compiled versions of libraries that we included earlier, like <code class="language-plaintext highlighter-rouge">cs50.c</code>, are actually combined with the compiled binary of our program. In other words, linking is the process of combining all the machine code for <code class="language-plaintext highlighter-rouge">hello.c</code>, <code class="language-plaintext highlighter-rouge">cs50.c</code>, and <code class="language-plaintext highlighter-rouge">stdio.c</code> into our one binary file, <code class="language-plaintext highlighter-rouge">a.out</code> or <code class="language-plaintext highlighter-rouge">hello</code>.</li>
-    <li data-marker="*">These steps have been abstracted away, or simplified, by <code class="language-plaintext highlighter-rouge">make</code>, so we can think of the entire process as compiling.</li>
+    <li data-marker="*">The last step is <strong>linking</strong>, where previously compiled versions of libraries that we included earlier, like <code class="code" class="language-plaintext highlighter-rouge">cs50.c</code>, are actually combined with the compiled binary of our program. In other words, linking is the process of combining all the machine code for <code class="code" class="language-plaintext highlighter-rouge">hello.c</code>, <code class="code" class="language-plaintext highlighter-rouge">cs50.c</code>, and <code class="code" class="language-plaintext highlighter-rouge">stdio.c</code> into our one binary file, <code class="code" class="language-plaintext highlighter-rouge">a.out</code> or <code class="code" class="language-plaintext highlighter-rouge">hello</code>.</li>
+    <li data-marker="*">These steps have been abstracted away, or simplified, by <code class="code" class="language-plaintext highlighter-rouge">make</code>, so we can think of the entire process as compiling.</li>
   </ul>
   
   <h2 id="debugging">Debugging</h2>
@@ -133,9 +133,9 @@
   <ul>
     <li data-marker="*"><strong>Bugs</strong> are mistakes in programs that cause them to behave differently than intended. And <strong>debugging</strong> is the process of finding and fixing those bugs.</li>
     <li data-marker="*">A physical bug was actually discovered many years ago inside a very large computer, the <a href="https://en.wikipedia.org/wiki/Harvard_Mark_II">Harvard Mark II</a>:<br>
-  <img src="bug.png" alt="logbook with insect and caption First actual case of bug being found" width="300"></li>
-    <li data-marker="*">We’ll write a new program to print three “bricks”. We’ll call it <code class="language-plaintext highlighter-rouge">buggy.c</code>:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+  <img src="./static/imagesnotes/./static/imagesnotes/bug.webp" alt="logbook with insect and caption First actual case of bug being found" width="300"></li>
+    <li data-marker="*">We’ll write a new program to print three “bricks”. We’ll call it <code class="code" class="language-plaintext highlighter-rouge">buggy.c</code>:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
   <span class="p">{</span>
@@ -147,7 +147,7 @@
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">This program compiles and runs, but we have a logical error since we see four bricks:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make buggy
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make buggy
   $ ./buggy
   #
   #
@@ -157,8 +157,8 @@
         </li>
       </ul>
     </li>
-    <li data-marker="*">We might see the problem already, but if we didn’t, we could add another <code class="language-plaintext highlighter-rouge">printf</code> temporarily:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <li data-marker="*">We might see the problem already, but if we didn’t, we could add another <code class="code" class="language-plaintext highlighter-rouge">printf</code> temporarily:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">  <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
     <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
     <span class="p">{</span>
@@ -170,8 +170,8 @@
     <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Now, we can see that <code class="language-plaintext highlighter-rouge">i</code> started at 0 and continued until it was 3, but we should have our <code class="language-plaintext highlighter-rouge">for</code> loop stop once it’s at 3, with <code class="language-plaintext highlighter-rouge">i &lt; 3</code> instead of <code class="language-plaintext highlighter-rouge">i &lt;= 3</code>:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make buggy
+        <li data-marker="*">Now, we can see that <code class="code" class="language-plaintext highlighter-rouge">i</code> started at 0 and continued until it was 3, but we should have our <code class="code" class="language-plaintext highlighter-rouge">for</code> loop stop once it’s at 3, with <code class="code" class="language-plaintext highlighter-rouge">i &lt; 3</code> instead of <code class="code" class="language-plaintext highlighter-rouge">i &lt;= 3</code>:
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make buggy
   $ ./buggy
   i is 0
   #
@@ -185,28 +185,28 @@
         </li>
       </ul>
     </li>
-    <li data-marker="*">In our instance of VS Code, we have another command, <strong><code class="language-plaintext highlighter-rouge">debug50</code></strong>, to help us debug programs. This is a tool that runs the <strong>debugger</strong> built into VS Code, a program that will walk through our own programs step-by-step and let us look at variables and other information while our program is running.</li>
+    <li data-marker="*">In our instance of VS Code, we have another command, <strong><code class="code" class="language-plaintext highlighter-rouge">debug50</code></strong>, to help us debug programs. This is a tool that runs the <strong>debugger</strong> built into VS Code, a program that will walk through our own programs step-by-step and let us look at variables and other information while our program is running.</li>
     <li data-marker="*">First, we’ll click next to line 5 in our program to make a red dot appear:<br>
-  <img src="breakpoint.png" alt="tab labeled buggy.c with red dot next to line 5 of code" width="343" class="border"></li>
-    <li data-marker="*">Then, we’ll run the command <code class="language-plaintext highlighter-rouge">debug50 ./buggy</code>, which might open a tab called Debug Console. We should go back to the tab labeled Terminal, so we can see our program’s output still:<br>
-  <img src="debug_console.png" alt="tab labeled Debug Console" width="476" class="border"></li>
+  <img src="./static/imagesnotes/breakpoint.webp" alt="tab labeled buggy.c with red dot next to line 5 of code" width="343" class="border"></li>
+    <li data-marker="*">Then, we’ll run the command <code class="code" class="language-plaintext highlighter-rouge">debug50 ./buggy</code>, which might open a tab called Debug Console. We should go back to the tab labeled Terminal, so we can see our program’s output still:<br>
+  <img src="./static/imagesnotes/debug_console.webp" alt="tab labeled Debug Console" width="476" class="border"></li>
     <li data-marker="*">The red dot we added was a <strong>breakpoint</strong>, a place where we want our debugger to pause our program’s execution. Line 5 is now highlighted in yellow since it hasn’t executed yet:<br>
-  <img src="paused.png" alt="tab labeled buggy.c with red dot in arrow next to line 5 of code, with line 5 highlighted in yellow, and buttons for controlling debugger" width="343" class="border"></li>
+  <img src="./static/imagesnotes/paused.webp" alt="tab labeled buggy.c with red dot in arrow next to line 5 of code, with line 5 highlighted in yellow, and buttons for controlling debugger" width="343" class="border"></li>
     <li data-marker="*">The buttons that have appeared will allow us to control our program. We can hover over each of them to see their labels. The first button that looks like a play button will “continue” our program until the next breakpoint. The second button, which looks like a curved arrow, will “step over”, or run the next line. We’ll click that one:<br>
-  <img src="step_over.png" alt="button labeled Step Over with arrow pointing to line 7, with line 7 highlighted in yellow" width="342" class="border"></li>
+  <img src="./static/imagesnotes/step_over.webp" alt="button labeled Step Over with arrow pointing to line 7, with line 7 highlighted in yellow" width="342" class="border"></li>
     <li data-marker="*">Notice that the panel on the left labeled Run and Debug has a section called Variables, where we can see their values:<br>
-  <img src="variables.png" alt="panel labeled Run and Debug with section labeled Variables and i with value of 0" width="347">
+  <img src="./static/imagesnotes/variables.webp" alt="panel labeled Run and Debug with section labeled Variables and i with value of 0" width="347">
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">i</code> has a value of <code class="language-plaintext highlighter-rouge">0</code>.</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">i</code> has a value of <code class="code" class="language-plaintext highlighter-rouge">0</code>.</li>
       </ul>
     </li>
-    <li data-marker="*">We’ll click the Step Over button again, and now we see a single <code class="language-plaintext highlighter-rouge">#</code> printed to the screen. The value of <code class="language-plaintext highlighter-rouge">i</code> hasn’t changed, since we’re back to line 5, but that hasn’t run yet.</li>
-    <li data-marker="*">Now, we can click Step Over again, and we’ll see the value of <code class="language-plaintext highlighter-rouge">i</code> change to <code class="language-plaintext highlighter-rouge">1</code> as we run line 5 and move to line 7.</li>
+    <li data-marker="*">We’ll click the Step Over button again, and now we see a single <code class="code" class="language-plaintext highlighter-rouge">#</code> printed to the screen. The value of <code class="code" class="language-plaintext highlighter-rouge">i</code> hasn’t changed, since we’re back to line 5, but that hasn’t run yet.</li>
+    <li data-marker="*">Now, we can click Step Over again, and we’ll see the value of <code class="code" class="language-plaintext highlighter-rouge">i</code> change to <code class="code" class="language-plaintext highlighter-rouge">1</code> as we run line 5 and move to line 7.</li>
     <li data-marker="*">We can repeat this at our pace, and see our program’s output and variables.</li>
     <li data-marker="*">To stop this process, we’ll click the rightmost button that looks like a square, and we’ll be brought back to our terminal. And we can click the red dot next to line 5 to remove the breakpoint as well.</li>
     <li data-marker="*">A third debugging technique is using a <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging"><strong>rubber duck</strong></a>, where we explain what we’re trying to do in our code to a rubber duck (or other inanimate object). By talking through our own code out loud step-by-step, we might realize our mistake.</li>
     <li data-marker="*">Let’s look at another buggy program:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">get_negative_int</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
@@ -229,12 +229,12 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We’ve implemented another function, <code class="language-plaintext highlighter-rouge">get_negative_int</code>, to get a negative integer from the user. We’ll use a do while loop to ask the user for an integer, storing it in <code class="language-plaintext highlighter-rouge">n</code>, and returning it.</li>
+        <li data-marker="*">We’ve implemented another function, <code class="code" class="language-plaintext highlighter-rouge">get_negative_int</code>, to get a negative integer from the user. We’ll use a do while loop to ask the user for an integer, storing it in <code class="code" class="language-plaintext highlighter-rouge">n</code>, and returning it.</li>
         <li data-marker="*">We’ll include the prototype at the top of our program for our compiler.</li>
       </ul>
     </li>
     <li data-marker="*">But when we run our program, it keeps asking us for a negative integer:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make buggy
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make buggy
   $ ./buggy
   Negative Integer: -50
   Negative Integer: -5
@@ -243,7 +243,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">We could add a line to print the value:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="p">...</span>
   <span class="kt">int</span> <span class="nf">get_negative_int</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
   <span class="p">{</span>
       <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
@@ -261,13 +261,13 @@
         <li data-marker="*">But that doesn’t help us a lot.</li>
       </ul>
     </li>
-    <li data-marker="*">We’ll set a breakpoint on line 8, <code class="language-plaintext highlighter-rouge">int i = get_negative_int();</code>, since it’s the first interesting line of code. We’ll run <code class="language-plaintext highlighter-rouge">debug50 ./buggy</code>, and click the “Step Over” button to run that line:<br>
-  <img src="get_negative_int.png" alt="tab labeled buggy.c with red dot next to line 8 and terminal panel with Negative Integer: -50 repeated" width="346" class="border">
+    <li data-marker="*">We’ll set a breakpoint on line 8, <code class="code" class="language-plaintext highlighter-rouge">int i = get_negative_int();</code>, since it’s the first interesting line of code. We’ll run <code class="code" class="language-plaintext highlighter-rouge">debug50 ./buggy</code>, and click the “Step Over” button to run that line:<br>
+  <img src="./static/imagesnotes/get_negative_int.webp" alt="tab labeled buggy.c with red dot next to line 8 and terminal panel with Negative Integer: -50 repeated" width="346" class="border">
       <ul>
         <li data-marker="*">But now we are stuck in that line, and we can’t really see what it’s doing.</li>
       </ul>
     </li>
-    <li data-marker="*">We’ll stop our debugger, and start it again. This time, we’ll click the third button that looks like an arrow pointing down, “Step Into”, which will let us go <em>into</em> the function called on that line. Now, the line <code class="language-plaintext highlighter-rouge">n = get_int("Negative Integer: ");</code> within the <code class="language-plaintext highlighter-rouge">get_negative_int</code> function is highlighted, and hopefully we can find the mistake in our code.</li>
+    <li data-marker="*">We’ll stop our debugger, and start it again. This time, we’ll click the third button that looks like an arrow pointing down, “Step Into”, which will let us go <em>into</em> the function called on that line. Now, the line <code class="code" class="language-plaintext highlighter-rouge">n = get_int("Negative Integer: ");</code> within the <code class="code" class="language-plaintext highlighter-rouge">get_negative_int</code> function is highlighted, and hopefully we can find the mistake in our code.</li>
   </ul>
   
   <h2 id="memory">Memory</h2>
@@ -275,46 +275,46 @@
   <ul>
     <li data-marker="*">In C, we have different types of variables we can use for storing data. Each variable is stored with a fixed number of bytes, and for most computer systems each type has the following size:
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">bool</code>, 1 byte
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">bool</code>, 1 byte
           <ul>
             <li data-marker="*">A Boolean value can technically be represented with just a single bit, but for simplicity our computers use an entire byte.</li>
           </ul>
         </li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">char</code>, 1 byte
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">char</code>, 1 byte
           <ul>
             <li data-marker="*">Recall that with ASCII, we have a maximum of 256 different possible characters, since there are 8 bits in a byte.</li>
           </ul>
         </li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">double</code>, 8 bytes
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">double</code>, 8 bytes
           <ul>
-            <li data-marker="*">Twice as many bytes as a <code class="language-plaintext highlighter-rouge">float</code>.</li>
+            <li data-marker="*">Twice as many bytes as a <code class="code" class="language-plaintext highlighter-rouge">float</code>.</li>
           </ul>
         </li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">float</code>, 4 bytes</li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">int</code>, 4 bytes
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">float</code>, 4 bytes</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">int</code>, 4 bytes
           <ul>
             <li data-marker="*">Recall that a 32-bit integer can represent about 4 billion different values.</li>
           </ul>
         </li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">long</code>, 8 bytes
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">long</code>, 8 bytes
           <ul>
-            <li data-marker="*">Twice as many bytes as an <code class="language-plaintext highlighter-rouge">int</code>.</li>
+            <li data-marker="*">Twice as many bytes as an <code class="code" class="language-plaintext highlighter-rouge">int</code>.</li>
           </ul>
         </li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">string</code>, ? bytes
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">string</code>, ? bytes
           <ul>
-            <li data-marker="*">A <code class="language-plaintext highlighter-rouge">string</code> takes up a variable amount of space, since it could be short or long.</li>
+            <li data-marker="*">A <code class="code" class="language-plaintext highlighter-rouge">string</code> takes up a variable amount of space, since it could be short or long.</li>
           </ul>
         </li>
       </ul>
     </li>
     <li data-marker="*">Inside our computers, we have chips called RAM, random-access <strong>memory</strong>, that stores zeroes and ones. We can think of bytes stored in RAM as though they were in a grid, one after the other:<br>
-  <img src="ram.png" alt="computer chip with grid overlaid" width="300">
+  <img src="./static/imagesnotes/ram.webp" alt="computer chip with grid overlaid" width="300">
       <ul>
         <li data-marker="*">In reality, there are millions or billions of bytes per chip.</li>
       </ul>
     </li>
-    <li data-marker="*">A <code class="language-plaintext highlighter-rouge">char</code> which takes up one byte will take up one of those squares in RAM. An <code class="language-plaintext highlighter-rouge">int</code>, with 4 bytes, will take up four of those squares.</li>
+    <li data-marker="*">A <code class="code" class="language-plaintext highlighter-rouge">char</code> which takes up one byte will take up one of those squares in RAM. An <code class="code" class="language-plaintext highlighter-rouge">int</code>, with 4 bytes, will take up four of those squares.</li>
     <li data-marker="*">Now, we can take for granted that bytes are stored in memory, knowing that we can work with them and build abstractions on top of them.</li>
   </ul>
   
@@ -322,7 +322,7 @@
   
   <ul>
     <li data-marker="*">Let’s say we wanted to take the average of three variables:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
   <span class="p">{</span>
@@ -335,7 +335,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">When we compile this program, we get:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make scores
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make scores
   scores.c:9:29: error: format specifies type 'double' but the argument has type 'int' [-Werror,-Wformat]
       printf("Average: %f\n", (score1 + score2 + score3) / 3);
                       ~~     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -347,26 +347,26 @@
         <li data-marker="*">It turns out that, dividing three integers by another integer will result in an integer, with the remainder getting thrown away.</li>
       </ul>
     </li>
-    <li data-marker="*">We’ll divide by not <code class="language-plaintext highlighter-rouge">3</code>, but <code class="language-plaintext highlighter-rouge">3.0</code> so the result is treated as a float:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+    <li data-marker="*">We’ll divide by not <code class="code" class="language-plaintext highlighter-rouge">3</code>, but <code class="code" class="language-plaintext highlighter-rouge">3.0</code> so the result is treated as a float:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="p">...</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">"Average: %f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="n">score1</span> <span class="o">+</span> <span class="n">score2</span> <span class="o">+</span> <span class="n">score3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
   <span class="p">...</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make scores
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make scores
   $ ./scores
   Average: 59.333333
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">The design of our program isn’t ideal, since we have just three variables, and we’d have to define more and more variables.</li>
-    <li data-marker="*">While our program is running, the three <code class="language-plaintext highlighter-rouge">int</code> variables are stored in memory:<br>
-  <img src="scores.png" alt="grid with values and scores variables" width="400"></li>
-    <li data-marker="*">Each <code class="language-plaintext highlighter-rouge">int</code> takes up four boxes, representing four bytes, and each byte in turn is made up of eight bits, 0s and 1s:<br>
-  <img src="binary.png" alt="grid with binary values and scores variables" width="400"></li>
+    <li data-marker="*">While our program is running, the three <code class="code" class="language-plaintext highlighter-rouge">int</code> variables are stored in memory:<br>
+  <img src="./static/imagesnotes/scores.webp" alt="grid with values and scores variables" width="400"></li>
+    <li data-marker="*">Each <code class="code" class="language-plaintext highlighter-rouge">int</code> takes up four boxes, representing four bytes, and each byte in turn is made up of eight bits, 0s and 1s:<br>
+  <img src="./static/imagesnotes/binary.webp" alt="grid with binary values and scores variables" width="400"></li>
     <li data-marker="*">It turns out we can refer to multiple variables with one name with another type called an <strong>array</strong>. With an array, we can store values of the same type, back-to-back, or contiguously.</li>
-    <li data-marker="*">For example, in our program above, we can use <code class="language-plaintext highlighter-rouge">int scores[3];</code> to declare an array of three integers instead. The square brackets, <code class="language-plaintext highlighter-rouge">[3]</code>, indicates how many values we want to store, and <code class="language-plaintext highlighter-rouge">int</code> indicates the type of each value. We also name our array <code class="language-plaintext highlighter-rouge">scores</code> to indicate that it stores multiple scores.</li>
-    <li data-marker="*">And we can assign and use variables in an array with <code class="language-plaintext highlighter-rouge">scores[0] = 72</code>. With the brackets, we’re indexing into, or going to, the “0th” position in the array. Arrays are zero-indexed, meaning that the first value has index 0, and the second value has index 1, and so on.</li>
+    <li data-marker="*">For example, in our program above, we can use <code class="code" class="language-plaintext highlighter-rouge">int scores[3];</code> to declare an array of three integers instead. The square brackets, <code class="code" class="language-plaintext highlighter-rouge">[3]</code>, indicates how many values we want to store, and <code class="code" class="language-plaintext highlighter-rouge">int</code> indicates the type of each value. We also name our array <code class="code" class="language-plaintext highlighter-rouge">scores</code> to indicate that it stores multiple scores.</li>
+    <li data-marker="*">And we can assign and use variables in an array with <code class="code" class="language-plaintext highlighter-rouge">scores[0] = 72</code>. With the brackets, we’re indexing into, or going to, the “0th” position in the array. Arrays are zero-indexed, meaning that the first value has index 0, and the second value has index 1, and so on.</li>
     <li data-marker="*">Let’s update our program to use an array:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -381,11 +381,11 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Now, we’re storing three <code class="language-plaintext highlighter-rouge">int</code>s in an array, and then accessing them again later to add them together.</li>
+        <li data-marker="*">Now, we’re storing three <code class="code" class="language-plaintext highlighter-rouge">int</code>s in an array, and then accessing them again later to add them together.</li>
       </ul>
     </li>
     <li data-marker="*">We’ll ask the user for each score:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -401,7 +401,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">The design of our program could be improved, since we see three lines that are very similar, giving off a <a href="https://en.wikipedia.org/wiki/Code_smell">“code smell”</a> that indicates we could improve it somehow. Since we can set and access items in an array based on their position, and that position can <em>also</em> be the value of some variable, we can actually use a for loop:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -417,11 +417,11 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Now, instead of setting each value, we use a <code class="language-plaintext highlighter-rouge">for</code> loop and use <code class="language-plaintext highlighter-rouge">i</code> as the index of each item in the array.</li>
+        <li data-marker="*">Now, instead of setting each value, we use a <code class="code" class="language-plaintext highlighter-rouge">for</code> loop and use <code class="code" class="language-plaintext highlighter-rouge">i</code> as the index of each item in the array.</li>
       </ul>
     </li>
-    <li data-marker="*">And we repeated the value 3, representing the length of our array, in two different places. So we can ask the user and use a variable, <code class="language-plaintext highlighter-rouge">n</code>, for the number of scores:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+    <li data-marker="*">And we repeated the value 3, representing the length of our array, in two different places. So we can ask the user and use a variable, <code class="code" class="language-plaintext highlighter-rouge">n</code>, for the number of scores:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="p">...</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s">"How many scores? "</span><span class="p">);</span>
   
     <span class="kt">int</span> <span class="n">scores</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
@@ -439,7 +439,7 @@
   
   <ul>
     <li data-marker="*">We might have three characters we want to print:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>  
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
   <span class="p">{</span>
@@ -450,16 +450,16 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"%c%c%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make hi
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make hi
   $ ./hi 
   HI!
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We can use <code class="language-plaintext highlighter-rouge">%c</code> to print out each character.</li>
+        <li data-marker="*">We can use <code class="code" class="language-plaintext highlighter-rouge">%c</code> to print out each character.</li>
       </ul>
     </li>
-    <li data-marker="*">Let’s see what happens if we change our program to print <code class="language-plaintext highlighter-rouge">c</code> as an integer:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <li data-marker="*">Let’s see what happens if we change our program to print <code class="code" class="language-plaintext highlighter-rouge">c</code> as an integer:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
   <span class="p">{</span>
@@ -470,26 +470,26 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"%i %i %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make hi
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make hi
   $ ./hi
   72 73 33
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">It turns out that <code class="language-plaintext highlighter-rouge">printf</code> can print <code class="language-plaintext highlighter-rouge">char</code>s as integers, since each character is really stored as an ASCII value with zeroes and ones.</li>
+        <li data-marker="*">It turns out that <code class="code" class="language-plaintext highlighter-rouge">printf</code> can print <code class="code" class="language-plaintext highlighter-rouge">char</code>s as integers, since each character is really stored as an ASCII value with zeroes and ones.</li>
       </ul>
     </li>
-    <li data-marker="*">We can explicitly convert <code class="language-plaintext highlighter-rouge">char</code>s to <code class="language-plaintext highlighter-rouge">int</code>s as well with:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printf</span><span class="p">(</span><span class="s">"%i %i %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">c1</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">c2</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">c3</span><span class="p">);</span>
+    <li data-marker="*">We can explicitly convert <code class="code" class="language-plaintext highlighter-rouge">char</code>s to <code class="code" class="language-plaintext highlighter-rouge">int</code>s as well with:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">printf</span><span class="p">(</span><span class="s">"%i %i %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">c1</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">c2</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">c3</span><span class="p">);</span>
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">When we convert a <code class="language-plaintext highlighter-rouge">float</code> to an <code class="language-plaintext highlighter-rouge">int</code>, however, we’ll lose some information, like the values after the decimal point.</li>
+    <li data-marker="*">When we convert a <code class="code" class="language-plaintext highlighter-rouge">float</code> to an <code class="code" class="language-plaintext highlighter-rouge">int</code>, however, we’ll lose some information, like the values after the decimal point.</li>
   </ul>
   
   <h2 id="strings">Strings</h2>
   
   <ul>
-    <li data-marker="*">We can see the same output as above by using a <code class="language-plaintext highlighter-rouge">string</code> variable:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">We can see the same output as above by using a <code class="code" class="language-plaintext highlighter-rouge">string</code> variable:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>  
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -498,14 +498,14 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make hi
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make hi
   $ ./hi
   HI!
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">It turns out that <strong>strings</strong> are actually just arrays of characters, and defined not in C but by the CS50 library.</li>
-    <li data-marker="*">Since our string is called <code class="language-plaintext highlighter-rouge">s</code>, which is just an array, each character can be accessed with <code class="language-plaintext highlighter-rouge">s[0]</code>, <code class="language-plaintext highlighter-rouge">s[1]</code>, and so on:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">Since our string is called <code class="code" class="language-plaintext highlighter-rouge">s</code>, which is just an array, each character can be accessed with <code class="code" class="language-plaintext highlighter-rouge">s[0]</code>, <code class="code" class="language-plaintext highlighter-rouge">s[1]</code>, and so on:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -514,19 +514,19 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"%i %i %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make hi
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make hi
   $ ./hi
   72 73 33
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">In memory, our three <code class="language-plaintext highlighter-rouge">char</code> variables might have been stored like this:<br>
-  <img src="chars.png" alt="grid with H labeled c1, I labeled c2, ! labeled c3" width="200"></li>
+    <li data-marker="*">In memory, our three <code class="code" class="language-plaintext highlighter-rouge">char</code> variables might have been stored like this:<br>
+  <img src="./static/imagesnotes/chars.webp" alt="grid with H labeled c1, I labeled c2, ! labeled c3" width="200"></li>
     <li data-marker="*">Each character in our string is stored in a byte of memory as well:<br>
-  <img src="string.png" alt="grid with H labeled s[0], I labeled s[1], ! labeled s[2], \0 labeled s[3]" width="200"></li>
-    <li data-marker="*">In C, strings end with a special character, <code class="language-plaintext highlighter-rouge">'\0'</code>, or a byte with all eight bits set to 0, so our programs have a way of knowing where the string ends. This character is called the <strong>null character</strong>, or NUL. So, we actually need four bytes to store our string with three characters.</li>
+  <img src="./static/imagesnotes/string.webp" alt="grid with H labeled s[0], I labeled s[1], ! labeled s[2], \0 labeled s[3]" width="200"></li>
+    <li data-marker="*">In C, strings end with a special character, <code class="code" class="language-plaintext highlighter-rouge">'\0'</code>, or a byte with all eight bits set to 0, so our programs have a way of knowing where the string ends. This character is called the <strong>null character</strong>, or NUL. So, we actually need four bytes to store our string with three characters.</li>
     <li data-marker="*">Other data types we’ve seen so far don’t need anything else at the end, since they are all set to a fixed size. Other languages or libraries might have custom types that represent numbers with a variable number of bytes as well, so there’s more precision, but that might ultimately be implemented with recording how many bytes each number is.</li>
-    <li data-marker="*">We can even print the last byte in our string to see that its value is indeed <code class="language-plaintext highlighter-rouge">0</code>:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">We can even print the last byte in our string to see that its value is indeed <code class="code" class="language-plaintext highlighter-rouge">0</code>:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -535,13 +535,13 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"%i %i %i %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make hi
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make hi
   $ ./hi
   72 73 33 0
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">Let’s try taking a look at multiple strings:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>  
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -553,17 +553,17 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make hi
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make hi
   $ ./hi
   HI!
   BYE!
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">s</code> takes up 4 bytes, and <code class="language-plaintext highlighter-rouge">t</code> takes up 5.</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">s</code> takes up 4 bytes, and <code class="code" class="language-plaintext highlighter-rouge">t</code> takes up 5.</li>
       </ul>
     </li>
     <li data-marker="*">We can write a program to determine the length of a string:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -578,7 +578,7 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"%i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make length
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make length
   $ ./length
   Name: HI!
   3
@@ -590,11 +590,11 @@
   5
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We’ll get a <code class="language-plaintext highlighter-rouge">string</code> from the user, and use the variable <code class="language-plaintext highlighter-rouge">i</code> to get each character in the string. If the character isn’t <code class="language-plaintext highlighter-rouge">\0</code>, then we know it’s a character in the string, so we increment <code class="language-plaintext highlighter-rouge">i</code>. If the character is <code class="language-plaintext highlighter-rouge">\0</code>, then we’ve reached the end of the string and can stop the loop. Finally, we’ll print the value of <code class="language-plaintext highlighter-rouge">i</code>.</li>
+        <li data-marker="*">We’ll get a <code class="code" class="language-plaintext highlighter-rouge">string</code> from the user, and use the variable <code class="code" class="language-plaintext highlighter-rouge">i</code> to get each character in the string. If the character isn’t <code class="code" class="language-plaintext highlighter-rouge">\0</code>, then we know it’s a character in the string, so we increment <code class="code" class="language-plaintext highlighter-rouge">i</code>. If the character is <code class="code" class="language-plaintext highlighter-rouge">\0</code>, then we’ve reached the end of the string and can stop the loop. Finally, we’ll print the value of <code class="code" class="language-plaintext highlighter-rouge">i</code>.</li>
       </ul>
     </li>
     <li data-marker="*">We can create a function to do this:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>  
   <span class="kt">int</span> <span class="nf">string_length</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">);</span>
@@ -617,11 +617,11 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Our function, <code class="language-plaintext highlighter-rouge">string_length</code>, will take in a <code class="language-plaintext highlighter-rouge">string</code> as an argument, and return an <code class="language-plaintext highlighter-rouge">int</code>.</li>
+        <li data-marker="*">Our function, <code class="code" class="language-plaintext highlighter-rouge">string_length</code>, will take in a <code class="code" class="language-plaintext highlighter-rouge">string</code> as an argument, and return an <code class="code" class="language-plaintext highlighter-rouge">int</code>.</li>
       </ul>
     </li>
-    <li data-marker="*">We can use a function that comes with C’s <code class="language-plaintext highlighter-rouge">string</code> library, <code class="language-plaintext highlighter-rouge">strlen</code>, to get the length of the string:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">We can use a function that comes with C’s <code class="code" class="language-plaintext highlighter-rouge">string</code> library, <code class="code" class="language-plaintext highlighter-rouge">strlen</code>, to get the length of the string:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
   </span>  
@@ -634,9 +634,9 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">We can use CS50’s <a href="https://manual.cs50.io/"><strong>manual pages</strong></a> to find and learn about libraries and functions. Standard libraries come with older documentation, called manual pages, that aren’t always beginner-friendly. CS50’s version includes simpler documentation for common functions.</li>
-    <li data-marker="*">For example, we can search for “string” and see that <code class="language-plaintext highlighter-rouge">strlen</code> has a <a href="https://manual.cs50.io/3/strlen">page</a> that includes a synopsis, or summary, description, and example.</li>
-    <li data-marker="*">Now that we can use <code class="language-plaintext highlighter-rouge">strlen</code>, we can try to print each character of our string with a loop:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">For example, we can search for “string” and see that <code class="code" class="language-plaintext highlighter-rouge">strlen</code> has a <a href="https://manual.cs50.io/3/strlen">page</a> that includes a synopsis, or summary, description, and example.</li>
+    <li data-marker="*">Now that we can use <code class="code" class="language-plaintext highlighter-rouge">strlen</code>, we can try to print each character of our string with a loop:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
   </span>
@@ -651,7 +651,7 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make string
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make string
   $ ./string
   Input:  HI!
   Output: HI!
@@ -660,11 +660,11 @@
   Output: BYE!
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We can print each character of <code class="language-plaintext highlighter-rouge">s</code> with <code class="language-plaintext highlighter-rouge">s[i]</code>, and we can use a for loop since we know the length of the string, so we know when to stop.</li>
+        <li data-marker="*">We can print each character of <code class="code" class="language-plaintext highlighter-rouge">s</code> with <code class="code" class="language-plaintext highlighter-rouge">s[i]</code>, and we can use a for loop since we know the length of the string, so we know when to stop.</li>
       </ul>
     </li>
     <li data-marker="*">We can improve the design of this program. Our loop was a little inefficient, since we check the length of the string, after each character is printed, in our condition. But since the length of the string doesn’t change, we can check the length of the string once:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
   </span>
@@ -679,12 +679,12 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Now, at the start of our for loop, we initialize both an <code class="language-plaintext highlighter-rouge">i</code> and <code class="language-plaintext highlighter-rouge">n</code> variable, and remember the length of our string in <code class="language-plaintext highlighter-rouge">n</code>. Then, we can check the values without having to call <code class="language-plaintext highlighter-rouge">strlen</code> to calculate the length of the string each time.</li>
-        <li data-marker="*">And we did need to use a little more memory to store <code class="language-plaintext highlighter-rouge">n</code>, but this saves us some time with not having to check the length of the string each time.</li>
+        <li data-marker="*">Now, at the start of our for loop, we initialize both an <code class="code" class="language-plaintext highlighter-rouge">i</code> and <code class="code" class="language-plaintext highlighter-rouge">n</code> variable, and remember the length of our string in <code class="code" class="language-plaintext highlighter-rouge">n</code>. Then, we can check the values without having to call <code class="code" class="language-plaintext highlighter-rouge">strlen</code> to calculate the length of the string each time.</li>
+        <li data-marker="*">And we did need to use a little more memory to store <code class="code" class="language-plaintext highlighter-rouge">n</code>, but this saves us some time with not having to check the length of the string each time.</li>
       </ul>
     </li>
     <li data-marker="*">We can now combine what we’ve seen, to write a program that can capitalize letters:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
   </span>
@@ -706,7 +706,7 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make uppercase
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make uppercase
   $ ./uppercase
   Before: hi
   After:  HI
@@ -715,12 +715,12 @@
   After:  DAVID
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">First, we get a string <code class="language-plaintext highlighter-rouge">s</code> from the user. Then, for each character in the string, if it’s lowercase (which means it has a value between that of <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">z</code>, inclusive), we convert it to uppercase. Otherwise, we just print it.</li>
-        <li data-marker="*">We can convert a lowercase letter to its uppercase equivalent by subtracting the difference between their ASCII values, which is <code class="language-plaintext highlighter-rouge">32</code> between <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">A</code>, and <code class="language-plaintext highlighter-rouge">b</code> and <code class="language-plaintext highlighter-rouge">B</code>, and so on.</li>
+        <li data-marker="*">First, we get a string <code class="code" class="language-plaintext highlighter-rouge">s</code> from the user. Then, for each character in the string, if it’s lowercase (which means it has a value between that of <code class="code" class="language-plaintext highlighter-rouge">a</code> and <code class="code" class="language-plaintext highlighter-rouge">z</code>, inclusive), we convert it to uppercase. Otherwise, we just print it.</li>
+        <li data-marker="*">We can convert a lowercase letter to its uppercase equivalent by subtracting the difference between their ASCII values, which is <code class="code" class="language-plaintext highlighter-rouge">32</code> between <code class="code" class="language-plaintext highlighter-rouge">a</code> and <code class="code" class="language-plaintext highlighter-rouge">A</code>, and <code class="code" class="language-plaintext highlighter-rouge">b</code> and <code class="code" class="language-plaintext highlighter-rouge">B</code>, and so on.</li>
       </ul>
     </li>
-    <li data-marker="*">We can search in the manual pages for “lowercase”, and it looks like there’s another library, <code class="language-plaintext highlighter-rouge">ctype.h</code>, that we can use:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">We can search in the manual pages for “lowercase”, and it looks like there’s another library, <code class="code" class="language-plaintext highlighter-rouge">ctype.h</code>, that we can use:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;ctype.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
@@ -744,11 +744,11 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Based on the manual pages, <a href="https://manual.cs50.io/3/islower"><code class="language-plaintext highlighter-rouge">islower</code></a> will return a non-zero value if <code class="language-plaintext highlighter-rouge">c</code>, the character passed in, is lowercase. And a non-zero value is treated as <code class="language-plaintext highlighter-rouge">true</code> in Boolean expressions. (<code class="language-plaintext highlighter-rouge">0</code> is equivalent to <code class="language-plaintext highlighter-rouge">false</code>.)</li>
+        <li data-marker="*">Based on the manual pages, <a href="https://manual.cs50.io/3/islower"><code class="code" class="language-plaintext highlighter-rouge">islower</code></a> will return a non-zero value if <code class="code" class="language-plaintext highlighter-rouge">c</code>, the character passed in, is lowercase. And a non-zero value is treated as <code class="code" class="language-plaintext highlighter-rouge">true</code> in Boolean expressions. (<code class="code" class="language-plaintext highlighter-rouge">0</code> is equivalent to <code class="code" class="language-plaintext highlighter-rouge">false</code>.)</li>
       </ul>
     </li>
-    <li data-marker="*">We can simplify even further, and just pass in each character to another function <a href="https://manual.cs50.io/3/toupper"><code class="language-plaintext highlighter-rouge">toupper</code></a>, since it capitalizes lowercase characters for us, and returns non-lowercase characters as they originally were:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">We can simplify even further, and just pass in each character to another function <a href="https://manual.cs50.io/3/toupper"><code class="code" class="language-plaintext highlighter-rouge">toupper</code></a>, since it capitalizes lowercase characters for us, and returns non-lowercase characters as they originally were:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;ctype.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
@@ -771,8 +771,8 @@
   
   <ul>
     <li data-marker="*">Programs of our own can also take in command-line arguments, or inputs given to our program in the command we use to run it.</li>
-    <li data-marker="*">We can change what our <code class="language-plaintext highlighter-rouge">main</code> function to no longer take in <code class="language-plaintext highlighter-rouge">void</code>, or no arguments, and instead:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+    <li data-marker="*">We can change what our <code class="code" class="language-plaintext highlighter-rouge">main</code> function to no longer take in <code class="code" class="language-plaintext highlighter-rouge">void</code>, or no arguments, and instead:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
   <span class="p">{</span>
@@ -780,9 +780,9 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*"><code class="language-plaintext highlighter-rouge">argc</code> and <code class="language-plaintext highlighter-rouge">argv</code> are two variables that our <code class="language-plaintext highlighter-rouge">main</code> function will now get automatically when our program is run from the command line. <code class="language-plaintext highlighter-rouge">argc</code> is the <em>argument count</em>, or number of arguments (words) typed in. <code class="language-plaintext highlighter-rouge">argv[]</code>, <em>argument vector</em> (or argument list), is an array of the arguments (words) themselves, and there’s no size specified since we don’t know how big that will be ahead of time.</li>
+    <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">argc</code> and <code class="code" class="language-plaintext highlighter-rouge">argv</code> are two variables that our <code class="code" class="language-plaintext highlighter-rouge">main</code> function will now get automatically when our program is run from the command line. <code class="code" class="language-plaintext highlighter-rouge">argc</code> is the <em>argument count</em>, or number of arguments (words) typed in. <code class="code" class="language-plaintext highlighter-rouge">argv[]</code>, <em>argument vector</em> (or argument list), is an array of the arguments (words) themselves, and there’s no size specified since we don’t know how big that will be ahead of time.</li>
     <li data-marker="*">Let’s try to print arguments:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>  
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
@@ -790,16 +790,16 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make argv
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make argv
   $ ./argv David
   hello, ./argv
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">The first argument, <code class="language-plaintext highlighter-rouge">argv[0]</code>, is the name of our program (the first word typed, like <code class="language-plaintext highlighter-rouge">./hello</code>).</li>
+        <li data-marker="*">The first argument, <code class="code" class="language-plaintext highlighter-rouge">argv[0]</code>, is the name of our program (the first word typed, like <code class="code" class="language-plaintext highlighter-rouge">./hello</code>).</li>
       </ul>
     </li>
     <li data-marker="*">We’ll change our program to print the argument we want:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>  
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
@@ -807,18 +807,18 @@
       <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make argv
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make argv
   $ ./argv
   hello, (null)
   $ ./argv David
   hello, David
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">When we run our program without a second argument, we see <code class="language-plaintext highlighter-rouge">(null)</code> printed.</li>
+        <li data-marker="*">When we run our program without a second argument, we see <code class="code" class="language-plaintext highlighter-rouge">(null)</code> printed.</li>
       </ul>
     </li>
     <li data-marker="*">We should make sure that we have the right number of arguments before we try to print something that isn’t there:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>  
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
@@ -833,7 +833,7 @@
       <span class="p">}</span>
   <span class="p">}</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make argv
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make argv
   $ ./argv
   hello, world
   $ ./argv David
@@ -846,8 +846,8 @@
       </ul>
     </li>
     <li data-marker="*">With command-line arguments, we can run our programs with input more easily and quickly.</li>
-    <li data-marker="*">It turns out that our <code class="language-plaintext highlighter-rouge">main</code> function also returns an integer value called an <strong>exit status</strong>. By default, our <code class="language-plaintext highlighter-rouge">main</code> function returns <code class="language-plaintext highlighter-rouge">0</code> to indicate nothing went wrong, but we can write a program to return a different value:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">It turns out that our <code class="code" class="language-plaintext highlighter-rouge">main</code> function also returns an integer value called an <strong>exit status</strong>. By default, our <code class="code" class="language-plaintext highlighter-rouge">main</code> function returns <code class="code" class="language-plaintext highlighter-rouge">0</code> to indicate nothing went wrong, but we can write a program to return a different value:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
@@ -862,8 +862,8 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">A non-zero exit status indicates some error to the system that runs our program. Once we run <code class="language-plaintext highlighter-rouge">return 1;</code> our program will exit early with an exit status of <code class="language-plaintext highlighter-rouge">1</code>. We might have seen error codes in the past when programs we used encountered errors as well.</li>
-        <li data-marker="*">We’ll write <code class="language-plaintext highlighter-rouge">return 0</code> explicitly at the end of our program here, even though we don’t technically need to since C will automatically return <code class="language-plaintext highlighter-rouge">0</code> for us.</li>
+        <li data-marker="*">A non-zero exit status indicates some error to the system that runs our program. Once we run <code class="code" class="language-plaintext highlighter-rouge">return 1;</code> our program will exit early with an exit status of <code class="code" class="language-plaintext highlighter-rouge">1</code>. We might have seen error codes in the past when programs we used encountered errors as well.</li>
+        <li data-marker="*">We’ll write <code class="code" class="language-plaintext highlighter-rouge">return 0</code> explicitly at the end of our program here, even though we don’t technically need to since C will automatically return <code class="code" class="language-plaintext highlighter-rouge">0</code> for us.</li>
       </ul>
     </li>
   </ul>
@@ -875,7 +875,7 @@
     <li data-marker="*">For example, “One fish. Two fish. Red fish. Blue fish.” is said to have a reading level of before grade 1.</li>
     <li data-marker="*">“Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say that they were perfectly normal, thank you very much. They were the last people you’d expect to be involved in anything strange or mysterious, because they just didn’t hold with such nonsense…” might be measured to have a level of grade 7.</li>
     <li data-marker="*"><strong>Cryptography</strong> is the art of scrambling information to hide its contents. If we wanted to send a message to someone, we might want to <strong>encrypt</strong>, or somehow scramble that message so that it would be hard for others to read. The original message, or input to our algorithm, is called <strong>plaintext</strong>, and the encrypted message, or output, is called <strong>ciphertext</strong>. And the algorithm that does the scrambling is called a <strong>cipher</strong>. A cipher generally requires another input in addition to the plaintext. A <strong>key</strong>, like a number, is some other input that is kept secret:<br>
-  <img src="cipher.png" alt="key and plaintext as inputs to cipher in box with ciphertext as output" width="300"></li>
-    <li data-marker="*">For example, if we wanted to send a message like <code class="language-plaintext highlighter-rouge">HI!</code> with a key of <code class="language-plaintext highlighter-rouge">1</code>, we can use a simple cipher that rotates each letter forward by 1 to get <code class="language-plaintext highlighter-rouge">IJ!</code>.</li>
-    <li data-marker="*">We could also use <code class="language-plaintext highlighter-rouge">-1</code> as the key for a message of <code class="language-plaintext highlighter-rouge">UIJT XBT DT50</code> to get <code class="language-plaintext highlighter-rouge">THIS WAS CS50</code> as the result.</li>
+  <img src="./static/imagesnotes/cipher.webp" alt="key and plaintext as inputs to cipher in box with ciphertext as output" width="300"></li>
+    <li data-marker="*">For example, if we wanted to send a message like <code class="code" class="language-plaintext highlighter-rouge">HI!</code> with a key of <code class="code" class="language-plaintext highlighter-rouge">1</code>, we can use a simple cipher that rotates each letter forward by 1 to get <code class="code" class="language-plaintext highlighter-rouge">IJ!</code>.</li>
+    <li data-marker="*">We could also use <code class="code" class="language-plaintext highlighter-rouge">-1</code> as the key for a message of <code class="code" class="language-plaintext highlighter-rouge">UIJT XBT DT50</code> to get <code class="code" class="language-plaintext highlighter-rouge">THIS WAS CS50</code> as the result.</li>
   </ul>

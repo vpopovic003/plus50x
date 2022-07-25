@@ -22,7 +22,7 @@
   
   <ul>
     <li data-marker="*">Recall that our purpose for learning a new programming language and other tools is to solve problems. And we solve those problems by creating some output from input:<br>
-  <img src="input_output.png" alt="word &quot;input&quot;, arrow into box, arrow out of box, word &quot;output&quot;" width="400"></li>
+  <img src="./static/imagesnotes/input_output.webp" alt="word &quot;input&quot;, arrow into box, arrow out of box, word &quot;output&quot;" width="400"></li>
     <li data-marker="*">We learned about memory, which allows us to store data as bytes, and strings, which are arrays of characters.</li>
   </ul>
   
@@ -31,12 +31,12 @@
   <ul>
     <li data-marker="*">Today we’ll focus on algorithms that solve problems with arrays.</li>
     <li data-marker="*">It turns out that, with arrays, a computer can’t look at all of the elements at once. Instead, a computer can only to look at them one at a time, though we can look in any order, like only being able to open one locker at a time:<br>
-  <img src="lockers.png" alt="closed doors in a row, each labeled from 0 through 6" width="400">
+  <img src="./static/imagesnotes/lockers.webp" alt="closed doors in a row, each labeled from 0 through 6" width="400">
       <ul>
         <li data-marker="*">Recall that arrays are zero-indexed, meaning that the first item has an index of 0. And with \(n\) items, the highest index would be \(n - 1\).</li>
       </ul>
     </li>
-    <li data-marker="*"><strong>Searching</strong> is how we solve the problem of finding information. A simple problem has an input of some values, and an output of a <code class="language-plaintext highlighter-rouge">bool</code>, whether or not a particular value is in the array.</li>
+    <li data-marker="*"><strong>Searching</strong> is how we solve the problem of finding information. A simple problem has an input of some values, and an output of a <code class="code" class="language-plaintext highlighter-rouge">bool</code>, whether or not a particular value is in the array.</li>
   </ul>
   
   <h3 id="big-o">Big \(O\)</h3>
@@ -45,13 +45,13 @@
     <li data-marker="*">Today we’ll look at algorithms for searching. To compare their efficiency, we’ll consider <strong>running time</strong>, or how long an algorithm takes to run given some size of input.</li>
     <li data-marker="*">Computer scientists tend to describe running time with <strong>big \(O\) notation</strong>, which we can think of as “on the order of” something, as though we want to convey an idea of running time and not an exact number of milliseconds or steps.</li>
     <li data-marker="*">In week 0, we saw a chart with different types of algorithms and the times they might take to solve a problem:<br>
-  <img src="time_to_solve.png" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph labeled &quot;n&quot;; yellow, less steep straight line from origin to top of graph labeled &quot;n/2&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;log_2  n&quot;" width="800">
+  <img src="./static/imagesnotes/time_to_solve.webp" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph labeled &quot;n&quot;; yellow, less steep straight line from origin to top of graph labeled &quot;n/2&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;log_2  n&quot;" width="800">
       <ul>
         <li data-marker="*">Recall that the red line is searching linearly, one page at a time; the yellow line is searching two pages at a time; and the green line is dividing and conquering, starting in the middle and dividing the problem in half each time.</li>
       </ul>
     </li>
     <li data-marker="*">In the chart above, if we zoomed out and changed the units on our axes, we would see the red and yellow lines end up very close together:<br>
-  <img src="time_to_solve_zoomed_out.png" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph close to yellow, less steep straight line from origin to top of graph both labeled &quot;O(n)&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;O(log n)&quot;" width="800">
+  <img src="./static/imagesnotes/time_to_solve_zoomed_out.webp" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph close to yellow, less steep straight line from origin to top of graph both labeled &quot;O(n)&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;O(log n)&quot;" width="800">
       <ul>
         <li data-marker="*">So we use big \(O\) notation to describe both the red and yellow lines, since they end up being very similar as \(n\) becomes larger and larger. We would describe them both as having “big \(O\) of \(n\)” or “on the order of \(n\)” running time.</li>
         <li data-marker="*">The green line, though, is fundamentally different in its shape, even as \(n\) becomes very large, so it takes “big \(O\) of \(\log n\)” steps. (The base of the logarithm, 2, is also removed since it’s a constant factor.)</li>
@@ -95,30 +95,30 @@
     <li data-marker="*">On stage, we have seven lockers with closed doors, with numbers hidden behind them. Since a computer can only look at one element in an array at a time, we can only open one door at a time as well.</li>
     <li data-marker="*">If we want to look for the number zero, for example, we would have to open one door at a time, and if we didn’t know anything about the numbers behind the doors, the simplest algorithm would be going from left to right.</li>
     <li data-marker="*">This algorithm, <strong>linear search</strong>, would be correct but not very efficient. We might write pseudocode with:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each door from left to right
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">For each door from left to right
       If number is behind door
           Return true
   Return false
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">Return false</code> is outside the for loop, since we only want to do that after we’ve looked behind all the doors.</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">Return false</code> is outside the for loop, since we only want to do that after we’ve looked behind all the doors.</li>
       </ul>
     </li>
     <li data-marker="*">We can rewrite our pseudocode to be a little closer to C:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For i from 0 to n-1
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">For i from 0 to n-1
       If number behind doors[i]
           Return true
   Return false
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Now, we’re using a variable, <code class="language-plaintext highlighter-rouge">i</code>, to look at each location in an array called <code class="language-plaintext highlighter-rouge">doors</code>.</li>
+        <li data-marker="*">Now, we’re using a variable, <code class="code" class="language-plaintext highlighter-rouge">i</code>, to look at each location in an array called <code class="code" class="language-plaintext highlighter-rouge">doors</code>.</li>
       </ul>
     </li>
-    <li data-marker="*">With <code class="language-plaintext highlighter-rouge">n</code> doors, we’ll need to look at all <code class="language-plaintext highlighter-rouge">n</code> of them. And what we do for each of the <code class="language-plaintext highlighter-rouge">n</code> doors, which is looking inside and possibly returning <code class="language-plaintext highlighter-rouge">true</code>, takes a constant number of steps each time. So the big \(O\) running time for this algorithm would be \(O(n)\).</li>
+    <li data-marker="*">With <code class="code" class="language-plaintext highlighter-rouge">n</code> doors, we’ll need to look at all <code class="code" class="language-plaintext highlighter-rouge">n</code> of them. And what we do for each of the <code class="code" class="language-plaintext highlighter-rouge">n</code> doors, which is looking inside and possibly returning <code class="code" class="language-plaintext highlighter-rouge">true</code>, takes a constant number of steps each time. So the big \(O\) running time for this algorithm would be \(O(n)\).</li>
     <li data-marker="*">The lower bound, big Omega, would be \(\Omega(1)\), since we might be lucky and find the number we’re looking for right away, which takes a constant number of steps.</li>
     <li data-marker="*">If we know that the numbers behind the doors are sorted, then we can start in the middle, and find our value more efficiently since we know we can go left or right, dividing the problem in half each time.</li>
     <li data-marker="*">For <strong>binary search</strong>, the pseudocode for our algorithm might look like:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If no doors
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">If no doors
       Return false
   If number behind middle door
       Return true
@@ -132,7 +132,7 @@
       </ul>
     </li>
     <li data-marker="*">We can write this pseudocode to be more like C:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If no doors
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">If no doors
       Return false
   If number behind doors[middle]
       Return true
@@ -142,7 +142,7 @@
       Search doors [middle + 1] through doors[n - 1]
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We can determine the index of the middle door with a bit of math, and then we can divide the problem into searching either the doors with indices <code class="language-plaintext highlighter-rouge">0</code> through <code class="language-plaintext highlighter-rouge">middle - 1</code>, or <code class="language-plaintext highlighter-rouge">middle + 1</code> through <code class="language-plaintext highlighter-rouge">n - 1</code>.</li>
+        <li data-marker="*">We can determine the index of the middle door with a bit of math, and then we can divide the problem into searching either the doors with indices <code class="code" class="language-plaintext highlighter-rouge">0</code> through <code class="code" class="language-plaintext highlighter-rouge">middle - 1</code>, or <code class="code" class="language-plaintext highlighter-rouge">middle + 1</code> through <code class="code" class="language-plaintext highlighter-rouge">n - 1</code>.</li>
       </ul>
     </li>
     <li data-marker="*">The upper bound for binary search is \(O(\log n)\), since we might have to keep dividing the number of doors by two until there are no more doors left. The lower bound \(\Omega(1)\), if the number we’re looking for is in the middle, where we happen to start.</li>
@@ -153,8 +153,8 @@
   <h3 id="searching-with-code">Searching with code</h3>
   
   <ul>
-    <li data-marker="*">Let’s take a look at <a href="https://cdn.cs50.net/2021/fall/lectures/3/src3/numbers.c?highlight"><code class="language-plaintext highlighter-rouge">numbers.c</code></a>:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">Let’s take a look at <a href="https://cdn.cs50.net/2021/fall/lectures/3/src3/numbers.c?highlight"><code class="code" class="language-plaintext highlighter-rouge">numbers.c</code></a>:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>
   <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -175,28 +175,28 @@
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">Here we initialize an array with values by using curly braces, and we check the items in the array one at a time, in order, to see if they’re equal to zero.</li>
-        <li data-marker="*">If we find the value of zero, we return an exit code of 0 (to indicate success). Otherwise, <em>after</em> our for loop, we call <code class="language-plaintext highlighter-rouge">return 1</code> (to indicate an error code).</li>
+        <li data-marker="*">If we find the value of zero, we return an exit code of 0 (to indicate success). Otherwise, <em>after</em> our for loop, we call <code class="code" class="language-plaintext highlighter-rouge">return 1</code> (to indicate an error code).</li>
         <li data-marker="*">This is how we might implement linear search.</li>
         <li data-marker="*">We can compile our program and run it to see that it works:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make numbers
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make numbers
   $ ./numbers
   Found
   </code></pre></div>        </div>
         </li>
-        <li data-marker="*">And we can change what we’re looking for to <code class="language-plaintext highlighter-rouge">-1</code>, and see that our program doesn’t find it:
-          <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+        <li data-marker="*">And we can change what we’re looking for to <code class="code" class="language-plaintext highlighter-rouge">-1</code>, and see that our program doesn’t find it:
+          <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="p">...</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
   <span class="p">...</span>
   </code></pre></div>        </div>
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make numbers
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make numbers
   $ ./numbers
   Not found
   </code></pre></div>        </div>
         </li>
       </ul>
     </li>
-    <li data-marker="*">We can do the same for strings in <a href="https://cdn.cs50.net/2021/fall/lectures/3/src3/names.c?highlight"><code class="language-plaintext highlighter-rouge">names.c</code></a>:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">We can do the same for strings in <a href="https://cdn.cs50.net/2021/fall/lectures/3/src3/names.c?highlight"><code class="code" class="language-plaintext highlighter-rouge">names.c</code></a>:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
   </span>
@@ -218,7 +218,7 @@
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">But when we try to compile our program, we get:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make names
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make names
   names.c:11:22: error: result of comparison against a string literal is unspecified (use an explicit string comparison function instead) [-Werror,-Wstring-compare]
           if (names[i] == "Ron")
                        ^  ~~~~~
@@ -226,11 +226,11 @@
   make: *** [&lt;builtin&gt;: names] Error 1
   </code></pre></div>        </div>
         </li>
-        <li data-marker="*">It turns out that we can’t compare strings directly in C, since they’re not a simple data type built into the language, but rather an array of many characters. Luckily, the <code class="language-plaintext highlighter-rouge">string</code> library has function, <code class="language-plaintext highlighter-rouge">strcmp</code>, <em>string compare</em>, which compares strings for us. <code class="language-plaintext highlighter-rouge">strcmp</code> returns a negative value if the first string comes before the second string, <code class="language-plaintext highlighter-rouge">0</code> if the strings are the same, and a positive value if the first string comes after the second string.</li>
-        <li data-marker="*">We’ll change our conditional to <code class="language-plaintext highlighter-rouge">if (strcmp(names[i], "Ron") == 0)</code>, so we can check whether our two strings are actually equal.</li>
-        <li data-marker="*">And if we wrote <code class="language-plaintext highlighter-rouge">if (strcmp(names[i], "Ron"))</code>, then any non-zero value, positive or negative, would be considered <code class="language-plaintext highlighter-rouge">true</code>, which would be the <em>opposite</em> of what we want.
+        <li data-marker="*">It turns out that we can’t compare strings directly in C, since they’re not a simple data type built into the language, but rather an array of many characters. Luckily, the <code class="code" class="language-plaintext highlighter-rouge">string</code> library has function, <code class="code" class="language-plaintext highlighter-rouge">strcmp</code>, <em>string compare</em>, which compares strings for us. <code class="code" class="language-plaintext highlighter-rouge">strcmp</code> returns a negative value if the first string comes before the second string, <code class="code" class="language-plaintext highlighter-rouge">0</code> if the strings are the same, and a positive value if the first string comes after the second string.</li>
+        <li data-marker="*">We’ll change our conditional to <code class="code" class="language-plaintext highlighter-rouge">if (strcmp(names[i], "Ron") == 0)</code>, so we can check whether our two strings are actually equal.</li>
+        <li data-marker="*">And if we wrote <code class="code" class="language-plaintext highlighter-rouge">if (strcmp(names[i], "Ron"))</code>, then any non-zero value, positive or negative, would be considered <code class="code" class="language-plaintext highlighter-rouge">true</code>, which would be the <em>opposite</em> of what we want.
           <ul>
-            <li data-marker="*">We could actually write <code class="language-plaintext highlighter-rouge">if (!strcmp(names[i], "Ron"))</code> to invert the value, which would work in this case, but it would be arguably worse design since it doesn’t explicitly check for the value of <code class="language-plaintext highlighter-rouge">0</code> as the documentation indicates.</li>
+            <li data-marker="*">We could actually write <code class="code" class="language-plaintext highlighter-rouge">if (!strcmp(names[i], "Ron"))</code> to invert the value, which would work in this case, but it would be arguably worse design since it doesn’t explicitly check for the value of <code class="code" class="language-plaintext highlighter-rouge">0</code> as the documentation indicates.</li>
           </ul>
         </li>
       </ul>
@@ -240,8 +240,8 @@
   <h2 id="structs">Structs</h2>
   
   <ul>
-    <li data-marker="*">We might want to implement a phone book, with names and phone numbers, in <a href="https://cdn.cs50.net/2021/fall/lectures/3/src3/phonebook0.c?highlight"><code class="language-plaintext highlighter-rouge">phonebook0.c</code></a>:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">We might want to implement a phone book, with names and phone numbers, in <a href="https://cdn.cs50.net/2021/fall/lectures/3/src3/phonebook0.c?highlight"><code class="code" class="language-plaintext highlighter-rouge">phonebook0.c</code></a>:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
   </span>  
@@ -263,15 +263,15 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We have two arrays, <code class="language-plaintext highlighter-rouge">names</code> and <code class="language-plaintext highlighter-rouge">numbers</code>, and we’ll make sure that each person’s phone number has the same index as their name in each array.</li>
-        <li data-marker="*">We’ll search our <code class="language-plaintext highlighter-rouge">names</code> array for someone’s name, and then return their corresponding phone number at the same index.</li>
+        <li data-marker="*">We have two arrays, <code class="code" class="language-plaintext highlighter-rouge">names</code> and <code class="code" class="language-plaintext highlighter-rouge">numbers</code>, and we’ll make sure that each person’s phone number has the same index as their name in each array.</li>
+        <li data-marker="*">We’ll search our <code class="code" class="language-plaintext highlighter-rouge">names</code> array for someone’s name, and then return their corresponding phone number at the same index.</li>
         <li data-marker="*">This program is correct, but not well-designed since we’ll have to maintain both arrays carefully to make sure that the names and numbers line up.</li>
         <li data-marker="*">And feel free to call or text David for a surprise!</li>
       </ul>
     </li>
-    <li data-marker="*">It turns out in C that we can define our own data type, or <strong>data structure</strong>. It would be a better design for our program to have some array with a data type <code class="language-plaintext highlighter-rouge">person</code> that includes both their name and phone number, so we can just say <code class="language-plaintext highlighter-rouge">person people[];</code>.</li>
+    <li data-marker="*">It turns out in C that we can define our own data type, or <strong>data structure</strong>. It would be a better design for our program to have some array with a data type <code class="code" class="language-plaintext highlighter-rouge">person</code> that includes both their name and phone number, so we can just say <code class="code" class="language-plaintext highlighter-rouge">person people[];</code>.</li>
     <li data-marker="*">In C, we can create a <strong>struct</strong> with the following syntax:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span>
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="k">typedef</span> <span class="k">struct</span>
   <span class="p">{</span>
       <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
       <span class="n">string</span> <span class="n">number</span><span class="p">;</span>
@@ -279,12 +279,12 @@
   <span class="n">person</span><span class="p">;</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">typedef struct</code> tells the compiler that we’re defining our own data structure. And <code class="language-plaintext highlighter-rouge">person</code> at the end of the curly braces will be the name of this data structure.</li>
-        <li data-marker="*">Inside our struct, we’ll have two strings, <code class="language-plaintext highlighter-rouge">name</code> and <code class="language-plaintext highlighter-rouge">number</code>. We’ll use strings for phone numbers since they might include punctuation, and other types of numbers, like zip codes, might have a leading 0 that would disappear if treated as a number.</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">typedef struct</code> tells the compiler that we’re defining our own data structure. And <code class="code" class="language-plaintext highlighter-rouge">person</code> at the end of the curly braces will be the name of this data structure.</li>
+        <li data-marker="*">Inside our struct, we’ll have two strings, <code class="code" class="language-plaintext highlighter-rouge">name</code> and <code class="code" class="language-plaintext highlighter-rouge">number</code>. We’ll use strings for phone numbers since they might include punctuation, and other types of numbers, like zip codes, might have a leading 0 that would disappear if treated as a number.</li>
       </ul>
     </li>
-    <li data-marker="*">We’ll use this in <a href="https://cdn.cs50.net/2021/fall/lectures/3/src3/phonebook1.c?highlight"><code class="language-plaintext highlighter-rouge">phonebook1.c</code></a>:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+    <li data-marker="*">We’ll use this in <a href="https://cdn.cs50.net/2021/fall/lectures/3/src3/phonebook1.c?highlight"><code class="code" class="language-plaintext highlighter-rouge">phonebook1.c</code></a>:
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
   </span>
@@ -318,11 +318,11 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We see new syntax to set the values for each variable inside each <code class="language-plaintext highlighter-rouge">person</code> struct by using the dot operator, <code class="language-plaintext highlighter-rouge">.</code>.</li>
-        <li data-marker="*">In our loop, we can also use <code class="language-plaintext highlighter-rouge">.name</code> or <code class="language-plaintext highlighter-rouge">.number</code> to access variables in our structs, and be certain that they are from the same <code class="language-plaintext highlighter-rouge">person</code>.</li>
+        <li data-marker="*">We see new syntax to set the values for each variable inside each <code class="code" class="language-plaintext highlighter-rouge">person</code> struct by using the dot operator, <code class="code" class="language-plaintext highlighter-rouge">.</code>.</li>
+        <li data-marker="*">In our loop, we can also use <code class="code" class="language-plaintext highlighter-rouge">.name</code> or <code class="code" class="language-plaintext highlighter-rouge">.number</code> to access variables in our structs, and be certain that they are from the same <code class="code" class="language-plaintext highlighter-rouge">person</code>.</li>
       </ul>
     </li>
-    <li data-marker="*">In computer science, <strong>encapsulation</strong> is the idea that related data is grouped together, and here we’ve encapsulated two pieces of information, <code class="language-plaintext highlighter-rouge">name</code> and <code class="language-plaintext highlighter-rouge">number</code> into the same data structure. The color of a pixel, with red, green, and blue values, might also be well-represented by a data structure as well.</li>
+    <li data-marker="*">In computer science, <strong>encapsulation</strong> is the idea that related data is grouped together, and here we’ve encapsulated two pieces of information, <code class="code" class="language-plaintext highlighter-rouge">name</code> and <code class="code" class="language-plaintext highlighter-rouge">number</code> into the same data structure. The color of a pixel, with red, green, and blue values, might also be well-represented by a data structure as well.</li>
     <li data-marker="*">We can also imagine that a struct can be used to store precise decimal values or large integer values, perhaps with arrays that we can use to store large numbers of digits.</li>
   </ul>
   
@@ -330,9 +330,9 @@
   
   <ul>
     <li data-marker="*"><strong>Sorting</strong> is solving the problem which takes in an unsorted list of numbers as input, and producing an output of a sorted list of numbers:<br>
-  <img src="sorting.png" alt="unsorted as input to box with sorted as output" width="300">
+  <img src="./static/imagesnotes/sorting.webp" alt="unsorted as input to box with sorted as output" width="300">
       <ul>
-        <li data-marker="*">For example, <code class="language-plaintext highlighter-rouge">6 3 8 5 2 7 4 1</code> might be input, and output would be <code class="language-plaintext highlighter-rouge">1 2 3 4 5 6 7 8</code>.</li>
+        <li data-marker="*">For example, <code class="code" class="language-plaintext highlighter-rouge">6 3 8 5 2 7 4 1</code> might be input, and output would be <code class="code" class="language-plaintext highlighter-rouge">1 2 3 4 5 6 7 8</code>.</li>
       </ul>
     </li>
   </ul>
@@ -341,58 +341,58 @@
   
   <ul>
     <li data-marker="*">We’ll have eight volunteers come up to the stage, in unsorted order:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 2 7 4 1 6 3 0
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">5 2 7 4 1 6 3 0
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">We ask our volunteers to sort themselves, and everyone moves to the correct position:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 2 3 4 5 6 7
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">0 1 2 3 4 5 6 7
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">Unfortunately, computers can only look at one number and move one of them at a time, at least with programs we have written so far.</li>
     <li data-marker="*">We’ll start with unsorted numbers again, and going step-by-step, we’ll look for the smallest number first, looking at each number in order:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 2 7 4 1 6 3 0
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">5 2 7 4 1 6 3 0
                 ^
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">Now, we’ll swap the smallest number with the number at the beginning, since it’s easier than shifting all of the other numbers down:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 | 2 7 4 1 6 3 5
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">0 | 2 7 4 1 6 3 5
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">Now, our problem has gotten smaller, since we know at least the beginning of our list is sorted. So we can repeat what we did, starting from the second number in the list:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 | 2 7 4 1 6 3 5
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">0 | 2 7 4 1 6 3 5
             ^    
   0 | 1 7 4 2 6 3 5
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">1</code> is the smallest number now, so we’ll swap it with the second number.</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">1</code> is the smallest number now, so we’ll swap it with the second number.</li>
       </ul>
     </li>
     <li data-marker="*">We’ll repeat this again …
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 | 7 4 2 6 3 5
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">0 1 | 7 4 2 6 3 5
             ^     
   0 1 | 2 4 7 6 3 5
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">… and again …
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 2 | 4 7 6 3 5
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">0 1 2 | 4 7 6 3 5
                 ^     
   0 1 2 | 3 7 6 4 5
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">… and again …
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 2 3 | 7 6 4 5
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">0 1 2 3 | 7 6 4 5
                 ^     
   0 1 2 3 | 4 6 7 5
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">… and again …
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 2 3 4 | 6 7 5
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">0 1 2 3 4 | 6 7 5
                   ^     
   0 1 2 3 4 | 5 7 6
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">… and again, until we’ve swapped the last number in our list:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 2 3 4 5 | 7 6
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">0 1 2 3 4 5 | 7 6
                   ^     
   0 1 2 3 4 5 | 6 7
   </code></pre></div>    </div>
@@ -403,7 +403,7 @@
   
   <ul>
     <li data-marker="*">We’ll start with our unsorted list, but this time we’ll look at pairs of numbers and swap them if they are out of order:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 2 7 4 1 6 3 0
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">5 2 7 4 1 6 3 0
   ^ ^
   2 5 7 4 1 6 3 0
     ^ ^
@@ -424,7 +424,7 @@
       </ul>
     </li>
     <li data-marker="*">We’ll repeat this again:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 5 4 1 6 3 0 | 7
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">2 5 4 1 6 3 0 | 7
   ^ ^
   2 5 4 1 6 3 0 | 7
     ^ ^
@@ -443,7 +443,7 @@
       </ul>
     </li>
     <li data-marker="*">We’ll repeat again …
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 4 1 5 3 0 | 6 7
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">2 4 1 5 3 0 | 6 7
   ^ ^
   2 4 1 5 3 0 | 6 7
     ^ ^
@@ -457,7 +457,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">… and again …
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 1 4 3 0 | 5 6 7
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">2 1 4 3 0 | 5 6 7
   ^ ^
   1 2 4 3 0 | 5 6 7
     ^ ^
@@ -469,7 +469,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">… and again …
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 2 3 0 | 4 5 6 7
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">1 2 3 0 | 4 5 6 7
   ^ ^
   1 2 3 0 | 4 5 6 7
     ^ ^
@@ -479,7 +479,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">… and again …
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 2 0 | 3 4 5 6 7
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">1 2 0 | 3 4 5 6 7
   ^ ^
   1 2 0 | 3 4 5 6 7
     ^ ^
@@ -487,7 +487,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">… and finally:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 0 | 2 3 4 5 6 7
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">1 0 | 2 3 4 5 6 7
   ^ ^
   0 1 | 2 3 4 5 6 7
   </code></pre></div>    </div>
@@ -499,15 +499,15 @@
   
   <ul>
     <li data-marker="*">The first algorithm we saw is called <strong>selection sort</strong>, and we might write pseudocode like:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For i from 0 to n–1
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">For i from 0 to n–1
       Find smallest number between numbers[i] and numbers[n-1]
       Swap smallest number with numbers[i]
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We need to sort all <code class="language-plaintext highlighter-rouge">n</code> numbers in our list, so we’ll have a loop with <code class="language-plaintext highlighter-rouge">i</code> to keep track of how many numbers we’ve sorted so far.</li>
-        <li data-marker="*">The first step in the loop is to look for the smallest number in the unsorted part of the list, from index <code class="language-plaintext highlighter-rouge">i</code> to <code class="language-plaintext highlighter-rouge">n-1</code>.</li>
-        <li data-marker="*">Then, we swap the smallest number we found with the number at index <code class="language-plaintext highlighter-rouge">i</code>, which makes everything up to <code class="language-plaintext highlighter-rouge">i</code> sorted.</li>
-        <li data-marker="*">And we’ll repeat this until the entire list is sorted, from left to right, as <code class="language-plaintext highlighter-rouge">i</code> goes from <code class="language-plaintext highlighter-rouge">0</code> to <code class="language-plaintext highlighter-rouge">n-1</code>.</li>
+        <li data-marker="*">We need to sort all <code class="code" class="language-plaintext highlighter-rouge">n</code> numbers in our list, so we’ll have a loop with <code class="code" class="language-plaintext highlighter-rouge">i</code> to keep track of how many numbers we’ve sorted so far.</li>
+        <li data-marker="*">The first step in the loop is to look for the smallest number in the unsorted part of the list, from index <code class="code" class="language-plaintext highlighter-rouge">i</code> to <code class="code" class="language-plaintext highlighter-rouge">n-1</code>.</li>
+        <li data-marker="*">Then, we swap the smallest number we found with the number at index <code class="code" class="language-plaintext highlighter-rouge">i</code>, which makes everything up to <code class="code" class="language-plaintext highlighter-rouge">i</code> sorted.</li>
+        <li data-marker="*">And we’ll repeat this until the entire list is sorted, from left to right, as <code class="code" class="language-plaintext highlighter-rouge">i</code> goes from <code class="code" class="language-plaintext highlighter-rouge">0</code> to <code class="code" class="language-plaintext highlighter-rouge">n-1</code>.</li>
       </ul>
     </li>
     <li data-marker="*">For this algorithm, we started with looking at all \(n\) elements, then only \(n - 1\), then \(n - 2\), and so on:<br>
@@ -527,15 +527,15 @@
   
   <ul>
     <li data-marker="*">The pseudocode for bubble sort might look like:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Repeat n-1 times
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">Repeat n-1 times
       For i from 0 to n–2
           If numbers[i] and numbers[i+1] out of order
               Swap them
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Since we are comparing each pair of numbers at <code class="language-plaintext highlighter-rouge">i</code> and <code class="language-plaintext highlighter-rouge">i+1</code>, we only need to go up to <code class="language-plaintext highlighter-rouge">n–2</code> for <code class="language-plaintext highlighter-rouge">i</code>.</li>
+        <li data-marker="*">Since we are comparing each pair of numbers at <code class="code" class="language-plaintext highlighter-rouge">i</code> and <code class="code" class="language-plaintext highlighter-rouge">i+1</code>, we only need to go up to <code class="code" class="language-plaintext highlighter-rouge">n–2</code> for <code class="code" class="language-plaintext highlighter-rouge">i</code>.</li>
         <li data-marker="*">Then, we swap the two numbers if they’re out of order.</li>
-        <li data-marker="*">We need to repeat this <code class="language-plaintext highlighter-rouge">n-1</code> times since each time we go over the list, only one number moves all the way to the right.</li>
+        <li data-marker="*">We need to repeat this <code class="code" class="language-plaintext highlighter-rouge">n-1</code> times since each time we go over the list, only one number moves all the way to the right.</li>
       </ul>
     </li>
     <li data-marker="*">To determine the running time for bubble sort, we have \(n – 1\) comparisons in the loop, and \(n – 1\) loops:<br>
@@ -545,7 +545,7 @@
   \(O(n^2)\)</li>
     <li data-marker="*">The largest factor is again \(n^2\) as \(n\) gets larger and larger, so we can say that bubble sort has an upper bound for running time of \(O(n^2)\).</li>
     <li data-marker="*">If we add a little logic to our algorithm, we can optimize the running time in the best case:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Repeat n-1 times
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">Repeat n-1 times
       For i from 0 to n–2
           If numbers[i] and numbers[i+1] out of order
               Swap them
@@ -608,14 +608,14 @@
   </pre>
     </li>
     <li data-marker="*">In week 1, too, we implemented a “pyramid” of blocks in the following shape:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">#
   ##
   ###
   ####
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">Our code to print this out might look like:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>  
   <span class="kt">void</span> <span class="nf">draw</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
@@ -640,9 +640,9 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We have a <code class="language-plaintext highlighter-rouge">draw</code> function which takes in an argument, <code class="language-plaintext highlighter-rouge">n</code>, and uses a loop to print <code class="language-plaintext highlighter-rouge">n</code> rows with more and more bricks in each row.</li>
+        <li data-marker="*">We have a <code class="code" class="language-plaintext highlighter-rouge">draw</code> function which takes in an argument, <code class="code" class="language-plaintext highlighter-rouge">n</code>, and uses a loop to print <code class="code" class="language-plaintext highlighter-rouge">n</code> rows with more and more bricks in each row.</li>
         <li data-marker="*">We can run our code and see that it works:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make iteration
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make iteration
   $ ./iteration 
   Height: 4
   #
@@ -655,7 +655,7 @@
     </li>
     <li data-marker="*">But notice that a pyramid of height 4 is actually a pyramid of height 3 with an extra row of 4 blocks added on. And a pyramid of height 3 is a pyramid of height 2 with an extra row of 3 blocks. A pyramid of height 2 is a pyramid of height 1 with an extra row of 2 blocks. And finally, a pyramid of height 1 is a pyramid of height 0 (no blocks) with a row of 1 block added.</li>
     <li data-marker="*">Since a pyramid is a recursive structure, we can write a recursive function to draw a pyramid, a function that calls itself to draw a smaller pyramid before adding another row:
-      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
+      <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;</span><span class="cp">
   #include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
   </span>  
   <span class="kt">void</span> <span class="nf">draw</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
@@ -684,12 +684,12 @@
   <span class="p">}</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We can rewrite our <code class="language-plaintext highlighter-rouge">draw</code> function to use itself.</li>
-        <li data-marker="*">If <code class="language-plaintext highlighter-rouge">n</code> is <code class="language-plaintext highlighter-rouge">0</code> (or negative somehow) we’ll stop without printing anything. And we need to make sure we stop for some <strong>base case</strong>, so our function doesn’t call itself over and over forever.</li>
-        <li data-marker="*">Otherwise, we’ll call <code class="language-plaintext highlighter-rouge">draw</code> again, to print a pyramid of size <code class="language-plaintext highlighter-rouge">n - 1</code> first.</li>
-        <li data-marker="*">Then, we’ll print the row of blocks we need for our pyramid, of size <code class="language-plaintext highlighter-rouge">n</code>.</li>
+        <li data-marker="*">We can rewrite our <code class="code" class="language-plaintext highlighter-rouge">draw</code> function to use itself.</li>
+        <li data-marker="*">If <code class="code" class="language-plaintext highlighter-rouge">n</code> is <code class="code" class="language-plaintext highlighter-rouge">0</code> (or negative somehow) we’ll stop without printing anything. And we need to make sure we stop for some <strong>base case</strong>, so our function doesn’t call itself over and over forever.</li>
+        <li data-marker="*">Otherwise, we’ll call <code class="code" class="language-plaintext highlighter-rouge">draw</code> again, to print a pyramid of size <code class="code" class="language-plaintext highlighter-rouge">n - 1</code> first.</li>
+        <li data-marker="*">Then, we’ll print the row of blocks we need for our pyramid, of size <code class="code" class="language-plaintext highlighter-rouge">n</code>.</li>
         <li data-marker="*">We can run our code and see that it works:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make recursion
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make recursion
   $ ./recursion 
   Height: 4
   #
@@ -700,8 +700,8 @@
         </li>
       </ul>
     </li>
-    <li data-marker="*">We can change our conditional to <code class="language-plaintext highlighter-rouge">if (n == 0)</code>, and type in a negative number to see what happens:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make recursion
+    <li data-marker="*">We can change our conditional to <code class="code" class="language-plaintext highlighter-rouge">if (n == 0)</code>, and type in a negative number to see what happens:
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ make recursion
   $ ./recursion
   Height: -100
   Segmentation fault (core dumped)
@@ -716,7 +716,7 @@
   
   <ul>
     <li data-marker="*">We can take the idea of recusion to sorting, with another algorithm called <strong>merge sort</strong>. The pseudocode might look like:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If only one number
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">If only one number
     Quit
   Else
       Sort left half of number
@@ -725,11 +725,11 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">Our strategy will be sorting each half, and then merge them together. Let’s start with two sorted halves that look like:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 4 5 7 | 0 1 3 6
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">2 4 5 7 | 0 1 3 6
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We’ll look at just the first number in each list, and move the smaller, <code class="language-plaintext highlighter-rouge">0</code>, into the start of a new list. Then we can look at the next number in the list:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 4 5 7 | 0 1 3 6
+        <li data-marker="*">We’ll look at just the first number in each list, and move the smaller, <code class="code" class="language-plaintext highlighter-rouge">0</code>, into the start of a new list. Then we can look at the next number in the list:
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">2 4 5 7 | 0 1 3 6
   ^         ^
   
   2 4 5 7 |   1 3 6
@@ -737,14 +737,14 @@
   0
   </code></pre></div>        </div>
         </li>
-        <li data-marker="*">We’ll move the next smallest number, <code class="language-plaintext highlighter-rouge">1</code>, down, and look at the next number in that list:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 4 5 7 |     3 6
+        <li data-marker="*">We’ll move the next smallest number, <code class="code" class="language-plaintext highlighter-rouge">1</code>, down, and look at the next number in that list:
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">2 4 5 7 |     3 6
   ^             ^
   0 1
   </code></pre></div>        </div>
         </li>
-        <li data-marker="*">This time, the <code class="language-plaintext highlighter-rouge">2</code> is the next smallest, so we’ll move that down, and repeat this process:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  4 5 7 |     3 6
+        <li data-marker="*">This time, the <code class="code" class="language-plaintext highlighter-rouge">2</code> is the next smallest, so we’ll move that down, and repeat this process:
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">  4 5 7 |     3 6
     ^           ^
   0 1 2
   
@@ -772,35 +772,35 @@
     </li>
     <li data-marker="*">So this is how we would merge two sorted halves together.</li>
     <li data-marker="*">We’ll start at the beginning now with an entirely unsorted list of numbers:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 2 7 4 1 6 3 0
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">5 2 7 4 1 6 3 0
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">We start by looking at the first half, which is a list of size 4:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 2 7 4
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">5 2 7 4
   </code></pre></div>        </div>
           <ul>
             <li data-marker="*">We’ll have to sort the left half, which is a list of size 2:
-              <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 2
+              <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">5 2
   </code></pre></div>            </div>
               <ul>
                 <li data-marker="*">The left half is size 1, so we’re done, and the right half is also size 1, so we can merge both halves together:
-                  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 5
+                  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">2 5
   </code></pre></div>                </div>
                 </li>
               </ul>
             </li>
             <li data-marker="*">Now we’ll need to sort the right half:
-              <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7 4
+              <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">7 4
   </code></pre></div>            </div>
               <ul>
                 <li data-marker="*">Again, we’ll merge both of these halves together, by taking the smallest element from each list
-                  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4 7
+                  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">4 7
   </code></pre></div>                </div>
                 </li>
               </ul>
             </li>
             <li data-marker="*">Now we’ve sorted both halves, each of size 2, and can merge them together:
-              <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 5 | 4 7
+              <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">2 5 | 4 7
   ^     ^
   
     5 | 4 7
@@ -821,12 +821,12 @@
           </ul>
         </li>
         <li data-marker="*">We’ll repeat this for the right half, another list of size 4:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 6 3 0
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">1 6 3 0
   </code></pre></div>        </div>
           <ul>
-            <li data-marker="*">Sorting the left half gives us <code class="language-plaintext highlighter-rouge">1 6</code>, and the right half merges to <code class="language-plaintext highlighter-rouge">0 3</code>.</li>
+            <li data-marker="*">Sorting the left half gives us <code class="code" class="language-plaintext highlighter-rouge">1 6</code>, and the right half merges to <code class="code" class="language-plaintext highlighter-rouge">0 3</code>.</li>
             <li data-marker="*">We’ll merge those with:
-              <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 6 | 0 3
+              <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">1 6 | 0 3
   ^     ^
   
   1 6 |   3
@@ -846,7 +846,7 @@
             </li>
           </ul>
         </li>
-        <li data-marker="*">Now, we have two sorted halves, <code class="language-plaintext highlighter-rouge">2 4 5 7</code> and <code class="language-plaintext highlighter-rouge">0 1 3 6</code>, which we can merge together as we saw above.</li>
+        <li data-marker="*">Now, we have two sorted halves, <code class="code" class="language-plaintext highlighter-rouge">2 4 5 7</code> and <code class="code" class="language-plaintext highlighter-rouge">0 1 3 6</code>, which we can merge together as we saw above.</li>
       </ul>
     </li>
     <li data-marker="*">Every time we merged two halves, we only needed to look at each number once. And we divided our list of 8 numbers three times, or \(\log n\) times. We needed more memory to merge our new lists into, but the upper bound for running time for merge sort is only \(O(n \log n)\). Since \(\log n\) is less than \(n\), \(O(n \log n)\) is less than \(O(n^2)\).</li>

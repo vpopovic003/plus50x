@@ -20,22 +20,22 @@
     <li data-marker="*">Last week, we collected a survey of <a href="https://harrypotter.fandom.com/wiki/Hogwarts_Houses">Hogwarts house</a> preferences, and tallied the data from a CSV file with Python.</li>
     <li data-marker="*">This week, we’ll collect some more data about your favorite TV shows and their genres.</li>
     <li data-marker="*">We get hundreds of responses from the audience, and start looking at them on Google Sheets, a web-based spreadsheet application, showing our data in rows and columns:<br>
-  <img src="favorites.png" alt="Google Sheets spreadsheet titled favorites with row 1 having cells &quot;Timestamp&quot;, &quot;title&quot;, and &quot;genres&quot;, with row 43 having cells &quot;10/25/2021 13:37:02&quot;, &quot;La Casa de Papel&quot;, &quot;Action&quot;, and so on" width="600" class="border"></li>
+  <img src="./static/imagesnotes/favorites.webp" alt="Google Sheets spreadsheet titled favorites with row 1 having cells &quot;Timestamp&quot;, &quot;title&quot;, and &quot;genres&quot;, with row 43 having cells &quot;10/25/2021 13:37:02&quot;, &quot;La Casa de Papel&quot;, &quot;Action&quot;, and so on" width="600" class="border"></li>
     <li data-marker="*">Like we did last week, we can download our data as a CSV file, which is an example of a <strong>flat-file database</strong>, where the data for each column is separated by commas, and each row is on a new line, saved simply as a text file in ASCII or Unicode.
       <ul>
         <li data-marker="*">A flat-file database is completely portable, which means that we can open it on nearly any operating system without special software like Microsoft Excel or Apple Numbers.</li>
       </ul>
     </li>
     <li data-marker="*">We’ll upload the CSV file to our instance of VS Code by dragging and dropping it:<br>
-    <img src="uploading.png" alt="file favorites.csv dragged from Finder window into VS Code explorer" width="600" class="border"></li>
+    <img src="./static/imagesnotes/uploading.webp" alt="file favorites.csv dragged from Finder window into VS Code explorer" width="600" class="border"></li>
     <li data-marker="*">Then, we’ll see the file opened in an editor:<br>
-    <img src="csv.png" alt="rows of data from spreadsheet" width="400" class="border">
+    <img src="./static/imagesnotes/csv.webp" alt="rows of data from spreadsheet" width="400" class="border">
       <ul>
-        <li data-marker="*">Notice that some rows have multiple genres, and those are surrounded by quotes, like <code class="language-plaintext highlighter-rouge">"Crime, Drama"</code>, so that the commas <em>within</em> our data aren’t misinterpreted.</li>
+        <li data-marker="*">Notice that some rows have multiple genres, and those are surrounded by quotes, like <code class="code" class="language-plaintext highlighter-rouge">"Crime, Drama"</code>, so that the commas <em>within</em> our data aren’t misinterpreted.</li>
       </ul>
     </li>
-    <li data-marker="*">Let’s write a new program, <code class="language-plaintext highlighter-rouge">favorites.py</code>, to read our CSV file:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+    <li data-marker="*">Let’s write a new program, <code class="code" class="language-plaintext highlighter-rouge">favorites.py</code>, to read our CSV file:
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"favorites.csv"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
       <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">reader</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
@@ -44,14 +44,14 @@
           <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We’ll open the file with a reference called <code class="language-plaintext highlighter-rouge">file</code>, using the <code class="language-plaintext highlighter-rouge">with</code> keyword in Python that will close our file for us.</li>
-        <li data-marker="*">The <code class="language-plaintext highlighter-rouge">csv</code> library has a <code class="language-plaintext highlighter-rouge">reader</code> function that will create a <code class="language-plaintext highlighter-rouge">reader</code> variable we can use to read in the file as a CSV.</li>
-        <li data-marker="*">We’ll call <code class="language-plaintext highlighter-rouge">next</code> to skip the first row, since that’s the header row.</li>
+        <li data-marker="*">We’ll open the file with a reference called <code class="code" class="language-plaintext highlighter-rouge">file</code>, using the <code class="code" class="language-plaintext highlighter-rouge">with</code> keyword in Python that will close our file for us.</li>
+        <li data-marker="*">The <code class="code" class="language-plaintext highlighter-rouge">csv</code> library has a <code class="code" class="language-plaintext highlighter-rouge">reader</code> function that will create a <code class="code" class="language-plaintext highlighter-rouge">reader</code> variable we can use to read in the file as a CSV.</li>
+        <li data-marker="*">We’ll call <code class="code" class="language-plaintext highlighter-rouge">next</code> to skip the first row, since that’s the header row.</li>
         <li data-marker="*">Then, we’ll use a loop to print the second column in each row, which is the title.</li>
       </ul>
     </li>
     <li data-marker="*">Now, if we run our program, we’ll see a list of show titles:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   ...
   Friends
   ...
@@ -69,8 +69,8 @@
   <h3 id="cleaning">Cleaning</h3>
   
   <ul>
-    <li data-marker="*">To improve our program, we’ll first use a <code class="language-plaintext highlighter-rouge">DictReader</code>, dictionary reader, which creates a dictionary from each row, allowing us to access each column by its name. We also don’t need to skip the header row in this case, since the <code class="language-plaintext highlighter-rouge">DictReader</code> will use it automatically.
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+    <li data-marker="*">To improve our program, we’ll first use a <code class="code" class="language-plaintext highlighter-rouge">DictReader</code>, dictionary reader, which creates a dictionary from each row, allowing us to access each column by its name. We also don’t need to skip the header row in this case, since the <code class="code" class="language-plaintext highlighter-rouge">DictReader</code> will use it automatically.
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"favorites.csv"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
       <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">DictReader</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
@@ -83,7 +83,7 @@
       </ul>
     </li>
     <li data-marker="*">Now let’s try to filter out duplicates in our responses:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="n">titles</span> <span class="o">=</span> <span class="p">[]</span>
   
@@ -98,8 +98,8 @@
       <span class="k">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We’ll make a new list called <code class="language-plaintext highlighter-rouge">titles</code>, and only add each row’s title if it’s not already in the list. Then, we can print all the titles:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+        <li data-marker="*">We’ll make a new list called <code class="code" class="language-plaintext highlighter-rouge">titles</code>, and only add each row’s title if it’s not already in the list. Then, we can print all the titles:
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   ...
   Friends
   ...
@@ -107,13 +107,13 @@
   ...
   </code></pre></div>        </div>
           <ul>
-            <li data-marker="*">We see that there are still near-duplicates, since <code class="language-plaintext highlighter-rouge">Friends</code> and <code class="language-plaintext highlighter-rouge">friends</code> are indeed different strings still.</li>
+            <li data-marker="*">We see that there are still near-duplicates, since <code class="code" class="language-plaintext highlighter-rouge">Friends</code> and <code class="code" class="language-plaintext highlighter-rouge">friends</code> are indeed different strings still.</li>
           </ul>
         </li>
       </ul>
     </li>
     <li data-marker="*">We’ll want to change the current title to all uppercase, and remove whitespace around it, before we add it to our list:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="n">titles</span> <span class="o">=</span> <span class="p">[]</span>
   
@@ -130,7 +130,7 @@
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">Now, we’ve <strong>canonicalized</strong>, or standardized, our data, and our list of titles are much cleaner:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   ...
   NEW GIRL
   FRIENDS
@@ -141,8 +141,8 @@
         </li>
       </ul>
     </li>
-    <li data-marker="*">It turns out that Python has another data structure built-in, <code class="language-plaintext highlighter-rouge">set</code>, which ensures that all the values are unique:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+    <li data-marker="*">It turns out that Python has another data structure built-in, <code class="code" class="language-plaintext highlighter-rouge">set</code>, which ensures that all the values are unique:
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="n">titles</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
   
@@ -157,11 +157,11 @@
       <span class="k">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Now, we can call <code class="language-plaintext highlighter-rouge">add</code> on the set, and not have to check ourselves if it’s already in the set.</li>
+        <li data-marker="*">Now, we can call <code class="code" class="language-plaintext highlighter-rouge">add</code> on the set, and not have to check ourselves if it’s already in the set.</li>
       </ul>
     </li>
-    <li data-marker="*">To sort the titles, we can just change our loop to <code class="language-plaintext highlighter-rouge">for title in sorted(titles)</code>, which will sort our set before we iterate over it:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+    <li data-marker="*">To sort the titles, we can just change our loop to <code class="code" class="language-plaintext highlighter-rouge">for title in sorted(titles)</code>, which will sort our set before we iterate over it:
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="n">titles</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
   
@@ -175,7 +175,7 @@
   <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">titles</span><span class="p">):</span>
       <span class="k">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   ADVENTURE TIME
   ANNE WITH AN E
   ...
@@ -197,7 +197,7 @@
   
   <ul>
     <li data-marker="*">We can use a dictionary, instead of a set, to count the number of times we’ve seen each title, with the keys being the titles and the values being an integer counting the number of times we see each of them:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="n">titles</span> <span class="o">=</span> <span class="p">{}</span>
   
@@ -216,18 +216,18 @@
       </ul>
     </li>
     <li data-marker="*">We’ll run this program, and see:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   Traceback (most recent call last):
     File "/workspaces/20377622/favorites.py", line 9, in &lt;module&gt;
       titles[title] += 1
   KeyError: 'HOW I MET YOUR MOTHER'
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We have a <code class="language-plaintext highlighter-rouge">KeyError</code>, since the title <code class="language-plaintext highlighter-rouge">HOW I MET YOUR MOTHER</code> isn’t in the dictionary yet.</li>
+        <li data-marker="*">We have a <code class="code" class="language-plaintext highlighter-rouge">KeyError</code>, since the title <code class="code" class="language-plaintext highlighter-rouge">HOW I MET YOUR MOTHER</code> isn’t in the dictionary yet.</li>
       </ul>
     </li>
     <li data-marker="*">We’ll have to add each title to our dictionary first, and set the initial value to 1:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="n">titles</span> <span class="o">=</span> <span class="p">{}</span>
   
@@ -249,7 +249,7 @@
       </ul>
     </li>
     <li data-marker="*">We can also set the initial value to 0, and then increment it by 1 no matter what:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="n">titles</span> <span class="o">=</span> <span class="p">{}</span>
   
@@ -265,7 +265,7 @@
   <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">titles</span><span class="p">):</span>
       <span class="k">print</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">])</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   ADVENTURE TIME 1
   ANNE WITH AN E 1
   ARCHER 1
@@ -280,7 +280,7 @@
       </ul>
     </li>
     <li data-marker="*">We can sort by the values in the dictionary by changing our loop to:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="p">...</span>
   <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
       <span class="k">return</span> <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">]</span>
   
@@ -288,9 +288,9 @@
       <span class="k">print</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">])</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We define a function, <code class="language-plaintext highlighter-rouge">f</code>, which just returns the value of a title in the dictionary with <code class="language-plaintext highlighter-rouge">titles[title]</code>. The <code class="language-plaintext highlighter-rouge">sorted</code> function, in turn, will take in that function as the key to sort the dictionary. And we’ll also pass in <code class="language-plaintext highlighter-rouge">reverse=True</code> to sort from largest to smallest, instead of smallest to largest.</li>
+        <li data-marker="*">We define a function, <code class="code" class="language-plaintext highlighter-rouge">f</code>, which just returns the value of a title in the dictionary with <code class="code" class="language-plaintext highlighter-rouge">titles[title]</code>. The <code class="code" class="language-plaintext highlighter-rouge">sorted</code> function, in turn, will take in that function as the key to sort the dictionary. And we’ll also pass in <code class="code" class="language-plaintext highlighter-rouge">reverse=True</code> to sort from largest to smallest, instead of smallest to largest.</li>
         <li data-marker="*">So now we’ll see the most popular shows printed:
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   THE OFFICE 15
   FRIENDS 9
   COMMUNITY 8
@@ -301,16 +301,16 @@
       </ul>
     </li>
     <li data-marker="*">We can actually define our function in the same line, with this syntax:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">titles</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">title</span><span class="p">:</span> <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">titles</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">title</span><span class="p">:</span> <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
       <span class="k">print</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">])</span>
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">We can write and pass in a <strong>lambda</strong>, or anonymous function, which has no name but takes in some argument or arguments, and returns a value immediately.</li>
-        <li data-marker="*">Notice that there are no parentheses or <code class="language-plaintext highlighter-rouge">return</code> keyword, but concisely has the same effect as our <code class="language-plaintext highlighter-rouge">get_value</code> function earlier.</li>
+        <li data-marker="*">Notice that there are no parentheses or <code class="code" class="language-plaintext highlighter-rouge">return</code> keyword, but concisely has the same effect as our <code class="code" class="language-plaintext highlighter-rouge">get_value</code> function earlier.</li>
       </ul>
     </li>
     <li data-marker="*">We can also try to count all the occurrences of a specific title:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
   
@@ -324,15 +324,15 @@
     
   <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Number of people who like The Office: </span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   Number of people who like The Office: 15
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We’ll have a simple <code class="language-plaintext highlighter-rouge">counter</code> variable, and add one to it.</li>
+        <li data-marker="*">We’ll have a simple <code class="code" class="language-plaintext highlighter-rouge">counter</code> variable, and add one to it.</li>
       </ul>
     </li>
     <li data-marker="*">Now, if our data referred to the same show in different ways, we can try to check if the word “OFFICE” was in the title at all:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
   
@@ -346,7 +346,7 @@
     
   <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Number of people who like The Office: </span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   Number of people who like The Office: 16
   </code></pre></div>    </div>
       <ul>
@@ -355,33 +355,33 @@
     </li>
     <li data-marker="*">We can also use <strong>regular expressions</strong>, a standardized way to represent a pattern that a string must match.</li>
     <li data-marker="*">For example, we can write a regular expression that matches email addresses:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.*@.*\..*
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">.*@.*\..*
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">The first period, <code class="language-plaintext highlighter-rouge">.</code>, indicates any character. The following asterisk, <code class="language-plaintext highlighter-rouge">*</code>, indicates 0 or more times. Then, we want an at sign, <code class="language-plaintext highlighter-rouge">@</code>. Then we want 0 or more characters again, <code class="language-plaintext highlighter-rouge">.*</code>, and then a literal period in our string, escaped with <code class="language-plaintext highlighter-rouge">\.</code>. Finally, we want 0 or more characters again with <code class="language-plaintext highlighter-rouge">.*</code>.</li>
+        <li data-marker="*">The first period, <code class="code" class="language-plaintext highlighter-rouge">.</code>, indicates any character. The following asterisk, <code class="code" class="language-plaintext highlighter-rouge">*</code>, indicates 0 or more times. Then, we want an at sign, <code class="code" class="language-plaintext highlighter-rouge">@</code>. Then we want 0 or more characters again, <code class="code" class="language-plaintext highlighter-rouge">.*</code>, and then a literal period in our string, escaped with <code class="code" class="language-plaintext highlighter-rouge">\.</code>. Finally, we want 0 or more characters again with <code class="code" class="language-plaintext highlighter-rouge">.*</code>.</li>
       </ul>
     </li>
     <li data-marker="*">Since we probably want at least 1 character in each segment of an email address, we should change our regular expression to:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.+@.+\..+
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">.+@.+\..+
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">The plus sign, <code class="language-plaintext highlighter-rouge">+</code>, means we are matching for the previous character 1 or more times.</li>
-        <li data-marker="*">We can restrict the domain of the email to <code class="language-plaintext highlighter-rouge">.edu</code> by changing our regular expression to <code class="language-plaintext highlighter-rouge">.+@.+\.edu</code>.</li>
+        <li data-marker="*">The plus sign, <code class="code" class="language-plaintext highlighter-rouge">+</code>, means we are matching for the previous character 1 or more times.</li>
+        <li data-marker="*">We can restrict the domain of the email to <code class="code" class="language-plaintext highlighter-rouge">.edu</code> by changing our regular expression to <code class="code" class="language-plaintext highlighter-rouge">.+@.+\.edu</code>.</li>
       </ul>
     </li>
     <li data-marker="*">Languages like Python and JavaScript support regular expressions, which are like a mini-language in themselves, with syntax like:
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">.</code> for any character</li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">.*</code> for 0 or more characters</li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">.+</code> for 1 or more characters</li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">?</code> for an optional character</li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">^</code> for start of input</li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">$</code> for end of input</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">.</code> for any character</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">.*</code> for 0 or more characters</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">.+</code> for 1 or more characters</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">?</code> for an optional character</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">^</code> for start of input</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">$</code> for end of input</li>
         <li data-marker="*">…</li>
       </ul>
     </li>
-    <li data-marker="*">We can change our program earlier to use <code class="language-plaintext highlighter-rouge">re</code>, a Python library for regular expressions:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+    <li data-marker="*">We can change our program earlier to use <code class="code" class="language-plaintext highlighter-rouge">re</code>, a Python library for regular expressions:
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   <span class="kn">import</span> <span class="nn">re</span>
   
   <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
@@ -396,17 +396,17 @@
     
   <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Number of people who like The Office: </span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   Number of people who like The Office: 16
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">The <code class="language-plaintext highlighter-rouge">re</code> library has a function, <code class="language-plaintext highlighter-rouge">search</code>, to which we can pass a pattern and string to see if there is a match.</li>
-        <li data-marker="*">We can change our expression to <code class="language-plaintext highlighter-rouge">"^(OFFICE|THE OFFICE)$"</code>, which will match either <code class="language-plaintext highlighter-rouge">OFFICE</code> or <code class="language-plaintext highlighter-rouge">THE OFFICE</code>, but only if they start at the beginning of the string, and stop at the end of the string (i.e., there are no other words before or after).</li>
-        <li data-marker="*">We can even change <code class="language-plaintext highlighter-rouge">THE OFFICE</code> to <code class="language-plaintext highlighter-rouge">THE.OFFICE</code>, allowing any character (like a typo) to be in between those words.</li>
+        <li data-marker="*">The <code class="code" class="language-plaintext highlighter-rouge">re</code> library has a function, <code class="code" class="language-plaintext highlighter-rouge">search</code>, to which we can pass a pattern and string to see if there is a match.</li>
+        <li data-marker="*">We can change our expression to <code class="code" class="language-plaintext highlighter-rouge">"^(OFFICE|THE OFFICE)$"</code>, which will match either <code class="code" class="language-plaintext highlighter-rouge">OFFICE</code> or <code class="code" class="language-plaintext highlighter-rouge">THE OFFICE</code>, but only if they start at the beginning of the string, and stop at the end of the string (i.e., there are no other words before or after).</li>
+        <li data-marker="*">We can even change <code class="code" class="language-plaintext highlighter-rouge">THE OFFICE</code> to <code class="code" class="language-plaintext highlighter-rouge">THE.OFFICE</code>, allowing any character (like a typo) to be in between those words.</li>
       </ul>
     </li>
     <li data-marker="*">We can also write a program to ask the user for a particular title and report its popularity:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="n">title</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Title: "</span><span class="p">).</span><span class="n">strip</span><span class="p">().</span><span class="n">upper</span><span class="p">()</span>
   
@@ -420,12 +420,12 @@
   
   <span class="k">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   Title: the office
   13
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We ask the user for input, and then open our CSV file. Since we’re looking for just one title, we can have one <code class="language-plaintext highlighter-rouge">counter</code> variable that we increment.</li>
+        <li data-marker="*">We ask the user for input, and then open our CSV file. Since we’re looking for just one title, we can have one <code class="code" class="language-plaintext highlighter-rouge">counter</code> variable that we increment.</li>
         <li data-marker="*">We check for a match after standardizing both the user’s input and each row’s title.</li>
       </ul>
     </li>
@@ -435,12 +435,12 @@
   
   <ul>
     <li data-marker="*"><strong>Relational databases</strong> are programs that store data, ultimately in files, but with additional data structures and interfaces that allow us to search and store data more efficiently.</li>
-    <li data-marker="*">When working with data, we generally need four types of basic operations with the acronym <code class="language-plaintext highlighter-rouge">CRUD</code>:
+    <li data-marker="*">When working with data, we generally need four types of basic operations with the acronym <code class="code" class="language-plaintext highlighter-rouge">CRUD</code>:
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">CREATE</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">READ</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">UPDATE</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">DELETE</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">CREATE</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">READ</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">UPDATE</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">DELETE</code></li>
       </ul>
     </li>
   </ul>
@@ -450,14 +450,14 @@
   <ul>
     <li data-marker="*">With another programming language, <strong>SQL</strong> (pronounced like “sequel”), we can interact with databases with verbs like:
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">CREATE</code>, <code class="language-plaintext highlighter-rouge">INSERT</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">SELECT</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">UPDATE</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">DELETE</code>, <code class="language-plaintext highlighter-rouge">DROP</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">CREATE</code>, <code class="code" class="language-plaintext highlighter-rouge">INSERT</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">SELECT</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">UPDATE</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">DELETE</code>, <code class="code" class="language-plaintext highlighter-rouge">DROP</code></li>
       </ul>
     </li>
     <li data-marker="*">Syntax in SQL might look like:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">table</span> <span class="p">(</span><span class="k">column</span> <span class="k">type</span><span class="p">,</span> <span class="p">...);</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">table</span> <span class="p">(</span><span class="k">column</span> <span class="k">type</span><span class="p">,</span> <span class="p">...);</span>
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">With this statement, we can create a <strong>table</strong>, which is like a spreadsheet with rows and columns.</li>
@@ -465,26 +465,26 @@
       </ul>
     </li>
     <li data-marker="*">We’ll use a common database program called <strong>SQLite</strong>, one of many available programs that support SQL. Other database programs include Oracle Database, MySQL, PostgreSQL, and Microsoft Access.</li>
-    <li data-marker="*">SQLite stores our data in a binary file, with 0s and 1s that represent data efficiently. We’ll interact with our tables of data through a command-line program, <code class="language-plaintext highlighter-rouge">sqlite3</code>.</li>
+    <li data-marker="*">SQLite stores our data in a binary file, with 0s and 1s that represent data efficiently. We’ll interact with our tables of data through a command-line program, <code class="code" class="language-plaintext highlighter-rouge">sqlite3</code>.</li>
     <li data-marker="*">We’ll run some commands in VS Code to import our CSV file into a database:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">sqlite3</span> <span class="n">favorites</span><span class="p">.</span><span class="n">db</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="err">$</span> <span class="n">sqlite3</span> <span class="n">favorites</span><span class="p">.</span><span class="n">db</span>
   <span class="n">SQLite</span> <span class="k">version</span> <span class="mi">3</span><span class="p">.</span><span class="mi">36</span><span class="p">.</span><span class="mi">0</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">18</span> <span class="mi">18</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">39</span>
   <span class="n">Enter</span> <span class="nv">".help"</span> <span class="k">for</span> <span class="k">usage</span> <span class="n">hints</span><span class="p">.</span>
   <span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="k">mode</span> <span class="n">csv</span>
   <span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="n">import</span> <span class="n">favorites</span><span class="p">.</span><span class="n">csv</span> <span class="n">favorites</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">First, we’ll run the <code class="language-plaintext highlighter-rouge">sqlite3</code> program with <code class="language-plaintext highlighter-rouge">favorites.db</code> as the name of the file for our database.</li>
-        <li data-marker="*">With <code class="language-plaintext highlighter-rouge">.import</code>, SQLite creates a table in our database with the data from our CSV file.</li>
+        <li data-marker="*">First, we’ll run the <code class="code" class="language-plaintext highlighter-rouge">sqlite3</code> program with <code class="code" class="language-plaintext highlighter-rouge">favorites.db</code> as the name of the file for our database.</li>
+        <li data-marker="*">With <code class="code" class="language-plaintext highlighter-rouge">.import</code>, SQLite creates a table in our database with the data from our CSV file.</li>
       </ul>
     </li>
-    <li data-marker="*">Now, we’ll see three files, including <code class="language-plaintext highlighter-rouge">favorites.db</code>:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls
+    <li data-marker="*">Now, we’ll see three files, including <code class="code" class="language-plaintext highlighter-rouge">favorites.db</code>:
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ ls
   favorites.csv  favorites.db  favorites.py
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">We can open our database file again, and check the schema, or design, of our new table with <code class="language-plaintext highlighter-rouge">.schema</code>:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">sqlite3</span> <span class="n">favorites</span><span class="p">.</span><span class="n">db</span>
+    <li data-marker="*">We can open our database file again, and check the schema, or design, of our new table with <code class="code" class="language-plaintext highlighter-rouge">.schema</code>:
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="err">$</span> <span class="n">sqlite3</span> <span class="n">favorites</span><span class="p">.</span><span class="n">db</span>
   <span class="n">SQLite</span> <span class="k">version</span> <span class="mi">3</span><span class="p">.</span><span class="mi">36</span><span class="p">.</span><span class="mi">0</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">18</span> <span class="mi">18</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">39</span>
   <span class="n">Enter</span> <span class="nv">".help"</span> <span class="k">for</span> <span class="k">usage</span> <span class="n">hints</span><span class="p">.</span>
   <span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="k">schema</span>
@@ -495,11 +495,11 @@
   <span class="p">);</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We see that <code class="language-plaintext highlighter-rouge">.import</code> used the <code class="language-plaintext highlighter-rouge">CREATE TABLE ...</code> command to create a table called <code class="language-plaintext highlighter-rouge">favorites</code>, with column names automatically copied from the CSV’s header row, and types for each of them assumed to be text.</li>
+        <li data-marker="*">We see that <code class="code" class="language-plaintext highlighter-rouge">.import</code> used the <code class="code" class="language-plaintext highlighter-rouge">CREATE TABLE ...</code> command to create a table called <code class="code" class="language-plaintext highlighter-rouge">favorites</code>, with column names automatically copied from the CSV’s header row, and types for each of them assumed to be text.</li>
       </ul>
     </li>
     <li data-marker="*">We can select, or read data, with:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">favorites</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">favorites</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">------------------------------------+</span>
   <span class="o">|</span>                <span class="n">title</span>               <span class="o">|</span>
   <span class="o">+</span><span class="c1">------------------------------------+</span>
@@ -509,23 +509,23 @@
   <span class="p">...</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">With a command in the format <code class="language-plaintext highlighter-rouge">SELECT columns FROM table;</code>, we can read data from one or more columns. For example, we can write <code class="language-plaintext highlighter-rouge">SELECT title, genre FROM favorites;</code> to select both the title and genre.</li>
+        <li data-marker="*">With a command in the format <code class="code" class="language-plaintext highlighter-rouge">SELECT columns FROM table;</code>, we can read data from one or more columns. For example, we can write <code class="code" class="language-plaintext highlighter-rouge">SELECT title, genre FROM favorites;</code> to select both the title and genre.</li>
       </ul>
     </li>
     <li data-marker="*">SQL supports many functions that we can use to count and summarize data:
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">AVG</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">COUNT</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">DISTINCT</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">LOWER</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">MAX</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">MIN</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">UPPER</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">AVG</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">COUNT</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">DISTINCT</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">LOWER</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">MAX</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">MIN</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">UPPER</code></li>
         <li data-marker="*">…</li>
       </ul>
     </li>
     <li data-marker="*">We can clean up our titles as before, converting them to uppercase and printing only the unique values:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">DISTINCT</span><span class="p">(</span><span class="k">UPPER</span><span class="p">(</span><span class="n">title</span><span class="p">))</span> <span class="k">FROM</span> <span class="n">shows</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">DISTINCT</span><span class="p">(</span><span class="k">UPPER</span><span class="p">(</span><span class="n">title</span><span class="p">))</span> <span class="k">FROM</span> <span class="n">shows</span><span class="p">;</span>
   <span class="p">...</span> 
   <span class="o">|</span> <span class="n">LAW</span> <span class="k">AND</span> <span class="k">ORDER</span>                      <span class="o">|</span>
   <span class="o">|</span> <span class="n">B99</span>                                <span class="o">|</span>
@@ -534,7 +534,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">We can also get a count of how many responses there are:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">favorites</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">favorites</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">--------------+</span>
   <span class="o">|</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="o">|</span>
   <span class="o">+</span><span class="c1">--------------+</span>
@@ -544,16 +544,16 @@
     </li>
     <li data-marker="*">We can also add more phrases to our command:
       <ul>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">WHERE</code>, adding a Boolean expression to filter our data</li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">LIKE</code>, filtering responses more loosely</li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">ORDER BY</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">LIMIT</code></li>
-        <li data-marker="*"><code class="language-plaintext highlighter-rouge">GROUP BY</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">WHERE</code>, adding a Boolean expression to filter our data</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">LIKE</code>, filtering responses more loosely</li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">ORDER BY</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">LIMIT</code></li>
+        <li data-marker="*"><code class="code" class="language-plaintext highlighter-rouge">GROUP BY</code></li>
         <li data-marker="*">…</li>
       </ul>
     </li>
     <li data-marker="*">We can limit the number of results:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">-----------------------+</span>
   <span class="o">|</span>         <span class="n">title</span>         <span class="o">|</span>
   <span class="o">+</span><span class="c1">-----------------------+</span>
@@ -571,7 +571,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">We can also look for titles matching a string:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="k">LIKE</span> <span class="nv">"%office%"</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="k">LIKE</span> <span class="nv">"%office%"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">-------------+</span>
   <span class="o">|</span>    <span class="n">title</span>    <span class="o">|</span>
   <span class="o">+</span><span class="c1">-------------+</span>
@@ -594,11 +594,11 @@
   <span class="o">+</span><span class="c1">-------------+</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">The <code class="language-plaintext highlighter-rouge">%</code> character is a placeholder for zero or more other characters, so SQL supports some pattern matching, though not it’s not as powerful as regular expressions are.</li>
+        <li data-marker="*">The <code class="code" class="language-plaintext highlighter-rouge">%</code> character is a placeholder for zero or more other characters, so SQL supports some pattern matching, though not it’s not as powerful as regular expressions are.</li>
       </ul>
     </li>
     <li data-marker="*">We can select just the count in our command:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="k">LIKE</span> <span class="nv">"%office%"</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="k">LIKE</span> <span class="nv">"%office%"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">--------------+</span>
   <span class="o">|</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="o">|</span>
   <span class="o">+</span><span class="c1">--------------+</span>
@@ -607,7 +607,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">If we don’t like a show, we can even delete it:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="k">LIKE</span> <span class="nv">"%friends%"</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="k">LIKE</span> <span class="nv">"%friends%"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">--------------+</span>
   <span class="o">|</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="o">|</span>
   <span class="o">+</span><span class="c1">--------------+</span>
@@ -626,7 +626,7 @@
       </ul>
     </li>
     <li data-marker="*">We can update a specific row of data:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"Thevoffice"</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"Thevoffice"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">------------+</span>
   <span class="o">|</span>   <span class="n">title</span>    <span class="o">|</span>
   <span class="o">+</span><span class="c1">------------+</span>
@@ -641,7 +641,7 @@
       </ul>
     </li>
     <li data-marker="*">We can change the values in multiple rows, too:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">genres</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"Game of Thrones"</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">genres</span> <span class="k">FROM</span> <span class="n">favorites</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"Game of Thrones"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">--------------------------------------------------------------------------------------------------------------+</span>
   <span class="o">|</span>                                                    <span class="n">genres</span>                                                    <span class="o">|</span>
   <span class="o">+</span><span class="c1">--------------------------------------------------------------------------------------------------------------+</span>
@@ -664,7 +664,7 @@
   <span class="o">+</span><span class="c1">--------------------------------------------------+</span>
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">With <code class="language-plaintext highlighter-rouge">DELETE</code> and <code class="language-plaintext highlighter-rouge">DROP</code>, we can remove rows and even entire tables as well.</li>
+    <li data-marker="*">With <code class="code" class="language-plaintext highlighter-rouge">DELETE</code> and <code class="code" class="language-plaintext highlighter-rouge">DROP</code>, we can remove rows and even entire tables as well.</li>
     <li data-marker="*">And notice that in our commands, we’ve written SQL keywords in all caps, so they stand out more.</li>
     <li data-marker="*">There also isn’t a built-in way to undo commands, so if we make a mistake we might have to build our database again!</li>
   </ul>
@@ -673,7 +673,7 @@
   
   <ul>
     <li data-marker="*">We’ll take a look at our schema again:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="k">schema</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="k">schema</span>
   <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="nv">"favorites"</span><span class="p">(</span>
     <span class="nv">"Timestamp"</span> <span class="nb">TEXT</span><span class="p">,</span>
     <span class="nv">"title"</span> <span class="nb">TEXT</span><span class="p">,</span>
@@ -682,7 +682,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">If we look at our values of genres, we see some redundancy:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">genres</span> <span class="k">FROM</span> <span class="n">favorites</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">genres</span> <span class="k">FROM</span> <span class="n">favorites</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">-----------------------------------------------------------+</span>
   <span class="o">|</span>                          <span class="n">genres</span>                           <span class="o">|</span>
   <span class="o">+</span><span class="c1">-----------------------------------------------------------+</span>
@@ -694,10 +694,10 @@
   <span class="p">...</span>
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">And if we want to search for shows that are comedies, we have to search with not just <code class="language-plaintext highlighter-rouge">SELECT title FROM favorites WHERE genre = "Comedy";</code>, but also <code class="language-plaintext highlighter-rouge">... WHERE genre = "Comedy, Drama";</code>, <code class="language-plaintext highlighter-rouge">... WHERE genre = "Comedy, News";</code>, and so on.</li>
-    <li data-marker="*">We can use the <code class="language-plaintext highlighter-rouge">LIKE</code> keyword again, but two genres, “Music” and “Musical”, are similar enough for that to be problematic.</li>
+    <li data-marker="*">And if we want to search for shows that are comedies, we have to search with not just <code class="code" class="language-plaintext highlighter-rouge">SELECT title FROM favorites WHERE genre = "Comedy";</code>, but also <code class="code" class="language-plaintext highlighter-rouge">... WHERE genre = "Comedy, Drama";</code>, <code class="code" class="language-plaintext highlighter-rouge">... WHERE genre = "Comedy, News";</code>, and so on.</li>
+    <li data-marker="*">We can use the <code class="code" class="language-plaintext highlighter-rouge">LIKE</code> keyword again, but two genres, “Music” and “Musical”, are similar enough for that to be problematic.</li>
     <li data-marker="*">We can actually write our own Python program that will use SQL to import our CSV data into <em>two</em> tables:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Imports titles and genres from CSV into a SQLite database
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="c1"># Imports titles and genres from CSV into a SQLite database
   </span>  
   <span class="kn">import</span> <span class="nn">cs50</span>
   <span class="kn">import</span> <span class="nn">csv</span>
@@ -731,12 +731,12 @@
               <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"INSERT INTO genres (show_id, genre) VALUES(?, ?)"</span><span class="p">,</span> <span class="n">show_id</span><span class="p">,</span> <span class="n">genre</span><span class="p">)</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">First, we import the Python <code class="language-plaintext highlighter-rouge">cs50</code> library so we can run SQL commands more easily.</li>
-        <li data-marker="*">Then, the rest of this code will import each row of <code class="language-plaintext highlighter-rouge">favorites.csv</code>.</li>
+        <li data-marker="*">First, we import the Python <code class="code" class="language-plaintext highlighter-rouge">cs50</code> library so we can run SQL commands more easily.</li>
+        <li data-marker="*">Then, the rest of this code will import each row of <code class="code" class="language-plaintext highlighter-rouge">favorites.csv</code>.</li>
       </ul>
     </li>
     <li data-marker="*">Now, our database will have this design:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">sqlite3</span> <span class="n">favorites8</span><span class="p">.</span><span class="n">db</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="err">$</span> <span class="n">sqlite3</span> <span class="n">favorites8</span><span class="p">.</span><span class="n">db</span>
   <span class="n">SQLite</span> <span class="k">version</span> <span class="mi">3</span><span class="p">.</span><span class="mi">36</span><span class="p">.</span><span class="mi">0</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">18</span> <span class="mi">18</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">39</span>
   <span class="n">Enter</span> <span class="nv">".help"</span> <span class="k">for</span> <span class="k">usage</span> <span class="n">hints</span><span class="p">.</span>
   <span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="k">schema</span>
@@ -744,13 +744,13 @@
   <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">genres</span> <span class="p">(</span><span class="n">show_id</span> <span class="nb">INTEGER</span><span class="p">,</span> <span class="n">genre</span> <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">show_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">shows</span><span class="p">(</span><span class="n">id</span><span class="p">));</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We have one table, <code class="language-plaintext highlighter-rouge">shows</code>, with an <code class="language-plaintext highlighter-rouge">id</code> column and a <code class="language-plaintext highlighter-rouge">title</code> column. We can specify that a <code class="language-plaintext highlighter-rouge">title</code> isn’t null, and that <code class="language-plaintext highlighter-rouge">id</code> is the column we want to use as a primary key.</li>
-        <li data-marker="*">Then, we’ll have a table called <code class="language-plaintext highlighter-rouge">genres</code>, where we have a <code class="language-plaintext highlighter-rouge">show_id</code> column that references our <code class="language-plaintext highlighter-rouge">shows</code> table, along with a <code class="language-plaintext highlighter-rouge">genre</code> column.</li>
+        <li data-marker="*">We have one table, <code class="code" class="language-plaintext highlighter-rouge">shows</code>, with an <code class="code" class="language-plaintext highlighter-rouge">id</code> column and a <code class="code" class="language-plaintext highlighter-rouge">title</code> column. We can specify that a <code class="code" class="language-plaintext highlighter-rouge">title</code> isn’t null, and that <code class="code" class="language-plaintext highlighter-rouge">id</code> is the column we want to use as a primary key.</li>
+        <li data-marker="*">Then, we’ll have a table called <code class="code" class="language-plaintext highlighter-rouge">genres</code>, where we have a <code class="code" class="language-plaintext highlighter-rouge">show_id</code> column that references our <code class="code" class="language-plaintext highlighter-rouge">shows</code> table, along with a <code class="code" class="language-plaintext highlighter-rouge">genre</code> column.</li>
         <li data-marker="*">This is an example of a <strong>relation</strong>, like a link, between rows in different tables in our database.</li>
       </ul>
     </li>
-    <li data-marker="*">In our <code class="language-plaintext highlighter-rouge">shows</code> table, we’ll see each show with an <code class="language-plaintext highlighter-rouge">id</code> number:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span><span class="p">;</span>
+    <li data-marker="*">In our <code class="code" class="language-plaintext highlighter-rouge">shows</code> table, we’ll see each show with an <code class="code" class="language-plaintext highlighter-rouge">id</code> number:
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">-----+------------------------------------+</span>
   <span class="o">|</span> <span class="n">id</span>  <span class="o">|</span>               <span class="n">title</span>                <span class="o">|</span>
   <span class="o">+</span><span class="c1">-----+------------------------------------+</span>
@@ -764,8 +764,8 @@
   <span class="p">...</span>
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">And we can see that the <code class="language-plaintext highlighter-rouge">genres</code> table has one or more rows for each <code class="language-plaintext highlighter-rouge">show_id</code>:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">genres</span><span class="p">;</span>
+    <li data-marker="*">And we can see that the <code class="code" class="language-plaintext highlighter-rouge">genres</code> table has one or more rows for each <code class="code" class="language-plaintext highlighter-rouge">show_id</code>:
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">genres</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">---------+-------------+</span>
   <span class="o">|</span> <span class="n">show_id</span> <span class="o">|</span>    <span class="n">genre</span>    <span class="o">|</span>
   <span class="o">+</span><span class="c1">---------+-------------+</span>
@@ -788,12 +788,12 @@
   <span class="p">...</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Since each show may have more than one genre, we can have more than one row per show in our <code class="language-plaintext highlighter-rouge">genres</code> table, known as a <strong>one-to-many</strong> relationship.</li>
+        <li data-marker="*">Since each show may have more than one genre, we can have more than one row per show in our <code class="code" class="language-plaintext highlighter-rouge">genres</code> table, known as a <strong>one-to-many</strong> relationship.</li>
         <li data-marker="*">Furthermore, the data is now cleaner, since each genre name is in its own row.</li>
       </ul>
     </li>
-    <li data-marker="*">We can select all the shows are that comedies by selecting from the <code class="language-plaintext highlighter-rouge">genres</code> table first, and then looking for those <code class="language-plaintext highlighter-rouge">id</code>s in the <code class="language-plaintext highlighter-rouge">shows</code> table:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">show_id</span> <span class="k">FROM</span> <span class="n">genres</span> <span class="k">WHERE</span> <span class="n">genre</span> <span class="o">=</span> <span class="nv">"Comedy"</span><span class="p">);</span>
+    <li data-marker="*">We can select all the shows are that comedies by selecting from the <code class="code" class="language-plaintext highlighter-rouge">genres</code> table first, and then looking for those <code class="code" class="language-plaintext highlighter-rouge">id</code>s in the <code class="code" class="language-plaintext highlighter-rouge">shows</code> table:
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">show_id</span> <span class="k">FROM</span> <span class="n">genres</span> <span class="k">WHERE</span> <span class="n">genre</span> <span class="o">=</span> <span class="nv">"Comedy"</span><span class="p">);</span>
   <span class="o">+</span><span class="c1">------------------------------------+</span>
   <span class="o">|</span>               <span class="n">title</span>                <span class="o">|</span>
   <span class="o">+</span><span class="c1">------------------------------------+</span>
@@ -807,11 +807,11 @@
   <span class="p">...</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Notice that we’ve nested two queries, where the inner one returns a list of show <code class="language-plaintext highlighter-rouge">id</code>s, and the outer one uses those to select the titles of shows that match.</li>
+        <li data-marker="*">Notice that we’ve nested two queries, where the inner one returns a list of show <code class="code" class="language-plaintext highlighter-rouge">id</code>s, and the outer one uses those to select the titles of shows that match.</li>
       </ul>
     </li>
     <li data-marker="*">Now we can sort and show just the unique titles by adding to our command:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">DISTINCT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">show_id</span> <span class="k">FROM</span> <span class="n">genres</span> <span class="k">WHERE</span> <span class="n">genre</span> <span class="o">=</span> <span class="nv">"Comedy"</span><span class="p">)</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">title</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">DISTINCT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">show_id</span> <span class="k">FROM</span> <span class="n">genres</span> <span class="k">WHERE</span> <span class="n">genre</span> <span class="o">=</span> <span class="nv">"Comedy"</span><span class="p">)</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">title</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">------------------------------------+</span>
   <span class="o">|</span>               <span class="n">title</span>                <span class="o">|</span>
   <span class="o">+</span><span class="c1">------------------------------------+</span>
@@ -824,12 +824,12 @@
   <span class="p">...</span>
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">And we can add new data to each table, in order to add another show. First, we’ll add a new row to the <code class="language-plaintext highlighter-rouge">shows</code> table for Seinfeld:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">shows</span> <span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="nv">"Seinfeld"</span><span class="p">);</span>
+    <li data-marker="*">And we can add new data to each table, in order to add another show. First, we’ll add a new row to the <code class="code" class="language-plaintext highlighter-rouge">shows</code> table for Seinfeld:
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">shows</span> <span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="nv">"Seinfeld"</span><span class="p">);</span>
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">Then, we can get our row’s <code class="language-plaintext highlighter-rouge">id</code> by looking for it in the table:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"Seinfeld"</span><span class="p">;</span>
+    <li data-marker="*">Then, we can get our row’s <code class="code" class="language-plaintext highlighter-rouge">id</code> by looking for it in the table:
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"Seinfeld"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">-----+----------+</span>
   <span class="o">|</span> <span class="n">id</span>  <span class="o">|</span>  <span class="n">title</span>   <span class="o">|</span>
   <span class="o">+</span><span class="c1">-----+----------+</span>
@@ -837,16 +837,16 @@
   <span class="o">+</span><span class="c1">-----+----------+</span>
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">We’ll use that as the <code class="language-plaintext highlighter-rouge">show_id</code> to add a new row in the <code class="language-plaintext highlighter-rouge">genres</code> table:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">genres</span> <span class="p">(</span><span class="n">show_id</span><span class="p">,</span> <span class="n">genre</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">159</span><span class="p">,</span> <span class="nv">"Comedy"</span><span class="p">);</span>
+    <li data-marker="*">We’ll use that as the <code class="code" class="language-plaintext highlighter-rouge">show_id</code> to add a new row in the <code class="code" class="language-plaintext highlighter-rouge">genres</code> table:
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">genres</span> <span class="p">(</span><span class="n">show_id</span><span class="p">,</span> <span class="n">genre</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">159</span><span class="p">,</span> <span class="nv">"Comedy"</span><span class="p">);</span>
   </code></pre></div>    </div>
     </li>
-    <li data-marker="*">Then, we’ll use <code class="language-plaintext highlighter-rouge">UPDATE</code> to set the title to uppercase:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">shows</span> <span class="k">SET</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"SEINFELD"</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"Seinfeld"</span><span class="p">;</span>
+    <li data-marker="*">Then, we’ll use <code class="code" class="language-plaintext highlighter-rouge">UPDATE</code> to set the title to uppercase:
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">shows</span> <span class="k">SET</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"SEINFELD"</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"Seinfeld"</span><span class="p">;</span>
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">Finally, we’ll run the same command as before, and see our new show is indeed in the list of comedies:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">DISTINCT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">show_id</span> <span class="k">FROM</span> <span class="n">genres</span> <span class="k">WHERE</span> <span class="n">genre</span> <span class="o">=</span> <span class="nv">"Comedy"</span><span class="p">)</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">title</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="k">DISTINCT</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">show_id</span> <span class="k">FROM</span> <span class="n">genres</span> <span class="k">WHERE</span> <span class="n">genre</span> <span class="o">=</span> <span class="nv">"Comedy"</span><span class="p">)</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">title</span><span class="p">;</span>
   <span class="p">...</span>
   <span class="o">|</span> <span class="n">SEINFELD</span>                       <span class="o">|</span>
   <span class="p">...</span>
@@ -859,7 +859,7 @@
   <ul>
     <li data-marker="*">It turns out that we’ll be able to write Python code that automates this, so we can imagine building web applications that can programmatically store and look up user data, online shopping orders, and more.</li>
     <li data-marker="*">We can write a program that asks the user for a show title and then prints its popularity:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">SQL</span>
   
@@ -874,19 +874,19 @@
   <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">"counter"</span><span class="p">])</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We’ll use the <code class="language-plaintext highlighter-rouge">cs50</code> library to run SQL commands more easily, and open the <code class="language-plaintext highlighter-rouge">favorites.db</code> database we created earlier.</li>
-        <li data-marker="*">We’ll prompt the user for a title, and then execute a command. A <code class="language-plaintext highlighter-rouge">?</code> in the command will allow us to safely substitute variables in our command.</li>
-        <li data-marker="*">The results are returned in a list of rows, and <code class="language-plaintext highlighter-rouge">COUNT(*)</code> returns just one row. In our command, we’ll add <code class="language-plaintext highlighter-rouge">AS counter</code>, so the count is returned in the row (which is a dictionary) with the column name <code class="language-plaintext highlighter-rouge">counter</code>.</li>
+        <li data-marker="*">We’ll use the <code class="code" class="language-plaintext highlighter-rouge">cs50</code> library to run SQL commands more easily, and open the <code class="code" class="language-plaintext highlighter-rouge">favorites.db</code> database we created earlier.</li>
+        <li data-marker="*">We’ll prompt the user for a title, and then execute a command. A <code class="code" class="language-plaintext highlighter-rouge">?</code> in the command will allow us to safely substitute variables in our command.</li>
+        <li data-marker="*">The results are returned in a list of rows, and <code class="code" class="language-plaintext highlighter-rouge">COUNT(*)</code> returns just one row. In our command, we’ll add <code class="code" class="language-plaintext highlighter-rouge">AS counter</code>, so the count is returned in the row (which is a dictionary) with the column name <code class="code" class="language-plaintext highlighter-rouge">counter</code>.</li>
       </ul>
     </li>
     <li data-marker="*">We can run our program and search for “The Office”:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   Title: The Office
   12
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">And we can tweak our program to print all the rows that match:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="kn">import</span> <span class="nn">csv</span>
   
   <span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">SQL</span>
   
@@ -899,7 +899,7 @@
   <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
       <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">"title"</span><span class="p">])</span>
   </code></pre></div>    </div>
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ python favorites.py
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">$ python favorites.py
   Title: The Office
   The Office
   The Office
@@ -916,7 +916,7 @@
   The Office
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">Since <code class="language-plaintext highlighter-rouge">LIKE</code> is case-insensitive, we see all the various ways the titles were capitalized.</li>
+        <li data-marker="*">Since <code class="code" class="language-plaintext highlighter-rouge">LIKE</code> is case-insensitive, we see all the various ways the titles were capitalized.</li>
       </ul>
     </li>
   </ul>
@@ -926,7 +926,7 @@
   <ul>
     <li data-marker="*">IMDb, or the Internet Movie Database, has datasets available for download as TSV (tab-separated values) files.</li>
     <li data-marker="*">We’ll open a database that the staff has created beforehand:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">sqlite3</span> <span class="n">shows</span><span class="p">.</span><span class="n">db</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="err">$</span> <span class="n">sqlite3</span> <span class="n">shows</span><span class="p">.</span><span class="n">db</span>
   <span class="n">SQLite</span> <span class="k">version</span> <span class="mi">3</span><span class="p">.</span><span class="mi">36</span><span class="p">.</span><span class="mi">0</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">18</span> <span class="mi">18</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">39</span>
   <span class="n">Enter</span> <span class="nv">".help"</span> <span class="k">for</span> <span class="k">usage</span> <span class="n">hints</span><span class="p">.</span>
   <span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="k">schema</span>
@@ -969,26 +969,26 @@
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">Notice that we have multiple tables, each of which has columns of various data types.</li>
-        <li data-marker="*">In both the <code class="language-plaintext highlighter-rouge">stars</code> and <code class="language-plaintext highlighter-rouge">writers</code> table, for example, we have a <code class="language-plaintext highlighter-rouge">show_id</code> column that references the <code class="language-plaintext highlighter-rouge">id</code> of some row in the <code class="language-plaintext highlighter-rouge">shows</code> table, and a <code class="language-plaintext highlighter-rouge">person_id</code> column that references the <code class="language-plaintext highlighter-rouge">id</code> of some row in the <code class="language-plaintext highlighter-rouge">people</code> table. Effectively, they link shows and people by their <code class="language-plaintext highlighter-rouge">id</code>s.</li>
+        <li data-marker="*">In both the <code class="code" class="language-plaintext highlighter-rouge">stars</code> and <code class="code" class="language-plaintext highlighter-rouge">writers</code> table, for example, we have a <code class="code" class="language-plaintext highlighter-rouge">show_id</code> column that references the <code class="code" class="language-plaintext highlighter-rouge">id</code> of some row in the <code class="code" class="language-plaintext highlighter-rouge">shows</code> table, and a <code class="code" class="language-plaintext highlighter-rouge">person_id</code> column that references the <code class="code" class="language-plaintext highlighter-rouge">id</code> of some row in the <code class="code" class="language-plaintext highlighter-rouge">people</code> table. Effectively, they link shows and people by their <code class="code" class="language-plaintext highlighter-rouge">id</code>s.</li>
       </ul>
     </li>
     <li data-marker="*">It turns out that SQL, too, has its own data types:
       <ul>
-        <li data-marker="*"><strong><code class="language-plaintext highlighter-rouge">BLOB</code></strong>, for “binary large object”, raw binary data that might represent files</li>
-        <li data-marker="*"><strong><code class="language-plaintext highlighter-rouge">INTEGER</code></strong></li>
-        <li data-marker="*"><strong><code class="language-plaintext highlighter-rouge">NUMERIC</code></strong>, number-like but not quite a number, like a date or time</li>
-        <li data-marker="*"><strong><code class="language-plaintext highlighter-rouge">REAL</code></strong>, for floating-point values</li>
-        <li data-marker="*"><strong><code class="language-plaintext highlighter-rouge">TEXT</code></strong>, like strings</li>
+        <li data-marker="*"><strong><code class="code" class="language-plaintext highlighter-rouge">BLOB</code></strong>, for “binary large object”, raw binary data that might represent files</li>
+        <li data-marker="*"><strong><code class="code" class="language-plaintext highlighter-rouge">INTEGER</code></strong></li>
+        <li data-marker="*"><strong><code class="code" class="language-plaintext highlighter-rouge">NUMERIC</code></strong>, number-like but not quite a number, like a date or time</li>
+        <li data-marker="*"><strong><code class="code" class="language-plaintext highlighter-rouge">REAL</code></strong>, for floating-point values</li>
+        <li data-marker="*"><strong><code class="code" class="language-plaintext highlighter-rouge">TEXT</code></strong>, like strings</li>
       </ul>
     </li>
     <li data-marker="*">Columns can also have additional attributes:
       <ul>
-        <li data-marker="*"><strong><code class="language-plaintext highlighter-rouge">PRIMARY KEY</code></strong>, like the <code class="language-plaintext highlighter-rouge">id</code> columns above that will be used to uniquely identify each row</li>
-        <li data-marker="*"><strong><code class="language-plaintext highlighter-rouge">FOREIGN KEY</code></strong>, like the <code class="language-plaintext highlighter-rouge">show_id</code> column above that refers to a column in some other table</li>
+        <li data-marker="*"><strong><code class="code" class="language-plaintext highlighter-rouge">PRIMARY KEY</code></strong>, like the <code class="code" class="language-plaintext highlighter-rouge">id</code> columns above that will be used to uniquely identify each row</li>
+        <li data-marker="*"><strong><code class="code" class="language-plaintext highlighter-rouge">FOREIGN KEY</code></strong>, like the <code class="code" class="language-plaintext highlighter-rouge">show_id</code> column above that refers to a column in some other table</li>
       </ul>
     </li>
-    <li data-marker="*">We can see that there are millions of rows in the <code class="language-plaintext highlighter-rouge">people</code> table:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">people</span><span class="p">;</span>
+    <li data-marker="*">We can see that there are millions of rows in the <code class="code" class="language-plaintext highlighter-rouge">people</code> table:
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">people</span><span class="p">;</span>
   <span class="p">...</span>
   <span class="o">|</span> <span class="mi">13058200</span> <span class="o">|</span> <span class="n">Emilio</span> <span class="n">Mancuso</span>                                      <span class="o">|</span>       <span class="o">|</span>
   <span class="o">|</span> <span class="mi">13058201</span> <span class="o">|</span> <span class="n">Pietro</span> <span class="n">Furnis</span>                                       <span class="o">|</span>       <span class="o">|</span>
@@ -997,7 +997,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">But like before, we can search for just one row:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">people</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="nv">"Steve Carell"</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">people</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="nv">"Steve Carell"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">--------+--------------+-------+</span>
   <span class="o">|</span>   <span class="n">id</span>   <span class="o">|</span>     <span class="n">name</span>     <span class="o">|</span> <span class="n">birth</span> <span class="o">|</span>
   <span class="o">+</span><span class="c1">--------+--------------+-------+</span>
@@ -1006,7 +1006,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">It turns out that there are a few shows titled “The Office”:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"The Office"</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"The Office"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">---------+------------+------+----------+</span>
   <span class="o">|</span>   <span class="n">id</span>    <span class="o">|</span>   <span class="n">title</span>    <span class="o">|</span> <span class="nb">year</span> <span class="o">|</span> <span class="n">episodes</span> <span class="o">|</span>
   <span class="o">+</span><span class="c1">---------+------------+------+----------+</span>
@@ -1020,7 +1020,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">The most popular one, with 188 episodes, is the one we want, so we can get just that one:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"The Office"</span> <span class="k">and</span> <span class="nb">year</span> <span class="o">=</span> <span class="nv">"2005"</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"The Office"</span> <span class="k">and</span> <span class="nb">year</span> <span class="o">=</span> <span class="nv">"2005"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">--------+------------+------+----------+</span>
   <span class="o">|</span>   <span class="n">id</span>   <span class="o">|</span>   <span class="n">title</span>    <span class="o">|</span> <span class="nb">year</span> <span class="o">|</span> <span class="n">episodes</span> <span class="o">|</span>
   <span class="o">+</span><span class="c1">--------+------------+------+----------+</span>
@@ -1029,7 +1029,7 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">We can turn on a timer and see that our original command took about 0.02 seconds to run:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="n">timer</span> <span class="k">on</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="n">timer</span> <span class="k">on</span>
   <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"The Office"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">---------+------------+------+----------+</span>
   <span class="o">|</span>   <span class="n">id</span>    <span class="o">|</span>   <span class="n">title</span>    <span class="o">|</span> <span class="nb">year</span> <span class="o">|</span> <span class="n">episodes</span> <span class="o">|</span>
@@ -1045,12 +1045,12 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">We can create an <strong>index</strong>, or additional data structures that our database program will use for future searches:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="nv">"title_index"</span> <span class="k">ON</span> <span class="nv">"shows"</span> <span class="p">(</span><span class="nv">"title"</span><span class="p">);</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="nv">"title_index"</span> <span class="k">ON</span> <span class="nv">"shows"</span> <span class="p">(</span><span class="nv">"title"</span><span class="p">);</span>
   <span class="n">Run</span> <span class="nb">Time</span><span class="p">:</span> <span class="nb">real</span> <span class="mi">0</span><span class="p">.</span><span class="mi">349</span> <span class="k">user</span> <span class="mi">0</span><span class="p">.</span><span class="mi">195206</span> <span class="n">sys</span> <span class="mi">0</span><span class="p">.</span><span class="mi">051217</span>
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">Now, our search command takes nearly no time:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"The Office"</span><span class="p">;</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">title</span> <span class="o">=</span> <span class="nv">"The Office"</span><span class="p">;</span>
   <span class="o">+</span><span class="c1">---------+------------+------+----------+</span>
   <span class="o">|</span>   <span class="n">id</span>    <span class="o">|</span>   <span class="n">title</span>    <span class="o">|</span> <span class="nb">year</span> <span class="o">|</span> <span class="n">episodes</span> <span class="o">|</span>
   <span class="o">+</span><span class="c1">---------+------------+------+----------+</span>
@@ -1065,13 +1065,13 @@
   </code></pre></div>    </div>
     </li>
     <li data-marker="*">It turns out that these data structures are generally <strong>B-trees</strong>, like binary trees we’ve seen in C but with more children, with nodes organized such that we can search faster than linearly:<br>
-  <img src="b_tree.png" alt="tree with root node and four child nodes, each with two or three child nodes" width="400">
+  <img src="./static/imagesnotes/b_tree.webp" alt="tree with root node and four child nodes, each with two or three child nodes" width="400">
       <ul>
         <li data-marker="*">Creating an index takes some time up front, perhaps by sorting the data, but afterwards we can search much more quickly.</li>
       </ul>
     </li>
     <li data-marker="*">With our data spread among different tables, we can nest our queries to get useful data. For example, we can get all the titles of shows starring a particular person:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite3</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">show_id</span> <span class="k">FROM</span> <span class="n">stars</span> <span class="k">WHERE</span> <span class="n">person_id</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">people</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="nv">"Steve Carell"</span><span class="p">));</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite3</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">shows</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">show_id</span> <span class="k">FROM</span> <span class="n">stars</span> <span class="k">WHERE</span> <span class="n">person_id</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">people</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="nv">"Steve Carell"</span><span class="p">));</span>
   <span class="o">+</span><span class="c1">------------------------------------+</span>
   <span class="o">|</span>               <span class="n">title</span>                <span class="o">|</span>
   <span class="o">+</span><span class="c1">------------------------------------+</span>
@@ -1083,11 +1083,11 @@
   <span class="p">...</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">We’ll <code class="language-plaintext highlighter-rouge">SELECT</code> the <code class="language-plaintext highlighter-rouge">title</code> from the <code class="language-plaintext highlighter-rouge">shows</code> table for shows with an <code class="language-plaintext highlighter-rouge">id</code> that matches a list of <code class="language-plaintext highlighter-rouge">show_id</code>s from the <code class="language-plaintext highlighter-rouge">stars</code> table. Those <code class="language-plaintext highlighter-rouge">show_id</code>s, in turn, must have a <code class="language-plaintext highlighter-rouge">person_id</code> that matches the <code class="language-plaintext highlighter-rouge">id</code> of Steve Carell in the <code class="language-plaintext highlighter-rouge">people</code> table.</li>
+        <li data-marker="*">We’ll <code class="code" class="language-plaintext highlighter-rouge">SELECT</code> the <code class="code" class="language-plaintext highlighter-rouge">title</code> from the <code class="code" class="language-plaintext highlighter-rouge">shows</code> table for shows with an <code class="code" class="language-plaintext highlighter-rouge">id</code> that matches a list of <code class="code" class="language-plaintext highlighter-rouge">show_id</code>s from the <code class="code" class="language-plaintext highlighter-rouge">stars</code> table. Those <code class="code" class="language-plaintext highlighter-rouge">show_id</code>s, in turn, must have a <code class="code" class="language-plaintext highlighter-rouge">person_id</code> that matches the <code class="code" class="language-plaintext highlighter-rouge">id</code> of Steve Carell in the <code class="code" class="language-plaintext highlighter-rouge">people</code> table.</li>
       </ul>
     </li>
     <li data-marker="*">Our query runs pretty quickly, but we can create a few more indexes:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">person_index</span> <span class="k">ON</span> <span class="n">stars</span> <span class="p">(</span><span class="n">person_id</span><span class="p">);</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">person_index</span> <span class="k">ON</span> <span class="n">stars</span> <span class="p">(</span><span class="n">person_id</span><span class="p">);</span>
   <span class="n">Run</span> <span class="nb">Time</span><span class="p">:</span> <span class="nb">real</span> <span class="mi">0</span><span class="p">.</span><span class="mi">890</span> <span class="k">user</span> <span class="mi">0</span><span class="p">.</span><span class="mi">662294</span> <span class="n">sys</span> <span class="mi">0</span><span class="p">.</span><span class="mi">097505</span>
   <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">show_index</span> <span class="k">ON</span> <span class="n">stars</span> <span class="p">(</span><span class="n">show_id</span><span class="p">);</span>
   <span class="n">Run</span> <span class="nb">Time</span><span class="p">:</span> <span class="nb">real</span> <span class="mi">0</span><span class="p">.</span><span class="mi">644</span> <span class="k">user</span> <span class="mi">0</span><span class="p">.</span><span class="mi">469162</span> <span class="n">sys</span> <span class="mi">0</span><span class="p">.</span><span class="mi">058866</span>
@@ -1098,18 +1098,18 @@
         <li data-marker="*">Each index takes almost a second to build, but afterwards, our same query takes very little time to run.</li>
       </ul>
     </li>
-    <li data-marker="*">It turns out that we can use <strong><code class="language-plaintext highlighter-rouge">JOIN</code></strong> commands to combine tables in our queries:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">people</span> 
+    <li data-marker="*">It turns out that we can use <strong><code class="code" class="language-plaintext highlighter-rouge">JOIN</code></strong> commands to combine tables in our queries:
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">people</span> 
      <span class="p">...</span><span class="o">&gt;</span> <span class="k">JOIN</span> <span class="n">stars</span> <span class="k">ON</span> <span class="n">people</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">stars</span><span class="p">.</span><span class="n">person_id</span>
      <span class="p">...</span><span class="o">&gt;</span> <span class="k">JOIN</span> <span class="n">shows</span> <span class="k">ON</span> <span class="n">stars</span><span class="p">.</span><span class="n">show_id</span> <span class="o">=</span> <span class="n">shows</span><span class="p">.</span><span class="n">id</span>
      <span class="p">...</span><span class="o">&gt;</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="nv">"Steve Carell"</span><span class="p">;</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">With the <code class="language-plaintext highlighter-rouge">JOIN</code> syntax, we can virtually combine tables based on their foreign keys, and use their columns as though they were one table. Here, we’re matching the <code class="language-plaintext highlighter-rouge">people</code> table with the <code class="language-plaintext highlighter-rouge">stars</code> table, and then with the <code class="language-plaintext highlighter-rouge">shows</code> table.</li>
+        <li data-marker="*">With the <code class="code" class="language-plaintext highlighter-rouge">JOIN</code> syntax, we can virtually combine tables based on their foreign keys, and use their columns as though they were one table. Here, we’re matching the <code class="code" class="language-plaintext highlighter-rouge">people</code> table with the <code class="code" class="language-plaintext highlighter-rouge">stars</code> table, and then with the <code class="code" class="language-plaintext highlighter-rouge">shows</code> table.</li>
       </ul>
     </li>
     <li data-marker="*">We can format the same query a little better by listing the tables we want to use all at once:
-      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">people</span><span class="p">,</span> <span class="n">stars</span><span class="p">,</span> <span class="n">shows</span>
+      <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">title</span> <span class="k">FROM</span> <span class="n">people</span><span class="p">,</span> <span class="n">stars</span><span class="p">,</span> <span class="n">shows</span>
      <span class="p">...</span><span class="o">&gt;</span> <span class="k">WHERE</span> <span class="n">people</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">stars</span><span class="p">.</span><span class="n">person_id</span>
      <span class="p">...</span><span class="o">&gt;</span> <span class="k">AND</span> <span class="n">stars</span><span class="p">.</span><span class="n">show_id</span> <span class="o">=</span> <span class="n">shows</span><span class="p">.</span><span class="n">id</span>
      <span class="p">...</span><span class="o">&gt;</span> <span class="k">AND</span> <span class="n">name</span> <span class="o">=</span> <span class="nv">"Steve Carell"</span><span class="p">;</span>
@@ -1132,46 +1132,46 @@
     <li data-marker="*">One problem in SQL is called a <strong>SQL injection attack</strong>, where an someone can inject, or place, their own commands into inputs that we then run on our database.</li>
     <li data-marker="*">We might encounter a login page for a website that asks for a username and password, and checks for those in a SQL database.</li>
     <li data-marker="*">Our query for searching for a user might be:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"SELECT * FROM users WHERE username = ? AND password = ?"</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"SELECT * FROM users WHERE username = ? AND password = ?"</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
   
   <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
       <span class="c1"># Log user in
   </span></code></pre></div>    </div>
       <ul>
-        <li data-marker="*">By using the <code class="language-plaintext highlighter-rouge">?</code> symbols as placeholders, our SQL library will escape the input, or prevent dangerous characters from being interpreted as part of the command.</li>
+        <li data-marker="*">By using the <code class="code" class="language-plaintext highlighter-rouge">?</code> symbols as placeholders, our SQL library will escape the input, or prevent dangerous characters from being interpreted as part of the command.</li>
       </ul>
     </li>
     <li data-marker="*">In contrast, we might have a SQL query that’s a formatted string, such as:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s">"SELECT * FROM users WHERE username = '</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s">' AND password = '</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s">'"</span><span class="p">)</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s">"SELECT * FROM users WHERE username = '</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s">' AND password = '</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s">'"</span><span class="p">)</span>
   
   <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
       <span class="c1"># Log user in
   </span></code></pre></div>    </div>
     </li>
-    <li data-marker="*">If a user types in <code class="language-plaintext highlighter-rouge">malan@harvard.edu'--</code> as their input, then the query will end up being:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s">"SELECT * FROM users WHERE username = 'malan@harvard.edu'--' AND password = '</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s">'"</span><span class="p">)</span>
+    <li data-marker="*">If a user types in <code class="code" class="language-plaintext highlighter-rouge">malan@harvard.edu'--</code> as their input, then the query will end up being:
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"> <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s">"SELECT * FROM users WHERE username = 'malan@harvard.edu'--' AND password = '</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s">'"</span><span class="p">)</span>
   </code></pre></div>    </div>
       <ul>
-        <li data-marker="*">This query will actually select the row where <code class="language-plaintext highlighter-rouge">username = 'malan@harvard.edu'</code>, without checking the password, since the single quotes end the input, and <code class="language-plaintext highlighter-rouge">--</code> turns the rest of the line into a comment in SQL.</li>
+        <li data-marker="*">This query will actually select the row where <code class="code" class="language-plaintext highlighter-rouge">username = 'malan@harvard.edu'</code>, without checking the password, since the single quotes end the input, and <code class="code" class="language-plaintext highlighter-rouge">--</code> turns the rest of the line into a comment in SQL.</li>
       </ul>
     </li>
-    <li data-marker="*">The user could even add a semicolon, <code class="language-plaintext highlighter-rouge">;</code>, and write a new command of their own, that our database will execute.</li>
+    <li data-marker="*">The user could even add a semicolon, <code class="code" class="language-plaintext highlighter-rouge">;</code>, and write a new command of their own, that our database will execute.</li>
     <li data-marker="*">Another set of problems with databases are <strong>race conditions</strong>, where shared data is unintentionally changed by code running on different devices or servers at the same time.</li>
     <li data-marker="*">One example is a popular post getting lots of likes. A server might try to increment the number of likes, asking the database for the current number of likes, adding one, and updating the value in the database:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"SELECT likes FROM posts WHERE id = ?"</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"SELECT likes FROM posts WHERE id = ?"</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>
   <span class="n">likes</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">"likes"</span><span class="p">]</span>
   <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"UPDATE posts SET likes = ? WHERE id = ?"</span><span class="p">,</span> <span class="n">likes</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>
   </code></pre></div>    </div>
       <ul>
         <li data-marker="*">Two different servers, responding to two different users, might get the same starting number of likes since the first line of code runs at the same time on each server.</li>
-        <li data-marker="*">Then, both will use <code class="language-plaintext highlighter-rouge">UPDATE</code> to set the <em>same</em> new number of likes, even though there should have been two separate increments.</li>
+        <li data-marker="*">Then, both will use <code class="code" class="language-plaintext highlighter-rouge">UPDATE</code> to set the <em>same</em> new number of likes, even though there should have been two separate increments.</li>
       </ul>
     </li>
     <li data-marker="*">Another example might be of two roommates and a shared fridge in their dorm. The first roommate comes home, and sees that there is no milk in the fridge. So the first roommate leaves to the store to buy milk. While they are at the store, the second roommate comes home, sees that there is no milk, and leaves for another store to get milk as well. Later, there will be two jugs of milk in the fridge.</li>
     <li data-marker="*">We can solve this problem by locking the fridge so that our roommate can’t check whether there is milk until we’ve gotten back.</li>
     <li data-marker="*">To solve this problem, SQL supports <strong>transactions</strong>, where we can lock rows in a database, such that a particular set of actions are <strong>atomic</strong>, or guaranteed to happen together.</li>
     <li data-marker="*">For example, we can fix our problem above with:
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"BEGIN TRANSACTION"</span><span class="p">)</span>
+      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code"><span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"BEGIN TRANSACTION"</span><span class="p">)</span>
   <span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"SELECT likes FROM posts WHERE id = ?"</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>
   <span class="n">likes</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">"likes"</span><span class="p">]</span>
   <span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"UPDATE posts SET likes = ? WHERE id = ?"</span><span class="p">,</span> <span class="n">likes</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>

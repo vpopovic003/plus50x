@@ -18,7 +18,7 @@
     <li data-marker="*">This year, we’re back in Sanders Theatre, and David took CS50 himself as a sophomore years ago, but only because the professor at the time allowed him to take the course pass/fail.</li>
     <li data-marker="*">It turns out that computer science was less about programming than about problem solving. And though there may be frustration from feeling stuck or making mistakes, there will also be a great sense of gratification and pride from getting something to work or completing some task.</li>
     <li data-marker="*">In fact, David lost two points on his first assignment for not following all of the instructions correctly:<br>
-  <img src="assignment.png" alt="assignment showing code with -2 points" width="400">
+  <img src="./static/imagesnotes/assignment.webp" alt="assignment showing code with -2 points" width="400">
       <ul>
         <li data-marker="*">And while this code (written in a programming language as opposed to a language like English) looks cryptic at first, it may only take weeks or months before we can understand main programming concepts and even teach ourselves new languages.</li>
       </ul>
@@ -36,7 +36,7 @@
   <ul>
     <li data-marker="*">Computer science is fundamentally problem solving, but we’ll need to be precise and methodical.</li>
     <li data-marker="*">We can think of <strong>problem solving</strong> as the process of taking some input (a problem we want to solve) and generate some output (the solution to our problem).<br>
-  <img src="input_output.png" alt="word &quot;input&quot;, arrow into box, arrow out of box, word &quot;output&quot;" width="400"></li>
+  <img src="./static/imagesnotes/input_output.webp" alt="word &quot;input&quot;, arrow into box, arrow out of box, word &quot;output&quot;" width="400"></li>
     <li data-marker="*">To begin doing that, we’ll need a way to represent inputs and outputs, so we can store and work with information in a standardized way.</li>
   </ul>
   
@@ -89,8 +89,8 @@
       <pre>1 2 3
   </pre>
       <ul>
-        <li data-marker="*">The <code class="language-plaintext highlighter-rouge">3</code> is in the ones place, the <code class="language-plaintext highlighter-rouge">2</code> is in the tens place, and the <code class="language-plaintext highlighter-rouge">1</code> is in the hundreds place.</li>
-        <li data-marker="*">So <code class="language-plaintext highlighter-rouge">123</code> is <code class="language-plaintext highlighter-rouge">100×1 + 10×2 + 1×3 = 100 + 20 + 3 = 123</code>.</li>
+        <li data-marker="*">The <code class="code" class="language-plaintext highlighter-rouge">3</code> is in the ones place, the <code class="code" class="language-plaintext highlighter-rouge">2</code> is in the tens place, and the <code class="code" class="language-plaintext highlighter-rouge">1</code> is in the hundreds place.</li>
+        <li data-marker="*">So <code class="code" class="language-plaintext highlighter-rouge">123</code> is <code class="code" class="language-plaintext highlighter-rouge">100×1 + 10×2 + 1×3 = 100 + 20 + 3 = 123</code>.</li>
         <li data-marker="*">Each place for a digit represents a power of ten, since there are ten possible digits for each place. The rightmost place is for 10<sup>0</sup>, the middle one 10<sup>1</sup>, and the leftmost place 10<sup>2</sup>:
           <pre>10<sup>2</sup> 10<sup>1</sup> 10<sup>0</sup>
   1   2   3
@@ -115,28 +115,28 @@
   <b>0 0 0</b>
   </pre>
     </li>
-    <li data-marker="*">Now if we change the binary value to, say, <code class="language-plaintext highlighter-rouge">0 1 1</code>, the decimal value would be 3, since we add the 2 and the 1:
+    <li data-marker="*">Now if we change the binary value to, say, <code class="code" class="language-plaintext highlighter-rouge">0 1 1</code>, the decimal value would be 3, since we add the 2 and the 1:
       <pre>4 2 1
   <b>0 1 1</b>
   </pre>
     </li>
     <li data-marker="*">To count higher than 7, we would need another bit to the left to represent the number 8.</li>
-    <li data-marker="*">Most computers use 8 bits at a time, like <code class="language-plaintext highlighter-rouge">00000011</code> for the number 3.</li>
+    <li data-marker="*">Most computers use 8 bits at a time, like <code class="code" class="language-plaintext highlighter-rouge">00000011</code> for the number 3.</li>
   </ul>
   
   <h2 id="text">Text</h2>
   
   <ul>
-    <li data-marker="*">To represent letters, all we need to do is decide how numbers map to letters. Some humans, many years ago, collectively decided on a standard mapping of numbers to letters. The letter “A”, for example, is the number 65, and “B” is 66, and so on.  In binary, the letter “A” is the pattern <code class="language-plaintext highlighter-rouge">01000001</code>. By using context, like the file format, different programs can interpret and display the same bits as numbers or text.</li>
+    <li data-marker="*">To represent letters, all we need to do is decide how numbers map to letters. Some humans, many years ago, collectively decided on a standard mapping of numbers to letters. The letter “A”, for example, is the number 65, and “B” is 66, and so on.  In binary, the letter “A” is the pattern <code class="code" class="language-plaintext highlighter-rouge">01000001</code>. By using context, like the file format, different programs can interpret and display the same bits as numbers or text.</li>
     <li data-marker="*">The standard mapping, <a href="https://en.wikipedia.org/wiki/ASCII"><strong>ASCII</strong></a>, also includes lowercase letters and punctuation.</li>
-    <li data-marker="*">When we receive a text message, we might be getting patterns of bits that have the decimal values <code class="language-plaintext highlighter-rouge">72</code>, <code class="language-plaintext highlighter-rouge">73</code>, and <code class="language-plaintext highlighter-rouge">33</code>. Those bits would map to the letters <code class="language-plaintext highlighter-rouge">HI!</code>. And the sequences of bits we receive would look like <code class="language-plaintext highlighter-rouge">01001000</code>, <code class="language-plaintext highlighter-rouge">01001001</code>, and <code class="language-plaintext highlighter-rouge">00100001</code>, with 8 bits for each character.</li>
+    <li data-marker="*">When we receive a text message, we might be getting patterns of bits that have the decimal values <code class="code" class="language-plaintext highlighter-rouge">72</code>, <code class="code" class="language-plaintext highlighter-rouge">73</code>, and <code class="code" class="language-plaintext highlighter-rouge">33</code>. Those bits would map to the letters <code class="code" class="language-plaintext highlighter-rouge">HI!</code>. And the sequences of bits we receive would look like <code class="code" class="language-plaintext highlighter-rouge">01001000</code>, <code class="code" class="language-plaintext highlighter-rouge">01001001</code>, and <code class="code" class="language-plaintext highlighter-rouge">00100001</code>, with 8 bits for each character.</li>
     <li data-marker="*">With eight bits, or one byte, we can have 2<sup>8</sup>, or 256 different values (including zero). (The highest <em>value</em> we can count up to would be 255.)</li>
     <li data-marker="*">And we might already be familiar with using bytes as a unit of measurement for data, as in megabytes or gigabytes, for millions or billions of bytes.</li>
     <li data-marker="*">Other characters, such as letters with accent marks and symbols in other languages, are part of a standard called <a href="https://en.wikipedia.org/wiki/Unicode"><strong>Unicode</strong></a>, which uses more bits than ASCII to accommodate all these characters.</li>
     <li data-marker="*">When we receive an <a href="https://en.wikipedia.org/wiki/Emoji">emoji</a>, our computer is actually just receiving a number in binary that it then maps to the image of the emoji based on the Unicode standard.
       <ul>
-        <li data-marker="*">For example, the “face with medical mask” emoji is just the four bytes <code class="language-plaintext highlighter-rouge">11110000 10011111 10011000 10110111</code>:<br>
-  <img src="medical_mask.png" alt="emoji with face with medical mask" width="400"></li>
+        <li data-marker="*">For example, the “face with medical mask” emoji is just the four bytes <code class="code" class="language-plaintext highlighter-rouge">11110000 10011111 10011000 10110111</code>:<br>
+  <img src="./static/imagesnotes//medical_mask.webp" alt="emoji with face with medical mask" width="400"></li>
         <li data-marker="*">And it turns out that different companies that create software for their devices will have slightly different images that represent each emoji, since only the descriptions have been standardized.</li>
       </ul>
     </li>
@@ -146,14 +146,14 @@
   
   <ul>
     <li data-marker="*">With bits, we can map numbers to colors as well. There are many different systems to represent colors, but a common one is <strong>RGB</strong>, which represents colors by indicating the amount of red, green, and blue within each color.</li>
-    <li data-marker="*">For example, our pattern of bits earlier, <code class="language-plaintext highlighter-rouge">72</code>, <code class="language-plaintext highlighter-rouge">73</code>, and <code class="language-plaintext highlighter-rouge">33</code> might indicate the amount of red, green, and blue in a color. (And our programs would know those bits map to a color if we opened an image file, as opposed to receiving them in a text message.)
+    <li data-marker="*">For example, our pattern of bits earlier, <code class="code" class="language-plaintext highlighter-rouge">72</code>, <code class="code" class="language-plaintext highlighter-rouge">73</code>, and <code class="code" class="language-plaintext highlighter-rouge">33</code> might indicate the amount of red, green, and blue in a color. (And our programs would know those bits map to a color if we opened an image file, as opposed to receiving them in a text message.)
       <ul>
         <li data-marker="*">Each number might be 8 bits, with 256 possible values, so with three bytes, or 24 bits, we can represent millions of colors. Our three bytes from above would represent a dark shade of yellow:<br>
-  <img src="72_73_33.png" alt="dark yellow" width="50"></li>
+  <img src="./static/imagesnotes/72_73_33.webp" alt="dark yellow" width="50"></li>
       </ul>
     </li>
     <li data-marker="*">The dots, or squares, on our screens are called <strong>pixels</strong>, and images are made up of many thousands or millions of those pixels as well. So by using three bytes to represent the color for each pixel, we can create images. We can see pixels in an emoji if we zoom in, for example:<br>
-  <img src="emoji_zoomed.png" alt="zoomed-in emoji of face with medical mask with squares of pixels distinguishable" width="800"></li>
+  <img src="./static/imagesnotes/emoji_zoomed.webp" alt="zoomed-in emoji of face with medical mask with squares of pixels distinguishable" width="800"></li>
     <li data-marker="*">Videos are sequences of many images, changing multiple times a second to give us the appearance of motion, as a <a href="https://www.youtube.com/watch?v=sz78_07Xg-U">flipbook</a> might.</li>
     <li data-marker="*">Music can be represented with bits, too. <a href="https://en.wikipedia.org/wiki/MIDI">MIDI</a> is one such format which represents music with numbers for each of the notes and their duration and volume.</li>
     <li data-marker="*">So all of these ideas are just zeroes and ones, interpreted and used by software we’ve written to interpret them in the ways that we want.
@@ -168,13 +168,13 @@
   
   <ul>
     <li data-marker="*">Now that we can represent inputs and outputs, we can work on problem solving. The black box that transforms inputs to outputs contains <strong>algorithms</strong>, step-by-step instructions for solving problems:<br>
-  <img src="algorithms.png" alt="box with word &quot;algorithms&quot;" width="200"></li>
+  <img src="./static/imagesnotes/algorithms.webp" alt="box with word &quot;algorithms&quot;" width="200"></li>
     <li data-marker="*">We might have an application on our phones that store our contacts, with their names and phone numbers sorted alphabetically. The old-school equivalent might be a phone book, a printed copy of names and phone numbers.</li>
     <li data-marker="*">We might open the book and start from the first page, looking for a name one page at a time. This algorithm would be correct, since we will eventually find the name if it’s in the book.</li>
     <li data-marker="*">We might flip through the book two pages at a time, but this algorithm will not be correct since we might skip the page with our name on it.</li>
     <li data-marker="*">Another algorithm would be opening the phone book to the middle, decide whether our name will be in the left half or right half of the book (because the book is alphabetized), and reduce the size of our problem by half. We can repeat this until we find our name, dividing the problem in half each time.</li>
     <li data-marker="*">We can visualize the efficiency of each of those algorithms with a chart:<br>
-  <img src="time_to_solve.png" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph labeled &quot;n&quot;; yellow, less steep straight line from origin to top of graph labeled &quot;n/2&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;log_2  n&quot;" width="800">
+  <img src="./static/imagesnotes/time_to_solve.webp" alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph labeled &quot;n&quot;; yellow, less steep straight line from origin to top of graph labeled &quot;n/2&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;log_2  n&quot;" width="800">
       <ul>
         <li data-marker="*">Our first algorithm, searching one page at a time, can be represented by the red line: our time to solve increases linearly as the size of the problem increases. <em>n</em> is a number representing the size of the problem, so with <em>n</em> pages in our phone books, we have to take up to <em>n</em> steps to find a name.</li>
         <li data-marker="*">The second algorithm, searching two pages at a time, can be represented by the yellow line: our slope is less steep, but still linear. Now, we only need (roughly) <em>n</em> / 2 steps, since we flip two pages at a time.</li>
@@ -284,7 +284,7 @@
       </ul>
     </li>
     <li data-marker="*">And David’s first program just printed “hello, world” to the screen:
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;stdio.h&gt;
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="code">#include &lt;stdio.h&gt;
   
   int main(void)
   {
@@ -302,7 +302,7 @@
   <ul>
     <li data-marker="*">We’ll start programming with a graphical programming language called <a href="https://scratch.mit.edu/">Scratch</a>, where we’ll drag and drop blocks that contain instructions.</li>
     <li data-marker="*">The programming environment for Scratch is a little more friendly:<br>
-  <img src="scratch.png" alt="screenshot of Scratch's interface" width="800">
+  <img src="./static/imagesnotes/scratch.webp" alt="screenshot of Scratch's interface" width="800">
       <ul>
         <li data-marker="*">On the left, we have puzzle pieces that represent functions or variables, or other concepts, that we can drag and drop into the big area in the center.</li>
         <li data-marker="*">On the bottom right, we can add more characters, or sprites, for our program to use.</li>
@@ -310,7 +310,7 @@
       </ul>
     </li>
     <li data-marker="*">The world in Scratch has a coordinate-based system for positioning things on the screen:<br>
-  <img src="coordinates.png" alt="cat in center of screen with x and y axes labeled with negative and positive coordinates" width="600">
+  <img src="./static/imagesnotes/coordinates.webp" alt="cat in center of screen with x and y axes labeled with negative and positive coordinates" width="600">
       <ul>
         <li data-marker="*">The center of the screen is a coordinate of 0 for x and 0 for y, and the top of screen would be 0 for x and 180 for y. The bottom of the screen would still be 0 for x, and -180 for y. The left of the screen would be -240 for x and 0 for y, and the right of the screen would be 240 for x and 0 for y.</li>
       </ul>
@@ -318,31 +318,31 @@
     <li data-marker="*">Scratch also categorizes its pieces, each of which might be a function, conditional, or more:
       <ul>
         <li data-marker="*">The “Motion” category has functions like the “move” block that will do something:
-          <pre><code class="language-scratch">move () steps
+          <pre><code class="code" class="language-scratch">move () steps
   </code></pre>
         </li>
         <li data-marker="*">In the “Events” category, we can see blocks that will activate when something happens, like when the green flag on top of the stage is clicked:
-          <pre><code class="language-scratch">when green flag clicked
+          <pre><code class="code" class="language-scratch">when green flag clicked
   </code></pre>
         </li>
         <li data-marker="*">“Control” has conditionals, each of which will only do something if the Boolean expression inside is true:
-          <pre><code class="language-scratch">if &lt;&gt; then
+          <pre><code class="code" class="language-scratch">if &lt;&gt; then
   </code></pre>
         </li>
         <li data-marker="*">“Sensing” includes those Boolean expressions, or questions like whether the sprite is touching the mouse pointer:
-          <pre><code class="language-scratch">&lt;touching (mouse-pointer v) ?&gt;
+          <pre><code class="code" class="language-scratch">&lt;touching (mouse-pointer v) ?&gt;
   </code></pre>
         </li>
         <li data-marker="*">“Operators” contains blocks that let us do math or pick random numbers, or combine multiple Boolean expressions:
-          <pre><code class="language-scratch">&lt;&gt; and &lt;&gt;
+          <pre><code class="code" class="language-scratch">&lt;&gt; and &lt;&gt;
   </code></pre>
         </li>
-        <li data-marker="*">“Variables” will let us store values like words or numbers, and save them with names like <code class="language-plaintext highlighter-rouge">x</code>, <code class="language-plaintext highlighter-rouge">y</code>, or other full words to describe them.</li>
+        <li data-marker="*">“Variables” will let us store values like words or numbers, and save them with names like <code class="code" class="language-plaintext highlighter-rouge">x</code>, <code class="code" class="language-plaintext highlighter-rouge">y</code>, or other full words to describe them.</li>
         <li data-marker="*">We can even combine multiple blocks ourselves into a new puzzle piece, or function, with “My Blocks”.</li>
       </ul>
     </li>
     <li data-marker="*">We can drag a few blocks to make our cat say “hello, world”:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   say [hello, world]
   </code></pre>
       <ul>
@@ -350,7 +350,7 @@
       </ul>
     </li>
     <li data-marker="*">We can also drag in the “ask and wait” block, with a question like “What’s your name?”, and combine it with a “say” block for the answer:<br>
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   ask [What's your name?] and wait
   say [hello,]
   say (answer)
@@ -361,17 +361,17 @@
       </ul>
     </li>
     <li data-marker="*">But we didn’t wait after we said “Hello” with the first block, so we didn’t see the first message of “hello” before it was covered by our name. We can use the “join” block to combine two phrases so our cat can say “hello, David”:<br>
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   ask [What's your name?] and wait
   say (join [hello,] (answer))
   </code></pre>
       <ul>
         <li data-marker="*">Note that the “join” block takes not just one, but two arguments, or inputs, and its <em>output</em>, or the combined phrase, is used immediately as the <em>input</em> to another function, the “say” block:<br>
-  <img src="join_say.png" alt="hello, answer blocks as inputs to join block, then output of hello, David as input to say block, then output of cat with speech bubble" width="900"></li>
+  <img src="./static/imagesnotes/join_say.webp" alt="hello, answer blocks as inputs to join block, then output of hello, David as input to say block, then output of cat with speech bubble" width="900"></li>
       </ul>
     </li>
     <li data-marker="*">At the bottom left of the screen, we see an icon for extensions, and one of them is called Text to Speech. After we add it, we can use the “speak” block to hear our cat speak:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   ask [What's your name?] and wait
   speak (join [hello,] (answer))
   </code></pre>
@@ -385,7 +385,7 @@
   
   <ul>
     <li data-marker="*">We can try to make the cat say meow:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   play sound (Meow v) until done
   wait (1) seconds
   play sound (Meow v) until done
@@ -397,7 +397,7 @@
       </ul>
     </li>
     <li data-marker="*">Let’s use a loop, or a “repeat” block:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   repeat (3)
   play sound (Meow v) until done
   wait (1) seconds
@@ -407,7 +407,7 @@
       </ul>
     </li>
     <li data-marker="*">We can use the idea of <strong>abstraction</strong>, or combining several ideas (or puzzle pieces) into one, so we can use and think about them more easily. We’ll go into the “My Blocks” category, and click “Make a Block”, and call it “meow”:
-      <pre><code class="language-scratch">define meow
+      <pre><code class="code" class="language-scratch">define meow
   play sound (Meow v) until done
   wait (1) seconds
   
@@ -421,7 +421,7 @@
       </ul>
     </li>
     <li data-marker="*">We can change the “meow” block to take an input, so it can repeat any number of times:
-      <pre><code class="language-scratch">define meow [n] times
+      <pre><code class="code" class="language-scratch">define meow [n] times
   repeat (n)
   play sound (Meow v) until done
   wait (1) seconds
@@ -440,7 +440,7 @@
   
   <ul>
     <li data-marker="*">We’ll try to have our cat make a sound if we “pet” it with our mouse:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   if &lt;touching (mouse-pointer v)?&gt; then
   play sound (Meow v) until done
   </code></pre>
@@ -449,14 +449,14 @@
       </ul>
     </li>
     <li data-marker="*">We can have our cat check over and over with the “forever” block:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   forever
   if &lt;touching (mouse-pointer v)?&gt; then
   play sound (Meow v) until done
   </code></pre>
     </li>
     <li data-marker="*">We can add another extension, “Video Sensing”:
-      <pre><code class="language-scratch">when video motion &gt; (50)
+      <pre><code class="code" class="language-scratch">when video motion &gt; (50)
   play sound (Meow v) until done
   </code></pre>
       <ul>
@@ -471,9 +471,9 @@
     <li data-marker="*">With a volunteer from the audience, we demonstrate a <a href="https://scratch.mit.edu/projects/565362715">whack-a-mole</a> game.</li>
     <li data-marker="*">We also take a look at <a href="https://scratch.mit.edu/projects/277537196">Oscartime</a>, another game where the player drags trash into a trashcan for points.</li>
     <li data-marker="*">We’ll take a look at how we might have built this program. First, we can add an image of the <a href="https://scratch.mit.edu/projects/565133620">lamp post</a> as a backdrop:<br>
-  <img src="lamppost.png" alt="image of lamppost in Scratch's editor interface" width="400"></li>
+  <img src="./static/imagesnotes/lamppost.webp" alt="image of lamppost in Scratch's editor interface" width="400"></li>
     <li data-marker="*">Then, we’ll add images of <a href="https://scratch.mit.edu/projects/565100517">trash cans</a>, with one open and one closed:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   switch costume to (oscar1 v)
   forever
   if &lt;touching (mouse-pointer v)?&gt; then
@@ -486,7 +486,7 @@
       </ul>
     </li>
     <li data-marker="*">Then, we’ll work on a piece of <a href="https://scratch.mit.edu/projects/565117390">falling trash</a>:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   go to x: (pick random (-240) to (240)) y: (180)
   forever
   if &lt;(distance to (floor v)) &gt; (0)&gt; then
@@ -497,7 +497,7 @@
       </ul>
     </li>
     <li data-marker="*">We’ll allow <a href="https://scratch.mit.edu/projects/565119737">dragging trash</a> with these blocks:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   forever
   if &lt;&lt;mouse down?&gt; and &lt;touching (mouse-pointer v) ?&gt;&gt; then
   go to (mouse-pointer v)
@@ -507,7 +507,7 @@
       </ul>
     </li>
     <li data-marker="*">Finally, we’ll use <a href="https://scratch.mit.edu/projects/565472267">variables</a> to keep track of our score:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   forever
   if &lt;touching (Oscar v) ?&gt; then
   change (score) by (1)
@@ -518,7 +518,7 @@
       </ul>
     </li>
     <li data-marker="*">Now, we’ll take a look at <a href="https://scratch.mit.edu/projects/565121265">moving</a>. Here, we have a few different scripts, one checking for whether keys are being pressed, and one for whether our sprite is touching a wall:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   go to x: (0) y: (0)
   forever
   listen for keyboard
@@ -553,7 +553,7 @@
       </ul>
     </li>
     <li data-marker="*">We can make another sprite <a href="https://scratch.mit.edu/projects/565127193">bounce</a> back and forth, like it’s getting in our way:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   go to x: (0) y: (0)
   point in direction (90)
   forever
@@ -569,7 +569,7 @@
       </ul>
     </li>
     <li data-marker="*">We can have one sprite <a href="https://scratch.mit.edu/projects/565479840">follow</a> another:
-      <pre><code class="language-scratch">when green flag clicked
+      <pre><code class="code" class="language-scratch">when green flag clicked
   go to (random position v)
   forever
   point towards (Harvard v)

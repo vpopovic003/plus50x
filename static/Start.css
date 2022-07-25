@@ -1,3 +1,16 @@
+.Videosmallerdevices{
+    display: none;
+}
+.bigdevicevid{
+    display: block;
+}
+.smalldevicevid{
+    display: none;
+}
+.code{
+  font-style: monospace;   
+}
+
 .side-menu {
     position: fixed !important;
     height: 100vh;
@@ -76,6 +89,17 @@
 .videocontainer {
     margin-bottom: 0;
     flex-direction: column;
+}
+.videocontainershorts{
+    margin-bottom: 0;
+    flex-direction: column;
+}
+.videocontainershorts div {
+    position: relative;
+    width: 85%;
+    height: 0;
+    padding-bottom: 56.25%;
+    display: inline-block;
 }
 
 .weeks {
@@ -225,7 +249,32 @@
     .topmenu{
         display: none !important;
     }
+    .Videosmallerdevices{
+        display: block;
+    }
+    .bigdevicevid{
+        display: none;
+    }
+    .smalldevicevid{
+        display: block;
+    }
 
+}
+@media (min-width: 767px) and (max-width:1200px){
+    .topmenumain {
+        background-color: black;
+        color: white;
+        padding-left: 25.2vw;
+        margin-bottom: 0;
+        max-height: 135px;
+    }
+    .topmenu {
+        display: none;
+    }
+    .shell{
+        height: 100px !important;
+    }
+    
 }
 
 @media (min-width: 1200px) {
@@ -238,6 +287,13 @@
         margin-right: 8%;
 
     }
+    .topmenumain {
+        background-color: black;
+        color: white;
+        padding-left: 25.2vw;
+        margin-bottom: 30px;
+        max-height: 135px;
+    }
 
     .mainitem {
         max-width: 250px !important;
@@ -248,14 +304,6 @@
         justify-content: space-between;
         margin-left: 8%;
         margin-right: 8%;
-    }
-    
-    .topmenumain {
-        background-color: black;
-        color: white;
-        padding-left: 25.2vw;
-        margin-bottom: 30px;
-        max-height: 135px;
     }
     
     .topmenu h2 {

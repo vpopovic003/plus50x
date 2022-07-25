@@ -5,18 +5,18 @@
     <div class="main-content col-md">
         <div class="source">
         {% if index == 9 or (index > 3 and index < 8) %}
-            <h4>Not implemented for this lecture yet.</h4>
-            <!-- Required multilevel menu -->
+        <h4>Not implemented for this lecture yet.</h4>
+        <!-- Required multilevel menu -->
         {% elif index == 0 or index == 10 %}
-            <h4>No source available for this lecture.</h4>
+        <h4>No source available for this lecture.</h4>
         {% else %}
-            <select id="select">
-                {% for item in source %}
-                    <option value="{{ item }}">{{ item }}</option>
-                {% endfor %}
-            </select>
+        <select id="select">
+            {% for item in source %}
+                <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+        </select>
 
-            <pre id="render-src">
+        <pre id="render-src">
         // Logical operators
 
         #include &lt;cs50.h&gt;

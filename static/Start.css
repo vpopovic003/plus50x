@@ -1,3 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.CookieDesign{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1200 !important;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.CoookieInner{
+    background-color: grey;
+    width: 35%;
+    min-width: 600px;
+    height: 40%;
+    min-height: 300px;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    position: absolute;
+}
+.CoookieInner h1{
+    margin-left: 0;
+    font-size: 60px;
+}
+
+.CookieDesign button{
+    background-color: white;
+    border: 0;
+    width: 25%;
+    height: 45px;
+    font-weight: bolder;
+    margin-left: 70px;
+    margin-right: 70px;
+    border-radius: 5px;
+    border: rgb(70, 70, 214) 3px solid;
+}
+.CookieDesign button:hover{
+    filter: brightness(75%);
+}
+.CookieButtons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 30px;
+}
+
 .Videosmallerdevices{
     display: none;
 }

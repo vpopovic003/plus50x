@@ -15,8 +15,21 @@
     <title>Plus50x: {% block title %}{% endblock %}</title>
 </head>
 
-<body>
+<body onload="CheckforCookie()">
+    <div class="CookieDesign">
+        <div class="CoookieInner">
+            <h1>Cookies</h1>
+            <p>
+                <h3>This website uses cookies</h3>
+                We use cookies to personalize content.
+            </p>
+            <div class="CookieButtons">
+                <button onclick="Accept()">Accept</button>
+                <button onclick="Decline()">Decline</button>
+            </div>
 
+        </div>
+    </div>
     <div class="shell nopadding">
         <!--section class="header">
             </section-->
@@ -163,6 +176,33 @@
                     Sidenav[0].style.display = 'none';
                     document.body.style.overflow = 'auto';
                 }
+            }
+            var CookieDesign = document.getElementsByClassName("CookieDesign");
+            function CheckforCookie() {
+                var myCookie = getCookie("CookiesAllowed");
+                console.log(myCookie);
+                if (myCookie == null) {
+                    CookieDesign[0].style.display = "flex";
+
+                }
+            }
+            function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if(c.indexOf(name) == 0)
+                return c.substring(name.length,c.length);
+            }
+            return null;
+            }
+            function Accept(){
+                document.cookie = "CookiesAllowed=True";
+                CookieDesign[0].style.display = "none";
+            }
+            function Decline(){
+                CookieDesign[0].style.display = "none";
             }
         </script>
     </div>

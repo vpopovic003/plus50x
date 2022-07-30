@@ -15,7 +15,7 @@
     <title>Plus50x: {% block title %}{% endblock %}</title>
 </head>
 
-<body onload="CheckforCookie()">
+<body onload="CheckUp()">
     <div class="CookieDesign">
         <div class="CoookieInner">
             <h1>Cookies</h1>
@@ -42,6 +42,7 @@
                     <span class="DropLine"></span>
                 </label>
             </div>
+            <div class="background"></div>
             <h1><a href="main">PLUS50x</a></h1>
             <ul class="sidemenu menuitems">
                 <li><a href="lecture0" class="side-button" id="lecture0">Week 0 Scratch</a></li>
@@ -55,6 +56,8 @@
                 <li><a href="lecture8" class="side-button" id="lecture8">Week 8 HTML, CSS, JavaScript</a></li>
                 <li><a href="lecture9" class="side-button" id="lecture9">Week 9 Flask</a></li>
                 <li><a href="lecture10" class="side-button" id="lecture10">Week 10 Emoji</a></li>
+                <li><a href="https://cs50.me/cs50x" class="side-button" id="Grades">Grades</a></li>
+                <li><a href="settings" class="side-button" id="Settings">Settings</a></li>
             </ul>
         </aside>
         <div class="topmenumain">
@@ -177,6 +180,10 @@
                     document.body.style.overflow = 'auto';
                 }
             }
+            function CheckUp(){
+                CheckforCookie();
+                CheckDarkMode();
+            }
             var CookieDesign = document.getElementsByClassName("CookieDesign");
             function CheckforCookie() {
                 var myCookie = getCookie("CookiesAllowed");
@@ -203,6 +210,12 @@
             }
             function Decline(){
                 CookieDesign[0].style.display = "none";
+            }
+            function CheckDarkMode(){
+                if(getCookie("Darkmode")){
+                    document.body.style.backgroundColor  = "grey";
+                    document.body.style.color ="white";
+                };
             }
         </script>
     </div>

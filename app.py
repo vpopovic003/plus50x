@@ -46,6 +46,10 @@ def slides(index):
     shorts = helpers.shorts[index]
     return render_template("slides.html", shorts=shorts, index=index, lecture=helpers.lectures[index])
 
+@app.route("/settings")
+def settings():
+    return render_template("settings.html", index=-1)
+
 
 @app.route("/source<index>")
 def source(index):

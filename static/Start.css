@@ -115,6 +115,7 @@
 .sidemenu {
     padding-left: 0 !important;
     display: block;
+    overflow: hidden;
 }
 
 .menuitems li {
@@ -177,6 +178,7 @@
     color: white !important;
     text-decoration: none !important;
 }
+
 
 @media (max-width: 767px) {
 

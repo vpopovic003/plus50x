@@ -19,12 +19,13 @@
     background-color: grey;
     width: 35%;
     min-width: 600px;
-    height: 40%;
-    min-height: 300px;
+    height: 30%;
+    min-height: 200px;
     border-radius: 10px;
     color: white;
     padding: 10px;
     position: absolute;
+    box-shadow: 0 0 35px 20px rgb(70, 70, 70);
 }
 .CoookieInner h1{
     margin-left: 0;
@@ -40,7 +41,7 @@
     margin-left: 70px;
     margin-right: 70px;
     border-radius: 5px;
-    border: rgb(70, 70, 214) 3px solid;
+    border: #00b33c 3px solid;
 }
 .CookieDesign button:hover{
     filter: brightness(75%);

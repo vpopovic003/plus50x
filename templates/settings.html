@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block main %}
-<div class="container" onload="CheckCookie()">
+<div class="container">
 
     <div class="switch-holder">
         <div class="switch-label">
@@ -14,9 +14,13 @@
 
 
 </div>
-<script>
+<script defer>
+var checkBox = document.getElementById("Darkmode");
+    if(getCookie("Darkmode")){
+        checkBox.click();
+    }
    function Darkmode(){
-        var checkBox = document.getElementById("Darkmode");
+
         if(getCookie("CookiesAllowed") != null){
             if(checkBox.checked == true){
                 document.body.style.backgroundColor  = "grey";
@@ -30,6 +34,16 @@
             }
         }
    }
+   function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if(c.indexOf(name) == 0)
+                return c.substring(name.length,c.length);
+            }
+        }
 </script>
 <style>
 .background{
@@ -50,14 +64,11 @@
 }
 
 .switch-holder {
+    background-color: rgba(109, 109, 109, 0.575);
     display: flex;
     padding: 10px 20px;
     border-radius: 10px;
     margin-bottom: 30px;
-    box-shadow: -8px -8px 15px rgba(255,255,255,.7),
-                10px 10px 10px rgba(0,0,0, .3),
-                inset 8px 8px 15px rgba(255,255,255,.7),
-                inset 10px 10px 10px rgba(0,0,0, .3);
     justify-content: space-between;
     align-items: center;
 }

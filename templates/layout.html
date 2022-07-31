@@ -158,7 +158,11 @@
             {% endblock %}
 
         </main>
-        <script>
+        <script defer>
+                if(getCookie("Darkmode")){
+                    document.body.style.backgroundColor  = "grey";
+                    document.body.style.color ="white";
+                };
             document.querySelector('.side-button').addEventListener('click', function () {
                 let element = document.querySelector('.side-button');
                 let clicked = element.id;

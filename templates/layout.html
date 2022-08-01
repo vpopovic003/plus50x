@@ -45,6 +45,14 @@
             <div class="background"></div>
             <h1><a href="main">PLUS50x</a></h1>
             <ul class="sidemenu menuitems">
+                <!-- Login/Logout -->
+                <li>{% if session["user_id"] %}
+                    <a href="logout" class="side-button" id="">Logout</a>
+                    {% else %}
+                    <a href="login" class="side-button" id="">Login</a>
+                    {% endif %}</a>
+                </li>
+                 <!-- end login/logout -->
                 <li><a href="lecture0" class="side-button" id="lecture0">Week 0 Scratch</a></li>
                 <li><a href="lecture1" class="side-button" id="lecture1">Week 1 C</a></li>
                 <li><a href="lecture2" class="side-button" id="lecture2">Week 2 Arrays</a></li>
@@ -61,14 +69,6 @@
             </ul>
         </aside>
         <div class="topmenumain">
-            <!-- Register/Login/Logout -->
-            {% if session["user_id"] %}
-            <h5><a href="logout" class="text-center" id="">Log Out</a></h5>
-            {% else %}
-            <h5><a href="register" lass="text-center" id="" >Register</a></h5>
-            <h5><a href="login" class="text-center" id="">Log In</a></h5>
-            {% endif %}
-            <!-- end register/login/logout -->
             {% if (index) == -1 %}
             <h1 class="text-center" id="">Welcome</h1>
             {% else %}

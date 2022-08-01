@@ -89,4 +89,21 @@
         color: white;
     }
 </style>
+<script defer>
+     if(getCookie("Darkmode")){
+                    document.body.style.backgroundColor  = "grey";
+                    document.body.style.backgroundImage = 'linear-gradient(315deg, #485461 0%, #28313b 74%)';
+                    document.body.style.color ="white";
+                };
+       function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if(c.indexOf(name) == 0)
+                return c.substring(name.length,c.length);
+            }
+        }
+</script>
 {% endblock %}

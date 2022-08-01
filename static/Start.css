@@ -2,6 +2,11 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
+body{
+    background-color: #2f4353;
+    background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 94%);
+    background-attachment: fixed;
+}
 .CookieDesign{
     position: fixed;
     top: 0;

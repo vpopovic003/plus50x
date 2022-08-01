@@ -61,6 +61,14 @@
             </ul>
         </aside>
         <div class="topmenumain">
+            <!-- Register/Login/Logout -->
+            {% if session["user_id"] %}
+            <h5><a href="logout" class="text-center" id="">Log Out</a></h5>
+            {% else %}
+            <h5><a href="register" lass="text-center" id="" >Register</a></h5>
+            <h5><a href="login" class="text-center" id="">Log In</a></h5>
+            {% endif %}
+            <!-- end register/login/logout -->
             {% if (index) == -1 %}
             <h1 class="text-center" id="">Welcome</h1>
             {% else %}

@@ -4,7 +4,7 @@
     <div class="">
         <div class="videocontainer mainvideocontainer">
             <div class="lecture-video">
-        <div id="player" class="videosmall"></div>
+                <div id="player" class="videosmall"></div>
             </div>
         </div>
         <div class="mainitemcontainer">
@@ -87,10 +87,16 @@
             // 5. The API calls this function when the player's state changes.
             //    The function indicates that when playing a video (state=1),
             //    the player should play for six seconds and then stop.
+            const URL = '/lecture{{index}}'
+            const xhr = new XMLHttpRequest();
+            sender = JSON.stringify({"Week": "{{ index }}"});
+
             var done = false;
             function onPlayerStateChange(event) {
               if (event.data == YT.PlayerState.PLAYING && !done) {
                 done = true;
+                xhr.open('POST', URL);
+                xhr.send(sender);
               }
             }
             function stopVideo() {

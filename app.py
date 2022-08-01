@@ -1,9 +1,11 @@
+from calendar import week
 import os
 from flask import Flask, render_template, redirect, request, session
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from cs50 import SQL
+import json
 
 import helpers
 from helpers import apology
@@ -136,12 +138,18 @@ def video(index):
     return render_template("video.html", shorts=shorts, video=helpers.videos[int(index)], index=index, lecture=helpers.lectures[index])
 
 
-@app.route("/lecture<index>")
+@app.route("/lecture<index>", methods=['GET', 'POST'])
 def lecture(index):
-    index = int(index)
-    shorts = helpers.shorts[index]
-    # Put it into database?
-    return render_template("lectures.html",shorts=shorts, video=helpers.videos[int(index)], index=index, lecture=helpers.lectures[index])
+    if request.method == "POST":
+        information = request.data
+        y = json.loads(information)
+        print("Week" + y["Week"])
+        return ""
+    else:
+        index = int(index)
+        shorts = helpers.shorts[index]
+        # Put it into database?
+        return render_template("lectures.html",shorts=shorts, video=helpers.videos[int(index)], index=index, lecture=helpers.lectures[index])
 
 
 @app.route("/notes<index>")

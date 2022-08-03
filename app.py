@@ -60,6 +60,8 @@ def register():
             # Add user id to session (log in automatically)
             user_id_rows = db.execute("SELECT id FROM users WHERE username = ?", name)
             session["user_id"] = user_id_rows[0]['id']
+            # Add entry into progress table
+            db.execute("INSERT INTO progress (user_id) VALUES (?)", session["user_id"])
         else:
             return apology("passwords do not match")
 
@@ -141,9 +143,12 @@ def video(index):
 @app.route("/lecture<index>", methods=['GET', 'POST'])
 def lecture(index):
     if request.method == "POST":
+        # Get the currently played video
         information = request.data
         y = json.loads(information)
-        print("Week" + y["Week"])
+        video = "video" + y["Video"]
+        # Add entry into database
+        db.execute("UPDATE progress SET ? = 1 WHERE user_id = ?", video, session["user_id"])
         return ""
     else:
         index = int(index)

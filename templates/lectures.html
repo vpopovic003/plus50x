@@ -89,7 +89,7 @@
             //    the player should play for six seconds and then stop.
             const URL = '/lecture{{index}}'
             const xhr = new XMLHttpRequest();
-            sender = JSON.stringify({"Week": "{{ index }}"});
+            sender = JSON.stringify({"Video": "{{ index }}"});
 
             var done = false;
             function onPlayerStateChange(event) {

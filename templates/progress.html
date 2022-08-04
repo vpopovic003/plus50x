@@ -5,13 +5,15 @@
   <div class="progressitems">
     <h1 class="text-center" id="">Week {{ i }}: {{ lecture[i] }}</h1>
     <h3><input type="checkbox"  {% if watchedvideo[i] %} checked {% endif %}>Video</h3>
+    {% if ( i ) > 0 %}
     <h2>Shorts</h2>
-    {% for item in shorts[i] %}
-    <h3>
-        <input type="checkbox">
-        {{ item }}
-    </h3>
-    {% endfor %}
+        {% for item in shorts[i] %}
+        <h3>
+            <input type="checkbox">
+            {{ item }}
+        </h3>
+        {% endfor %}
+    {% endif %}
     <h2>Problems</h2>
     {% if ( i ) > 1 and ( i ) < 10 %}
     <div class="">
@@ -50,8 +52,9 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 500px));
         justify-content:center;
-        grid-gap: 10px;
+        grid-gap: 20px;
         align-content:end;
+        margin-bottom: 50px;
     }
     .progressitems{
         border: 0 !important;

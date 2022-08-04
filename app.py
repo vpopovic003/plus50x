@@ -1,5 +1,6 @@
 from calendar import week
 import os
+from pickle import APPEND
 from flask import Flask, render_template, redirect, request, session
 from flask_session import Session
 from tempfile import mkdtemp
@@ -147,7 +148,6 @@ def lecture(index):
         information = request.data
         y = json.loads(information)
         video = "video" + y["Video"]
-        print(video)
         # Add entry into database
         db.execute("UPDATE progress SET ? = 1 WHERE user_id = ?", video, session["user_id"])
         return ""
@@ -267,7 +267,7 @@ def problem(index):
 def progress():
     watchedvideo = []
     for i in range(0,10):
-        # watchedvideo[i] = db.execute("SELECT video FROM Week{};".format(i))
-        print("SELECT video FROM Week{};".format(i))
-    watchedvideo = ["True","True","True","True","True","True","True","True"]
+        data = db.execute("SELECT video{} FROM progress WHERE user_id = ?".format(i), session["user_id"])
+        watchedvideo.append(data[0]['video{}'.format(i)])
+
     return render_template("progress.html", index=-1, len = 11,lecture=helpers.lectures, shorts = helpers.shorts, watchedvideo = watchedvideo)

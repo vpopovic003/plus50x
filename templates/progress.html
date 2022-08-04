@@ -6,7 +6,7 @@
   <div class="progressitems">
     <h1 class="text-center" id="">Week {{ i }}: {{ lecture[i] }}</h1>
     <h3><input type="checkbox"  {% if watchedvideo[i] %} checked {% endif %}>Video</h3>
-    {% if ( i ) > 0 %}
+    {% if ( i ) > 0 and ( i ) < 10 %}
     <h2>Shorts</h2>
         {% for item in shorts[i] %}
         <h3>

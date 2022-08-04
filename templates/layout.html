@@ -71,6 +71,8 @@
         <div class="topmenumain">
             {% if (index) == -1 %}
             <h1 class="text-center" id="">Welcome</h1>
+            {% elif (index) == -2 %}
+            <h1 class="text-center" id="">Welcome <br><br> Login Succesfull</h1>
             {% else %}
             <h1 class="text-center" id="">Week {{ index }}: {{ lecture }}</h1>
             <div class="topmenu">

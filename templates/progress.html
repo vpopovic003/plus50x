@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block main %}
+{% set count = namespace(value=0) %}
 <div class="progresscontainer">
 {%for i in range(0, len)%}
   <div class="progressitems">
@@ -9,9 +10,10 @@
     <h2>Shorts</h2>
         {% for item in shorts[i] %}
         <h3>
-            <input type="checkbox" {% if watchedshort[i] %} checked {% endif %}>
+            <input type="checkbox" {% if watchedshort[i + count.value] %} checked {% endif %}>
             {{ item }}
         </h3>
+        {%  set count.value = count.value + 1 %}
         {% endfor %}
     {% endif %}
     <h2>Problems</h2>

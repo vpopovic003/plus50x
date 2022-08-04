@@ -269,7 +269,7 @@ def problem(index):
 @login_required
 def progress():
     watchedvideo = []
-    watchedshort = []
+    watchedshort = ['0']
     for i in range(0,10):
         data = db.execute("SELECT video{} FROM progress WHERE user_id = ?".format(i), session["user_id"])
         watchedvideo.append(data[0]['video{}'.format(i)])
@@ -279,5 +279,6 @@ def progress():
             for c in range(0, len(short_index)):
                 shortdata = db.execute("SELECT shorts{}_{} FROM progress WHERE user_id = ?;".format(i, c + 1), session["user_id"])
                 watchedshort.append(shortdata[0]['shorts{}_{}'.format(i, c + 1)])
+    print(watchedshort)
 
     return render_template("progress.html", index=-1, len = 11,lecture=helpers.lectures, shorts = helpers.shorts, watchedvideo = watchedvideo, watchedshort = watchedshort)

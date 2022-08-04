@@ -9,7 +9,7 @@
     <h2>Shorts</h2>
         {% for item in shorts[i] %}
         <h3>
-            <input type="checkbox">
+            <input type="checkbox" {% if watchedshort[i] %} checked {% endif %}>
             {{ item }}
         </h3>
         {% endfor %}

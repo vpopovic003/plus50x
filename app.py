@@ -1,10 +1,6 @@
-from asyncio.windows_events import NULL
-from calendar import week
 import os
-from pickle import APPEND
 from flask import Flask, render_template, redirect, request, session
 from flask_session import Session
-from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from cs50 import SQL
 import json

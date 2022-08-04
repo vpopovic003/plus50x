@@ -262,3 +262,12 @@ def problem(index):
         path = f"files/problems/final.html"
         problems = False 
     return render_template("problems.html",shorts=shorts, index=int(index), problem=path, problems=problems)
+
+@app.route("/progress")
+def progress():
+    watchedvideo = []
+    for i in range(0,10):
+        # watchedvideo[i] = db.execute("SELECT video FROM Week{};".format(i))
+        print("SELECT video FROM Week{};".format(i))
+    watchedvideo = ["True","True","True","True","True","True","True","True"]
+    return render_template("progress.html", index=-1, len = 11,lecture=helpers.lectures, shorts = helpers.shorts, watchedvideo = watchedvideo)

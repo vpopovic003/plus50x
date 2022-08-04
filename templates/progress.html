@@ -10,7 +10,8 @@
     <h2>Shorts</h2>
         {% for item in shorts[i] %}
         <h3>
-            <input type="checkbox" {% if watchedshort[i + count.value] %} checked {% endif %}>
+            <input type="checkbox" {% if watchedshort[count.value + 1] %} checked {% endif %}>
+            {{count.value + 1}}
             {{ item }}
         </h3>
         {%  set count.value = count.value + 1 %}
@@ -62,6 +63,7 @@
         border: 0 !important;
         margin: 0;
         padding: 20px;
+        padding-bottom: 40px;
         border-radius: 0;
         width: 400px;
         height: auto;

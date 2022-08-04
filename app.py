@@ -147,6 +147,7 @@ def lecture(index):
         information = request.data
         y = json.loads(information)
         video = "video" + y["Video"]
+        print(video)
         # Add entry into database
         db.execute("UPDATE progress SET ? = 1 WHERE user_id = ?", video, session["user_id"])
         return ""
@@ -201,14 +202,23 @@ def transcript(index):
     return render_template("transcript.html", shorts=shorts, index=index, lecture=helpers.lectures[index])
 
 
-@app.route("/shorts<index>")
+@app.route("/shorts<index>", methods=['GET', 'POST'])
 def shorts(index):
-    index = int(index)
-    # Get the lesson corresponding "Shorts" dictionary
-    shorts = helpers.shorts[index]
-    # Getting the first value of the corresponding dict
-    first = list(helpers.shorts[index].keys())[0]
-    return render_template("shorts.html", shorts=shorts, index=index, short=first, lecture=helpers.lectures[index])
+    if request.method == "POST":
+        # Get the currently played video
+        information = request.data
+        y = json.loads(information)
+        short = "shorts" + y["Shorts"]
+        # Add entry into database
+        db.execute("UPDATE progress SET ? = 1 WHERE user_id = ?", short, session["user_id"])
+        return ""
+    else:
+        index = int(index)
+        # Get the lesson corresponding "Shorts" dictionary
+        shorts = helpers.shorts[index]
+        # Getting the first value of the corresponding dict
+        first = list(helpers.shorts[index].keys())[0]
+        return render_template("shorts.html", shorts=shorts, index=index, short=first, lecture=helpers.lectures[index])
 
 
 @app.route("/shorts<index>-<short>")
@@ -216,7 +226,11 @@ def short(index, short):
     index = int(index)
     # Get the lesson corresponding "Shorts" dictionary
     shorts = helpers.shorts[int(index)]
-    return render_template("shorts.html", shorts=shorts, index=index, short=short, lecture=helpers.lectures[index])
+    # Get the index of a key inside dict (change it to list first)
+    short_index = list(helpers.shorts[int(index)])
+    # Get list index
+    short_index = short_index.index(short)
+    return render_template("shorts.html", shorts=shorts, index=index, short=short, lecture=helpers.lectures[index], short_index=short_index+1)
 
 
 @app.route("/problems<index>")

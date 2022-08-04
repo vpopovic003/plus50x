@@ -9,7 +9,7 @@ from cs50 import SQL
 import json
 
 import helpers
-from helpers import apology
+from helpers import apology, login_required
 
 # Configure application
 app = Flask(__name__)
@@ -263,7 +263,9 @@ def problem(index):
         problems = False 
     return render_template("problems.html",shorts=shorts, index=int(index), problem=path, problems=problems)
 
+
 @app.route("/progress")
+@login_required
 def progress():
     watchedvideo = []
     for i in range(0,10):

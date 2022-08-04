@@ -11,7 +11,6 @@
         {% for item in shorts[i] %}
         <h3>
             <input type="checkbox" {% if watchedshort[count.value + 1] %} checked {% endif %}>
-            {{count.value + 1}}
             {{ item }}
         </h3>
         {%  set count.value = count.value + 1 %}

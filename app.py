@@ -276,6 +276,14 @@ def progress():
                     else: videoname = 1
                     db.execute("UPDATE progress SET video{} = {} WHERE user_id = ?".format(cvideo, videoname), session["user_id"])
                     cvideo += 1
+        if "problem" in y:
+            problem = y["problem"]
+            cproblem = 0
+            for videoname in problem:
+                if(videoname == "False"): videoname = 0
+                else: videoname = 1
+                db.execute("UPDATE progress SET pset{} = {} WHERE user_id = ?".format(cproblem, videoname), session["user_id"])
+                cproblem += 1
                     
         return ""
     else:

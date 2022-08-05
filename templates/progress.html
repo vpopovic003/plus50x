@@ -25,14 +25,14 @@
     {% if ( i ) > 1 and ( i ) < 10 %}
     <div class="">
         <h3>
-            <input class="btn" type="checkbox">Lab {{ i }}
+            <input class="btn" type="checkbox">Lab {{ i - 2 }}
         </h3>
     </div>
     {% endif %}
     {% if ( i ) < 10 %}
     <div class="">
         <h3>
-            <input class="btn" type="checkbox">Problem Set {{ i }}
+            <input class="problem" type="checkbox">Problem Set {{ i }}
         </h3>
     </div>
     {% else %}
@@ -43,7 +43,7 @@
     </div>
     <div class="">
         <h3>
-            <input class="btn" type="checkbox">Final Project
+            <input class="problem" type="checkbox">Final Project
         </h3>
     </div>
     {% endif %}
@@ -112,12 +112,24 @@
             xhr.open('POST', URL);
             xhr.send(sender)
         });
+        $(".problem").change( 
+            function(){
+                let problem = []
+                var markedCheckbox = document.querySelectorAll(".problem"); 
+                for (var checkbox of markedCheckbox) {  
+                    if (checkbox.checked){
+                        problem.push("True") 
+                    } else {
+                        problem.push("False") 
+                    }
+                       
+                }
+            sender = JSON.stringify({problem});
+            xhr.open('POST', URL);
+            xhr.send(sender)
+        });
 
-        var all, checked, notChecked;
-        all = $("input:checkbox");
-        checked = all.filter(":checked");
-        notChecked = all.not(":checked)");
-        console.log(checked)
+  
   </script>
 
 {% endblock %}

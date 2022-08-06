@@ -130,6 +130,15 @@ def index():
 def main():
     return render_template("main.html", index=-1)
 
+@app.route("/admin")
+@login_required
+def admin():
+    a = db.execute("SELECT admin FROM users WHERE user_id = ?",session["user_id"])
+    if(a == 1):
+        return render_template("admin.html", index=-1)
+    else:
+        return apology("You are not allowed to be here!", 404)
+
 
 @app.route("/video<index>")
 def video(index):

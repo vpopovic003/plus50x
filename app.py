@@ -187,13 +187,8 @@ def source(index):
     # Which lecture    
     path = (f"static/files/source/src{index}")
     # Open folder, add files to the list
-    if index == 0 or index > 8 or (index > 3 and index < 8):
+    if index > 0 and index < 10:
         source = json.dumps(path_to_dict(path), ensure_ascii=False)
-        print(source)
-    else:
-        for f in os.listdir(path):
-            with open(os.path.join(path, f)) as f:
-                source.append(os.path.basename(f.name))
     return render_template("source.html", shorts=shorts, source=source, index=index, lecture=helpers.lectures[index])
 
 

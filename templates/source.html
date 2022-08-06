@@ -4,17 +4,10 @@
 <div class="row">
     <div class="main-content col-md">
         <div class="source">
-        {% if index == 9 or (index > 3 and index < 8) %}
-            <div id="tree" style="margin-bottom: 150px;"></div>
-            <!-- Required multilevel menu -->
-        {% elif index == 0 or index == 10 %}
+        {% if index == 0 or index == 10 %}
             <h4>No source available for this lecture.</h4>
         {% else %}
-            <select id="select">
-                {% for item in source %}
-                    <option value="{{ item }}">{{ item }}</option>
-                {% endfor %}
-            </select>
+            <div id="tree" style="margin-bottom: 150px;"></div>
 
             <pre id="render-src">
         // Logical operators
@@ -41,6 +34,7 @@
         {% endif %}
         </div>
         <script>
+            // Render tree from directory structure
             var tree = new Tree(document.getElementById('tree'));
             {% autoescape false %}
                 var source = [{{ source }}]
@@ -53,18 +47,20 @@
             }
             source.forEach(loop);
             tree.json(source);
-        </script>
-        <!--
-        <script type="text/javascript">
-            document.querySelector('#select').addEventListener('change', function() {
+
+            // Render source to the box
+            document.querySelector('#tree').addEventListener('click', function(e) {
+                e = e || window.event;
+                var target = e.target || e.srcElement,
+                text = target.textContent || target.innerText;
                 let index = '{{ index }}';
-                let path = "static/files/source/src" + index +"/" + this.value;
+                let path = "static/files/source/src" + index +"/" + text;
                 fetch(path)
                     .then(response => response.text())
                     .then(text => document.querySelector('#render-src').innerText = text);
-            });
+            }, false);
         </script>
-        -->
+        
     </div>
 </div>
 {% endblock %}

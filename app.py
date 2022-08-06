@@ -1,3 +1,4 @@
+from operator import truediv
 import os
 from flask import Flask, render_template, redirect, request, session
 from flask_session import Session
@@ -263,19 +264,40 @@ def problem(index):
     return render_template("problems.html",shorts=shorts, index=int(index), problem=path, problems=problems)
 
 
-@app.route("/progress")
+@app.route("/progress", methods=['GET', 'POST'])
 @login_required
 def progress():
-    watchedvideo = []
-    watchedshort = ['0']
-    for i in range(0,10):
-        data = db.execute("SELECT video{} FROM progress WHERE user_id = ?".format(i), session["user_id"])
-        watchedvideo.append(data[0]['video{}'.format(i)])
-        short_index = list(helpers.shorts[int(i)])
+    if request.method == "POST":
+        information = request.data
+        y = json.loads(information)
+        if "videos" in y:
+                videos = y["videos"]
+                cvideo = 0
+                for videoname in videos:
+                    if(videoname == "False"): videoname = 0
+                    else: videoname = 1
+                    db.execute("UPDATE progress SET video{} = {} WHERE user_id = ?".format(cvideo, videoname), session["user_id"])
+                    cvideo += 1
+        if "problem" in y:
+            problem = y["problem"]
+            cproblem = 0
+            for videoname in problem:
+                if(videoname == "False"): videoname = 0
+                else: videoname = 1
+                db.execute("UPDATE progress SET pset{} = {} WHERE user_id = ?".format(cproblem, videoname), session["user_id"])
+                cproblem += 1
+                    
+        return ""
+    else:
+        watchedvideo = []
+        watchedshort = ['0']
+        for i in range(0,10):
+            data = db.execute("SELECT video{} FROM progress WHERE user_id = ?".format(i), session["user_id"])
+            watchedvideo.append(data[0]['video{}'.format(i)])
+            short_index = list(helpers.shorts[int(i)])
 
-        if (short_index[0] != "no shorts"):
-            for c in range(0, len(short_index)):
-                shortdata = db.execute("SELECT shorts{}_{} FROM progress WHERE user_id = ?;".format(i, c + 1), session["user_id"])
-                watchedshort.append(shortdata[0]['shorts{}_{}'.format(i, c + 1)])
-
-    return render_template("progress.html", index=-1, len = 11,lecture=helpers.lectures, shorts = helpers.shorts, watchedvideo = watchedvideo, watchedshort = watchedshort)
+            if (short_index[0] != "no shorts"):
+                for c in range(0, len(short_index)):
+                    shortdata = db.execute("SELECT shorts{}_{} FROM progress WHERE user_id = ?;".format(i, c + 1), session["user_id"])
+                    watchedshort.append(shortdata[0]['shorts{}_{}'.format(i, c + 1)])
+        return render_template("progress.html", index=-1, len = 11,lecture=helpers.lectures, shorts = helpers.shorts, watchedvideo = watchedvideo, watchedshort = watchedshort)

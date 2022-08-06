@@ -202,9 +202,9 @@
                 CheckDarkMode();
             }
             var CookieDesign = document.getElementsByClassName("CookieDesign");
+            var LoggedDesign = document.getElementsByClassName("LDesign");
             function CheckforCookie() {
                 var myCookie = getCookie("CookiesAllowed");
-                //console.log(myCookie);
                 if (myCookie == null) {
                     CookieDesign[0].style.display = "flex";
 

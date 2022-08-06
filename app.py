@@ -118,8 +118,8 @@ def main():
 @app.route("/admin")
 @login_required
 def admin():
-    #a = db.execute("SELECT admin FROM users WHERE user_id = ?",session["user_id"])
-    if(1 == 1):
+    a = db.execute("SELECT admin FROM users WHERE id = ?",session["user_id"])
+    if(a[0]["admin"] == 1):
         return render_template("admin.html", index=-1)
     else:
         return apology("You are not allowed to be here!", 404)
@@ -283,6 +283,14 @@ def progress():
                 else: videoname = 1
                 db.execute("UPDATE progress SET pset{} = {} WHERE user_id = ?".format(cproblem, videoname), session["user_id"])
                 cproblem += 1
+        if "lab" in y:
+            lab = y["lab"]
+            clab = 2
+            for videoname in lab:
+                if(videoname == "False"): videoname = 0
+                else: videoname = 1
+                db.execute("UPDATE progress SET lab{} = {} WHERE user_id = ?".format(clab, videoname), session["user_id"])
+                clab += 1
                     
         return ""
     else:

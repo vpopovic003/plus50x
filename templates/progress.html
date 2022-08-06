@@ -25,7 +25,7 @@
     {% if ( i ) > 1 and ( i ) < 10 %}
     <div class="">
         <h3>
-            <input class="btn" type="checkbox">Lab {{ i - 2 }}
+            <input class="lab" type="checkbox">Lab {{ i }}
         </h3>
     </div>
     {% endif %}
@@ -38,7 +38,7 @@
     {% else %}
     <div class="">
         <h3>
-            <input class="btn" type="checkbox">Seminars
+            <input class="lab" type="checkbox">Seminars
         </h3>
     </div>
     <div class="">
@@ -125,6 +125,22 @@
                        
                 }
             sender = JSON.stringify({problem});
+            xhr.open('POST', URL);
+            xhr.send(sender)
+        });
+        $(".lab").change( 
+            function(){
+                let lab = []
+                var markedCheckbox = document.querySelectorAll(".lab"); 
+                for (var checkbox of markedCheckbox) {  
+                    if (checkbox.checked){
+                        lab.push("True") 
+                    } else {
+                        lab.push("False") 
+                    }
+                       
+                }
+            sender = JSON.stringify({lab});
             xhr.open('POST', URL);
             xhr.send(sender)
         });

@@ -15,7 +15,7 @@
     <h2>Shorts</h2>
         {% for item in shorts[i] %}
         <h3>
-            <input class="btn" type="checkbox" {% if watchedshort[count.value + 1] %} checked {% endif %}>
+            <input class="short" type="checkbox" {% if watchedshort[count.value + 1] %} checked {% endif %}>
             {{ item }}
         </h3>
         {%  set count.value = count.value + 1 %}
@@ -141,6 +141,22 @@
                        
                 }
             sender = JSON.stringify({lab});
+            xhr.open('POST', URL);
+            xhr.send(sender)
+        });
+        $(".short").change( 
+            function(){
+                let short = []
+                var markedCheckbox = document.querySelectorAll(".short"); 
+                for (var checkbox of markedCheckbox) {  
+                    if (checkbox.checked){
+                        short.push("True") 
+                    } else {
+                        short.push("False") 
+                    }
+                       
+                }
+            sender = JSON.stringify({short});
             xhr.open('POST', URL);
             xhr.send(sender)
         });

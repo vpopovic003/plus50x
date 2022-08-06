@@ -291,6 +291,16 @@ def progress():
                 else: videoname = 1
                 db.execute("UPDATE progress SET lab{} = {} WHERE user_id = ?".format(clab, videoname), session["user_id"])
                 clab += 1
+        if "short" in y:
+            short = y["short"]
+            shortint = 0
+            for i in range(1,10):
+                short_index = list(helpers.shorts[int(i)])
+                for c in range(0, len(short_index)):
+                    if(short[shortint] == "False"): short[shortint] = 0
+                    else: short[shortint] = 1
+                    db.execute("UPDATE progress SET shorts{}_{} = {} WHERE user_id = ?;".format(i, c + 1, short[shortint]), session["user_id"])
+                    shortint += 1
                     
         return ""
     else:

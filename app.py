@@ -33,17 +33,13 @@ def register():
         name = request.form.get("username")
         password = request.form.get("password")
         confirm_password = request.form.get("confirmation")
-
         # Check if all fields filled
         if not name:
             return apology("must provide username")
-
         if not password:
             return apology("must provide password")
-
         if not confirm_password:
             return apology("must confirm password")
-
         # Check if user already exist in the database
         # Query database for 'inputed' username
         rows = db.execute("SELECT * FROM users WHERE username = ?", name)
@@ -51,7 +47,6 @@ def register():
         # Check if rows has exactly one row (found 1 user in database)
         if len(rows) == 1:
             return apology("user already exists")
-
         # Check if password and confirm passform mathches
         if password == confirm_password:
             # Insert User and password hash into database
@@ -63,10 +58,8 @@ def register():
             db.execute("INSERT INTO progress (user_id) VALUES (?)", session["user_id"])
         else:
             return apology("passwords do not match")
-
         # Redirect to main page after register
         return redirect("/")
-
     # If arrived at the page (GET request)
     else:
         return render_template("register.html", index=-1)
@@ -81,28 +74,21 @@ def login():
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-
         # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 403)
-
         # Ensure password was submitted
         elif not request.form.get("password"):
             return apology("must provide password", 403)
-
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
-
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
             return apology("invalid username and/or password", 403)
-
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
-
         # Redirect user to home page
         return render_template("main.html", index=-2)
-
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("login.html", index=-1)
@@ -111,10 +97,8 @@ def login():
 @app.route("/logout")
 def logout():
     """Log user out"""
-
     # Forget any user_id
     session.clear()
-
     # Redirect user to login form
     return redirect("/")
 
@@ -129,6 +113,7 @@ def index():
 @app.route("/main")
 def main():
     return render_template("main.html", index=-1)
+
 
 @app.route("/admin")
 @login_required

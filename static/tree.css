@@ -25,7 +25,7 @@
 }
 .simple-tree summary {
   list-style-type: none;
-  background-color: #eee;
+  background-color: #000000;
   outline: none;
 }
 .simple-tree.dark summary {
@@ -95,12 +95,38 @@
 }
 /* select tree */
 .select-tree .selected {
-  background-color: #beebff;
-  border-color: #99defd;
+  background-color: #000000;
+  border-color: #000000;
   z-index: 1;
 }
 
 .select-tree.dark .selected {
-  background-color: #3a484e;
-  border-color: #99defd;
+  background-color: #000000;
+  border-color: #000000;
+}
+pre{
+  background-color: white;
+  color: black;
+  width: 60vw;
+  max-width: 60vw;
+
+}
+.source{
+  display: flex;
+  flex-direction: row;
+  max-height: 65vh;
+  height: 65vh;
+  width: 60vw;
+  max-width: 60vw;
+}
+.simple-tree{
+  width: 200px;
+  max-height: 65h;
+  margin: 0 !important;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.simple-tree::-webkit-scrollbar {
+  display: none;
 }

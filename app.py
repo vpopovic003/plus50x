@@ -129,8 +129,16 @@ def admin():
 def video(index):
     index = int(index)
     shorts = helpers.shorts[index]
-    # Put it into database?
-    return render_template("video.html", shorts=shorts, video=helpers.videos[int(index)], index=index, lecture=helpers.lectures[index])
+    if request.method == "POST":
+        # Get the currently played video
+        information = request.data
+        y = json.loads(information)
+        video = "video" + y["Video"]
+        # Add entry into database
+        db.execute("UPDATE progress SET ? = 1 WHERE user_id = ?", video, session["user_id"])
+        return ""
+    else:
+        return render_template("video.html", shorts=shorts, video=helpers.videos[int(index)], index=index, lecture=helpers.lectures[index])
 
 
 @app.route("/lecture<index>", methods=['GET', 'POST'])

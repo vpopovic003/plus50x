@@ -5,7 +5,7 @@
     <div class="main-content col-md">
         <div class="source">
         {% if index == 9 or (index > 3 and index < 8) %}
-            <h4>Not implemented for this lecture yet.</h4>
+            <div id="tree"></div>
             <!-- Required multilevel menu -->
         {% elif index == 0 or index == 10 %}
             <h4>No source available for this lecture.</h4>
@@ -40,6 +40,21 @@
             </pre>
         {% endif %}
         </div>
+        <script>
+            var tree = new Tree(document.getElementById('tree'));
+            {% autoescape false %}
+                var source = [{{ source }}]
+            {% endautoescape %}
+            function loop(a) {
+                if (a.type == 'directory'){                       
+                    a.type = Tree.FOLDER;           
+                }
+                Array.isArray(a.children) && a.children.forEach(loop); // check and iterate children
+            }
+            source.forEach(loop);
+            tree.json(source);
+        </script>
+        <!--
         <script type="text/javascript">
             document.querySelector('#select').addEventListener('change', function() {
                 let index = '{{ index }}';
@@ -49,6 +64,7 @@
                     .then(text => document.querySelector('#render-src').innerText = text);
             });
         </script>
+        -->
     </div>
 </div>
 {% endblock %}

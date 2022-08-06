@@ -6,7 +6,7 @@ from cs50 import SQL
 import json
 
 import helpers
-from helpers import apology, login_required
+from helpers import apology, login_required, path_to_dict
 
 # Configure application
 app = Flask(__name__)
@@ -169,6 +169,7 @@ def slides(index):
     shorts = helpers.shorts[index]
     return render_template("slides.html", shorts=shorts, index=index, lecture=helpers.lectures[index])
 
+
 @app.route("/settings")
 def settings():
     return render_template("settings.html", index=-1)
@@ -184,7 +185,8 @@ def source(index):
     path = (f"static/files/source/src{index}")
     # Open folder, add files to the list
     if index == 0 or index > 8 or (index > 3 and index < 8):
-        source = None
+        source = json.dumps(path_to_dict(path), ensure_ascii=False)
+        print(source)
     else:
         for f in os.listdir(path):
             with open(os.path.join(path, f)) as f:
@@ -275,6 +277,5 @@ def progress():
             for c in range(0, len(short_index)):
                 shortdata = db.execute("SELECT shorts{}_{} FROM progress WHERE user_id = ?;".format(i, c + 1), session["user_id"])
                 watchedshort.append(shortdata[0]['shorts{}_{}'.format(i, c + 1)])
-    print(watchedshort)
 
     return render_template("progress.html", index=-1, len = 11,lecture=helpers.lectures, shorts = helpers.shorts, watchedvideo = watchedvideo, watchedshort = watchedshort)

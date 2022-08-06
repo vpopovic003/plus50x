@@ -1,5 +1,15 @@
 from flask import render_template, redirect, request, session
 from functools import wraps
+import os
+import json
+
+
+def path_to_dict(path):
+    d = {'name': os.path.basename(path)}
+    if os.path.isdir(path):
+        d['type'] = "directory"
+        d['children'] = [path_to_dict(os.path.join(path,x)) for x in os.listdir(path)]
+    return d
 
 
 def apology(message, code=400):

@@ -12,6 +12,8 @@
     <link href="../static/page.css" rel="stylesheet">
     <link href="../static/style.css" rel="stylesheet">
     <link href="../static/Start.css" rel="stylesheet">
+    <link href="../static/tree.css" rel="stylesheet">
+    <script src="../static/tree.js"></script>
     <title>Plus50x: {% block title %}{% endblock %}</title>
 </head>
 
@@ -201,7 +203,7 @@
             var CookieDesign = document.getElementsByClassName("CookieDesign");
             function CheckforCookie() {
                 var myCookie = getCookie("CookiesAllowed");
-                console.log(myCookie);
+                //console.log(myCookie);
                 if (myCookie == null) {
                     CookieDesign[0].style.display = "flex";
 

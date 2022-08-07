@@ -72,7 +72,7 @@
       node = this.interrupt(node);
       const a = this.append(Object.assign(document.createElement('a'), {
         textContent: node.name,
-        href: '#'
+        href: node.path
       }), parent, before);
       a.dataset.type = SimpleTree.FILE;
       this.emit('created', a, node);

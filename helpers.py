@@ -3,11 +3,12 @@ from functools import wraps
 import os
 import json
 
-
+# Code: https://stackoverflow.com/questions/25226208/represent-directory-tree-as-json
 def path_to_dict(path):
     d = {'name': os.path.basename(path)}
+    d['path'] = path
     if os.path.isdir(path):
-        d['type'] = "directory"
+        d['type'] = "directory"    
         d['children'] = [path_to_dict(os.path.join(path,x)) for x in os.listdir(path)]
     return d
 

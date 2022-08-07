@@ -34,11 +34,15 @@
         {% endif %}
         </div>
         <script>
+            // Code: https://www.cssscript.com/folder-tree-json/
+            // Github: https://github.com/lunu-bounir/tree.js
             // Render tree from directory structure
             var tree = new Tree(document.getElementById('tree'));
             {% autoescape false %}
+                // Get json from flask
                 var source = [{{ source }}]
             {% endautoescape %}
+            // Iterate json and rename type for folders
             function loop(a) {
                 if (a.type == 'directory'){                       
                     a.type = Tree.FOLDER;           
@@ -46,21 +50,16 @@
                 Array.isArray(a.children) && a.children.forEach(loop); // check and iterate children
             }
             source.forEach(loop);
+            // Render tree
             tree.json(source);
-
-            // Render source to the box
-            document.querySelector('#tree').addEventListener('click', function(e) {
-                e = e || window.event;
-                var target = e.target || e.srcElement,
-                text = target.textContent || target.innerText;
-                let index = '{{ index }}';
-                let path = "static/files/source/src" + index +"/" + text;
+            // Render source to the box on click
+            tree.on('select', e => {
+                let path = e.getAttribute("href");
                 fetch(path)
                     .then(response => response.text())
                     .then(text => document.querySelector('#render-src').innerText = text);
-            }, false);
-        </script>
-        
+            });
+        </script>      
     </div>
 </div>
 {% endblock %}

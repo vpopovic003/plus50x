@@ -48,14 +48,14 @@
             <ul class="sidemenu menuitems">
                 <!-- Login/Logout -->
                 <li>{% if session["user_id"] %}
-                    <a href="logout" class="side-button" id="">Logout</a>
+                    <li><a href="logout" class="side-button" id="">Logout</a></li>
+                    <li><a href="admin" class="side-button" id="progress">Admin</a></li>
+                    <li><a href="progress" class="side-button" id="progress">Progress</a></li>
                     {% else %}
-                    <a href="login" class="side-button" id="">Login</a>
+                    <a href="login" class="side-button" id="">Login/Register</a>
                     {% endif %}</a>
                 </li>
                  <!-- end login/logout -->
-                <li><a href="admin" class="side-button" id="progress">Admin</a></li>
-                <li><a href="progress" class="side-button" id="progress">Progress</a></li>
                 <li><a href="lecture0" class="side-button" id="lecture0">Week 0 Scratch</a></li>
                 <li><a href="lecture1" class="side-button" id="lecture1">Week 1 C</a></li>
                 <li><a href="lecture2" class="side-button" id="lecture2">Week 2 Arrays</a></li>

@@ -118,7 +118,7 @@ def main():
 @app.route("/admin")
 @login_required
 def admin():
-    a = db.execute("SELECT admin FROM users WHERE id = ?",session["user_id"])
+    a = db.execute("SELECT admin FROM users WHERE id = ?", session["user_id"])
     if(a[0]["admin"] == 1):
         return render_template("admin.html", index=-1)
     else:

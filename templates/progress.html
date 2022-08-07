@@ -9,8 +9,8 @@
 <div class="progresscontainer">
 {%for i in range(0, len)%}
   <div class="progressitems">
-    <h1 class="text-center" id="">Week {{ i }}: {{ lecture[i] }}</h1>
-    <h3><input  class="video" type="checkbox"  {% if watchedvideo[i] %} checked {% endif %}>Video</h3>
+    <h1 class="text-center header" id="">Week {{ i }}: {{ lecture[i] }}</h1>
+    <h3><input  class="video1" type="checkbox"  {% if watchedvideo[i] %} checked {% endif %}>Video</h3>
     {% if ( i ) > 0 and ( i ) < 10 %}
     <h2>Shorts</h2>
         {% for item in shorts[i] %}
@@ -55,6 +55,9 @@
     *{
         color: white;
     }
+    .header h1{
+        color: black !important;
+    }
     .progresscontainer{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 500px));
@@ -76,6 +79,13 @@
     input{
         margin-right: 10px;
     }
+    @media (max-width: 767px){
+        .progresscontainer{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+    }
   </style>
   <script>
             const URL = '/progress'
@@ -96,10 +106,10 @@
             xhr.open('POST', URL);
             xhr.send(sender)
         });
-        $(".video").change( 
+        $(".video1").change( 
             function(){
                 let videos = []
-                var markedCheckbox = document.querySelectorAll(".video"); 
+                var markedCheckbox = document.querySelectorAll(".video1"); 
                 for (var checkbox of markedCheckbox) {  
                     if (checkbox.checked){
                         videos.push("True") 

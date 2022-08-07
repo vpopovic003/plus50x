@@ -3,7 +3,7 @@ from functools import wraps
 import os
 import json
 
-# Code: https://stackoverflow.com/questions/25226208/represent-directory-tree-as-json
+# ref: https://stackoverflow.com/questions/25226208/represent-directory-tree-as-json
 def path_to_dict(path):
     d = {'name': os.path.basename(path)}
     d['path'] = path

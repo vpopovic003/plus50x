@@ -1,3 +1,47 @@
+from flask import render_template, redirect, request, session
+from functools import wraps
+import os
+import json
+
+# ref: https://stackoverflow.com/questions/25226208/represent-directory-tree-as-json
+def path_to_dict(path):
+    d = {'name': os.path.basename(path)}
+    d['path'] = path
+    if os.path.isdir(path):
+        d['type'] = "directory"    
+        d['children'] = [path_to_dict(os.path.join(path,x)) for x in os.listdir(path)]
+    return d
+
+
+def apology(message, code=400):
+    """Render message as an apology to user."""
+    def escape(s):
+        """
+        Escape special characters.
+
+        https://github.com/jacebrowning/memegen#special-characters
+        """
+        for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"),
+                         ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
+            s = s.replace(old, new)
+        return s
+    return render_template("apology.html", top=code, bottom=escape(message), index=-1), code
+
+
+def login_required(f):
+    """
+    Decorate routes to require login.
+
+    https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            return apology("Please Login first!")
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 lectures = [
     "Scratch",
     "C",

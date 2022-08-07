@@ -12,11 +12,26 @@
     <link href="../static/page.css" rel="stylesheet">
     <link href="../static/style.css" rel="stylesheet">
     <link href="../static/Start.css" rel="stylesheet">
+    <link href="../static/tree.css" rel="stylesheet">
+    <script src="../static/tree.js"></script>
     <title>Plus50x: {% block title %}{% endblock %}</title>
 </head>
 
-<body>
+<body onload="CheckUp()">
+    <div class="CookieDesign">
+        <div class="CoookieInner">
+            <h1>Cookies</h1>
+            <p>
+                <h3>This website uses cookies</h3>
+                We use cookies to personalize content.
+            </p>
+            <div class="CookieButtons">
+                <button onclick="Accept()">Accept</button>
+                <button onclick="Decline()">Decline</button>
+            </div>
 
+        </div>
+    </div>
     <div class="shell nopadding">
         <!--section class="header">
             </section-->
@@ -31,6 +46,16 @@
             </div>
             <h1><a href="main">PLUS50x</a></h1>
             <ul class="sidemenu menuitems">
+                <!-- Login/Logout -->
+                <li>{% if session["user_id"] %}
+                    <li><a href="logout" class="side-button" id="">Logout</a></li>
+                    <li><a href="admin" class="side-button" id="progress">Admin</a></li>
+                    <li><a href="progress" class="side-button" id="progress">Progress</a></li>
+                    {% else %}
+                    <a href="login" class="side-button" id="">Login/Register</a>
+                    {% endif %}</a>
+                </li>
+                 <!-- end login/logout -->
                 <li><a href="lecture0" class="side-button" id="lecture0">Week 0 Scratch</a></li>
                 <li><a href="lecture1" class="side-button" id="lecture1">Week 1 C</a></li>
                 <li><a href="lecture2" class="side-button" id="lecture2">Week 2 Arrays</a></li>
@@ -42,11 +67,15 @@
                 <li><a href="lecture8" class="side-button" id="lecture8">Week 8 HTML, CSS, JavaScript</a></li>
                 <li><a href="lecture9" class="side-button" id="lecture9">Week 9 Flask</a></li>
                 <li><a href="lecture10" class="side-button" id="lecture10">Week 10 Emoji</a></li>
+                <li><a href="https://cs50.me/cs50x" class="side-button" id="Grades">Grades</a></li>
+                <li><a href="settings" class="side-button" id="Settings">Settings</a></li>
             </ul>
         </aside>
         <div class="topmenumain">
             {% if (index) == -1 %}
             <h1 class="text-center" id="">Welcome</h1>
+            {% elif (index) == -2 %}
+            <h1 class="text-center" id="">Welcome <br><br> Login Succesfull</h1>
             {% else %}
             <h1 class="text-center" id="">Week {{ index }}: {{ lecture }}</h1>
             <div class="topmenu">
@@ -142,7 +171,11 @@
             {% endblock %}
 
         </main>
-        <script>
+        <script defer>
+                if(getCookie("Darkmode")){
+                    document.body.style.backgroundColor  = "grey";
+                    document.body.style.color ="white";
+                };
             document.querySelector('.side-button').addEventListener('click', function () {
                 let element = document.querySelector('.side-button');
                 let clicked = element.id;
@@ -163,6 +196,44 @@
                     Sidenav[0].style.display = 'none';
                     document.body.style.overflow = 'auto';
                 }
+            }
+            function CheckUp(){
+                CheckforCookie();
+                CheckDarkMode();
+            }
+            var CookieDesign = document.getElementsByClassName("CookieDesign");
+            var LoggedDesign = document.getElementsByClassName("LDesign");
+            function CheckforCookie() {
+                var myCookie = getCookie("CookiesAllowed");
+                if (myCookie == null) {
+                    CookieDesign[0].style.display = "flex";
+
+                }
+            }
+            function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if(c.indexOf(name) == 0)
+                return c.substring(name.length,c.length);
+            }
+            return null;
+            }
+            function Accept(){
+                document.cookie = "CookiesAllowed=True";
+                CookieDesign[0].style.display = "none";
+            }
+            function Decline(){
+                CookieDesign[0].style.display = "none";
+            }
+            function CheckDarkMode(){
+                if(getCookie("Darkmode")){
+                    document.body.style.backgroundColor  = "grey";
+                    document.body.style.color ="white";
+                }else
+                ;
             }
         </script>
     </div>

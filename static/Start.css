@@ -1,3 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background-color: rgb(240, 240, 240);
+    background-attachment: fixed;
+}
+.CookieDesign{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1200 !important;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.CoookieInner{
+    background-color: grey;
+    width: 35%;
+    min-width: 600px;
+    height: 30%;
+    min-height: 200px;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    box-shadow: 0 0 35px 20px rgb(70, 70, 70);
+}
+.CoookieInner h1{
+    margin-left: 0;
+    font-size: 60px;
+}
+
+.CookieDesign button{
+    background-color: white;
+    border: 0;
+    width: 25%;
+    height: 45px;
+    font-weight: bolder;
+    margin-left: 70px;
+    margin-right: 70px;
+    border-radius: 5px;
+    border: #00b33c 3px solid;
+}
+.CookieDesign button:hover{
+    filter: brightness(75%);
+}
+.CookieButtons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 30px;
+}
+
 .Videosmallerdevices{
     display: none;
 }
@@ -123,11 +183,42 @@
     text-decoration: none !important;
 }
 
+
 @media (max-width: 767px) {
 
+    .side-menu ul li{
+        padding: 7px;
+    }
+
+    .CoookieInner{
+        background-color: grey;
+        width: 35%;
+        min-width: 350px;
+        height: 30%;
+        min-height: 300px;
+        border-radius: 10px;
+        color: white;
+        padding: 10px;
+        position: absolute;
+        box-shadow: 0 0 35px 20px rgb(70, 70, 70);
+    }
+
+    .CookieDesign button{
+        background-color: white;
+        min-width: 100px;
+        height: 45px;
+        font-weight: bolder;
+        border-radius: 5px;
+        border: #00b33c 3px solid;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .CookieButtons{
+        width: 94%;
+    }
 
     .background{
-        margin-top: 140px !important;
+        margin-top: 160px !important;
     }
 
     .side-menu {

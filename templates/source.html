@@ -4,17 +4,10 @@
 <div class="row">
     <div class="main-content col-md">
         <div class="source">
-        {% if index == 9 or (index > 3 and index < 8) %}
-            <h4>Not implemented for this lecture yet.</h4>
-            <!-- Required multilevel menu -->
-        {% elif index == 0 or index == 10 %}
+        {% if index == 0 or index == 10 %}
             <h4>No source available for this lecture.</h4>
         {% else %}
-            <select id="select">
-                {% for item in source %}
-                    <option value="{{ item }}">{{ item }}</option>
-                {% endfor %}
-            </select>
+            <div id="tree" style="margin-bottom: 150px;"></div>
 
             <pre id="render-src">
         // Logical operators
@@ -40,15 +33,33 @@
             </pre>
         {% endif %}
         </div>
-        <script type="text/javascript">
-            document.querySelector('#select').addEventListener('change', function() {
-                let index = '{{ index }}';
-                let path = "static/files/source/src" + index +"/" + this.value;
+        <script>
+            // ref: https://www.cssscript.com/folder-tree-json/
+            // ref: https://github.com/lunu-bounir/tree.js
+            // Render tree from directory structure
+            var tree = new Tree(document.getElementById('tree'));
+            {% autoescape false %}
+                // Get json from flask
+                var source = [{{ source }}]
+            {% endautoescape %}
+            // Iterate json and rename type for folders
+            function loop(a) {
+                if (a.type == 'directory'){                       
+                    a.type = Tree.FOLDER;           
+                }
+                Array.isArray(a.children) && a.children.forEach(loop); // check and iterate children
+            }
+            source.forEach(loop);
+            // Render tree
+            tree.json(source);
+            // Render source to the box on click
+            tree.on('select', e => {
+                let path = e.getAttribute("href");
                 fetch(path)
                     .then(response => response.text())
                     .then(text => document.querySelector('#render-src').innerText = text);
             });
-        </script>
+        </script>      
     </div>
 </div>
 {% endblock %}

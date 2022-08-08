@@ -83,7 +83,7 @@
       node = this.interrupt(node);
       const details = document.createElement('details');
       const summary = Object.assign(document.createElement('summary'), {
-        textContent: node.name
+        textContent: node.name,
       });
       details.appendChild(summary);
       this.append(details, parent, before, () => {

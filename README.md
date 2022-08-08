@@ -31,7 +31,7 @@ If you click grades it will take you to an external link cs50.me/cs50x.
 #### Settings:
 Choose between light and dark theme. This will be stored in a cookie, and the page will remember your choice.
   
-### Cookies:
+#### Cookies:
 The page asks for your permission to save cookies. If activated the Darkmode will be activated each time you open the page, if not you will have to do it manually.
 
 ## Developer Notes:

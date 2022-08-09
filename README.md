@@ -1,5 +1,5 @@
 # Plus50x
-#### Video Demo:  <URL HERE>
+#### Video Demo: https://www.youtube.com/watch?v=tWOz693ZLHE
 #### Description:
 
 Plus50x is a redesign page for CS50's Introduction to Computer Science by Harvard. The main idea behind the project was to have an intuitive learning experinece. Our goal was to get more attention to the shorts, notes and other features of the lecture, which are very imporant for the complete experience. 

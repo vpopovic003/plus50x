@@ -1,5 +1,3 @@
-from operator import truediv
-import os
 from flask import Flask, render_template, redirect, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -189,6 +187,9 @@ def source(index):
     # Open folder, add files to the list
     if index > 0 and index < 10:
         source = json.dumps(path_to_dict(path), ensure_ascii=False)
+        # Remove prefix and suffix (top level/root menu)
+        source = source[87:]
+        source = source[:-2]
     return render_template("source.html", shorts=shorts, source=source, index=index, lecture=helpers.lectures[index])
 
 

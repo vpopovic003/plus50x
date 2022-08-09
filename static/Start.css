@@ -87,7 +87,7 @@ body{
 }
 
 .background {
-    padding-left: 30vw !important;
+    padding-left: 25.1vw !important;
     max-width: 250rem !important;
     overflow: hidden !important;
 }
@@ -374,7 +374,9 @@ body{
     .shell{
         height: 100px !important;
     }
-    
+    .CoookieInner{
+        min-height: 350px;
+    }
 }
 
 @media (min-width: 1200px) {

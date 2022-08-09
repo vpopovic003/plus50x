@@ -10,26 +10,7 @@
             <div id="tree" style="margin-bottom: 150px;"></div>
 
             <pre id="render-src">
-        // Logical operators
-
-        #include &lt;cs50.h&gt;
-        #include &lt;stdio.h&gt;
-
-        int main(void)
-        {
-            // Prompt user to agree
-            char c = get_char("Do you agree? ");
-
-            // Check whether agreed
-            if (c == 'Y' || c == 'y')
-            {
-                printf("Agreed.\n");
-            }
-            else if (c == 'N' || c == 'n')
-            {
-                printf("Not agreed.\n");
-            }
-        }
+            &nbsp;
             </pre>
         {% endif %}
         </div>
@@ -55,9 +36,16 @@
             // Render source to the box on click
             tree.on('select', e => {
                 let path = e.getAttribute("href");
+                if (!path)
+                {
+                    document.querySelector('#render-src').innerText = "";
+                }
+                else
+                {
                 fetch(path)
                     .then(response => response.text())
                     .then(text => document.querySelector('#render-src').innerText = text);
+                }
             });
         </script>      
     </div>

@@ -2,13 +2,55 @@
 
 {% block main %}
 
-<div class="row">
-    <div class="main-content col-md">
-        <div class="videocontainershorts text-center">
-            <div class="lecture-video">
-                <iframe class="videosmall" src="https://www.youtube.com/embed/{{ video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
+<div class="videocontainer text-center">
+    <div class="lecture-video">
+        <div id="player" class="videosmall"></div>
     </div>
 </div>
+<script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+
+    tag.src = "//www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: '{{ video }}',
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+    }
+
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    const URL = '/lecture{{index}}'
+    const xhr = new XMLHttpRequest();
+    sender = JSON.stringify({"Video": "{{ index }}"});
+
+    var done = false;
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING && !done) {
+        done = true;
+        xhr.open('POST', URL);
+        xhr.send(sender);
+      }
+    }
+    function stopVideo() {
+      player.stopVideo();
+    }
+  </script>
 {% endblock %}

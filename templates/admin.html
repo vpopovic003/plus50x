@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}
+    Statistics
+{% endblock %}
+{% block main %}
+<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="statscenter">
+    <div class="elfsight-app-32700921-4e54-4235-9de6-fef1e8251064 hide"></div>
+</div>
+<style>
+    body{
+        overflow: hidden;
+        background-color: #2f4353;
+        background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 94%);
+    }
+    .hide a{
+        display: none !important;
+    }
+    @media (max-width: 767px){
+        .statscenter{
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .hide{
+            margin-top: 50px;
+        }
+    }
+</style>
+
+{% endblock %}

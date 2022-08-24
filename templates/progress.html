@@ -1,0 +1,177 @@
+{% extends "layout.html" %}
+{% block title %}
+    Progress
+{% endblock %}
+{% block main %}
+
+{% set count = namespace(value=0) %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<div class="progresscontainer">
+{%for i in range(0, len)%}
+  <div class="progressitems">
+    <h1 class="text-center header" id="">Week {{ i }}: {{ lecture[i] }}</h1>
+    <h3><input  class="video1" type="checkbox"  {% if watchedvideo[i] %} checked {% endif %}>Video</h3>
+    {% if ( i ) > 0 and ( i ) < 10 %}
+    <h2>Shorts</h2>
+        {% for item in shorts[i] %}
+        <h3>
+            <input class="short" type="checkbox" {% if watchedshort[count.value + 1] %} checked {% endif %}>
+            {{ item }}
+        </h3>
+        {%  set count.value = count.value + 1 %}
+        {% endfor %}
+    {% endif %}
+    <h2>Problems</h2>
+    {% if ( i ) > 1 and ( i ) < 10 %}
+    <div class="">
+        <h3>
+            <input class="lab" type="checkbox">Lab {{ i }}
+        </h3>
+    </div>
+    {% endif %}
+    {% if ( i ) < 10 %}
+    <div class="">
+        <h3>
+            <input class="problem" type="checkbox">Problem Set {{ i }}
+        </h3>
+    </div>
+    {% else %}
+    <div class="">
+        <h3>
+            <input class="lab" type="checkbox">Seminars
+        </h3>
+    </div>
+    <div class="">
+        <h3>
+            <input class="problem" type="checkbox">Final Project
+        </h3>
+    </div>
+    {% endif %}
+
+  </div>
+{%endfor%}
+</div>
+  <style>
+    *{
+        color: white;
+    }
+    .header h1{
+        color: black !important;
+    }
+    .progresscontainer{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 500px));
+        justify-content:center;
+        grid-gap: 20px;
+        align-content:end;
+        margin-bottom: 50px;
+    }
+    .progressitems{
+        border: 0 !important;
+        margin: 0;
+        padding: 20px;
+        padding-bottom: 40px;
+        border-radius: 0;
+        width: 400px;
+        height: auto;
+        background-color: black;
+    }
+    input{
+        margin-right: 10px;
+    }
+    @media (max-width: 767px){
+        .progresscontainer{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+    }
+  </style>
+  <script>
+            const URL = '/progress'
+            const xhr = new XMLHttpRequest();
+            $(".btn").change( 
+            function(){
+                let values = []
+                var markedCheckbox = document.querySelectorAll(".btn"); 
+                for (var checkbox of markedCheckbox) {  
+                    if (checkbox.checked){
+                        values.push("True") 
+                    } else {
+                        values.push("False") 
+                    }
+                       
+                }
+            sender = JSON.stringify({values});
+            xhr.open('POST', URL);
+            xhr.send(sender)
+        });
+        $(".video1").change( 
+            function(){
+                let videos = []
+                var markedCheckbox = document.querySelectorAll(".video1"); 
+                for (var checkbox of markedCheckbox) {  
+                    if (checkbox.checked){
+                        videos.push("True") 
+                    } else {
+                        videos.push("False") 
+                    }
+                       
+                }
+            sender = JSON.stringify({videos});
+            xhr.open('POST', URL);
+            xhr.send(sender)
+        });
+        $(".problem").change( 
+            function(){
+                let problem = []
+                var markedCheckbox = document.querySelectorAll(".problem"); 
+                for (var checkbox of markedCheckbox) {  
+                    if (checkbox.checked){
+                        problem.push("True") 
+                    } else {
+                        problem.push("False") 
+                    }
+                       
+                }
+            sender = JSON.stringify({problem});
+            xhr.open('POST', URL);
+            xhr.send(sender)
+        });
+        $(".lab").change( 
+            function(){
+                let lab = []
+                var markedCheckbox = document.querySelectorAll(".lab"); 
+                for (var checkbox of markedCheckbox) {  
+                    if (checkbox.checked){
+                        lab.push("True") 
+                    } else {
+                        lab.push("False") 
+                    }
+                       
+                }
+            sender = JSON.stringify({lab});
+            xhr.open('POST', URL);
+            xhr.send(sender)
+        });
+        $(".short").change( 
+            function(){
+                let short = []
+                var markedCheckbox = document.querySelectorAll(".short"); 
+                for (var checkbox of markedCheckbox) {  
+                    if (checkbox.checked){
+                        short.push("True") 
+                    } else {
+                        short.push("False") 
+                    }
+                       
+                }
+            sender = JSON.stringify({short});
+            xhr.open('POST', URL);
+            xhr.send(sender)
+        });
+
+  
+  </script>
+
+{% endblock %}

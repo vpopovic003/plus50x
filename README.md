@@ -6,6 +6,8 @@ Plus50x is a redesign page for CS50's Introduction to Computer Science by Harvar
 
 This page was done in response to the official CS50x web page (https://cs50.harvard.edu/x/2022/), and similarities in design were intentional.
 
+<img src="https://keen003.github.io/portfolio/images/project3.png" alt="Plus50x page" width="400"/>
+
 #### URL: https://plus50x.herokuapp.com/
 
 ## Technologies used

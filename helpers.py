@@ -57,14 +57,14 @@ lectures = [
 ]
 
 videos = [
-    "4zy0z5W0-w4",
-    "Na2wiHOnzXU",
-    "xC3BZa1pcsY",
-    "EXnHX-6voug",
-    "l-dHFS_Pnzc",
-    "urRlbmW5Txw",
-    "k9RO-eEF9xo",
-    "1YVIBFODn58",
+    "IDDmrzzB14M",
+    "ywg7cW0Txs4",
+    "XmYnsO7iSI8",
+    "4oqjcKenCH8",
+    "AcWIE9qazLI",
+    "X8h4dq9Hzq8",
+    "5Jppcxc1Qzc",
+    "zrCLRC3Ci1c",
     "lp-FwJwCqpE",
     "mlRlDFAyPtE",
     "oe-Iz0j1n6I"
